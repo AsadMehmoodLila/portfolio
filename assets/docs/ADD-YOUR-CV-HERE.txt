@@ -1,0 +1,3 @@
+Optional: place your final PDF CV in this folder and link it from index.html.
+Suggested filename: Asad_Mehmood_CV.pdf
+The website already includes a printable resume.html page.
