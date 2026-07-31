@@ -1,79 +1,58 @@
-# AsadLilla Portfolio
+# AsadLilla Portfolio — Professional Rebuild
 
-A responsive static portfolio for **Asad Mehmood**, ready for GitHub Pages and the custom domain **asadlilla.me**.
+A static portfolio built for GitHub Pages and `asadlilla.me`.
 
-## 1. Personalize the links
+## What changed
 
-Open `js/config.js` and replace:
+- Rebuilt from scratch with a specific editorial design instead of a generic portfolio template.
+- Real project case studies with concrete contributions and outcomes.
+- Actual certificate images, including a privacy-safe redacted version of the soft-skills certificate.
+- Smooth scrolling, restrained reveal motion, an accessible mobile menu, scroll progress, and certificate lightbox.
+- Responsive layouts for desktop, tablet, and mobile.
+- Print-ready résumé page that can be saved as PDF from the browser.
+- No particles, fake 3D art, glowing blobs, typewriter effects, or AI-generated imagery.
 
-- `YOUR_EMAIL@example.com`
-- `YOUR_GITHUB_USERNAME`
-- `YOUR_LINKEDIN_USERNAME`
-- the Roblox game URL
+## Before uploading
 
-This is the only file you must edit before publishing.
+Open `js/site-data.js` and add your professional email. Optional LinkedIn and direct Roblox game links can also be added there.
 
-## 2. Preview on your computer
-
-Open `index.html` directly, or use VS Code's **Live Server** extension.
-
-## 3. Upload to GitHub
-
-Create a public GitHub repository, place all files in the repository root, then run:
-
-```bash
-git init
-git add .
-git commit -m "Create portfolio website"
-git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
-git push -u origin main
+```js
+window.SITE_DATA = {
+  email: "your@email.com",
+  github: "https://github.com/AsadMehmoodLila",
+  linkedin: "",
+  robloxGame: "DIRECT_ROBLOX_GAME_LINK"
+};
 ```
 
-## 4. Enable GitHub Pages
+Leaving a value empty hides that link automatically.
 
-Go to:
+## Replace the live GitHub Pages website
 
-`Repository → Settings → Pages`
+1. Extract this ZIP.
+2. Open your GitHub `portfolio` repository.
+3. Delete the old website files, but keep the repository itself.
+4. Upload **everything inside this extracted folder** so `index.html` is at the repository root.
+5. Commit the upload.
+6. Keep GitHub Pages set to `main` and `/(root)`.
+7. Keep the `CNAME` file. It already contains `asadlilla.me`.
 
-Choose:
-
-- Source: **Deploy from a branch**
-- Branch: **main**
-- Folder: **/(root)**
-
-The included `CNAME` file already contains `asadlilla.me`.
-
-## 5. Namecheap DNS records
-
-In Namecheap:
-
-`Domain List → Manage → Advanced DNS`
-
-Add these GitHub Pages records:
-
-| Type | Host | Value |
-|---|---|---|
-| A Record | @ | 185.199.108.153 |
-| A Record | @ | 185.199.109.153 |
-| A Record | @ | 185.199.110.153 |
-| A Record | @ | 185.199.111.153 |
-| CNAME Record | www | YOUR_USERNAME.github.io |
-
-Remove conflicting parking or URL redirect records for `@` and `www`.
-
-After DNS verification completes in GitHub Pages, turn on **Enforce HTTPS**.
-
-## 6. Replace the artwork later
-
-The files in `assets/images/` are custom placeholders. Replace them with real project screenshots using the same filenames, or update the paths in the HTML.
+GitHub Pages will deploy the update automatically. Your Namecheap DNS records do not need to change.
 
 ## Files
 
 - `index.html` — main portfolio
-- `projects.html` — detailed project summaries
-- `resume.html` — web résumé with Print/Save PDF button
-- `css/style.css` — all styling and responsive layouts
-- `js/config.js` — contact and profile links
-- `js/main.js` — theme, mobile menu, reveal effects, dynamic links
-- `CNAME` — custom GitHub Pages domain
+- `projects.html` — detailed case studies
+- `resume.html` — printable résumé
+- `css/site.css` — full design system and responsive layout
+- `js/site.js` — animations, navigation, modal, and progressive enhancement
+- `js/site-data.js` — editable links/contact data
+- `assets/images/certificates/` — public certificate images
+
+## Privacy
+
+The original soft-skills certificate contains a CNIC number. This ZIP includes only a redacted public image. Do not upload the original unredacted PDF to a public GitHub repository.
+
+## Third-party design resources
+
+See `CREDITS.md`. No third-party template was copied.

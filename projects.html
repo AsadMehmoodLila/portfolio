@@ -1,35 +1,84 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <script>document.documentElement.classList.add("js")</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Detailed project case studies by Asad Mehmood.">
-  <title>Projects — Asad Mehmood</title>
+  <meta name="theme-color" content="#11110f">
+  <title>Case Studies — Asad Mehmood</title>
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/style.css">
-  <script src="js/config.js" defer></script><script src="js/main.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+  <script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js" defer></script>
+  <script src="js/site-data.js" defer></script>
+  <script src="js/site.js" defer></script>
 </head>
-<body>
+<body class="inner-page">
+  <div class="scroll-progress" aria-hidden="true"><span data-scroll-progress></span></div>
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header"><nav class="nav container" aria-label="Main navigation">
-    <a class="logo" href="index.html"><span class="logo-mark">A</span><span>AsadLilla</span></a>
-    <div class="nav-links" data-nav-menu><a href="index.html#about">About</a><a href="index.html#skills">Skills</a><a href="projects.html">Projects</a><a href="resume.html">Résumé</a></div>
-    <div class="nav-actions"><a class="button button-small desktop-cta" href="index.html#contact">Contact</a><button class="icon-button" type="button" data-theme-toggle aria-label="Switch theme"></button><button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-label="Open menu">☰</button></div>
-  </nav></header>
+  <header class="site-header inner-header" data-header>
+    <a class="brand" href="index.html"><span class="brand-mark">AM</span><span class="brand-name">Asad Mehmood</span></a>
+    <nav class="desktop-nav" aria-label="Project navigation"><a href="index.html#work">Work</a><a href="index.html#about">About</a><a href="resume.html">Résumé</a></nav>
+    <div class="header-actions"><a class="text-link" href="index.html">Home ↗</a></div>
+  </header>
 
-  <main id="main">
-    <section class="page-hero"><div class="container" data-reveal><p class="eyebrow">Project case studies</p><h1>What I built, how it works, and what I learned.</h1><p>Replace or expand any section as your repositories, screenshots, and final evaluation results become available.</p></div></section>
+  <main id="main" class="case-main">
+    <header class="case-hero">
+      <p class="kicker reveal">Selected work / Case studies</p>
+      <h1 class="reveal">What I built, how it worked, and what I learned.</h1>
+      <p class="reveal">These are concise technical breakdowns, not marketing pages. They focus on the system, my contribution, and the result.</p>
+    </header>
 
-    <section class="section-tight"><div class="container page-grid">
-      <article class="card" id="tsunami" data-reveal><span class="tag">Roblox · Published experience</span><h2>Escape Tsunami with Dragons</h2><p>A survival game where players navigate hazards, survive a moving tsunami, and collect dragons. The project grew beyond a prototype into a published experience with more than 30,000 visits.</p><h3>My contribution</h3><ul class="resume-list"><li>Designed and implemented gameplay systems in Roblox Studio.</li><li>Built tsunami movement and survival logic.</li><li>Added progression, dragons, global announcements, and UI systems.</li><li>Improved performance and added server-side validation against common exploits.</li></ul><h3>What it demonstrates</h3><div class="chips"><span class="chip">Shipping a live product</span><span class="chip">Lua systems</span><span class="chip">Performance</span><span class="chip">Player experience</span></div><div class="project-links"><a class="button button-small" data-link="robloxGame" href="https://www.roblox.com/">Play game</a></div></article>
+    <article class="case-study" id="tsunami">
+      <div class="case-index">01</div>
+      <header class="case-title reveal"><p>Published Roblox experience</p><h2>Escape Tsunami with Dragons</h2><div class="case-outcome"><strong>30K+</strong><span>visits</span></div></header>
+      <div class="case-columns">
+        <section class="reveal"><h3>Context</h3><p>The experience combines a repeating tsunami survival loop with dragons, rewards, progression, and replayable systems. The goal was to make a simple idea feel active enough to keep players moving and upgrading.</p></section>
+        <section class="reveal"><h3>What I built</h3><ul class="plain-list"><li>Moving tsunami path and survival handling</li><li>Dragon and reward systems connected to the core loop</li><li>Global announcements and supporting UI</li><li>Server-side checks for cooldowns, range, tool state, and player state</li><li>Performance improvements using time-based movement and controlled update rates</li></ul></section>
+        <section class="reveal"><h3>Technical focus</h3><p>Roblox Studio, Lua, client/server boundaries, gameplay validation, reusable systems, and performance under multiple players.</p><div class="tag-row"><span>Lua</span><span>Roblox Studio</span><span>Server validation</span><span>Optimization</span></div></section>
+        <section class="reveal"><h3>What it proved</h3><p>I could publish and maintain a real game rather than stop at a prototype. Reaching 30K+ visits also gave me a reason to care about performance, clarity, and systems that survive real users.</p></section>
+      </div>
+    </article>
 
-      <article class="card" id="rag" data-reveal><span class="tag">NLP · University project</span><h2>Nutrition Facts RAG Chatbot</h2><p>A retrieval-augmented chatbot that answers questions using nutrition-related source documents instead of relying only on a language model’s general knowledge.</p><h3>Core workflow</h3><ul class="resume-list"><li>Prepare and clean the source text.</li><li>Represent documents for retrieval.</li><li>Retrieve relevant passages for each question.</li><li>Generate a grounded answer from the retrieved context.</li></ul><h3>What it demonstrates</h3><div class="chips"><span class="chip">Python</span><span class="chip">Retrieval</span><span class="chip">NLP</span><span class="chip">Grounded responses</span></div></article>
+    <article class="case-study" id="rag">
+      <div class="case-index">02</div>
+      <header class="case-title reveal"><p>NLP · Retrieval</p><h2>Nutrition Facts RAG Chatbot</h2></header>
+      <div class="case-columns">
+        <section class="reveal"><h3>Problem</h3><p>A normal chatbot can answer confidently without grounding. This project used document retrieval so responses could be based on relevant nutrition information instead of only a model’s general memory.</p></section>
+        <section class="reveal"><h3>Pipeline</h3><ol class="number-list"><li>Prepare and clean nutrition documents</li><li>Split content into searchable chunks</li><li>Represent and rank relevant text</li><li>Pass retrieved context into the answer step</li></ol></section>
+        <section class="reveal"><h3>Technical focus</h3><p>Python, text preprocessing, sparse representations, TF-IDF, retrieval logic, prompt context, and evaluating whether answers stayed connected to the source material.</p></section>
+        <section class="reveal"><h3>Learning</h3><p>The useful part of RAG is not the label. It is the discipline of retrieving the right context and making the answer depend on it.</p></section>
+      </div>
+    </article>
 
-      <article class="card" id="emotion" data-reveal><span class="tag">Computer vision · Classification</span><h2>Emotion Detection from Facial Expressions</h2><p>A facial-expression classification project focused on transforming image data into model-ready inputs, training or evaluating a classifier, and reviewing prediction quality.</p><h3>Project focus</h3><ul class="resume-list"><li>Image preprocessing and normalization.</li><li>Training and evaluation workflow.</li><li>Class prediction for facial expressions.</li><li>Analysis of accuracy and model limitations.</li></ul><h3>What it demonstrates</h3><div class="chips"><span class="chip">Python</span><span class="chip">Computer Vision</span><span class="chip">ML Evaluation</span></div></article>
+    <article class="case-study" id="emotion">
+      <div class="case-index">03</div>
+      <header class="case-title reveal"><p>Computer vision · Classification</p><h2>Emotion Detection from Facial Expressions</h2></header>
+      <div class="case-columns">
+        <section class="reveal"><h3>Goal</h3><p>Classify facial-expression images into emotion categories while learning the full workflow around image preparation, model training, testing, and evaluation.</p></section>
+        <section class="reveal"><h3>Work completed</h3><ul class="plain-list"><li>Image preprocessing and dataset preparation</li><li>Training and test flow</li><li>Prediction evaluation and error inspection</li><li>Presentation of the project and its limitations</li></ul></section>
+        <section class="reveal"><h3>Technical focus</h3><p>Python, image classification, preprocessing, evaluation metrics, and understanding that facial expression is not the same as a complete reading of a person’s internal emotional state.</p></section>
+        <section class="reveal"><h3>Learning</h3><p>Model output needs context and careful interpretation. A technically working classifier still has limits that should be stated honestly.</p></section>
+      </div>
+    </article>
 
-      <article class="card" id="snake" data-reveal><span class="tag">Assembly · Systems fundamentals</span><h2>Snake Game in Assembly</h2><p>A low-level implementation of the classic Snake game with keyboard input, movement, collision detection, score tracking, and screen refresh logic.</p><h3>Why it matters</h3><ul class="resume-list"><li>Strengthened understanding of memory, control flow, and state.</li><li>Translated game rules into low-level instructions.</li><li>Managed input and repeated screen updates.</li></ul><h3>What it demonstrates</h3><div class="chips"><span class="chip">Assembly</span><span class="chip">Low-level logic</span><span class="chip">Debugging</span></div></article>
-    </div></section>
+    <article class="case-study" id="snake">
+      <div class="case-index">04</div>
+      <header class="case-title reveal"><p>Low-level programming</p><h2>Snake Game in Assembly</h2></header>
+      <div class="case-columns">
+        <section class="reveal"><h3>Goal</h3><p>Build a complete playable game while working close to the machine: explicit input handling, state updates, screen output, collision logic, and control flow.</p></section>
+        <section class="reveal"><h3>Systems</h3><ul class="plain-list"><li>Keyboard-controlled movement</li><li>Food placement and score tracking</li><li>Body and boundary collision checks</li><li>Screen refresh and game-over state</li></ul></section>
+        <section class="reveal"><h3>Technical focus</h3><p>Assembly language, registers, memory/state management, loops, branching, keyboard input, and rendering through low-level screen operations.</p></section>
+        <section class="reveal"><h3>Learning</h3><p>Low-level work makes hidden assumptions visible. Even a small game becomes a useful exercise in state, timing, and careful control flow.</p></section>
+      </div>
+    </article>
+
+    <section class="next-panel reveal"><p>Next</p><h2>See the full profile, education, and certificates.</h2><div><a class="button button-light" href="index.html">Return home</a><a class="button button-outline-light" href="resume.html">Open résumé</a></div></section>
   </main>
 
-  <footer class="footer"><div class="container footer-row"><p>© <span data-current-year></span> Asad Mehmood.</p><div class="footer-links"><a href="index.html">Home</a><a href="resume.html">Résumé</a></div></div></footer>
+  <footer class="site-footer dark-footer"><div><strong>Asad Mehmood</strong><span>Case studies</span></div><div><span>© <span data-year></span></span></div><a href="#main">Back to top ↑</a></footer>
 </body>
 </html>

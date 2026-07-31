@@ -1,40 +1,46 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <script>document.documentElement.classList.add("js")</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Résumé of Asad Mehmood, BS Artificial Intelligence student and Roblox developer.">
   <title>Résumé — Asad Mehmood</title>
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/style.css">
-  <script src="js/config.js" defer></script><script src="js/main.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+  <script src="js/site-data.js" defer></script>
+  <script src="js/site.js" defer></script>
 </head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header"><nav class="nav container" aria-label="Main navigation">
-    <a class="logo" href="index.html"><span class="logo-mark">A</span><span>AsadLilla</span></a>
-    <div class="nav-links" data-nav-menu><a href="index.html#about">About</a><a href="index.html#skills">Skills</a><a href="projects.html">Projects</a><a href="resume.html">Résumé</a></div>
-    <div class="nav-actions"><button class="button button-small desktop-cta" type="button" onclick="window.print()">Print / Save PDF</button><button class="icon-button" type="button" data-theme-toggle aria-label="Switch theme"></button><button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-label="Open menu">☰</button></div>
-  </nav></header>
+<body class="resume-page">
+  <div class="resume-toolbar" data-no-print>
+    <a href="index.html">← Back to portfolio</a>
+    <button type="button" onclick="window.print()">Print / Save as PDF</button>
+  </div>
 
-  <main id="main">
-    <section class="page-hero"><div class="container" data-reveal><p class="eyebrow">Résumé</p><h1>Asad Mehmood</h1><p>BS Artificial Intelligence student · Roblox developer · Software builder</p><div class="hero-actions"><button class="button" type="button" onclick="window.print()">Print / Save as PDF</button><a class="button button-secondary" data-link="github" href="#">GitHub</a><a class="button button-secondary" data-link="linkedin" href="#">LinkedIn</a></div></div></section>
+  <main class="resume-sheet">
+    <header class="resume-header">
+      <div><p class="kicker">Résumé</p><h1>Asad Mehmood</h1><p>BS Artificial Intelligence student · Roblox developer · Software builder</p></div>
+      <address><a href="https://asadlilla.me">asadlilla.me</a><a href="https://github.com/AsadMehmoodLila">github.com/AsadMehmoodLila</a><span>Sialkot, Pakistan</span><a data-site-link="email" href="#"></a></address>
+    </header>
 
-    <section class="section-tight"><div class="container resume-layout">
-      <aside class="resume-sidebar">
-        <article class="card" data-reveal><h2>Contact</h2><p data-config-text="location">Sialkot, Pakistan</p><p><a data-link="email" href="#">Email</a><br><a data-link="github" href="#">GitHub</a><br><a data-link="linkedin" href="#">LinkedIn</a></p></article>
-        <article class="card" data-reveal><h2>Core skills</h2><div class="chips"><span class="chip">Python</span><span class="chip">C++</span><span class="chip">Lua</span><span class="chip">HTML/CSS</span><span class="chip">JavaScript</span><span class="chip">Git/GitHub</span></div></article>
-        <article class="card" data-reveal><h2>AI knowledge</h2><ul class="resume-list"><li>Machine learning fundamentals</li><li>Natural language processing</li><li>Retrieval-augmented generation</li><li>Data mining and preprocessing</li><li>Classification and evaluation</li></ul></article>
-      </aside>
+    <section class="resume-section"><h2>Profile</h2><p>BS Artificial Intelligence student at UMT with hands-on experience building and publishing Roblox games, developing AI and NLP university projects, and working with Python, C++, Lua, Git, and GitHub. Strongest published project is a Roblox survival experience with 30K+ visits.</p></section>
 
-      <div class="resume-main">
-        <article class="card" data-reveal><h2>Profile</h2><p>BS Artificial Intelligence student with hands-on experience in Roblox development, Python-based AI projects, C++, low-level Assembly programming, and front-end web development. Interested in internships and junior opportunities where I can contribute, learn quickly, and ship practical work.</p></article>
-        <article class="card" data-reveal><h2>Education</h2><h3>BS Artificial Intelligence</h3><p><strong>University of Management and Technology, Sialkot</strong><br>October 2023 – September 2027 (expected)</p><p class="muted">Relevant study: machine learning, NLP, data mining, data structures, operating systems, information security, web development, and programming.</p></article>
-        <article class="card" data-reveal><h2>Selected projects</h2><h3>Escape Tsunami with Dragons</h3><p>Published Roblox survival experience with 30,000+ visits. Implemented gameplay systems, tsunami logic, dragon progression, global announcements, optimization, and anti-exploit validation.</p><h3>Nutrition Facts RAG Chatbot</h3><p>Built a document-grounded question-answering workflow using retrieval and NLP techniques.</p><h3>Emotion Detection from Facial Expressions</h3><p>Worked on image preprocessing, facial-expression classification, and model evaluation.</p><h3>Snake Game in Assembly</h3><p>Implemented keyboard control, movement, collision, score tracking, and display updates at a low level.</p></article>
-        <article class="card" data-reveal><h2>Additional</h2><ul class="resume-list"><li>Debating Club member.</li><li>Completed spoken English training.</li><li>Comfortable using Git, GitHub, VS Code, Visual Studio, and Roblox Studio.</li></ul></article>
-      </div>
-    </div></section>
+    <section class="resume-section"><h2>Selected projects</h2>
+      <article class="resume-item"><header><h3>Escape Tsunami with Dragons</h3><span>Roblox Studio · Lua</span></header><ul><li>Published survival experience with 30K+ visits.</li><li>Built tsunami movement, dragon/reward systems, progression, announcements, and supporting gameplay logic.</li><li>Worked on server-side validation and performance improvements for real players.</li></ul></article>
+      <article class="resume-item"><header><h3>Nutrition Facts RAG Chatbot</h3><span>Python · NLP · RAG</span></header><ul><li>Built a document-grounded question-answering workflow over nutrition information.</li><li>Worked with text preprocessing, TF-IDF/sparse retrieval, context selection, and grounded responses.</li></ul></article>
+      <article class="resume-item"><header><h3>Emotion Detection from Facial Expressions</h3><span>Python · Computer Vision</span></header><ul><li>Prepared image data, trained a classification workflow, and evaluated facial-expression predictions.</li><li>Documented limitations and interpretation concerns around emotion classification.</li></ul></article>
+      <article class="resume-item"><header><h3>Snake Game in Assembly</h3><span>Assembly · Low-level programming</span></header><ul><li>Implemented movement, keyboard input, score logic, collision detection, screen updates, and game-over flow.</li></ul></article>
+    </section>
+
+    <div class="resume-columns">
+      <section class="resume-section"><h2>Education</h2><article class="resume-item"><header><h3>BS Artificial Intelligence</h3><span>2023–2027</span></header><p>University of Management and Technology, Sialkot Campus</p><p>Relevant areas: machine learning, NLP, data mining, programming, operating systems, web development, and AI foundations.</p></article></section>
+      <section class="resume-section"><h2>Skills</h2><dl class="resume-skills"><div><dt>Programming</dt><dd>Python, C++, Lua, HTML, CSS, JavaScript, Assembly</dd></div><div><dt>AI & data</dt><dd>Machine learning foundations, NLP, RAG, classification, clustering</dd></div><div><dt>Game development</dt><dd>Roblox Studio, gameplay systems, client/server logic, optimization</dd></div><div><dt>Tools</dt><dd>Git, GitHub, VS Code, Visual Studio</dd></div></dl></section>
+    </div>
+
+    <section class="resume-section"><h2>Certificates & activities</h2><ul class="resume-bullets"><li>AI App Development — CreateX, Computer Science Society, UMT Sialkot.</li><li>Soft Skills Training — 14 hours, OEC & ICMPD, completed November 15, 2025.</li><li>Debating Club participation and spoken communication training.</li></ul></section>
   </main>
-
-  <footer class="footer"><div class="container footer-row"><p>© <span data-current-year></span> Asad Mehmood.</p><div class="footer-links"><a href="index.html">Home</a><a href="projects.html">Projects</a></div></div></footer>
 </body>
 </html>
