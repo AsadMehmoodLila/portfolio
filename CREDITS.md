@@ -1,26 +1,13 @@
-# Open-source and free design resources
+# Credits and licenses
 
-This site was custom-built and does not use a downloaded portfolio template.
+This portfolio uses open-source software packages installed through npm:
 
-## Space Grotesk
+- Next.js — MIT
+- React — MIT
+- Tailwind CSS — MIT
+- Framer Motion — MIT
+- Lenis — MIT
 
-- Designer: Florian Karsten
-- Loaded through Google Fonts
-- License: SIL Open Font License
-- https://fonts.google.com/specimen/Space+Grotesk
+The visual design, page structure, custom SVG favicon, interface visualizations, and copy organization in this repository were created specifically for Asad Mehmood's portfolio.
 
-## IBM Plex Mono
-
-- Created by IBM
-- Loaded through Google Fonts
-- License: SIL Open Font License
-- https://fonts.google.com/specimen/IBM+Plex+Mono
-
-## Lenis
-
-- Created and maintained by darkroom.engineering and contributors
-- Used for optional smooth scrolling through a pinned CDN version (`1.3.23`)
-- License: MIT
-- https://github.com/darkroomengineering/lenis
-
-The site remains functional with normal browser scrolling if the Lenis CDN cannot load.
+Certificate images and project links are Asad Mehmood's own supplied material. No stock photos, template images, random GitHub artwork, or downloaded font files are bundled.

@@ -1,0 +1,20 @@
+ASADLILLA PORTFOLIO V3 — DIRECT DEPLOY STEPS
+
+1. Extract this ZIP.
+2. Open your GitHub repository: AsadMehmoodLila/portfolio
+3. Upload EVERYTHING inside this extracted folder to the repository root.
+4. Commit to the main branch.
+5. Go to Repository Settings -> Pages.
+6. Change Source from "Deploy from a branch" to "GitHub Actions".
+7. Go to the Actions tab and wait for "Deploy portfolio to GitHub Pages" to turn green.
+8. Open https://asadlilla.me and press Ctrl+F5 once.
+
+DO NOT:
+- change Namecheap DNS
+- buy SSL
+- delete the portfolio repository
+- upload the ZIP itself
+- publicly upload the original Soft Skills PDF because it contains a CNIC number
+
+Edit links and text later in: data/site.ts
+Read the full guide in: README.md
