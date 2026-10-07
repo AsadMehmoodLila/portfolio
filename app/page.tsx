@@ -1,27 +1,23 @@
+import { LegalFooter } from "@/components/legal-footer";
 import { Navigation } from "@/components/navigation";
 import { AboutFooter } from "@/components/sections/about-footer";
 import { Certificates } from "@/components/sections/certificates";
-import { EmotionStory } from "@/components/sections/emotion-story";
 import { Hero } from "@/components/sections/hero";
-import { NutritionStory } from "@/components/sections/nutrition-story";
-import { RobloxStory } from "@/components/sections/roblox-story";
+import { SelectedWork } from "@/components/sections/selected-work";
 import { Skills } from "@/components/sections/skills";
-import { StudyBuddyStory } from "@/components/sections/study-buddy-story";
 
 export default function HomePage() {
   return (
     <>
       <Navigation />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <Hero />
-        <RobloxStory />
-        <StudyBuddyStory />
-        <EmotionStory />
-        <NutritionStory />
+        <SelectedWork />
         <Certificates />
         <Skills />
         <AboutFooter />
       </main>
+      <LegalFooter />
     </>
   );
 }

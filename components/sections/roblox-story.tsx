@@ -1,14 +1,13 @@
 "use client";
 
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { ArrowUpRight, PlayIcon } from "@/components/ui/icons";
 import { Reveal } from "@/components/ui/reveal";
 import { links, robloxTimeline } from "@/data/site";
 
 export function RobloxStory() {
   const sectionRef = useRef<HTMLElement>(null);
-  const [imageFailed, setImageFailed] = useState(false);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
   const mediaY = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [60, -50]);
@@ -16,12 +15,7 @@ export function RobloxStory() {
   return (
     <section id="work" ref={sectionRef} className="project-story roblox-story">
       <div className="shell">
-        <div className="project-kicker-row">
-          <Reveal><p className="eyebrow">01 · Published game</p></Reveal>
-          <Reveal delay={0.05}><p className="project-index">Roblox / Lua / Live</p></Reveal>
-        </div>
-
-        <div className="project-hero-copy">
+<div className="project-hero-copy">
           <Reveal>
             <h2>Escape Tsunami<br />with Dragons</h2>
           </Reveal>
@@ -30,23 +24,17 @@ export function RobloxStory() {
           </Reveal>
         </div>
 
+        <div className="project-kicker-row">
+
+          <Reveal delay={0.05}><p className="project-index">Roblox / Lua / Live</p></Reveal>
+        </div>
+
         <motion.div className="roblox-media" style={{ y: mediaY }}>
-          {!imageFailed ? (
-            <img
-              src="https://www.roblox.com/asset-thumbnail/image?assetId=79706056547341&width=768&height=432&format=png"
-              alt="Escape Tsunami with Dragons Roblox experience thumbnail"
-              onError={() => setImageFailed(true)}
-            />
-          ) : (
-            <div className="media-fallback" role="img" aria-label="Gameplay media placeholder">
-              <div className="wave-lines" />
-              <span>Gameplay visual</span>
-              <strong>Escape Tsunami with Dragons</strong>
-              <small>Replace with a 1920×1080 screenshot or MP4 in public/media.</small>
-            </div>
-          )}
-          <div className="media-vignette" />
-          <div className="media-stat"><strong>30K+</strong><span>visits</span></div>
+          <div className="media-fallback" role="img" aria-label="Abstract wave artwork illustrating the survival game, not a gameplay screenshot">
+            <div className="wave-lines" aria-hidden="true" />
+            <span>Published Roblox experience</span><strong>Keep moving.<br />Survive the wave.</strong>
+            <small>Concept artwork · Open Roblox to see the game.</small>
+          </div>
           <a className="media-play" href={links.robloxGame} target="_blank" rel="noreferrer">
             <PlayIcon /> Play on Roblox
           </a>
@@ -74,7 +62,7 @@ export function RobloxStory() {
         </div>
 
         <div className="timeline-wrap">
-          <Reveal><p className="eyebrow">Development timeline</p></Reveal>
+
           <ol className="project-timeline">
             {robloxTimeline.map((item, index) => (
               <motion.li

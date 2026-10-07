@@ -1,0 +1,547 @@
+{
+  "pages": [
+    {
+      "route": "/",
+      "device": "desktop",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "cookies": 0,
+      "storage": {
+        "local": 0,
+        "session": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "route": "/privacy/",
+      "device": "desktop",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "cookies": 0,
+      "storage": {
+        "local": 0,
+        "session": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "route": "/terms/",
+      "device": "desktop",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "cookies": 0,
+      "storage": {
+        "local": 0,
+        "session": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "route": "/cookies/",
+      "device": "desktop",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "cookies": 0,
+      "storage": {
+        "local": 0,
+        "session": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "route": "/refunds/",
+      "device": "desktop",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "cookies": 0,
+      "storage": {
+        "local": 0,
+        "session": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "route": "/accessibility/",
+      "device": "desktop",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "cookies": 0,
+      "storage": {
+        "local": 0,
+        "session": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "route": "certificate dialog",
+      "device": "desktop",
+      "theme": "day",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 1,
+          "targets": [
+            [
+              "dialog > p:nth-child(4)"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "device": "mobile",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "cookies": 0,
+      "storage": {
+        "local": 0,
+        "session": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "route": "/privacy/",
+      "device": "mobile",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "cookies": 0,
+      "storage": {
+        "local": 0,
+        "session": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "route": "/terms/",
+      "device": "mobile",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "cookies": 0,
+      "storage": {
+        "local": 0,
+        "session": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "route": "/cookies/",
+      "device": "mobile",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "cookies": 0,
+      "storage": {
+        "local": 0,
+        "session": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "route": "/refunds/",
+      "device": "mobile",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "cookies": 0,
+      "storage": {
+        "local": 0,
+        "session": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "route": "/accessibility/",
+      "device": "mobile",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "cookies": 0,
+      "storage": {
+        "local": 0,
+        "session": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "route": "certificate dialog",
+      "device": "mobile",
+      "theme": "day",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 2,
+          "targets": [
+            [
+              "#certificate-dialog-title"
+            ],
+            [
+              "dialog > p:nth-child(4)"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "device": "desktop",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "cookies": 0,
+      "storage": {
+        "local": 0,
+        "session": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "route": "/privacy/",
+      "device": "desktop",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "cookies": 0,
+      "storage": {
+        "local": 0,
+        "session": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "route": "/terms/",
+      "device": "desktop",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "cookies": 0,
+      "storage": {
+        "local": 0,
+        "session": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "route": "/cookies/",
+      "device": "desktop",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "cookies": 0,
+      "storage": {
+        "local": 0,
+        "session": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "route": "/refunds/",
+      "device": "desktop",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "cookies": 0,
+      "storage": {
+        "local": 0,
+        "session": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "route": "/accessibility/",
+      "device": "desktop",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "cookies": 0,
+      "storage": {
+        "local": 0,
+        "session": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "route": "certificate dialog",
+      "device": "desktop",
+      "theme": "night",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 1,
+          "targets": [
+            [
+              "dialog > p:nth-child(4)"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/",
+      "device": "mobile",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "cookies": 0,
+      "storage": {
+        "local": 0,
+        "session": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "route": "/privacy/",
+      "device": "mobile",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "cookies": 0,
+      "storage": {
+        "local": 0,
+        "session": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "route": "/terms/",
+      "device": "mobile",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "cookies": 0,
+      "storage": {
+        "local": 0,
+        "session": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "route": "/cookies/",
+      "device": "mobile",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "cookies": 0,
+      "storage": {
+        "local": 0,
+        "session": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "route": "/refunds/",
+      "device": "mobile",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "cookies": 0,
+      "storage": {
+        "local": 0,
+        "session": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "route": "/accessibility/",
+      "device": "mobile",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "cookies": 0,
+      "storage": {
+        "local": 0,
+        "session": 0
+      },
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "route": "certificate dialog",
+      "device": "mobile",
+      "theme": "night",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 2,
+          "targets": [
+            [
+              "#certificate-dialog-title"
+            ],
+            [
+              "dialog > p:nth-child(4)"
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "interactions": [
+    "desktop day: real dance, exact pause, keyboard rotation/reset, actual lighting on/off, clean captions/headings",
+    "desktop: skip link, native certificate focus/escape/return",
+    "desktop day: theme toggles and survives internal navigation",
+    "mobile day: real dance, exact pause, keyboard rotation/reset, actual lighting on/off, clean captions/headings",
+    "mobile: skip link, native certificate focus/escape/return",
+    "mobile day: menu opens by keyboard and Escape closes",
+    "mobile day: theme toggles and survives internal navigation",
+    "desktop night: real dance, exact pause, keyboard rotation/reset, actual lighting on/off, clean captions/headings",
+    "desktop: skip link, native certificate focus/escape/return",
+    "desktop night: theme toggles and survives internal navigation",
+    "mobile night: real dance, exact pause, keyboard rotation/reset, actual lighting on/off, clean captions/headings",
+    "mobile: skip link, native certificate focus/escape/return",
+    "mobile night: menu opens by keyboard and Escape closes",
+    "mobile night: theme toggles and survives internal navigation",
+    "Reduced motion: avatar remains still until visitor explicitly chooses Play dance",
+    "320px: no horizontal overflow in day/night",
+    "No JavaScript: copy, static avatar preview, project links and certificate links remain available"
+  ],
+  "consoleErrors": [],
+  "externalRequests": [],
+  "dialogContrast": [
+    {
+      "device": "desktop",
+      "theme": "day",
+      "text": "AI App Development — CreateX",
+      "color": "rgb(32, 32, 30)",
+      "background": "rgb(245, 245, 242)",
+      "ratio": 14.941020934629607,
+      "unobscured": true
+    },
+    {
+      "device": "desktop",
+      "theme": "day",
+      "text": "Computer Science Society, UMT Sialkot · Certificate of Participation",
+      "color": "rgb(32, 32, 30)",
+      "background": "rgb(245, 245, 242)",
+      "ratio": 14.941020934629607,
+      "unobscured": true
+    },
+    {
+      "device": "desktop",
+      "theme": "day",
+      "text": "Awarded for active participation in the CreateX AI App Development event.",
+      "color": "rgb(32, 32, 30)",
+      "background": "rgb(245, 245, 242)",
+      "ratio": 14.941020934629607,
+      "unobscured": true
+    },
+    {
+      "device": "mobile",
+      "theme": "day",
+      "text": "AI App Development — CreateX",
+      "color": "rgb(32, 32, 30)",
+      "background": "rgb(245, 245, 242)",
+      "ratio": 14.941020934629607,
+      "unobscured": true
+    },
+    {
+      "device": "mobile",
+      "theme": "day",
+      "text": "Computer Science Society, UMT Sialkot · Certificate of Participation",
+      "color": "rgb(32, 32, 30)",
+      "background": "rgb(245, 245, 242)",
+      "ratio": 14.941020934629607,
+      "unobscured": true
+    },
+    {
+      "device": "mobile",
+      "theme": "day",
+      "text": "Awarded for active participation in the CreateX AI App Development event.",
+      "color": "rgb(32, 32, 30)",
+      "background": "rgb(245, 245, 242)",
+      "ratio": 14.941020934629607,
+      "unobscured": true
+    },
+    {
+      "device": "desktop",
+      "theme": "night",
+      "text": "AI App Development — CreateX",
+      "color": "rgb(240, 238, 231)",
+      "background": "rgb(17, 20, 20)",
+      "ratio": 15.951328032800179,
+      "unobscured": true
+    },
+    {
+      "device": "desktop",
+      "theme": "night",
+      "text": "Computer Science Society, UMT Sialkot · Certificate of Participation",
+      "color": "rgb(240, 238, 231)",
+      "background": "rgb(17, 20, 20)",
+      "ratio": 15.951328032800179,
+      "unobscured": true
+    },
+    {
+      "device": "desktop",
+      "theme": "night",
+      "text": "Awarded for active participation in the CreateX AI App Development event.",
+      "color": "rgb(240, 238, 231)",
+      "background": "rgb(17, 20, 20)",
+      "ratio": 15.951328032800179,
+      "unobscured": true
+    },
+    {
+      "device": "mobile",
+      "theme": "night",
+      "text": "AI App Development — CreateX",
+      "color": "rgb(240, 238, 231)",
+      "background": "rgb(17, 20, 20)",
+      "ratio": 15.951328032800179,
+      "unobscured": true
+    },
+    {
+      "device": "mobile",
+      "theme": "night",
+      "text": "Computer Science Society, UMT Sialkot · Certificate of Participation",
+      "color": "rgb(240, 238, 231)",
+      "background": "rgb(17, 20, 20)",
+      "ratio": 15.951328032800179,
+      "unobscured": true
+    },
+    {
+      "device": "mobile",
+      "theme": "night",
+      "text": "Awarded for active participation in the CreateX AI App Development event.",
+      "color": "rgb(240, 238, 231)",
+      "background": "rgb(17, 20, 20)",
+      "ratio": 15.951328032800179,
+      "unobscured": true
+    }
+  ],
+  "unresolvedIncomplete": [],
+  "passed": true
+}

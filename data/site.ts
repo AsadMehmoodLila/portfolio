@@ -7,7 +7,7 @@ export const site = {
   university: "University of Management and Technology",
   availability: "Open to internships",
   github: "https://github.com/AsadMehmoodLila",
-  email: "",
+  email: "asadmehmood4804@gmail.com",
   intro:
     "BS Artificial Intelligence student and Roblox developer building practical AI tools, interactive games, and software that ships.",
 } as const;
@@ -20,7 +20,7 @@ export const links = {
   studyBuddyRepo:
     "https://github.com/AsadMehmoodLila/study_buddy-team05-",
   nutritionDemo:
-    "https://www.linkedin.com/posts/asadmehmoodlilla_what-if-i-told-you-that-chatgpt-had-never-ugcPost-7419450622812246016-1arQ/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEmW-NAB-3cF-LO646zsiFcW-5zkqydWUew",
+    "https://www.linkedin.com/posts/asadmehmoodlilla_what-if-i-told-you-that-chatgpt-had-never-ugcPost-7419450622812246016-1arQ/",
 } as const;
 
 export const robloxTimeline = [

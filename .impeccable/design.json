@@ -1,0 +1,580 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-07T17:21:44.531Z",
+  "title": "Design System: Asad Mehmood Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "burnt-orange": {
+        "role": "primary",
+        "displayName": "Burnt Orange",
+        "tonalRamp": [
+          "oklch(0.15 0.16377 35.50)",
+          "oklch(0.26 0.16377 35.50)",
+          "oklch(0.37 0.16377 35.50)",
+          "oklch(0.49 0.16377 35.50)",
+          "oklch(0.61 0.16377 35.50)",
+          "oklch(0.73 0.16377 35.50)",
+          "oklch(0.85 0.16377 35.50)",
+          "oklch(0.95 0.16377 35.50)"
+        ]
+      },
+      "offwhite": {
+        "role": "neutral",
+        "displayName": "Offwhite",
+        "tonalRamp": [
+          "oklch(0.15 0.00397 106.47)",
+          "oklch(0.26 0.00397 106.47)",
+          "oklch(0.37 0.00397 106.47)",
+          "oklch(0.49 0.00397 106.47)",
+          "oklch(0.61 0.00397 106.47)",
+          "oklch(0.73 0.00397 106.47)",
+          "oklch(0.85 0.00397 106.47)",
+          "oklch(0.95 0.00397 106.47)"
+        ]
+      },
+      "stage": {
+        "role": "neutral",
+        "displayName": "Stage",
+        "tonalRamp": [
+          "oklch(0.15 0.00799 106.55)",
+          "oklch(0.26 0.00799 106.55)",
+          "oklch(0.37 0.00799 106.55)",
+          "oklch(0.49 0.00799 106.55)",
+          "oklch(0.61 0.00799 106.55)",
+          "oklch(0.73 0.00799 106.55)",
+          "oklch(0.85 0.00799 106.55)",
+          "oklch(0.95 0.00799 106.55)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "tonalRamp": [
+          "oklch(0.15 0.00373 106.67)",
+          "oklch(0.26 0.00373 106.67)",
+          "oklch(0.37 0.00373 106.67)",
+          "oklch(0.49 0.00373 106.67)",
+          "oklch(0.61 0.00373 106.67)",
+          "oklch(0.73 0.00373 106.67)",
+          "oklch(0.85 0.00373 106.67)",
+          "oklch(0.95 0.00373 106.67)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted",
+        "tonalRamp": [
+          "oklch(0.15 0.00950 106.77)",
+          "oklch(0.26 0.00950 106.77)",
+          "oklch(0.37 0.00950 106.77)",
+          "oklch(0.49 0.00950 106.77)",
+          "oklch(0.61 0.00950 106.77)",
+          "oklch(0.73 0.00950 106.77)",
+          "oklch(0.85 0.00950 106.77)",
+          "oklch(0.95 0.00950 106.77)"
+        ]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Border",
+        "tonalRamp": [
+          "oklch(0.15 0.01417 106.75)",
+          "oklch(0.26 0.01417 106.75)",
+          "oklch(0.37 0.01417 106.75)",
+          "oklch(0.49 0.01417 106.75)",
+          "oklch(0.61 0.01417 106.75)",
+          "oklch(0.73 0.01417 106.75)",
+          "oklch(0.85 0.01417 106.75)",
+          "oklch(0.95 0.01417 106.75)"
+        ]
+      },
+      "divider": {
+        "role": "neutral",
+        "displayName": "Divider",
+        "tonalRamp": [
+          "oklch(0.15 0.01369 106.69)",
+          "oklch(0.26 0.01369 106.69)",
+          "oklch(0.37 0.01369 106.69)",
+          "oklch(0.49 0.01369 106.69)",
+          "oklch(0.61 0.01369 106.69)",
+          "oklch(0.73 0.01369 106.69)",
+          "oklch(0.85 0.01369 106.69)",
+          "oklch(0.95 0.01369 106.69)"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "White",
+        "tonalRamp": [
+          "oklch(0.15 0.00000 0.00)",
+          "oklch(0.26 0.00000 0.00)",
+          "oklch(0.37 0.00000 0.00)",
+          "oklch(0.49 0.00000 0.00)",
+          "oklch(0.61 0.00000 0.00)",
+          "oklch(0.73 0.00000 0.00)",
+          "oklch(0.85 0.00000 0.00)",
+          "oklch(0.95 0.00000 0.00)"
+        ]
+      },
+      "control-hover": {
+        "role": "neutral",
+        "displayName": "Control Hover",
+        "tonalRamp": [
+          "oklch(0.15 0.01071 106.61)",
+          "oklch(0.26 0.01071 106.61)",
+          "oklch(0.37 0.01071 106.61)",
+          "oklch(0.49 0.01071 106.61)",
+          "oklch(0.61 0.01071 106.61)",
+          "oklch(0.73 0.01071 106.61)",
+          "oklch(0.85 0.01071 106.61)",
+          "oklch(0.95 0.01071 106.61)"
+        ]
+      },
+      "night-bg": {
+        "role": "neutral",
+        "displayName": "Night Bg",
+        "tonalRamp": [
+          "oklch(0.15 0.00472 196.76)",
+          "oklch(0.26 0.00472 196.76)",
+          "oklch(0.37 0.00472 196.76)",
+          "oklch(0.49 0.00472 196.76)",
+          "oklch(0.61 0.00472 196.76)",
+          "oklch(0.73 0.00472 196.76)",
+          "oklch(0.85 0.00472 196.76)",
+          "oklch(0.95 0.00472 196.76)"
+        ]
+      },
+      "night-soft": {
+        "role": "neutral",
+        "displayName": "Night Soft",
+        "tonalRamp": [
+          "oklch(0.15 0.00879 196.57)",
+          "oklch(0.26 0.00879 196.57)",
+          "oklch(0.37 0.00879 196.57)",
+          "oklch(0.49 0.00879 196.57)",
+          "oklch(0.61 0.00879 196.57)",
+          "oklch(0.73 0.00879 196.57)",
+          "oklch(0.85 0.00879 196.57)",
+          "oklch(0.95 0.00879 196.57)"
+        ]
+      },
+      "night-text": {
+        "role": "neutral",
+        "displayName": "Night Text",
+        "tonalRamp": [
+          "oklch(0.15 0.00956 93.57)",
+          "oklch(0.26 0.00956 93.57)",
+          "oklch(0.37 0.00956 93.57)",
+          "oklch(0.49 0.00956 93.57)",
+          "oklch(0.61 0.00956 93.57)",
+          "oklch(0.73 0.00956 93.57)",
+          "oklch(0.85 0.00956 93.57)",
+          "oklch(0.95 0.00956 93.57)"
+        ]
+      },
+      "night-muted": {
+        "role": "neutral",
+        "displayName": "Night Muted",
+        "tonalRamp": [
+          "oklch(0.15 0.01328 86.84)",
+          "oklch(0.26 0.01328 86.84)",
+          "oklch(0.37 0.01328 86.84)",
+          "oklch(0.49 0.01328 86.84)",
+          "oklch(0.61 0.01328 86.84)",
+          "oklch(0.73 0.01328 86.84)",
+          "oklch(0.85 0.01328 86.84)",
+          "oklch(0.95 0.01328 86.84)"
+        ]
+      },
+      "night-border": {
+        "role": "neutral",
+        "displayName": "Night Border",
+        "tonalRamp": [
+          "oklch(0.15 0.01346 161.70)",
+          "oklch(0.26 0.01346 161.70)",
+          "oklch(0.37 0.01346 161.70)",
+          "oklch(0.49 0.01346 161.70)",
+          "oklch(0.61 0.01346 161.70)",
+          "oklch(0.73 0.01346 161.70)",
+          "oklch(0.85 0.01346 161.70)",
+          "oklch(0.95 0.01346 161.70)"
+        ]
+      },
+      "night-divider": {
+        "role": "neutral",
+        "displayName": "Night Divider",
+        "tonalRamp": [
+          "oklch(0.15 0.01785 168.21)",
+          "oklch(0.26 0.01785 168.21)",
+          "oklch(0.37 0.01785 168.21)",
+          "oklch(0.49 0.01785 168.21)",
+          "oklch(0.61 0.01785 168.21)",
+          "oklch(0.73 0.01785 168.21)",
+          "oklch(0.85 0.01785 168.21)",
+          "oklch(0.95 0.01785 168.21)"
+        ]
+      },
+      "night-accent": {
+        "role": "primary",
+        "displayName": "Night Accent",
+        "tonalRamp": [
+          "oklch(0.15 0.13908 42.66)",
+          "oklch(0.26 0.13908 42.66)",
+          "oklch(0.37 0.13908 42.66)",
+          "oklch(0.49 0.13908 42.66)",
+          "oklch(0.61 0.13908 42.66)",
+          "oklch(0.73 0.13908 42.66)",
+          "oklch(0.85 0.13908 42.66)",
+          "oklch(0.95 0.13908 42.66)"
+        ]
+      },
+      "night-control-hover": {
+        "role": "neutral",
+        "displayName": "Night Control Hover",
+        "tonalRamp": [
+          "oklch(0.15 0.01225 170.87)",
+          "oklch(0.26 0.01225 170.87)",
+          "oklch(0.37 0.01225 170.87)",
+          "oklch(0.49 0.01225 170.87)",
+          "oklch(0.61 0.01225 170.87)",
+          "oklch(0.73 0.01225 170.87)",
+          "oklch(0.85 0.01225 170.87)",
+          "oklch(0.95 0.01225 170.87)"
+        ]
+      },
+      "avatar-warm": {
+        "role": "neutral",
+        "displayName": "Avatar Warm",
+        "tonalRamp": [
+          "oklch(0.15 0.08572 59.20)",
+          "oklch(0.26 0.08572 59.20)",
+          "oklch(0.37 0.08572 59.20)",
+          "oklch(0.49 0.08572 59.20)",
+          "oklch(0.61 0.08572 59.20)",
+          "oklch(0.73 0.08572 59.20)",
+          "oklch(0.85 0.08572 59.20)",
+          "oklch(0.95 0.08572 59.20)"
+        ]
+      },
+      "avatar-cool": {
+        "role": "neutral",
+        "displayName": "Avatar Cool",
+        "tonalRamp": [
+          "oklch(0.15 0.01718 250.87)",
+          "oklch(0.26 0.01718 250.87)",
+          "oklch(0.37 0.01718 250.87)",
+          "oklch(0.49 0.01718 250.87)",
+          "oklch(0.61 0.01718 250.87)",
+          "oklch(0.73 0.01718 250.87)",
+          "oklch(0.85 0.01718 250.87)",
+          "oklch(0.95 0.01718 250.87)"
+        ]
+      },
+      "night-avatar-warm": {
+        "role": "neutral",
+        "displayName": "Night Avatar Warm",
+        "tonalRamp": [
+          "oklch(0.15 0.15149 43.44)",
+          "oklch(0.26 0.15149 43.44)",
+          "oklch(0.37 0.15149 43.44)",
+          "oklch(0.49 0.15149 43.44)",
+          "oklch(0.61 0.15149 43.44)",
+          "oklch(0.73 0.15149 43.44)",
+          "oklch(0.85 0.15149 43.44)",
+          "oklch(0.95 0.15149 43.44)"
+        ]
+      },
+      "night-avatar-cool": {
+        "role": "neutral",
+        "displayName": "Night Avatar Cool",
+        "tonalRamp": [
+          "oklch(0.15 0.08670 249.11)",
+          "oklch(0.26 0.08670 249.11)",
+          "oklch(0.37 0.08670 249.11)",
+          "oklch(0.49 0.08670 249.11)",
+          "oklch(0.61 0.08670 249.11)",
+          "oklch(0.73 0.08670 249.11)",
+          "oklch(0.85 0.08670 249.11)",
+          "oklch(0.95 0.08670 249.11)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Owner-name display",
+        "purpose": "Desktop hero name; responsive values are recorded in DESIGN.md."
+      },
+      "headline": {
+        "displayName": "Section headline",
+        "purpose": "Certificates, skills, and about headings."
+      },
+      "project-title": {
+        "displayName": "Software title",
+        "purpose": "Concise divided software entries."
+      },
+      "body": {
+        "displayName": "Section body",
+        "purpose": "Common project and section descriptions."
+      },
+      "reading-body": {
+        "displayName": "Policy paragraph",
+        "purpose": "Narrow reading content with generous leading."
+      },
+      "action": {
+        "displayName": "Primary action",
+        "purpose": "Filled View work anchor."
+      },
+      "link": {
+        "displayName": "Supporting link",
+        "purpose": "Underlined supporting destinations."
+      },
+      "navigation": {
+        "displayName": "Navigation link",
+        "purpose": "Desktop fixed-navigation row."
+      },
+      "toggle": {
+        "displayName": "Compact atmosphere toggle",
+        "purpose": "Theme and Lights text buttons."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(.23,1,.32,1)",
+        "purpose": "Button state and authentic artwork hover transitions."
+      },
+      {
+        "name": "button-state",
+        "value": "180ms",
+        "purpose": "Background and text color transition."
+      },
+      {
+        "name": "game-artwork",
+        "value": "500ms",
+        "purpose": "Fine-pointer hover image scale to 1.035."
+      },
+      {
+        "name": "certificate-artwork",
+        "value": "250ms",
+        "purpose": "Fine-pointer hover image scale to 1.025."
+      },
+      {
+        "name": "reduced-motion-transition",
+        "value": ".01ms",
+        "purpose": "Global animation and transition shortening; smooth scrolling and hover scale disabled."
+      },
+      {
+        "name": "avatar-yaw-step",
+        "value": "0.2rad",
+        "purpose": "Left/Right keyboard rotation."
+      },
+      {
+        "name": "avatar-rest-yaw",
+        "value": "-0.2rad",
+        "purpose": "Initial, Home and reset-button view."
+      },
+      {
+        "name": "avatar-reduced-motion",
+        "value": "paused",
+        "purpose": "Reduced-motion preference defaults dance to stillness; explicit play is retained."
+      },
+      {
+        "name": "page-theme",
+        "value": "260ms",
+        "purpose": "Page and navigation background/text transition."
+      },
+      {
+        "name": "avatar-control-state",
+        "value": "180ms",
+        "purpose": "Control hover and text/background state changes."
+      },
+      {
+        "name": "avatar-light-settle",
+        "value": "1 - exp(-14 × delta)",
+        "purpose": "Frame-rate-independent key/rim/ambient lighting interpolation; immediate under reduced motion."
+      },
+      {
+        "name": "tool-mark-hover",
+        "value": "180ms",
+        "purpose": "Fine-pointer mark color and upward 3px translation."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "tablet",
+        "value": "1000px"
+      },
+      {
+        "name": "navigation-disclosure",
+        "value": "820px"
+      },
+      {
+        "name": "mobile",
+        "value": "640px"
+      },
+      {
+        "name": "compact-theme-label",
+        "value": "360px"
+      }
+    ],
+    "focus": {
+      "value": "3px solid var(--accent)",
+      "offset": "5px",
+      "purpose": "Keyboard focus follows the active theme accent."
+    },
+    "backdrop": {
+      "value": "#20201ee6",
+      "purpose": "Native certificate-dialog backdrop."
+    },
+    "tonalRampSource": "Synthesized OKLCH lightness ramps for panel swatches only; production colors and transparency remain the frontmatter values.",
+    "avatarDepth": {
+      "dayGroundShadowOpacity": 0.14,
+      "nightGroundShadowOpacity": 0.32,
+      "purpose": "Real WebGL artifact lighting and ground shadow, independent Lights control."
+    },
+    "themeBindings": {
+      "selector": ":root[data-theme=\"night\"]",
+      "initial": "day",
+      "persistence": "React memory only; internal Next.js navigation preserves state, reload starts day.",
+      "roles": {
+        "background": "night-bg",
+        "softSurface": "night-soft",
+        "text": "night-text",
+        "muted": "night-muted",
+        "border": "night-border",
+        "divider": "night-divider",
+        "accent": "night-accent",
+        "controlHover": "night-control-hover",
+        "avatarWarm": "night-avatar-warm",
+        "avatarCool": "night-avatar-cool"
+      }
+    }
+  },
+  "components": [
+    {
+      "name": "Primary action",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The View work anchor; 52px is its minimum height.",
+      "html": "<a class=\"ds-primary\" href=\"#work\">View work <svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" aria-hidden=\"true\"><path d=\"M7 17 17 7M7 7h10v10\"/></svg></a>",
+      "css": ".ds-primary{font-family:var(--font-geist,Geist),sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:22px;min-height:52px;padding:14px 22px;border:1px solid var(--text,#20201e);border-radius:4px;font-size:.94rem;font-weight:600;background:var(--text,#20201e);color:var(--bg,#f5f5f2);text-decoration:none;transition:background 180ms cubic-bezier(.23,1,.32,1),color 180ms cubic-bezier(.23,1,.32,1)}.ds-primary:hover{background:var(--accent,#b83e1d);border-color:var(--accent,#b83e1d);color:var(--bg,#f5f5f2)}.ds-primary:active{transform:translateY(1px)}.ds-primary:focus-visible{outline:3px solid var(--accent,#b83e1d);outline-offset:5px;}@media(prefers-reduced-motion:reduce){.ds-primary{transition-duration:.01ms}}"
+    },
+    {
+      "name": "Text link",
+      "kind": "button",
+      "refersTo": "text-link",
+      "description": "Underlined supporting contact or project destination.",
+      "html": "<a class=\"ds-link\" href=\"mailto:asadmehmood4804@gmail.com\">Email Asad <svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" aria-hidden=\"true\"><path d=\"M7 17 17 7M7 7h10v10\"/></svg></a>",
+      "css": ".ds-link{font-family:var(--font-geist,Geist),sans-serif;display:inline-flex;align-items:center;gap:18px;min-height:44px;padding:8px 0;color:var(--text,#20201e);font-size:.94rem;font-weight:550;text-decoration:underline;text-underline-offset:5px}.ds-link:hover{color:var(--accent,#b83e1d)}.ds-link:focus-visible{outline:3px solid var(--accent,#b83e1d);outline-offset:5px;}"
+    },
+    {
+      "name": "Navigation links",
+      "kind": "nav",
+      "refersTo": "navigation-link",
+      "description": "Actual desktop link row. React supplies disclosure behavior at 820px.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Primary navigation\"><a href=\"#work\">Work</a><a href=\"#certificates\">Certificates</a><a href=\"#skills\">Skills</a><a href=\"#about\">About</a></nav>",
+      "css": ".ds-nav{font-family:var(--font-geist,Geist),sans-serif;display:flex;flex-wrap:wrap;gap:28px;background:var(--bg,#f5f5f2);border-bottom:1px solid var(--line-soft,#c9c9bf)}.ds-nav a{display:flex;align-items:center;min-height:44px;font-size:.85rem;font-weight:500;color:var(--muted,#595953);text-decoration:none}.ds-nav a:hover{color:var(--text,#20201e)}.ds-nav a:focus-visible{outline:3px solid var(--accent,#b83e1d);outline-offset:5px;}"
+    },
+    {
+      "name": "Certificate metadata trigger",
+      "kind": "card",
+      "refersTo": "certificate-card",
+      "description": "Metadata portion of an actual certificate button. Authentic raster artwork is omitted in this portable snippet.",
+      "html": "<button class=\"ds-certificate\" type=\"button\" aria-haspopup=\"dialog\"><h3>AI App Development — CreateX</h3><span>Computer Science Society, UMT Sialkot</span><small>Certificate of Participation</small></button>",
+      "css": ".ds-certificate{font-family:var(--font-geist,Geist),sans-serif;display:block;text-align:left;color:var(--text,#20201e);padding:20px 0 0;background:transparent;border:0;border-top:1px solid var(--line-soft,#c9c9bf);cursor:pointer}.ds-certificate h3{font-size:1.08rem;line-height:1.3;letter-spacing:-.015em;margin:0 0 10px}.ds-certificate span,.ds-certificate small{display:block;font-size:.78rem;color:var(--muted,#595953);line-height:1.6;margin:0 0 8px}.ds-certificate:focus-visible{outline:3px solid var(--accent,#b83e1d);outline-offset:5px;}"
+    },
+    {
+      "name": "Certificate dialog",
+      "kind": "custom",
+      "refersTo": "certificate-dialog",
+      "description": "Native dialog appearance shown open for preview. Runtime opening, close, imagery, and focus restoration remain in React.",
+      "html": "<dialog class=\"ds-dialog\" open aria-labelledby=\"ds-dialog-title\"><button type=\"button\" class=\"ds-close\">Close certificate</button><h2 id=\"ds-dialog-title\">AI App Development — CreateX</h2><p>Computer Science Society, UMT Sialkot · Certificate of Participation</p></dialog>",
+      "css": ".ds-dialog{font-family:var(--font-geist,Geist),sans-serif;margin:auto;background:var(--bg,#f5f5f2);color:var(--text,#20201e);border:1px solid var(--line,#a6a69c);border-radius:8px;max-width:min(1000px,calc(100vw - 32px));width:fit-content;max-height:90dvh;padding:24px;overflow:auto}.ds-dialog::backdrop{background:#20201ee6}.ds-dialog h2{font-size:1.6rem;letter-spacing:-.035em;line-height:1.4;margin:24px 0 16px;background:var(--bg,#f5f5f2)}.ds-dialog p{line-height:1.7;margin:12px 0 0}.ds-close{font-family:var(--font-geist,Geist),sans-serif;display:block;margin-left:auto;min-height:44px;border:1px solid var(--line,#a6a69c);background:var(--text,#20201e);color:var(--bg,#f5f5f2);padding:10px 16px;border-radius:4px;cursor:pointer}.ds-close:focus-visible{outline:3px solid var(--accent,#b83e1d);outline-offset:5px;}@media(max-width:640px){.ds-dialog{padding:18px}}"
+    },
+    {
+      "name": "Theme toggle",
+      "kind": "button",
+      "refersTo": "theme-toggle",
+      "description": "Actual day-mode destination label. React supplies switching and shared in-memory state.",
+      "html": "<button class=\"ds-theme\" type=\"button\" aria-pressed=\"false\" aria-label=\"Switch to night mode\"><svg viewBox=\"0 0 24 24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M20 15.4A8.5 8.5 0 0 1 8.6 4a8.5 8.5 0 1 0 11.4 11.4Z\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linejoin=\"round\"/></svg><span>Night</span></button>",
+      "css": ".ds-theme{font-family:var(--font-geist,Geist),sans-serif;display:inline-flex;gap:8px;align-items:center;justify-content:center;min-height:44px;min-width:44px;padding:8px 12px;border:1px solid var(--line-soft,#c9c9bf);border-radius:999px;background:transparent;color:var(--text,#20201e);font-size:.78rem;cursor:pointer;transition:background-color 180ms cubic-bezier(.23,1,.32,1)}.ds-theme svg{width:18px;height:18px}.ds-theme:hover{background:var(--bg-soft,#ebebe5)}.ds-theme:focus-visible{outline:3px solid var(--accent,#b83e1d);outline-offset:5px;}@media(max-width:360px){.ds-theme span{display:none}}@media(prefers-reduced-motion:reduce){.ds-theme{transition-duration:.01ms}}"
+    },
+    {
+      "name": "Avatar control tray",
+      "kind": "custom",
+      "refersTo": "icon-control",
+      "description": "Lights, icon-only dance, and view reset appearance. Real renderer and toggle handlers remain in AvatarStage.",
+      "html": "<div class=\"ds-avatar-controls\"><button class=\"ds-lights\" type=\"button\" aria-pressed=\"true\" aria-label=\"Turn avatar lights off\"><svg viewBox=\"0 0 24 24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M9 17h6m-5 3h4m-5-6a5.4 5.4 0 1 1 6 0v3H9v-3ZM12 1v2M3 4l1.5 1.5M21 4l-1.5 1.5M1 11h2m18 0h2\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg><span>Lights</span></button><button type=\"button\" aria-pressed=\"false\" aria-label=\"Play dance\" title=\"Play dance\"><svg viewBox=\"0 0 20 20\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"m6 3 10 7-10 7z\"/></svg></button><button type=\"button\" aria-label=\"Reset avatar view\" title=\"Reset view\"><svg viewBox=\"0 0 24 24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 10a8 8 0 1 1 2 8M4 4v6h6\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></button></div>",
+      "css": ".ds-avatar-controls{font-family:var(--font-geist,Geist),sans-serif;display:inline-flex;align-items:center;gap:4px;background:var(--bg-soft,#ebebe5);padding:4px;border-radius:999px}.ds-avatar-controls button{font-family:var(--font-geist,Geist),sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:transparent;border:0;border-radius:999px;min-width:44px;min-height:44px;padding:10px;color:var(--muted,#595953);cursor:pointer;transition:background-color 180ms cubic-bezier(.23,1,.32,1),color 180ms cubic-bezier(.23,1,.32,1)}.ds-avatar-controls svg{width:19px;height:19px;flex:none}.ds-avatar-controls .ds-lights{padding-inline:14px;font-size:.78rem}.ds-avatar-controls .ds-lights[aria-pressed=true]{background:var(--text,#20201e);color:var(--bg,#f5f5f2)}.ds-avatar-controls button:hover:not(:disabled){background:var(--surface-2,#e4e4dc);color:var(--text,#20201e)}.ds-avatar-controls .ds-lights[aria-pressed=true]:hover{background:var(--accent,#b83e1d);color:var(--bg,#f5f5f2)}.ds-avatar-controls button:disabled{opacity:.55;cursor:default}.ds-avatar-controls button:focus-visible{outline:3px solid var(--accent,#b83e1d);outline-offset:5px;}@media(prefers-reduced-motion:reduce){.ds-avatar-controls button{transition-duration:.01ms}}"
+    },
+    {
+      "name": "Authentic tool mark cell",
+      "kind": "custom",
+      "refersTo": "tool-mark",
+      "description": "Actual Roblox Studio mark and label from the static tool wall. Inline SVG replaces the production local SVG mask for a self-contained preview.",
+      "html": "<ul class=\"ds-tool-wall\"><li><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M 13.936 15.356 L 1.826 12.112 L 0 18.93 L 18.928 24 L 21.608 14.01 L 14.79 12.18 L 13.936 15.356 Z M 5.072 0 L 2.394 9.992 L 9.21 11.822 L 10.064 8.644 L 22.174 11.89 L 24 5.072 L 5.072 0 Z\"/></svg><span>Roblox Studio</span></li></ul>",
+      "css": ".ds-tool-wall{font-family:var(--font-geist,Geist),sans-serif;list-style:none;margin:0;padding:0;border-bottom:1px solid var(--line-soft,#c9c9bf)}.ds-tool-wall li{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:28px 8px;border-top:1px solid var(--line-soft,#c9c9bf);font-size:.82rem;font-weight:500;color:var(--text,#20201e)}.ds-tool-wall svg{width:38px;height:38px;fill:var(--accent,#b83e1d);transition:fill 180ms cubic-bezier(.23,1,.32,1),transform 180ms cubic-bezier(.23,1,.32,1)}@media(hover:hover) and (pointer:fine){.ds-tool-wall li:hover svg{fill:var(--accent,#b83e1d);transform:translateY(-3px)}}@media(max-width:640px){.ds-tool-wall li{font-size:.74rem;padding:23px 4px;gap:13px}.ds-tool-wall svg{width:33px;height:33px}}@media(prefers-reduced-motion:reduce){.ds-tool-wall svg{transition-duration:.01ms}}"
+    }
+  ],
+  "narrative": {
+    "overview": "This records the implemented replacement world: an editorial portfolio with visitor-controlled day and night modes for a Roblox developer and AI student, with a real original dancing 3D avatar and authentic game artwork. The user rejected the prior dark, static sculpture-led direction and generic-looking design. This record refreshes that superseded system from the current code; it asserts no approved metaphor, concept roll, FORM seed, quality-bar board, or reference composition.\n\nThe avatar carries the dimensional, playful identity while the surrounding interface stays readable and concise. Projects, certificates, skills, and contact use ordinary document structure and working links. PRODUCT.md and user-supplied content remain the factual authority; this document establishes visual and interaction rules, not new biographical claims.",
+    "keyCharacteristics": [
+      "Shared semantic colors: offwhite, ink, and burnt orange by day; deep neutral surfaces, warm pale text, and peach-orange by night.",
+      "Geist owner-name display with compact, readable supporting copy.",
+      "Original rigged avatar on an open illuminated stage with independent Lights, pause/play, and reset controls.",
+      "Authentic game artwork, certificate assets, and twelve self-hosted tool marks.",
+      "Flat divided project rows, native links, disclosure navigation, and a native certificate dialog."
+    ],
+    "rules": [
+      {
+        "name": "The Single Accent Rule",
+        "body": "Treat the legacy blue, cyan, purple, and green variables as aliases of the active accent. They do not establish additional interface accents.",
+        "section": "colors"
+      },
+      {
+        "name": "The Visible Copy Rule",
+        "body": "Headings and descriptions remain visible without entrance animation. The current reveal wrapper is a plain document wrapper.",
+        "section": "typography"
+      },
+      {
+        "name": "The Heading Punctuation Rule",
+        "body": "Do not append full stops to headings or the owner name. Preserve meaningful punctuation such as the contact question mark.",
+        "section": "typography"
+      },
+      {
+        "name": "The Real Depth Rule",
+        "body": "Preserve depth in the rendered 3D artifact and readable flat interface surfaces. Do not replace the requested dancing avatar with a static sculpture.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Focus Rule",
+        "body": "Anchors, buttons, and the ready avatar viewport use an active-accent outline (3px, offset 5px) on keyboard focus. The skip link becomes visible on focus.",
+        "section": "components"
+      },
+      {
+        "name": "The Motion Preference Rule",
+        "body": "Preserve visible content, native scrolling, and actual avatar controls. Reduced motion disables smooth scrolling, shortens CSS transitions, removes artwork hover scaling, defaults the dance to stillness, and makes renderer lighting changes immediate.",
+        "section": "components"
+      }
+    ],
+    "dos": [
+      "Do use the frontmatter tokens and current component rules for new surfaces.",
+      "Do preserve the original animated avatar, authentic game artwork, and certificate assets.",
+      "Do keep copy visible, actions functional, focus visible, and motion controls accessible.",
+      "Do preserve native disclosure and dialog behavior, including focus restoration.",
+      "Do keep concise project descriptions and the narrower policy reading layout.",
+      "Do preserve day/night color pairings, the independent Lights control, and accessible icon-button names.",
+      "Do use authentic tool marks with readable names and keep headings free of trailing full stops."
+    ],
+    "donts": [
+      "Don't treat legacy accent aliases or unused old sections as additional design-system roles.",
+      "Don't replace the requested dancing avatar with a static sculpture.",
+      "Don't invent project outcomes, metrics, testimonials, or factual portfolio claims.",
+      "Don't add fake interface panels or controls for flows this portfolio does not provide.",
+      "Don't require animation to reveal copy or ignore reduced-motion preferences.",
+      "Don't restore visible production credits, motion-preference captions, or the superseded avatar arch.",
+      "Don't persist theme choices to cookies or browser storage without updating the product behavior and privacy documentation."
+    ]
+  }
+}

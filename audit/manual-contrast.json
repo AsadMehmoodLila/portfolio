@@ -1,0 +1,28 @@
+{
+  "scope": "Two full-page axe offscreen overlap checks assessed with the labels scrolled into view; no WCAG certification implied.",
+  "ratios": [
+    {
+      "text": "What shipped",
+      "color": "rgb(164, 183, 170)",
+      "background": "rgb(25, 30, 26)",
+      "ratio": 7.9973200842548975,
+      "visibleTopElementIsLabel": true
+    },
+    {
+      "text": "The hard part",
+      "color": "rgb(164, 183, 170)",
+      "background": "rgb(25, 30, 26)",
+      "ratio": 7.9973200842548975,
+      "visibleTopElementIsLabel": true
+    },
+    {
+      "text": "What it taught me",
+      "color": "rgb(164, 183, 170)",
+      "background": "rgb(25, 30, 26)",
+      "ratio": 7.9973200842548975,
+      "visibleTopElementIsLabel": true
+    }
+  ],
+  "focusedViolations": [],
+  "focusedIncomplete": []
+}

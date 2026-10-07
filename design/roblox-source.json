@@ -1,0 +1,74 @@
+{
+  "universe": 9684285869,
+  "game": {
+    "data": [
+      {
+        "id": 9684285869,
+        "rootPlaceId": 79706056547341,
+        "name": "Escape Tsunami with Dragons \ud83e\udebd",
+        "description": "\ud83c\udf0a\ud83d\udc09 ESCAPE TSUNAMI WITH DRAGONS! \ud83d\udc09\ud83c\udf0a\n\nEver had a day when your brain is just\u2026 DONE? \ud83d\ude35\nYeah. Same. Let\u2019s get away from a GIANT TSUNAMI by riding dragons.\n\n\ud83d\udc09 Collect treasures, upgrade your dragon, and see how far you can go!\n\n\ud83d\udc8e Even while offline, your dragons keep earning gold for you progress never stops!\n\n\u26a1 Can you survive\u2026 or will the loop trap you? \ud83c\udf0a\n\n\u2728 Like the game and join the group for free rewards!",
+        "sourceName": null,
+        "sourceDescription": null,
+        "creator": {
+          "id": 5316217798,
+          "name": "AsadMehmoodLilla",
+          "type": "User",
+          "isRNVAccount": false,
+          "hasVerifiedBadge": false
+        },
+        "price": null,
+        "allowedGearGenres": [
+          "All"
+        ],
+        "allowedGearCategories": [],
+        "isGenreEnforced": false,
+        "copyingAllowed": false,
+        "playing": 0,
+        "visits": 32672,
+        "maxPlayers": 5,
+        "created": "2026-02-06T18:13:13.067Z",
+        "updated": "2026-03-10T16:44:52.049Z",
+        "studioAccessToApisAllowed": false,
+        "createVipServersAllowed": false,
+        "universeAvatarType": "MorphToR15",
+        "genre": "All",
+        "genre_l1": "Simulation",
+        "genre_l2": "Tycoon",
+        "untranslated_genre_l1": "simulation",
+        "isAllGenre": true,
+        "isFavoritedByUser": false,
+        "favoritedCount": 2198,
+        "canonicalUrlPath": "/games/79706056547341/Escape-Tsunami-with-Dragons",
+        "isContentRestricted": false
+      }
+    ]
+  },
+  "thumbnail": {
+    "data": [
+      {
+        "universeId": 9684285869,
+        "error": null,
+        "thumbnails": [
+          {
+            "targetId": 133019794442248,
+            "state": "Completed",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-16f985a42819799c0b3dce94c89d1b17/768/432/Image/Png/noFilter",
+            "version": "TN3"
+          },
+          {
+            "targetId": 123707158372782,
+            "state": "Completed",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-72680109c90a1c6b062ee470227fc09d/768/432/Image/Png/noFilter",
+            "version": "TN3"
+          },
+          {
+            "targetId": 97517660012577,
+            "state": "Completed",
+            "imageUrl": "https://tr.rbxcdn.com/180DAY-c73fa58d3c4e59d1bc7ee874c6246cf0/768/432/Image/Png/noFilter",
+            "version": "TN3"
+          }
+        ]
+      }
+    ]
+  }
+}

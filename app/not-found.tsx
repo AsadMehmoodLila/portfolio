@@ -2,7 +2,7 @@ import { ArrowUpRight } from "@/components/ui/icons";
 
 export default function NotFound() {
   return (
-    <main className="not-found shell">
+    <main id="main-content" tabIndex={-1} className="not-found shell">
       <p className="eyebrow">404 · Nothing here</p>
       <h1>This page didn’t ship.</h1>
       <p>The portfolio is still one click away.</p>

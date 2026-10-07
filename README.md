@@ -1,93 +1,31 @@
-# AsadLilla Portfolio V3
+# Asad Mehmood portfolio
 
-A full rebuild of `asadlilla.me` using Next.js App Router, TypeScript, Tailwind CSS, Framer Motion, and Lenis.
+Next.js static portfolio for GitHub Pages. A rigged original Meshy avatar dances in a Three.js scene prepared in Blender. The homepage pairs it with actual Roblox game artwork, concise software projects and supplied certificate evidence. There are no accounts, sales, analytics, embeds, on-site forms or browser storage.
 
-## What this version changes
+## Local development
 
-- Near-black product-site visual system instead of a generic light portfolio template
-- Project stories instead of small project cards
-- Scroll-driven Study Buddy workflow
-- MindfulMirror product-flow visualization
-- Roblox showcase with the live game link and 30K+ visit metric
-- Real, clickable certificate previews
-- Skills grouped by actual project use — no progress bars
-- AM monogram favicon, Open Graph image, responsive navigation, reduced-motion support, and mobile layouts
-- Static export and GitHub Pages deployment workflow included
+Node.js 22 or newer: npm ci, then npm run dev.
+Production: npm run check and npm run build. Export is out/.
+For production audit, serve out/ at http://127.0.0.1:4173 and run node scripts/audit-site.mjs. Install the browser once with npx playwright install chromium. Browser/axe results and screenshot evidence are in audit/.
 
-## Run locally
+## Content and policies
 
-Requirements: Node.js 22 or newer.
+Identity/project links: data/site.ts. Policy content: data/policies.ts. Routes: /privacy/, /terms/, /cookies/, /refunds/, /accessibility/. Contact email was supplied by the owner. Policies reflect an individual portfolio with no online sales. Read audit/AUDIT.md for owner checks and jurisdiction/verification limits before publication. No compliance certificate is claimed.
 
-```bash
-npm install
-npm run dev
-```
+## Design sources
 
-Open `http://localhost:3000`.
+Editable avatar scene: design/portfolio-avatar.blend. Approved avatar requests: design/meshy/avatar/job.json (38 credits). Earlier sculpture request remains archived (20 credits), for a total of 58 of the 100-credit cap. No paid retries. The retired sculpture is not shipped on the website.
 
-Production check:
+Editable desktop/mobile portfolio frames were updated through the existing Figma bridge; design/figma-revision-result.json records confirmed execution. They are design references, not an animation player. Typography, colors and layout are documented in DESIGN.md; asset provenance in CREDITS.md and audit/asset-inventory.json.
 
-```bash
-npm run check
-npm run build
-```
+## Animation
 
-The static export is generated in `out/`.
+components/avatar-stage.tsx loads Three.js and the self-hosted GLB dynamically. Visitors can use the icon controls for motion/reset, drag to rotate, or use Left/Right and Home keys. Reduced-motion visitors start with a still character and can explicitly play. Animation rendering stops while offscreen or in a hidden tab. A locally rendered poster remains available when JavaScript or WebGL is unavailable. This is an original game-style character, not an official Roblox avatar or endorsed asset.
 
-## Deploy to your existing GitHub Pages repository
+The header switches between day and night. The avatar's Lights button separately changes actual key, rim and ambient illumination; the open stage uses a soft complementary glow. Theme and lighting choices remain in memory and add no cookies or browser storage. Internal Next links preserve the theme; reloading starts in day mode. Tool logos are locally served SVGs with upstream license archived. Production labels are intentionally absent from the hero; provenance stays in development records.
 
-This version is a Next.js project. Do not keep GitHub Pages on **Deploy from a branch**.
+Blender exports embedded WebP textures, reducing the GLB from approximately 8.2 MB to 1.34 MB. This requires a browser supporting WebP textures/WebGL; the poster is the fallback. All runtime assets are served locally, including fonts. Policies describe hosting logs and email processing separately from browser tracking.
 
-1. Keep the repository named `portfolio` and keep your Namecheap DNS records unchanged.
-2. Upload the contents of this extracted folder to the repository root.
-3. Commit to `main`.
-4. Open **Repository → Settings → Pages**.
-5. Under **Build and deployment**, change **Source** to **GitHub Actions**.
-6. Open the **Actions** tab and wait for `Deploy portfolio to GitHub Pages` to finish.
-7. Visit `https://asadlilla.me` and hard-refresh once.
+## Release
 
-The workflow in `.github/workflows/deploy.yml` installs dependencies, builds the static export, and deploys `out/`. `public/CNAME` preserves the custom domain.
-
-## Important content edits
-
-Most links and copy are centralized in:
-
-```text
-data/site.ts
-```
-
-The professional email is intentionally blank because it was not supplied. Add it to `site.email` when ready, then add a mail link in the footer if desired.
-
-## Real assets still needed
-
-The site works without them and uses designed product-flow visualizations, but these files would make it stronger:
-
-- Roblox gameplay image: `public/media/roblox-gameplay.webp` — 1920×1080, WebP, under 1.5 MB
-- Roblox gameplay clip: `public/media/roblox-gameplay.mp4` — 1920×1080, H.264, muted, 8–15 seconds, under 12 MB
-- Study Buddy screenshots: 1600×1000 WebP, 3–5 images
-- MindfulMirror screenshots: 1600×1000 WebP, 3–6 images
-- Nutrition RAG screenshot: 1600×1000 WebP
-- Latest CV: `public/Asad-Mehmood-CV.pdf`
-
-Exact suggestions are in `public/media/README.md`.
-
-## Privacy
-
-The public Soft Skills certificate image has the CNIC number visibly redacted. Do not upload the original unredacted PDF to a public repository.
-
-## Project links included
-
-- Escape Tsunami with Dragons: live Roblox experience
-- Study Buddy: GitHub repository
-- MindfulMirror / emotion detection: GitHub repository
-- Nutrition RAG: LinkedIn demo post
-
-## Libraries
-
-- Next.js
-- React
-- Tailwind CSS
-- Framer Motion
-- Lenis
-
-No stock photography, random illustration packs, particle effects, custom cursor, or downloaded font files are included.
+.github/workflows/deploy.yml builds a static export and publishes to GitHub Pages on pushes to main. npm ci uses the lockfile. public/CNAME preserves the existing domain. A local build does not publish the site. Never commit API keys, .env files, the private handoff ZIP or private identity documents.

@@ -1,4 +1,4 @@
-import { ArrowUpRight, GithubIcon } from "@/components/ui/icons";
+import { ArrowUpRight, ArrowVertical, GithubIcon } from "@/components/ui/icons";
 import { MagneticLink } from "@/components/ui/magnetic-link";
 import { Reveal } from "@/components/ui/reveal";
 import { site } from "@/data/site";
@@ -9,8 +9,8 @@ export function AboutFooter() {
       <section id="about" className="about-section shell" aria-labelledby="about-title">
         <div className="about-grid">
           <Reveal>
-            <p className="eyebrow">About</p>
-            <h2 id="about-title">A student who prefers shipping over pretending.</h2>
+            <h2 id="about-title">A developer,
+still learning</h2>
           </Reveal>
           <div className="about-copy">
             <Reveal delay={0.08}>
@@ -33,19 +33,20 @@ export function AboutFooter() {
       <footer className="site-footer">
         <div className="shell footer-inner">
           <Reveal>
-            <p className="eyebrow">Next</p>
-            <h2>Let’s build something meaningful.</h2>
+            <h2>Have a role or
+project in mind?</h2>
           </Reveal>
           <div className="footer-actions">
+            <a href={`mailto:${site.email}`} className="text-link">Email Asad <ArrowUpRight /></a>
             <MagneticLink className="button button-primary footer-button" href={site.github} target="_blank" rel="noreferrer">
-              <GithubIcon /> See my GitHub <ArrowUpRight />
+              <GithubIcon /> Explore my GitHub <ArrowUpRight />
             </MagneticLink>
-            <a href="#top" className="text-link">Back to top ↑</a>
+            <a href="#top" className="text-link">Back to top <ArrowVertical direction="up" /></a>
           </div>
           <div className="footer-bottom">
             <span>© 2026 {site.name}</span>
             <strong>{site.domain}</strong>
-            <span>Designed around real work.</span>
+            <span>Individual portfolio · No online sales</span>
           </div>
         </div>
       </footer>

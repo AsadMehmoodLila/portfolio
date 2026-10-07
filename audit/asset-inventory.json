@@ -1,0 +1,140 @@
+[
+  {
+    "path": "public/apple-touch-icon.png",
+    "bytes": 8265,
+    "sha256": "b0e56c5bf942e31b2d31355eb1a66c45bb29c4dac9a66df27aa3b381902827d3",
+    "provenance": "Original repository branding; owner-supplied origin; no external stock source recorded"
+  },
+  {
+    "path": "public/favicon.svg",
+    "bytes": 414,
+    "sha256": "02287c6e1e7d38561609627fdbd3720d99acb5f101d63e040852cda73ea4a261",
+    "provenance": "Original repository branding; owner-supplied origin; no external stock source recorded"
+  },
+  {
+    "path": "public/icon-192.png",
+    "bytes": 11193,
+    "sha256": "6b605b68fab235c5869432dde5305e1de07c57175cabac42bc398ddcce65e313",
+    "provenance": "Original repository branding; owner-supplied origin; no external stock source recorded"
+  },
+  {
+    "path": "public/icon-512.png",
+    "bytes": 8265,
+    "sha256": "b0e56c5bf942e31b2d31355eb1a66c45bb29c4dac9a66df27aa3b381902827d3",
+    "provenance": "Original repository branding; owner-supplied origin; no external stock source recorded"
+  },
+  {
+    "path": "public/icons/tools/fastapi.svg",
+    "bytes": 347,
+    "sha256": "af0bdd5fd3f16a49e341089049418af7b02a04eefdc088b2e26c4524fa8b75d1",
+    "provenance": "Simple Icons SVG, upstream CC0 license assets/licenses/simple-icons-CC0.md. Source https://github.com/simple-icons/simple-icons/blob/develop/icons/fastapi.svg. Trademark rights remain with owners; tool identification, not endorsement."
+  },
+  {
+    "path": "public/icons/tools/git.svg",
+    "bytes": 426,
+    "sha256": "95724d436215d483de82288610c3c144854138f49945424697fcdf8be66e17d6",
+    "provenance": "Simple Icons SVG, upstream CC0 license assets/licenses/simple-icons-CC0.md. Source https://github.com/simple-icons/simple-icons/blob/develop/icons/git.svg. Trademark rights remain with owners; tool identification, not endorsement."
+  },
+  {
+    "path": "public/icons/tools/github.svg",
+    "bytes": 822,
+    "sha256": "3bf8cceead820aec50d4ee825a3fd02c5a1cd6665cc9cf4cbf3d9c8861a204bb",
+    "provenance": "Simple Icons SVG, upstream CC0 license assets/licenses/simple-icons-CC0.md. Source https://github.com/simple-icons/simple-icons/blob/develop/icons/github.svg. Trademark rights remain with owners; tool identification, not endorsement."
+  },
+  {
+    "path": "public/icons/tools/javascript.svg",
+    "bytes": 974,
+    "sha256": "c9be35a7a861ebe80ae4ee706d05004b99ee59fc63db69da6dcc10776718434b",
+    "provenance": "Simple Icons SVG, upstream CC0 license assets/licenses/simple-icons-CC0.md. Source https://github.com/simple-icons/simple-icons/blob/develop/icons/javascript.svg. Trademark rights remain with owners; tool identification, not endorsement."
+  },
+  {
+    "path": "public/icons/tools/lua.svg",
+    "bytes": 4109,
+    "sha256": "ea6e362187dd07d589930f3bb12e5c624253c60767a554d9ecbea4585cc29a60",
+    "provenance": "Simple Icons SVG, upstream CC0 license assets/licenses/simple-icons-CC0.md. Source https://github.com/simple-icons/simple-icons/blob/develop/icons/lua.svg. Trademark rights remain with owners; tool identification, not endorsement."
+  },
+  {
+    "path": "public/icons/tools/opencv.svg",
+    "bytes": 1310,
+    "sha256": "98480701c749dcedfdcdf52f1c66fd46106e04fd1f3f8793dcfef40a8cac6461",
+    "provenance": "Simple Icons SVG, upstream CC0 license assets/licenses/simple-icons-CC0.md. Source https://github.com/simple-icons/simple-icons/blob/develop/icons/opencv.svg. Trademark rights remain with owners; tool identification, not endorsement."
+  },
+  {
+    "path": "public/icons/tools/python.svg",
+    "bytes": 1518,
+    "sha256": "ad9468e1c4903f73ae7eebfbe980f0f727a10db695be3d914e7d8bd25356a862",
+    "provenance": "Simple Icons SVG, upstream CC0 license assets/licenses/simple-icons-CC0.md. Source https://github.com/simple-icons/simple-icons/blob/develop/icons/python.svg. Trademark rights remain with owners; tool identification, not endorsement."
+  },
+  {
+    "path": "public/icons/tools/rider.svg",
+    "bytes": 559,
+    "sha256": "875ebe2af63143d748560f8237cf3d1df4133ea0cb8d4b75eb176112774afd44",
+    "provenance": "Simple Icons SVG, upstream CC0 license assets/licenses/simple-icons-CC0.md. Source https://github.com/simple-icons/simple-icons/blob/develop/icons/rider.svg. Trademark rights remain with owners; tool identification, not endorsement."
+  },
+  {
+    "path": "public/icons/tools/robloxstudio.svg",
+    "bytes": 307,
+    "sha256": "860ab0e50fe4dac0e9fe8be35b80313c393ed6b63121ff4e78ccc4eba6ff8c86",
+    "provenance": "Simple Icons SVG, upstream CC0 license assets/licenses/simple-icons-CC0.md. Source https://github.com/simple-icons/simple-icons/blob/develop/icons/robloxstudio.svg. Trademark rights remain with owners; tool identification, not endorsement."
+  },
+  {
+    "path": "public/icons/tools/sqlite.svg",
+    "bytes": 1420,
+    "sha256": "71d4153bc9661dfe6b92dad70f737ec2b6c7c839311e502b4ca66fe664fe12b6",
+    "provenance": "Simple Icons SVG, upstream CC0 license assets/licenses/simple-icons-CC0.md. Source https://github.com/simple-icons/simple-icons/blob/develop/icons/sqlite.svg. Trademark rights remain with owners; tool identification, not endorsement."
+  },
+  {
+    "path": "public/icons/tools/streamlit.svg",
+    "bytes": 361,
+    "sha256": "6ddd015a8dcbee723bbf5cbacad704190a59f01e25dd2984d1ef1909ec1d2b8f",
+    "provenance": "Simple Icons SVG, upstream CC0 license assets/licenses/simple-icons-CC0.md. Source https://github.com/simple-icons/simple-icons/blob/develop/icons/streamlit.svg. Trademark rights remain with owners; tool identification, not endorsement."
+  },
+  {
+    "path": "public/icons/tools/tensorflow.svg",
+    "bytes": 285,
+    "sha256": "4c828afb17cd35786d7dd336f78d3111a7c730af54011cc2b20988866bdd8665",
+    "provenance": "Simple Icons SVG, upstream CC0 license assets/licenses/simple-icons-CC0.md. Source https://github.com/simple-icons/simple-icons/blob/develop/icons/tensorflow.svg. Trademark rights remain with owners; tool identification, not endorsement."
+  },
+  {
+    "path": "public/images/certificates/createx-ai-app-development.webp",
+    "bytes": 46136,
+    "sha256": "c23b539bc4b03de72355d870ab80d4ec7492ce318b5892aa47d5f3665689e846",
+    "provenance": "Existing owner-supplied certificate scan. Reproduction/issuer permission not independently verified; CNIC redacted in Soft Skills preview."
+  },
+  {
+    "path": "public/images/certificates/soft-skills-redacted.webp",
+    "bytes": 153714,
+    "sha256": "6ec8d9f145f7315a54adc83a27ed008eed8f4f0bac5a5d89e4a804828b83d250",
+    "provenance": "Existing owner-supplied certificate scan. Reproduction/issuer permission not independently verified; CNIC redacted in Soft Skills preview."
+  },
+  {
+    "path": "public/images/og-card.jpg",
+    "bytes": 118979,
+    "sha256": "aac988fae425f271de031cf8cda6f66c00b202fbf422d4e61f5cb0b0224cdd5e",
+    "provenance": "Original repository branding; owner-supplied origin; no external stock source recorded"
+  },
+  {
+    "path": "public/media/avatar-dance.glb",
+    "bytes": 1341668,
+    "sha256": "1f7c6e3b8a06b1baa98334a09a8b16a1b5492ff8c66e85a329675f0e3b78121b",
+    "provenance": "Original Meshy character; approved geometry, texture, rig and Hip Hop Dance 591, 38 credits; Blender local optimization/render. Previous sculpture 20, total 58/100. No stock/reference input. Plan-dependent rights. Job: design/meshy/avatar/job.json."
+  },
+  {
+    "path": "public/media/avatar-poster.webp",
+    "bytes": 22802,
+    "sha256": "642c8c1b871c06029f2d08505c6d2064cd2a6a103aad1a56144d0365c01a8831",
+    "provenance": "Original Meshy character; approved geometry, texture, rig and Hip Hop Dance 591, 38 credits; Blender local optimization/render. Previous sculpture 20, total 58/100. No stock/reference input. Plan-dependent rights. Job: design/meshy/avatar/job.json."
+  },
+  {
+    "path": "public/media/roblox-game.png",
+    "bytes": 546878,
+    "sha256": "c69ccdf0dac150e191a2b6fe44c0c0a6fc71f95c6a6338581c691ee6a795a7ac",
+    "provenance": "Actual Escape Tsunami with Dragons thumbnail from official Roblox APIs; creator AsadMehmoodLilla. Source metadata design/roblox-source.json. Game currency in artwork is not a financial claim. Platform/third-party rights are not independently verified."
+  },
+  {
+    "path": "public/media/roblox-game.webp",
+    "bytes": 83536,
+    "sha256": "4f45f75ce30a6484a53976e2faf948daf8de35c3b7eb0a334a5007ea626a3e03",
+    "provenance": "Actual Escape Tsunami with Dragons thumbnail from official Roblox APIs; creator AsadMehmoodLilla. Source metadata design/roblox-source.json. Game currency in artwork is not a financial claim. Platform/third-party rights are not independently verified."
+  }
+]

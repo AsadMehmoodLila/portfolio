@@ -34,6 +34,7 @@ function Step({
 
 function StudyBuddyPreview({ active }: { active: number }) {
   const step = studyBuddySteps[active];
+  const reduce = useReducedMotion();
   return (
     <div className="product-window study-window">
       <div className="window-bar">
@@ -49,9 +50,9 @@ function StudyBuddyPreview({ active }: { active: number }) {
       <motion.div
         className="study-stage"
         key={step.index}
-        initial={{ opacity: 0, y: 14 }}
+        initial={reduce ? false : { opacity: 1, y: 14 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: reduce ? 0 : 0.42, ease: [0.22, 1, 0.36, 1] }}
       >
         <p>{step.signal}</p>
         <h4>{step.title}</h4>
@@ -80,13 +81,13 @@ function StudyBuddyPreview({ active }: { active: number }) {
         )}
         {active === 4 && (
           <div className="analytics-board">
-            <div><strong>78%</strong><span>Quiz accuracy</span></div>
-            <div><strong>6</strong><span>Focus sessions</span></div>
+            <div><strong>78%</strong><span>Example quiz score</span></div>
+            <div><strong>6</strong><span>Example sessions</span></div>
             <div className="mini-chart"><i /><i /><i /><i /><i /><i /></div>
           </div>
         )}
       </motion.div>
-      <div className="asset-note">Product-flow visualization. Replace with real Study Buddy screenshots when available.</div>
+      <div className="asset-note">Concept interface · Illustrative study data, not measured user outcomes.</div>
     </div>
   );
 }
@@ -98,18 +99,18 @@ export function StudyBuddyStory() {
   return (
     <section className="project-story study-story" aria-labelledby="study-title">
       <div className="shell">
-        <div className="project-kicker-row">
-          <Reveal><p className="eyebrow">02 · AI learning product</p></Reveal>
-          <Reveal delay={0.05}><p className="project-index">Team project · Streamlit / Python</p></Reveal>
-        </div>
-
-        <div className="project-hero-copy split-title">
+<div className="project-hero-copy split-title">
           <Reveal>
             <h2 id="study-title">Study Buddy</h2>
           </Reveal>
           <Reveal delay={0.08}>
             <p>Static course files become a grounded study workflow: understand, practise, focus, and measure progress.</p>
           </Reveal>
+        </div>
+
+        <div className="project-kicker-row">
+
+          <Reveal delay={0.05}><p className="project-index">Team project · Streamlit / Python</p></Reveal>
         </div>
 
         <Reveal>

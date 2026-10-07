@@ -1,0 +1,20 @@
+{
+  "approved_additional_credits": 38,
+  "previous_spend": 20,
+  "total_authorized_project_spend": 58,
+  "cap": 100,
+  "model": "meshy-7.1",
+  "geometry": "standard",
+  "pose": "a-pose",
+  "remesh": true,
+  "topology": "triangle",
+  "target_faces": 15000,
+  "texture_resolution": "2k",
+  "pbr": true,
+  "rigging": true,
+  "animation": {
+    "action_id": 591,
+    "name": "Hip Hop Dance"
+  },
+  "retries": 0
+}

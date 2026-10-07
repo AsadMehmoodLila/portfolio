@@ -1,0 +1,92 @@
+{
+  "approved_additional_credits": 38,
+  "previous_project_credits": 20,
+  "project_cap": 100,
+  "approval": "User explicitly approved 38 credits on 2026-10-07",
+  "retries": 0,
+  "stages": [
+    {
+      "name": "geometry",
+      "endpoint": "/openapi/v2/text-to-3d",
+      "settings": {
+        "mode": "preview",
+        "prompt": "Original friendly blocky humanoid game avatar, clearly separated arms and legs, oversized rounded cuboid head, compact athletic proportions, simple smiling face, short dark hair, burnt-orange bomber jacket over a cream shirt, charcoal cargo trousers, cream sneakers, no logos, no text, no accessories or weapons, standing in A-pose.",
+        "ai_model": "meshy-7.1",
+        "model_type": "standard",
+        "geometry_resolution": "standard",
+        "pose_mode": "a-pose",
+        "should_remesh": true,
+        "topology": "triangle",
+        "target_polycount": 15000,
+        "target_formats": [
+          "glb",
+          "fbx"
+        ]
+      },
+      "expected_credits": 20,
+      "http_status": 202,
+      "task_id": "01a11731-3dfa-7563-b8f5-31fc6782187a",
+      "status": "SUCCEEDED",
+      "progress": 100,
+      "consumed_credits": 20
+    },
+    {
+      "name": "textures",
+      "endpoint": "/openapi/v2/text-to-3d",
+      "settings": {
+        "mode": "refine",
+        "preview_task_id": "01a11731-3dfa-7563-b8f5-31fc6782187a",
+        "ai_model": "meshy-7.1",
+        "texture_resolution": "2k",
+        "enable_pbr": true,
+        "texture_prompt": "Matte burnt-orange bomber jacket, plain cream shirt, charcoal trousers, cream sneakers, warm neutral skin, short dark hair, simple smiling face, no logos or text.",
+        "target_formats": [
+          "glb",
+          "fbx"
+        ]
+      },
+      "expected_credits": 10,
+      "http_status": 202,
+      "task_id": "01a11732-3ac8-70a8-b686-34466b1b206a",
+      "status": "SUCCEEDED",
+      "progress": 100,
+      "consumed_credits": 10
+    },
+    {
+      "name": "rigging",
+      "endpoint": "/openapi/v1/rigging",
+      "settings": {
+        "input_task_id": "01a11732-3ac8-70a8-b686-34466b1b206a",
+        "height_meters": 1.7
+      },
+      "expected_credits": 5,
+      "http_status": 202,
+      "task_id": "01a11734-2988-761e-9137-9c2a90cc6c11",
+      "status": "SUCCEEDED",
+      "progress": 100,
+      "consumed_credits": 5
+    },
+    {
+      "name": "dance",
+      "endpoint": "/openapi/v1/animations",
+      "settings": {
+        "rig_task_id": "01a11734-2988-761e-9137-9c2a90cc6c11",
+        "action_id": 591
+      },
+      "expected_credits": 3,
+      "http_status": 202,
+      "task_id": "01a11734-90b6-75eb-9d60-ee563e573b79",
+      "status": "SUCCEEDED",
+      "progress": 100,
+      "consumed_credits": 3
+    }
+  ],
+  "balance_before": {
+    "balance": 883
+  },
+  "balance_after": {
+    "balance": 845
+  },
+  "status": "SUCCEEDED",
+  "total_credits": 38
+}

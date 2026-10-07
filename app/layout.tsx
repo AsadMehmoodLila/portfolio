@@ -1,8 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "lenis/dist/lenis.css";
+import { ThemeProvider } from "@/components/theme-controls";
+
 import "./globals.css";
-import { SmoothScroll } from "@/components/providers/smooth-scroll";
+
 
 const geist = Geist({
   subsets: ["latin"],
@@ -56,8 +57,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#08090c",
-  colorScheme: "dark",
+  themeColor: "#f5f5f2",
+  colorScheme: "light dark",
   width: "device-width",
   initialScale: 1,
 };
@@ -65,9 +66,14 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${geist.variable} ${mono.variable}`}>
+      <head>
+        <meta name="referrer" content="no-referrer" />
+        <meta httpEquiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' blob:; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'" />
+        <noscript><style>{".theme-toggle,.avatar-stage-bottom{display:none}"}</style></noscript>
+      </head>
       <body>
-        <SmoothScroll />
-        {children}
+        <ThemeProvider><a href="#main-content" className="skip-link">Skip to main content</a>
+        {children}</ThemeProvider>
       </body>
     </html>
   );

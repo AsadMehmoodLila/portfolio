@@ -1,0 +1,39 @@
+{
+  "approved_credits": 20,
+  "overall_credit_cap": 100,
+  "requests": 1,
+  "retries": 0,
+  "textures": false,
+  "split": false,
+  "rigging": false,
+  "animation": false,
+  "settings": {
+    "mode": "preview",
+    "prompt": "An original abstract desktop sculpture: three interlocking thick rounded arches surrounding a small smooth sphere. Sculptural product design, clean organic curves, solid sculptural forms, elegant asymmetrical composition, freestanding, no text, no logos, no trademarks, no plinth.",
+    "model_type": "standard",
+    "ai_model": "meshy-7.1",
+    "geometry_resolution": "standard",
+    "should_remesh": true,
+    "topology": "triangle",
+    "target_polycount": 30000,
+    "target_formats": [
+      "glb"
+    ]
+  },
+  "balance_before": {
+    "balance": 903
+  },
+  "http_status": 202,
+  "submission": {
+    "result": "01a1170f-2204-73f0-be6c-31ec82ce17c4"
+  },
+  "task": {
+    "id": "01a1170f-2204-73f0-be6c-31ec82ce17c4",
+    "status": "SUCCEEDED",
+    "progress": 100,
+    "consumed_credits": 20
+  },
+  "balance_after": {
+    "balance": 883
+  }
+}
