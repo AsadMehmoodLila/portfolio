@@ -63,7 +63,7 @@ try {
   report.checks.push(
     "Immediate heading and deferred model request, real animated GLB",
   );
-  await page.getByRole("button", { name: "Pause dance" }).click();
+  await page.getByRole("button", { name: "Pause animations" }).click();
   await page.waitForTimeout(100);
   const still = hash(await frame());
   await page.waitForTimeout(180);
@@ -98,7 +98,7 @@ try {
   await page.waitForTimeout(100);
   assert.notEqual(hash(await frame()), still);
   report.checks.push("Actual stage lighting and theme-dependent illumination");
-  await page.getByRole("button", { name: "Play dance" }).click();
+  await page.getByRole("button", { name: "Play animations" }).click();
   await page.waitForTimeout(100);
   await page.evaluate(() => scrollTo(0, document.body.scrollHeight));
   await page.waitForTimeout(200);
@@ -113,7 +113,7 @@ try {
   await page.waitForTimeout(200);
   assert((await page.evaluate(() => window.__drawCalls)) > offscreen);
   await page.emulateMedia({ reducedMotion: "reduce" });
-  await page.getByRole("button", { name: "Play dance" }).waitFor();
+  await page.getByRole("button", { name: "Play animations" }).waitFor();
   const reduced = await page.evaluate(() => window.__drawCalls);
   await page.waitForTimeout(250);
   assert.equal(await page.evaluate(() => window.__drawCalls), reduced);
@@ -145,7 +145,9 @@ try {
   await quiet
     .locator('.character-stage[data-ready="true"]')
     .waitFor({ timeout: 30000 });
-  assert(await quiet.getByRole("button", { name: "Play dance" }).isVisible());
+  assert(
+    await quiet.getByRole("button", { name: "Play animations" }).isVisible(),
+  );
   report.checks.push(
     "Reduced motion uses the still preview without model traffic until explicit activation",
   );

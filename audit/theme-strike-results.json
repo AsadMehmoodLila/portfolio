@@ -1,0 +1,8 @@
+{
+  "checks": [
+    "1440px: warm palette, sourced sun/beam/quote, no click interception, cancellation, cleanup, default night and reduced-motion fallback",
+    "390px: warm palette, sourced sun/beam/quote, no click interception, cancellation, cleanup, default night and reduced-motion fallback"
+  ],
+  "errors": [],
+  "passed": true
+}

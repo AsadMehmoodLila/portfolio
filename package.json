@@ -15,7 +15,8 @@
     "test:character": "node scripts/test-character.mjs",
     "test:interactions": "node scripts/test-interactions.mjs",
     "test:flybys": "node scripts/test-flybys.mjs",
-    "test:effects": "node scripts/test-stage-effects.mjs"
+    "test:effects": "node scripts/test-stage-effects.mjs",
+    "test:theme": "node scripts/test-theme-strike.mjs"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",

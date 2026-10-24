@@ -1,0 +1,21 @@
+Asset credits — ScriptLilla portfolio
+
+Sun graphic: Twemoji, copyright Twitter, Inc. and other contributors
+Source: https://github.com/jdecked/twemoji/blob/main/assets/svg/2600.svg
+License: Creative Commons Attribution 4.0 International
+https://creativecommons.org/licenses/by/4.0/
+Full terms: /licenses/twemoji-graphics.txt
+The SVG artwork is unmodified; the site positions, rotates and animates it.
+
+RotatingText and SpotlightCard: React Bits, copyright 2026 David Haz
+Source: https://github.com/DavidHDev/react-bits
+License: MIT + Commons Clause, full text at /licenses/react-bits.txt
+Adapted for this website's palette, motion preferences and existing dependencies.
+
+Animated pixel fighters: LuizMelo, CC0-1.0
+https://luizmelo.itch.io/
+Run, idle and attack frames normalized into locally hosted WebP sheets.
+Full pack source links and hashes: repository design/COMBAT-ASSETS.md
+
+Remaining asset credits: repository CREDITS.md
+https://github.com/AsadMehmoodLila/portfolio/blob/main/CREDITS.md

@@ -56,6 +56,7 @@ export function SiteFooter({ compact = false }: { compact?: boolean }) {
       <div className="footer-legal shell">
         <span>© 2026 {identity.name}</span>
         <nav aria-label="Policies">
+          <a href="/licenses/credits.txt">Asset credits</a>
           {[
             ["privacy", "Privacy"],
             ["terms", "Commission terms"],

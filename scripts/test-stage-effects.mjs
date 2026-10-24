@@ -13,7 +13,7 @@ try {
   await page.goto("http://127.0.0.1:4173", { waitUntil: "networkidle" });
   const signals = page.locator(".stage-signals");
   assert.equal(await signals.getAttribute("data-moving"), "false");
-  await page.getByRole("button", { name: "Turn visual effects on" }).click();
+  await page.emulateMedia({ reducedMotion: "no-preference" });
   await page.waitForFunction(
     () => document.querySelector(".stage-signals").dataset.moving === "true",
   );
@@ -24,7 +24,7 @@ try {
   assert.notEqual(
     await frame(),
     before,
-    "Original sprite frames must actually advance after opt-in",
+    "Original sprite frames must actually advance during automatic playback",
   );
   await page.waitForFunction(
     () =>
@@ -39,9 +39,9 @@ try {
     document.querySelector(".stage-code").textContent.includes("table.insert"),
   );
   report.checks.push(
-    "Opt-in starts real advancing sprite frames, alternating attacks, rotating roles and code snippets",
+    "Automatic playback starts real advancing sprite frames, alternating attacks, rotating roles and code snippets",
   );
-  await page.getByRole("button", { name: "Turn visual effects off" }).click();
+  await page.emulateMedia({ reducedMotion: "reduce" });
   await page.waitForFunction(
     () => document.querySelector(".stage-signals").dataset.moving === "false",
   );
@@ -54,9 +54,9 @@ try {
   await page.reload({ waitUntil: "networkidle" });
   assert.equal(await signals.getAttribute("data-moving"), "false");
   report.checks.push(
-    "Effects off stops sprites, roles, code and fly-bys; manual choice persists on refresh",
+    "Reduced motion stops sprites, roles, code and fly-bys, including after refresh",
   );
-  await page.getByRole("button", { name: "Turn visual effects on" }).click();
+  await page.emulateMedia({ reducedMotion: "no-preference" });
   await page.locator(".profile-story").scrollIntoViewIfNeeded();
   await page.waitForFunction(
     () => document.querySelector(".stage-signals").dataset.moving === "false",
@@ -91,6 +91,17 @@ try {
   report.checks.push(
     "Card navigation and layout remain usable at mobile/desktop widths in both themes",
   );
+  const mobile = await browser.newPage({ viewport: { width: 390, height: 900 }, reducedMotion: "no-preference" });
+  const models = [];
+  mobile.on("request", request => { if (request.url().endsWith(".glb")) models.push(request.url()); });
+  await mobile.goto("http://127.0.0.1:4173", { waitUntil: "networkidle" });
+  await mobile.getByRole("button", { name: "Pause animations" }).click();
+  await mobile.waitForFunction(() => document.querySelector(".stage-signals").dataset.moving === "false");
+  assert.equal(models.length, 0);
+  await mobile.getByRole("button", { name: "Play animations" }).click();
+  await mobile.waitForFunction(() => document.querySelector(".stage-signals").dataset.moving === "true");
+  report.checks.push("Existing avatar motion control pauses/resumes ambient animations on mobile without loading the 3D model");
+  await mobile.close();
   await page.close();
   report.passed = report.errors.length === 0;
 } catch (e) {

@@ -1,9 +1,10 @@
 {
   "checks": [
-    "Opt-in starts real advancing sprite frames, alternating attacks, rotating roles and code snippets",
-    "Effects off stops sprites, roles, code and fly-bys; manual choice persists on refresh",
+    "Automatic playback starts real advancing sprite frames, alternating attacks, rotating roles and code snippets",
+    "Reduced motion stops sprites, roles, code and fly-bys, including after refresh",
     "Combat and role timers stop when the character stage leaves the viewport",
-    "Card navigation and layout remain usable at mobile/desktop widths in both themes"
+    "Card navigation and layout remain usable at mobile/desktop widths in both themes",
+    "Existing avatar motion control pauses/resumes ambient animations on mobile without loading the 3D model"
   ],
   "errors": [],
   "passed": true

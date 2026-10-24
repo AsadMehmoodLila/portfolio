@@ -11,6 +11,7 @@ import {
 } from "@phosphor-icons/react";
 import { useTheme } from "@/components/theme-controls";
 import { StageSignals } from "./stage-signals";
+import { useEffects } from "./effects-provider";
 
 export function CharacterStage() {
   const host = useRef<HTMLDivElement>(null);
@@ -22,6 +23,7 @@ export function CharacterStage() {
   const [playing, setPlaying] = useState(false);
   const [lit, setLit] = useState(true);
   const { night } = useTheme();
+  const { setEnabled: setEffectsEnabled } = useEffects();
   const help = useId();
 
   useEffect(() => {
@@ -174,7 +176,7 @@ export function CharacterStage() {
           ambient.intensity = lights ? (dark ? 1.5 : 2.4) : 0.5;
           key.intensity = lights ? 4.1 : 0.45;
           rim.intensity = lights ? (dark ? 4.5 : 2.3) : 0.1;
-          plinthMaterial.color.set(dark ? 0x242b39 : 0xb7c4d5);
+          plinthMaterial.color.set(dark ? 0x242b39 : 0x9c8059);
           edgeMaterial.color.set(lights ? 0xffa357 : 0x596572);
           if (moving) mixer?.update(delta);
           pivot.rotation.y = state.current.yaw;
@@ -393,12 +395,12 @@ export function CharacterStage() {
             onClick={() => {
               state.current.playing = !playing;
               setPlaying(!playing);
+              setEffectsEnabled(!playing);
               engine.current?.draw();
             }}
-            disabled={!ready}
             aria-pressed={playing}
-            aria-label={playing ? "Pause dance" : "Play dance"}
-            title="Character motion"
+            aria-label={playing ? "Pause animations" : "Play animations"}
+            title={playing ? "Pause animations" : "Play animations"}
           >
             {playing ? (
               <Pause size={18} weight="fill" aria-hidden />

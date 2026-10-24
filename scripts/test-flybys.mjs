@@ -76,38 +76,24 @@ try {
   report.checks.push(
     "Seven distinct sprites, fifteen-second spacing, no click interception, no loop, no replay after refresh",
   );
-  await page
-    .getByRole("button", { name: "Replay seven hero appearances" })
-    .click();
-  await page.clock.runFor(50);
-  await page.locator('.hero-flyby[data-hero="1"]').waitFor();
   assert.equal(
-    (
-      await page.evaluate(() =>
-        JSON.parse(sessionStorage.getItem("scriptlilla-hero-session-v1")),
-      )
-    ).seen,
-    1,
+    await page
+      .getByRole("button", { name: /effects|replay|try again/i })
+      .count(),
+    0,
   );
   report.checks.push(
-    "Completed sequence offers working explicit replay without automatic replay",
+    "No floating Effects, replay or try-again buttons are rendered",
   );
   const fresh = await context.newPage();
   await fresh.goto(origin, { waitUntil: "networkidle" });
   await fresh.locator('.hero-flyby[data-hero="1"]').waitFor();
-  await fresh.getByRole("button", { name: "Turn visual effects off" }).click();
+  await fresh.emulateMedia({ reducedMotion: "reduce" });
   await fresh.waitForFunction(() => !document.querySelector(".hero-flyby"));
-  assert(
-    (
-      await fresh.evaluate(() =>
-        JSON.parse(sessionStorage.getItem("scriptlilla-hero-session-v1")),
-      )
-    ).off,
-  );
   await fresh.reload({ waitUntil: "networkidle" });
   assert.equal(await fresh.locator(".hero-flyby").count(), 0);
   report.checks.push(
-    "A fresh tab gets a fresh sequence; the off switch cancels motion and persists within its tab",
+    "A fresh tab starts automatically; live reduced-motion preference stops the sequence",
   );
   await context.close();
   const quiet = await browser.newContext({ reducedMotion: "reduce" });
@@ -115,21 +101,6 @@ try {
   await qp.goto(origin, { waitUntil: "networkidle" });
   assert.equal(await qp.locator(".hero-flyby").count(), 0);
   assert.equal(await qp.evaluate(() => sessionStorage.length), 0);
-  const optIn = qp.getByRole("button", { name: "Turn visual effects on" });
-  assert.equal(await optIn.isEnabled(), true);
-  await optIn.click();
-  await qp.locator('.hero-flyby[data-hero="1"]').waitFor();
-  assert.equal(
-    await qp
-      .locator(".hero-flyby-layer")
-      .evaluate((el) => getComputedStyle(el).display),
-    "block",
-  );
-  await qp.getByRole("button", { name: "Turn visual effects off" }).click();
-  await qp.waitForFunction(() => !document.querySelector(".hero-flyby"));
-  report.checks.push(
-    "Reduced-motion visitors can explicitly enable effects; the control is never disabled and stops motion immediately",
-  );
   await quiet.close();
   const saver = await browser.newContext();
   const sp = await saver.newPage();

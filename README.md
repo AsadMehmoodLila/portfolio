@@ -58,4 +58,6 @@ Policies describe the implemented configuration; they do not certify legal compl
 
 ## Motion and sourced components
 
-`npm run test:effects` verifies the actual sprite playback, alternating attacks, role/code rotation, off switch, reload persistence and offscreen pause. `npm run test:flybys` checks all seven appearances, spacing, no automatic replay, intentional replay, and manual opt-in with reduced motion. Source and license records for LuizMelo sprites and React Bits components are in [design/COMBAT-ASSETS.md](design/COMBAT-ASSETS.md).
+`npm run test:theme` checks warm Day mode, the brief sourced sun strike, cleanup, cancellation, keyboard-accessible theme switching and reduced-motion fallback. Night remains the default on every new page load. There are no floating Effects or replay controls.
+
+`npm run test:effects` verifies the actual sprite playback, alternating attacks, role/code rotation, motion preferences, reload persistence and offscreen pause. `npm run test:flybys` checks all seven appearances, spacing, no automatic replay, absence of replay controls, and automatic reduced-motion handling. Source and license records for LuizMelo sprites and React Bits components are in [design/COMBAT-ASSETS.md](design/COMBAT-ASSETS.md).

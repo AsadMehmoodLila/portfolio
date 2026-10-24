@@ -1,9 +1,8 @@
 {
   "checks": [
     "Seven distinct sprites, fifteen-second spacing, no click interception, no loop, no replay after refresh",
-    "Completed sequence offers working explicit replay without automatic replay",
-    "A fresh tab gets a fresh sequence; the off switch cancels motion and persists within its tab",
-    "Reduced-motion visitors can explicitly enable effects; the control is never disabled and stops motion immediately",
+    "No floating Effects, replay or try-again buttons are rendered",
+    "A fresh tab starts automatically; live reduced-motion preference stops the sequence",
     "Reduced motion and data saving suppress automatic fly-bys without writing progress"
   ],
   "errors": [],

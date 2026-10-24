@@ -1,13 +1,12 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { ArrowCounterClockwise, Sparkle } from "@phosphor-icons/react";
 import { useEffects } from "./effects-provider";
 import { FighterSprite } from "./fighter-sprite";
 import { fighters } from "@/data/fighters";
 
 const KEY = "scriptlilla-hero-session-v1";
-type Progress = { seen: number; nextAt: number; off: boolean };
+type Progress = { seen: number; nextAt: number };
 const routes = ["right", "left", "down", "up", "right", "left", "down"];
 const lanes = [21, 56, 72, 28, 40, 25, 18];
 
@@ -15,23 +14,13 @@ export function HeroFlybys() {
   const path = usePathname();
   const route = useRef(path);
   const sprite = useRef<HTMLDivElement>(null);
-  const progress = useRef<Progress>({ seen: 0, nextAt: 0, off: false });
-  const controls = useRef<{ schedule: () => void; replay: () => void } | null>(
-    null,
-  );
+  const progress = useRef<Progress>({ seen: 0, nextAt: 0 });
+  const controls = useRef<{ schedule: () => void } | null>(null);
   const [active, setActive] = useState<number | null>(null);
-  const { enabled, ready, setEnabled } = useEffects();
-  const [complete, setComplete] = useState(false);
+  const { enabled } = useEffects();
   const enabledRef = useRef(enabled);
   useEffect(() => {
     enabledRef.current = enabled;
-    if (progress.current.seen > 0) {
-      progress.current.off = !enabled;
-      try {
-        sessionStorage.setItem(KEY, JSON.stringify(progress.current));
-      } catch {}
-    }
-    if (enabled) progress.current.nextAt = 0;
     controls.current?.schedule();
   }, [enabled]);
   useEffect(() => {
@@ -50,14 +39,12 @@ export function HeroFlybys() {
         Number.isInteger(saved.seen) &&
         saved.seen >= 0 &&
         saved.seen <= 7 &&
-        typeof saved.off === "boolean" &&
         Number.isFinite(saved.nextAt)
       )
-        progress.current = saved;
+        progress.current = { seen: saved.seen, nextAt: saved.nextAt };
     } catch {
       /* Storage-blocking browsers retain the sequence in page memory. */
     }
-    setComplete(progress.current.seen === 7);
     const save = () => {
       try {
         sessionStorage.setItem(KEY, JSON.stringify(progress.current));
@@ -97,7 +84,6 @@ export function HeroFlybys() {
         await image.decode();
       } catch {
         progress.current.seen++;
-        setComplete(progress.current.seen === 7);
         progress.current.nextAt = Date.now() + 15000;
         save();
         preparing = false;
@@ -107,7 +93,6 @@ export function HeroFlybys() {
       preparing = false;
       if (!eligible()) return;
       progress.current.seen++;
-      setComplete(progress.current.seen === 7);
       progress.current.nextAt = Date.now() + 15000;
       save();
       setActive(index);
@@ -152,18 +137,7 @@ export function HeroFlybys() {
       );
     }
     const visible = () => schedule();
-    controls.current = {
-      schedule,
-      replay: () => {
-        end();
-        progress.current = { seen: 0, nextAt: 0, off: false };
-        setComplete(false);
-        enabledRef.current = true;
-        setEnabled(true);
-        save();
-        schedule();
-      },
-    };
+    controls.current = { schedule };
     document.addEventListener("visibilitychange", visible);
     schedule();
     return () => {
@@ -198,38 +172,6 @@ export function HeroFlybys() {
           </div>
         )}
       </div>
-      {ready && path === "/" && (
-        <div className="hero-effects-controls">
-          {complete && (
-            <button
-              type="button"
-              className="hero-effects-replay"
-              aria-label="Replay seven hero appearances"
-              title="Replay the seven appearances"
-              onClick={() => controls.current?.replay()}
-            >
-              <ArrowCounterClockwise size={17} aria-hidden />
-            </button>
-          )}
-          <button
-            type="button"
-            className="hero-effects-toggle"
-            onClick={() => setEnabled(!enabled)}
-            aria-pressed={enabled}
-            aria-label={
-              enabled ? "Turn visual effects off" : "Turn visual effects on"
-            }
-            title={"Control combat, code and character effects"}
-          >
-            <Sparkle
-              size={15}
-              weight={enabled ? "fill" : "regular"}
-              aria-hidden
-            />
-            <span>Effects {enabled ? "on" : "off"}</span>
-          </button>
-        </div>
-      )}
     </>
   );
 }
