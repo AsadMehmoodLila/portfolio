@@ -1,0 +1,107 @@
+import { chromium } from "@playwright/test";
+import assert from "node:assert/strict";
+import fs from "node:fs/promises";
+
+const browser = await chromium.launch();
+const report = { checks: [], errors: [] };
+try {
+  const page = await browser.newPage({
+    viewport: { width: 1440, height: 1000 },
+    reducedMotion: "reduce",
+  });
+  page.on("pageerror", (e) => report.errors.push(String(e)));
+  await page.goto("http://127.0.0.1:4173", { waitUntil: "networkidle" });
+  const signals = page.locator(".stage-signals");
+  assert.equal(await signals.getAttribute("data-moving"), "false");
+  await page.getByRole("button", { name: "Turn visual effects on" }).click();
+  await page.waitForFunction(
+    () => document.querySelector(".stage-signals").dataset.moving === "true",
+  );
+  const sheet = page.locator(".combat-fighter-a img");
+  const frame = () => sheet.evaluate((el) => getComputedStyle(el).transform);
+  const before = await frame();
+  await page.waitForTimeout(220);
+  assert.notEqual(
+    await frame(),
+    before,
+    "Original sprite frames must actually advance after opt-in",
+  );
+  await page.waitForFunction(
+    () =>
+      document.querySelector(".combat-fighter-b").dataset.striking === "true",
+  );
+  await page.waitForFunction(() =>
+    document
+      .querySelector(".world-id")
+      .textContent.includes("Combat & abilities"),
+  );
+  await page.waitForFunction(() =>
+    document.querySelector(".stage-code").textContent.includes("table.insert"),
+  );
+  report.checks.push(
+    "Opt-in starts real advancing sprite frames, alternating attacks, rotating roles and code snippets",
+  );
+  await page.getByRole("button", { name: "Turn visual effects off" }).click();
+  await page.waitForFunction(
+    () => document.querySelector(".stage-signals").dataset.moving === "false",
+  );
+  const snapshot = await signals.textContent();
+  const still = await frame();
+  await page.waitForTimeout(3900);
+  assert.equal(await frame(), still);
+  assert.equal(await signals.textContent(), snapshot);
+  assert.equal(await page.locator(".hero-flyby").count(), 0);
+  await page.reload({ waitUntil: "networkidle" });
+  assert.equal(await signals.getAttribute("data-moving"), "false");
+  report.checks.push(
+    "Effects off stops sprites, roles, code and fly-bys; manual choice persists on refresh",
+  );
+  await page.getByRole("button", { name: "Turn visual effects on" }).click();
+  await page.locator(".profile-story").scrollIntoViewIfNeeded();
+  await page.waitForFunction(
+    () => document.querySelector(".stage-signals").dataset.moving === "false",
+  );
+  report.checks.push(
+    "Combat and role timers stop when the character stage leaves the viewport",
+  );
+  for (const width of [390, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    for (const theme of ["night", "day"]) {
+      await page.evaluate((value) => {
+        document.documentElement.dataset.theme = value;
+      }, theme);
+      await page.locator(".profile-topic").first().click();
+      const next = page.getByRole("button", { name: "Next card" });
+      await next.click();
+      assert.equal(
+        await page.locator(".profile-story-panel").getAttribute("aria-label"),
+        "Introduction 2 of 4",
+      );
+      assert.equal(
+        await page.evaluate(
+          () => document.documentElement.scrollWidth > innerWidth,
+        ),
+        false,
+      );
+      await page.screenshot({
+        path: `audit/screenshots/effects-cards-${width}-${theme}.png`,
+      });
+    }
+  }
+  report.checks.push(
+    "Card navigation and layout remain usable at mobile/desktop widths in both themes",
+  );
+  await page.close();
+  report.passed = report.errors.length === 0;
+} catch (e) {
+  report.errors.push(e.stack);
+  report.passed = false;
+} finally {
+  await browser.close();
+  await fs.writeFile(
+    "audit/stage-effects-results.json",
+    JSON.stringify(report, null, 2),
+  );
+}
+console.log(JSON.stringify(report, null, 2));
+if (!report.passed) process.exitCode = 1;

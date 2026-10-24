@@ -14,7 +14,8 @@
     "test:media": "node scripts/test-media.mjs",
     "test:character": "node scripts/test-character.mjs",
     "test:interactions": "node scripts/test-interactions.mjs",
-    "test:flybys": "node scripts/test-flybys.mjs"
+    "test:flybys": "node scripts/test-flybys.mjs",
+    "test:effects": "node scripts/test-stage-effects.mjs"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",

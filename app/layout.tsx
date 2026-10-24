@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Chakra_Petch, Geist } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-controls";
 import { HeroFlybys } from "@/components/portfolio/hero-flybys";
+import { EffectsProvider } from "@/components/portfolio/effects-provider";
 
 import "./portfolio.css";
 import "./game.css";
@@ -102,11 +103,13 @@ export default function RootLayout({
       </head>
       <body>
         <ThemeProvider>
-          <a href="#main-content" className="skip-link">
-            Skip to main content
-          </a>
-          {children}
-          <HeroFlybys />
+          <EffectsProvider>
+            <a href="#main-content" className="skip-link">
+              Skip to main content
+            </a>
+            {children}
+            <HeroFlybys />
+          </EffectsProvider>
         </ThemeProvider>
       </body>
     </html>

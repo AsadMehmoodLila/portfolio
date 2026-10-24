@@ -23,3 +23,6 @@ Chakra Petch is served locally through next/font under the SIL Open Font License
 The About/profile portrait is generated with the built-in image-generation tool from the owner's supplied Discord avatar reference. It preserves the green plaid cap, pale green hair, blue eyes and black outfit. It is stylised brand artwork, not a photo. The transparent PNG source, final prompt and purpose are recorded in design/branding/; the 720px WebP is served locally as public/media/scriptlilla-portrait.webp. This request did not use Meshy credits.
 
 Kenney Blocky Characters 2.0 supplies the seven decorative fly-by source models under CC0. The original licence is archived in assets/licenses/kenney-blocky-CC0.txt; source and adaptations are documented in design/FLYBY-ASSETS.md. Small transparent WebP renders are hosted locally. Added capes, poses, camera and lighting are local adaptations. No branded comic-book franchise assets or competitor media are used.
+
+
+Current combat sprites and seven animated fly-bys: LuizMelo, CC0-1.0, sourced directly from the creator. RotatingText and SpotlightCard: React Bits by David Haz, MIT + Commons Clause, full license retained in components/vendor/react-bits/LICENSE.md. Source links, download hashes and adaptations are recorded in design/COMBAT-ASSETS.md. These replace the earlier Kenney fly-by stills in the public UI.

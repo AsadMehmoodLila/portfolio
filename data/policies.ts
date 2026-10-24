@@ -126,7 +126,7 @@ export const policies: Record<string, Policy> = {
       {
         title: "The portfolio itself",
         paragraphs: [
-          "The application does not set first-party cookies or use localStorage, analytics, advertising or fingerprinting. The theme and enquiry entries exist in application memory. One sessionStorage entry, scriptlilla-hero-session-v1, records which of seven decorative fly-bys have appeared, when the next one is due and whether you turned them off. It contains no personal details or visitor identifier and is not sent to a server. It prevents replay in the same tab, including on refresh, and is cleared when that browser tab's session ends. Browser session-restoration behaviour can preserve a restored tab's session. If storage is blocked, page memory is used instead. Ordinary caching helps deliver local assets.",
+          "The application does not set first-party cookies or use localStorage, analytics, advertising or fingerprinting. The theme and enquiry entries exist in application memory. Two sessionStorage entries contain only motion preferences. scriptlilla-effects-choice records an explicit on/off choice. scriptlilla-hero-session-v1 records which of seven decorative fly-bys have appeared, when the next one is due and whether you turned them off. It contains no personal details or visitor identifier and is not sent to a server. It prevents replay in the same tab, including on refresh, and is cleared when that browser tab's session ends. Browser session-restoration behaviour can preserve a restored tab's session. If storage is blocked, page memory is used instead. Ordinary caching helps deliver local assets.",
         ],
       },
       {
@@ -139,7 +139,7 @@ export const policies: Record<string, Policy> = {
       {
         title: "Why there is no site-wide banner",
         paragraphs: [
-          "The site does not run analytics or advertising cookies, so it does not show a site-wide tracking-consent banner. Per-tab motion state is described above, and the Effects control stops the fly-bys. Reduced-motion and data-saving preferences suppress them automatically. External video loading is controlled at each player. Formspree connects only after an explicit enquiry submission. This describes the configuration, not a blanket exemption from local requirements for storage or processing; hosting and providers have their own practices.",
+          "The site does not run analytics or advertising cookies, so it does not show a site-wide tracking-consent banner. Per-tab motion state is described above, and the Effects control stops decorative combat, role/code animation and fly-bys. Reduced-motion and data-saving preferences suppress automatic motion by default; the visitor can explicitly enable effects. A separate replay control restarts the seven appearances only when requested. External video loading is controlled at each player. Formspree connects only after an explicit enquiry submission. This describes the configuration, not a blanket exemption from local requirements for storage or processing; hosting and providers have their own practices.",
         ],
       },
       {
@@ -203,7 +203,7 @@ export const policies: Record<string, Policy> = {
         title: "Briefs and videos",
         paragraphs: [
           "The three-step enquiry has visible labels, radio-button choices, required-field instructions, associated errors and an explicit unchecked acknowledgement. Sending requires your action. Loading, accepted, failed and rate-limit states are explained, with direct Discord and email alternatives. Direct contact links also work without JavaScript. Short profile cards support previous/next controls and arrow keys; their information remains available without JavaScript. FAQ answers open and close with a short measured animation, or instantly for keyboard and reduced-motion use.",
-          "Seven brief decorative character fly-bys can appear once per tab. They do not accept pointer input or block controls. The Effects button turns them off. Reduced-motion and data-saving preferences suppress them, and hidden tabs do not play them. Their per-tab state prevents repeated distractions while navigating or refreshing.",
+          "Seven brief decorative character fly-bys can appear once per tab. They do not accept pointer input or block controls. The Effects button turns them and the decorative combat/code motion off. Reduced-motion and data-saving preferences suppress automatic effects by default, while the control remains available for explicit opt-in. Hidden tabs do not play the fly-bys. The separate replay button is an intentional opt-in after all seven appearances have finished. Their per-tab state prevents repeated distractions while navigating or refreshing.",
           "Videos have visitor-controlled playback and surrounding text summaries. Self-hosted videos support caption tracks; captions or transcripts should accompany new showcases where needed. Third-party players and linked services have their own accessibility limitations.",
         ],
       },

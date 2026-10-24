@@ -1,4 +1,8 @@
-# Decorative hero fly-bys
+# Retired fly-by assets
+
+These Kenney stills were replaced on 24 October 2026 by the seven animated LuizMelo fighters. Current sources and behavior: [COMBAT-ASSETS.md](COMBAT-ASSETS.md). The following records the earlier version.
+
+## Historical decorative hero fly-bys
 
 Source: Kenney Blocky Characters 2.0, https://kenney.nl/assets/blocky-characters
 Direct download: https://kenney.nl/media/pages/assets/blocky-characters/8369c0cf30-1749547469/kenney_blocky-characters_20.zip

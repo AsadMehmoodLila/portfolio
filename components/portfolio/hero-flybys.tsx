@@ -1,7 +1,10 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { Sparkle } from "@phosphor-icons/react";
+import { ArrowCounterClockwise, Sparkle } from "@phosphor-icons/react";
+import { useEffects } from "./effects-provider";
+import { FighterSprite } from "./fighter-sprite";
+import { fighters } from "@/data/fighters";
 
 const KEY = "scriptlilla-hero-session-v1";
 type Progress = { seen: number; nextAt: number; off: boolean };
@@ -13,13 +16,24 @@ export function HeroFlybys() {
   const route = useRef(path);
   const sprite = useRef<HTMLDivElement>(null);
   const progress = useRef<Progress>({ seen: 0, nextAt: 0, off: false });
-  const controls = useRef<{ schedule: () => void; toggle: () => void } | null>(
+  const controls = useRef<{ schedule: () => void; replay: () => void } | null>(
     null,
   );
   const [active, setActive] = useState<number | null>(null);
-  const [enabled, setEnabled] = useState(true);
-  const [available, setAvailable] = useState(false);
-  const [reduced, setReduced] = useState(false);
+  const { enabled, ready, setEnabled } = useEffects();
+  const [complete, setComplete] = useState(false);
+  const enabledRef = useRef(enabled);
+  useEffect(() => {
+    enabledRef.current = enabled;
+    if (progress.current.seen > 0) {
+      progress.current.off = !enabled;
+      try {
+        sessionStorage.setItem(KEY, JSON.stringify(progress.current));
+      } catch {}
+    }
+    if (enabled) progress.current.nextAt = 0;
+    controls.current?.schedule();
+  }, [enabled]);
   useEffect(() => {
     route.current = path;
     controls.current?.schedule();
@@ -29,10 +43,6 @@ export function HeroFlybys() {
       timer = 0,
       motion: Animation | null = null,
       preparing = false;
-    const preference = matchMedia("(prefers-reduced-motion: reduce)");
-    const saver = (
-      navigator as Navigator & { connection?: { saveData?: boolean } }
-    ).connection?.saveData;
     try {
       const saved = JSON.parse(sessionStorage.getItem(KEY) || "null");
       if (
@@ -47,9 +57,7 @@ export function HeroFlybys() {
     } catch {
       /* Storage-blocking browsers retain the sequence in page memory. */
     }
-    setEnabled(!progress.current.off);
-    setAvailable(true);
-    setReduced(preference.matches);
+    setComplete(progress.current.seen === 7);
     const save = () => {
       try {
         sessionStorage.setItem(KEY, JSON.stringify(progress.current));
@@ -62,21 +70,14 @@ export function HeroFlybys() {
     };
     const eligible = () =>
       !disposed &&
-      !progress.current.off &&
+      enabledRef.current &&
       progress.current.seen < 7 &&
-      !preference.matches &&
-      !saver &&
       !document.hidden &&
       route.current === "/";
     function schedule() {
       clearTimeout(timer);
       if (!eligible()) {
-        if (
-          document.hidden ||
-          route.current !== "/" ||
-          preference.matches ||
-          progress.current.off
-        )
+        if (document.hidden || route.current !== "/" || !enabledRef.current)
           end();
         return;
       }
@@ -91,11 +92,12 @@ export function HeroFlybys() {
       preparing = true;
       const index = progress.current.seen;
       const image = new Image();
-      image.src = `/media/flybys/hero-${index + 1}.webp`;
+      image.src = `/media/fighters/${fighters[index].id}-run.webp`;
       try {
         await image.decode();
       } catch {
         progress.current.seen++;
+        setComplete(progress.current.seen === 7);
         progress.current.nextAt = Date.now() + 15000;
         save();
         preparing = false;
@@ -105,6 +107,7 @@ export function HeroFlybys() {
       preparing = false;
       if (!eligible()) return;
       progress.current.seen++;
+      setComplete(progress.current.seen === 7);
       progress.current.nextAt = Date.now() + 15000;
       save();
       setActive(index);
@@ -143,27 +146,24 @@ export function HeroFlybys() {
     function eligibleForCurrent() {
       return (
         !disposed &&
-        !progress.current.off &&
+        enabledRef.current &&
         !document.hidden &&
-        !preference.matches &&
         route.current === "/"
       );
     }
-    const preferenceChanged = () => {
-      setReduced(preference.matches);
-      schedule();
-    };
     const visible = () => schedule();
     controls.current = {
       schedule,
-      toggle: () => {
-        progress.current.off = !progress.current.off;
-        setEnabled(!progress.current.off);
+      replay: () => {
+        end();
+        progress.current = { seen: 0, nextAt: 0, off: false };
+        setComplete(false);
+        enabledRef.current = true;
+        setEnabled(true);
         save();
         schedule();
       },
     };
-    preference.addEventListener("change", preferenceChanged);
     document.addEventListener("visibilitychange", visible);
     schedule();
     return () => {
@@ -171,13 +171,16 @@ export function HeroFlybys() {
       clearTimeout(timer);
       motion?.cancel();
       controls.current = null;
-      preference.removeEventListener("change", preferenceChanged);
       document.removeEventListener("visibilitychange", visible);
     };
   }, []);
   return (
     <>
-      <div className="hero-flyby-layer" aria-hidden="true">
+      <div
+        className="hero-flyby-layer"
+        data-enabled={enabled}
+        aria-hidden="true"
+      >
         {active !== null && (
           <div
             key={active}
@@ -191,42 +194,41 @@ export function HeroFlybys() {
             }
           >
             <div className="hero-flyby-trail" />
-            <img
-              src={`/media/flybys/hero-${active + 1}.webp`}
-              width={240}
-              height={240}
-              alt=""
-            />
+            <FighterSprite fighter={active} size={170} />
           </div>
         )}
       </div>
-      {available && path === "/" && (
-        <button
-          type="button"
-          className="hero-effects-toggle"
-          onClick={() => controls.current?.toggle()}
-          aria-pressed={enabled && !reduced}
-          disabled={reduced}
-          aria-label={
-            reduced
-              ? "Hero effects disabled for reduced motion"
-              : enabled
-                ? "Turn hero fly-by effects off"
-                : "Turn hero fly-by effects on"
-          }
-          title={
-            reduced
-              ? "Reduced motion is enabled"
-              : "Seven brief fly-bys, once per tab"
-          }
-        >
-          <Sparkle
-            size={15}
-            weight={enabled && !reduced ? "fill" : "regular"}
-            aria-hidden
-          />
-          <span>Effects {enabled && !reduced ? "on" : "off"}</span>
-        </button>
+      {ready && path === "/" && (
+        <div className="hero-effects-controls">
+          {complete && (
+            <button
+              type="button"
+              className="hero-effects-replay"
+              aria-label="Replay seven hero appearances"
+              title="Replay the seven appearances"
+              onClick={() => controls.current?.replay()}
+            >
+              <ArrowCounterClockwise size={17} aria-hidden />
+            </button>
+          )}
+          <button
+            type="button"
+            className="hero-effects-toggle"
+            onClick={() => setEnabled(!enabled)}
+            aria-pressed={enabled}
+            aria-label={
+              enabled ? "Turn visual effects off" : "Turn visual effects on"
+            }
+            title={"Control combat, code and character effects"}
+          >
+            <Sparkle
+              size={15}
+              weight={enabled ? "fill" : "regular"}
+              aria-hidden
+            />
+            <span>Effects {enabled ? "on" : "off"}</span>
+          </button>
+        </div>
       )}
     </>
   );

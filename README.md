@@ -55,3 +55,7 @@ The original character is now presented in a new game-style stage with lighting,
 `.github/workflows/deploy.yml` builds with `npm ci` and deploys to GitHub Pages on pushes to `main`. `public/CNAME` preserves `asadlilla.me`. Feature branches and local builds do not publish the site. Do not commit keys, private handoffs, client material or identity documents.
 
 Policies describe the implemented configuration; they do not certify legal compliance. Separate paid commissions require agreed scope, payment, ownership, support and cancellation terms. The website takes no payment.
+
+## Motion and sourced components
+
+`npm run test:effects` verifies the actual sprite playback, alternating attacks, role/code rotation, off switch, reload persistence and offscreen pause. `npm run test:flybys` checks all seven appearances, spacing, no automatic replay, intentional replay, and manual opt-in with reduced motion. Source and license records for LuizMelo sprites and React Bits components are in [design/COMBAT-ASSETS.md](design/COMBAT-ASSETS.md).

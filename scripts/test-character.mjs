@@ -28,7 +28,9 @@ try {
       modelRequests.push(request.timing().startTime);
   });
   const started = Date.now();
-  await page.goto(origin, { waitUntil: "domcontentloaded" });
+  await page.goto(`${origin}/?render-character`, {
+    waitUntil: "domcontentloaded",
+  });
   const loadStart = await page.evaluate(() => performance.timeOrigin);
   assert(
     await page
@@ -53,46 +55,48 @@ try {
     "3D model should be deferred beyond the initial paint",
   );
   const canvas = page.locator(".character-canvas canvas");
-  const moving = hash(await canvas.screenshot());
+  // Hash the WebGL pixels, excluding independent decorative DOM overlays.
+  const frame = () => canvas.evaluate((element) => element.toDataURL());
+  const moving = hash(await frame());
   await page.waitForTimeout(180);
-  assert.notEqual(hash(await canvas.screenshot()), moving);
+  assert.notEqual(hash(await frame()), moving);
   report.checks.push(
     "Immediate heading and deferred model request, real animated GLB",
   );
   await page.getByRole("button", { name: "Pause dance" }).click();
   await page.waitForTimeout(100);
-  const still = hash(await canvas.screenshot());
+  const still = hash(await frame());
   await page.waitForTimeout(180);
   assert.equal(
-    hash(await canvas.screenshot()),
+    hash(await frame()),
     still,
     "Still pose must match after pause or reset",
   );
   await page.locator(".character-canvas").focus();
   await page.keyboard.press("ArrowRight");
   await page.waitForTimeout(100);
-  assert.notEqual(hash(await canvas.screenshot()), still);
+  assert.notEqual(hash(await frame()), still);
   await page.keyboard.press("Home");
   await page.waitForTimeout(100);
   assert.equal(
-    hash(await canvas.screenshot()),
+    hash(await frame()),
     still,
     "Still pose must match after pause or reset",
   );
   report.checks.push("Exact motion stop, keyboard rotation and Home reset");
   await page.getByRole("button", { name: "Turn avatar lights off" }).click();
   await page.waitForTimeout(100);
-  assert.notEqual(hash(await canvas.screenshot()), still);
+  assert.notEqual(hash(await frame()), still);
   await page.getByRole("button", { name: "Turn avatar lights on" }).click();
   await page.waitForTimeout(100);
   assert.equal(
-    hash(await canvas.screenshot()),
+    hash(await frame()),
     still,
     "Still pose must match after pause or reset",
   );
   await page.getByRole("button", { name: "Switch to day mode" }).click();
   await page.waitForTimeout(100);
-  assert.notEqual(hash(await canvas.screenshot()), still);
+  assert.notEqual(hash(await frame()), still);
   report.checks.push("Actual stage lighting and theme-dependent illumination");
   await page.getByRole("button", { name: "Play dance" }).click();
   await page.waitForTimeout(100);

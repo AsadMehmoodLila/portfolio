@@ -1,0 +1,10 @@
+{
+  "checks": [
+    "Opt-in starts real advancing sprite frames, alternating attacks, rotating roles and code snippets",
+    "Effects off stops sprites, roles, code and fly-bys; manual choice persists on refresh",
+    "Combat and role timers stop when the character stage leaves the viewport",
+    "Card navigation and layout remain usable at mobile/desktop widths in both themes"
+  ],
+  "errors": [],
+  "passed": true
+}

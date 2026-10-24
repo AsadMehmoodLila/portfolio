@@ -10,6 +10,7 @@ import {
   Play,
 } from "@phosphor-icons/react";
 import { useTheme } from "@/components/theme-controls";
+import { StageSignals } from "./stage-signals";
 
 export function CharacterStage() {
   const host = useRef<HTMLDivElement>(null);
@@ -359,10 +360,7 @@ export function CharacterStage() {
             Explore character <Play weight="fill" size={14} aria-hidden />
           </button>
         )}
-        <div className="world-id">
-          <span>CLASS</span>
-          <strong>Roblox scripter</strong>
-        </div>
+        <StageSignals />
       </div>
       <div className="character-toolbar">
         <span className="character-hint">
