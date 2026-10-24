@@ -4,7 +4,6 @@ import { useEffect, useId, useRef, useState } from "react";
 import { HandTap, Sparkle } from "@phosphor-icons/react";
 import { useTheme } from "@/components/theme-controls";
 import { StageSignals } from "./stage-signals";
-import { useEffects } from "./effects-provider";
 
 export function CharacterStage() {
   const host = useRef<HTMLButtonElement>(null);
@@ -16,7 +15,6 @@ export function CharacterStage() {
   const [playing, setPlaying] = useState(false);
   const [entered, setEntered] = useState(false);
   const { night } = useTheme();
-  const { setEnabled: setAmbientMotion } = useEffects();
   const help = useId();
   const dragged = useRef(false);
   useEffect(() => {
@@ -30,14 +28,6 @@ export function CharacterStage() {
     }
     state.current.playing = !state.current.playing;
     setPlaying(state.current.playing);
-    const saver = (
-      navigator as Navigator & { connection?: { saveData?: boolean } }
-    ).connection?.saveData;
-    setAmbientMotion(
-      state.current.playing &&
-        !matchMedia("(prefers-reduced-motion: reduce)").matches &&
-        !saver,
-    );
     setActive(true);
     engine.current?.draw();
   };

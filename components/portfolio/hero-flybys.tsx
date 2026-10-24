@@ -1,38 +1,56 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
+import { useTheme } from "@/components/theme-controls";
 import { useEffects } from "./effects-provider";
 import { FighterSprite } from "./fighter-sprite";
 import { fighters } from "@/data/fighters";
 
-const KEY = "scriptlilla-hero-session-v1";
+// v1 could advance before React committed the sprite. Only started appearances count now.
+const KEY = "scriptlilla-hero-session-v2";
 type Progress = { seen: number; nextAt: number };
 const routes = ["right", "left", "down", "up", "right", "left", "down"];
-const lanes = [21, 56, 72, 28, 40, 25, 18];
+const lanes = [24, 56, 72, 28, 40, 25, 18];
+const captions = [
+  "Player one has entered",
+  "Another side quest",
+  "A little spellwork",
+  "Knight shift",
+  "On the hunt",
+  "Fast travel unlocked",
+  "Last hero, signing off",
+];
 
 export function HeroFlybys() {
   const path = usePathname();
-  const route = useRef(path);
+  const { night } = useTheme();
+  const { heroesEnabled, quietHeroes } = useEffects();
   const sprite = useRef<HTMLDivElement>(null);
   const progress = useRef<Progress>({ seen: 0, nextAt: 0 });
-  const controls = useRef<{ schedule: () => void } | null>(null);
+  const live = useRef({ path, night, heroesEnabled, quietHeroes });
+  live.current = { path, night, heroesEnabled, quietHeroes };
+  const controls = useRef<{
+    schedule: () => void;
+    start: (index: number, element: HTMLDivElement) => void;
+  } | null>(null);
   const [active, setActive] = useState<number | null>(null);
-  const { enabled } = useEffects();
-  const enabledRef = useRef(enabled);
+
   useEffect(() => {
-    enabledRef.current = enabled;
     controls.current?.schedule();
-  }, [enabled]);
+  }, [path, night, heroesEnabled, quietHeroes]);
+  // This runs only after React has attached the actual sprite element.
   useEffect(() => {
-    route.current = path;
-    controls.current?.schedule();
-  }, [path]);
+    if (active !== null && sprite.current)
+      controls.current?.start(active, sprite.current);
+  }, [active]);
   useEffect(() => {
     let disposed = false,
       timer = 0,
+      preparing = false,
       motion: Animation | null = null,
-      preparing = false;
+      motionQuiet = true;
     try {
+      sessionStorage.removeItem("scriptlilla-hero-session-v1");
       const saved = JSON.parse(sessionStorage.getItem(KEY) || "null");
       if (
         saved &&
@@ -42,142 +60,154 @@ export function HeroFlybys() {
         Number.isFinite(saved.nextAt)
       )
         progress.current = { seen: saved.seen, nextAt: saved.nextAt };
-    } catch {
-      /* Storage-blocking browsers retain the sequence in page memory. */
-    }
+    } catch {}
     const save = () => {
       try {
         sessionStorage.setItem(KEY, JSON.stringify(progress.current));
       } catch {}
     };
+    const eligible = () =>
+      !disposed &&
+      live.current.heroesEnabled &&
+      live.current.night &&
+      !document.hidden &&
+      live.current.path === "/";
     const end = () => {
       motion?.cancel();
       motion = null;
+      preparing = false;
       setActive(null);
     };
-    const eligible = () =>
-      !disposed &&
-      enabledRef.current &&
-      progress.current.seen < 7 &&
-      !document.hidden &&
-      route.current === "/";
     function schedule() {
       clearTimeout(timer);
       if (!eligible()) {
-        if (document.hidden || route.current !== "/" || !enabledRef.current)
-          end();
+        end();
         return;
       }
-      if (motion || preparing) return;
+      if (motion && motionQuiet !== live.current.quietHeroes) end();
+      if (progress.current.seen >= 7 || motion || preparing) return;
       timer = window.setTimeout(
         launch,
         Math.max(0, progress.current.nextAt - Date.now()),
       );
     }
     async function launch() {
-      if (!eligible()) return;
+      if (!eligible() || progress.current.seen >= 7 || preparing || motion)
+        return;
       preparing = true;
       const index = progress.current.seen;
       const image = new Image();
-      image.src = `/media/fighters/${fighters[index].id}-run.webp`;
+      image.src = `/media/fighters/${fighters[index].id}-${live.current.quietHeroes ? "portrait" : "run"}.webp`;
       try {
         await image.decode();
       } catch {
+        preparing = false;
         progress.current.seen++;
         progress.current.nextAt = Date.now() + 15000;
         save();
-        preparing = false;
         schedule();
         return;
       }
+      if (!eligible()) {
+        preparing = false;
+        return;
+      }
+      setActive(index);
+    }
+    function start(index: number, element: HTMLDivElement) {
+      if (!eligible() || index !== progress.current.seen || motion) {
+        preparing = false;
+        return;
+      }
       preparing = false;
-      if (!eligible()) return;
-      progress.current.seen++;
+      const quiet = live.current.quietHeroes;
+      motionQuiet = quiet;
+      const horizontal = routes[index] === "right" || routes[index] === "left";
+      const forward = routes[index] === "right" || routes[index] === "down";
+      const distance = horizontal ? innerWidth + 300 : innerHeight + 260;
+      const from = horizontal
+        ? `translateX(${forward ? -280 : innerWidth + 20}px)`
+        : `translateY(${forward ? -260 : innerHeight + 20}px)`;
+      const to = horizontal
+        ? `translateX(${forward ? -280 + distance : innerWidth + 20 - distance}px)`
+        : `translateY(${forward ? -260 + distance : innerHeight + 20 - distance}px)`;
+      motion = element.animate(
+        quiet
+          ? [
+              { opacity: 0 },
+              { opacity: 1, offset: 0.12 },
+              { opacity: 1, offset: 0.88 },
+              { opacity: 0 },
+            ]
+          : [
+              { transform: from, opacity: 0 },
+              { transform: from, opacity: 1, offset: 0.06 },
+              { transform: to, opacity: 1, offset: 0.94 },
+              { transform: to, opacity: 0 },
+            ],
+        {
+          duration: quiet
+            ? 3200
+            : index === 0
+              ? 3400
+              : horizontal
+                ? 2400
+                : 2200,
+          easing: "linear",
+        },
+      );
+      progress.current.seen = index + 1;
       progress.current.nextAt = Date.now() + 15000;
       save();
-      setActive(index);
-      requestAnimationFrame(() => {
-        if (!eligibleForCurrent() || !sprite.current) {
-          setActive(null);
-          schedule();
-          return;
-        }
-        const horizontal =
-          routes[index] === "right" || routes[index] === "left";
-        const forward = routes[index] === "right" || routes[index] === "down";
-        const distance = horizontal ? innerWidth + 300 : innerHeight + 260;
-        const from = horizontal
-          ? `translateX(${forward ? -280 : innerWidth + 20}px)`
-          : `translateY(${forward ? -260 : innerHeight + 20}px)`;
-        const to = horizontal
-          ? `translateX(${forward ? -280 + distance : innerWidth + 20 - distance}px)`
-          : `translateY(${forward ? -260 + distance : innerHeight + 20 - distance}px)`;
-        motion = sprite.current.animate(
-          [
-            { transform: from, opacity: 0 },
-            { transform: from, opacity: 1, offset: 0.06 },
-            { transform: to, opacity: 1, offset: 0.94 },
-            { transform: to, opacity: 0 },
-          ],
-          {
-            duration: index === 0 ? 2900 : horizontal ? 2100 : 1900,
-            easing: "linear",
-          },
-        );
-        motion.onfinish = () => {
-          motion = null;
-          setActive(null);
-          schedule();
-        };
-      });
+      motion.onfinish = () => {
+        motion = null;
+        setActive(null);
+        schedule();
+      };
     }
-    function eligibleForCurrent() {
-      return (
-        !disposed &&
-        enabledRef.current &&
-        !document.hidden &&
-        route.current === "/"
-      );
-    }
-    const visible = () => schedule();
-    controls.current = { schedule };
-    document.addEventListener("visibilitychange", visible);
+    controls.current = { schedule, start };
+    document.addEventListener("visibilitychange", schedule);
     schedule();
     return () => {
       disposed = true;
       clearTimeout(timer);
       motion?.cancel();
       controls.current = null;
-      document.removeEventListener("visibilitychange", visible);
+      document.removeEventListener("visibilitychange", schedule);
     };
   }, []);
+
   return (
-    <>
-      <div
-        className="hero-flyby-layer"
-        data-enabled={enabled}
-        aria-hidden="true"
-      >
-        {active !== null && (
-          <div
-            key={active}
-            ref={sprite}
-            className={`hero-flyby flyby-${routes[active]}`}
-            data-hero={active + 1}
-            style={
-              routes[active] === "right" || routes[active] === "left"
+    <div
+      className="hero-flyby-layer"
+      data-enabled={heroesEnabled}
+      aria-hidden="true"
+    >
+      {active !== null && (
+        <div
+          key={active}
+          ref={sprite}
+          className={`hero-flyby ${quietHeroes ? "flyby-still" : `flyby-${routes[active]}`}`}
+          data-hero={active + 1}
+          data-motion={quietHeroes ? "quiet" : "full"}
+          style={
+            quietHeroes
+              ? { right: "5%", top: "20%" }
+              : routes[active] === "right" || routes[active] === "left"
                 ? { top: `${lanes[active]}%` }
                 : { left: `${lanes[active]}%` }
-            }
-          >
-            <div className="hero-flyby-trail" />
-            <FighterSprite fighter={active} size={170} />
-            {active === 0 && (
-              <span className="hero-entry-caption">Player one has entered</span>
-            )}
-          </div>
-        )}
-      </div>
-    </>
+          }
+        >
+          <div className="hero-flyby-trail" />
+          <FighterSprite
+            fighter={active}
+            action={quietHeroes ? "portrait" : "run"}
+            moving={!quietHeroes}
+            size={170}
+          />
+          <span className="hero-entry-caption">{captions[active]}</span>
+        </div>
+      )}
+    </div>
   );
 }

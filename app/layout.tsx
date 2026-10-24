@@ -6,6 +6,7 @@ import { EffectsProvider } from "@/components/portfolio/effects-provider";
 
 import "./portfolio.css";
 import "./game.css";
+import "./cinematics.css";
 
 const display = Chakra_Petch({
   subsets: ["latin"],

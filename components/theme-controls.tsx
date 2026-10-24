@@ -1,8 +1,8 @@
 "use client";
 import { createContext, useContext, useEffect, useState } from "react";
 import type { ReactNode } from "react";
-import { Moon, Sun, StarFour } from "@phosphor-icons/react";
-import { FighterSprite } from "@/components/portfolio/fighter-sprite";
+import { Moon, Sun } from "@phosphor-icons/react";
+import { SunCinematic } from "@/components/portfolio/sun-cinematic";
 
 const ThemeContext = createContext({
   night: true,
@@ -18,8 +18,8 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (night || !sequence) return;
     const arrival = setTimeout(() => setStrike(sequence), 4000);
-    const impact = setTimeout(() => setDayPhase("warm"), 5000);
-    const finish = setTimeout(() => setStrike(0), 6800);
+    const impact = setTimeout(() => setDayPhase("warm"), 5600);
+    const finish = setTimeout(() => setStrike(0), 9100);
     return () => {
       clearTimeout(arrival);
       clearTimeout(impact);
@@ -57,41 +57,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     >
       {children}
       {strike > 0 && !night && (
-        <div
-          key={strike}
-          className="sun-strike"
-          data-motion={quietStrike ? "reduced" : "full"}
-          aria-hidden="true"
-        >
-          <div className="sun-strike-beam" />
-          <div className="sun-strike-star">
-            <StarFour size={64} weight="fill" />
-          </div>
-          <img
-            className="sun-strike-sun"
-            src="/media/sun.svg"
-            alt=""
-            width={130}
-            height={130}
-          />
-          <div className="sun-strike-message">
-            <FighterSprite
-              fighter={1}
-              action="attack2"
-              size={170}
-              moving={!quietStrike}
-            />
-            <div>
-              <span>Sun style · Warmth jutsu</span>
-              <strong>
-                Destroyed that
-                <br />
-                flashbang
-              </strong>
-              <small>Warm mode unlocked</small>
-            </div>
-          </div>
-        </div>
+        <SunCinematic key={strike} quiet={quietStrike} />
       )}
     </ThemeContext.Provider>
   );

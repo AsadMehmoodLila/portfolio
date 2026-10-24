@@ -38,24 +38,24 @@ try {
         ),
         "rgb(238, 242, 248)",
       );
-      assert.equal(await page.locator(".sun-strike").count(), 0);
+      assert.equal(await page.locator(".solar-cinematic").count(), 0);
       await page.waitForTimeout(3100);
       assert.equal(
-        await page.locator(".sun-strike").count(),
+        await page.locator(".solar-cinematic").count(),
         0,
         "Sun must not arrive early",
       );
       await page.screenshot({
         path: `audit/screenshots/day-before-strike-${width}-${reduced}.png`,
       });
-      await page.locator(".sun-strike").waitFor();
+      await page.locator(".solar-cinematic").waitFor();
       assert.equal(
-        await page.locator(".sun-strike").getAttribute("data-motion"),
+        await page.locator(".solar-cinematic").getAttribute("data-motion"),
         reduced ? "reduced" : "full",
       );
       assert.equal(
         await page
-          .locator(".sun-strike")
+          .locator(".solar-cinematic")
           .evaluate((el) => getComputedStyle(el).pointerEvents),
         "none",
       );
@@ -79,20 +79,52 @@ try {
         "rgb(238, 226, 201)",
       );
       assert(
-        (await page.locator(".sun-strike-message").textContent()).includes(
+        (await page.locator(".solar-quote").textContent()).includes(
           "Destroyed that",
         ),
       );
+      await page.locator('.solar-cinematic[data-phase="impact"]').waitFor();
+      await page.waitForTimeout(350);
       await page.screenshot({
         path: `audit/screenshots/day-impact-${width}-${reduced}.png`,
       });
-      await page.waitForFunction(() => !document.querySelector(".sun-strike"));
+      const bounds = await page.locator(".solar-quote").boundingBox();
+      assert(
+        bounds.x >= 0 && bounds.x + bounds.width <= width,
+        "Quote must fit the viewport",
+      );
+      assert(
+        Number(
+          await page
+            .locator(".solar-portal")
+            .evaluate((el) => getComputedStyle(el).opacity),
+        ) > 0.8,
+      );
+      await page.locator('.solar-cinematic[data-phase="consuming"]').waitFor();
+      await page.waitForTimeout(250);
+      if (reduced) {
+        assert.equal(
+          await page
+            .locator(".solar-projectile")
+            .evaluate((el) => getComputedStyle(el).opacity),
+          "0",
+        );
+      } else {
+        const scale = await page.locator(".solar-projectile").evaluate((el) => {
+          const matrix = new DOMMatrix(getComputedStyle(el).transform);
+          return Math.hypot(matrix.a, matrix.b);
+        });
+        assert(scale < 0.9, "Quote must visibly shrink into the portal");
+      }
+      await page.waitForFunction(
+        () => !document.querySelector(".solar-cinematic"),
+      );
       await page.getByRole("button", { name: "Switch to night mode" }).click();
       await page.getByRole("button", { name: "Switch to day mode" }).click();
       await page.waitForTimeout(200);
       await page.getByRole("button", { name: "Switch to night mode" }).click();
       await page.waitForTimeout(5000);
-      assert.equal(await page.locator(".sun-strike").count(), 0);
+      assert.equal(await page.locator(".solar-cinematic").count(), 0);
       assert.equal(
         await page.locator("html").getAttribute("data-theme"),
         "night",
@@ -104,7 +136,7 @@ try {
         false,
       );
       report.checks.push(
-        `${width}px ${reduced ? "reduced" : "full"}: cool white first, four-second delayed sun, warm impact, sourced star/quote, automatic cleanup, cancelled sequence never reappears`,
+        `${width}px ${reduced ? "reduced" : "full"}: cool white first, four-second delayed sun, warm impact, descending sun, spinning quote, portal impact/consumption, automatic cleanup, cancelled sequence never reappears`,
       );
       await page.close();
     }

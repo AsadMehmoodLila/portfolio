@@ -2,8 +2,8 @@
   "checks": [
     "Seven distinct sprites, fifteen-second spacing, no click interception, no loop, no replay after refresh",
     "No floating Effects, replay or try-again buttons are rendered",
-    "A fresh tab starts automatically; live reduced-motion preference stops the sequence",
-    "Reduced motion and data saving suppress automatic fly-bys without writing progress"
+    "A fresh tab starts automatically; Day pauses progression, Night resumes it, dance clicks do not stop ambient effects, live reduced-motion preference stops moving entrances",
+    "Reduced motion and data saving show still characters with opacity-only fades"
   ],
   "errors": [],
   "passed": true

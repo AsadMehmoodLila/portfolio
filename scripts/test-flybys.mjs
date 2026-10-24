@@ -31,10 +31,13 @@ try {
   assert.equal(
     (
       await page.evaluate(() =>
-        JSON.parse(sessionStorage.getItem("scriptlilla-hero-session-v1")),
+        JSON.parse(sessionStorage.getItem("scriptlilla-hero-session-v2")),
       )
     ).seen,
     1,
+  );
+  await page.waitForFunction(
+    () => document.querySelector(".hero-flyby")?.getAnimations().length === 1,
   );
   await page.evaluate(() =>
     document
@@ -48,6 +51,9 @@ try {
   for (let index = 2; index <= 7; index++) {
     await page.clock.fastForward(index === 2 ? 1100 : 15100);
     await page.locator(`.hero-flyby[data-hero="${index}"]`).waitFor();
+    await page.waitForFunction(
+      () => document.querySelector(".hero-flyby")?.getAnimations().length === 1,
+    );
     await page.evaluate(() =>
       document
         .querySelector(".hero-flyby")
@@ -65,7 +71,7 @@ try {
   assert.equal(
     (
       await page.evaluate(() =>
-        JSON.parse(sessionStorage.getItem("scriptlilla-hero-session-v1")),
+        JSON.parse(sessionStorage.getItem("scriptlilla-hero-session-v2")),
       )
     ).seen,
     7,
@@ -86,21 +92,79 @@ try {
     "No floating Effects, replay or try-again buttons are rendered",
   );
   const fresh = await context.newPage();
+  await fresh.clock.install();
   await fresh.goto(origin, { waitUntil: "networkidle" });
   await fresh.locator('.hero-flyby[data-hero="1"]').waitFor();
+  await fresh.waitForFunction(
+    () => document.querySelector(".hero-flyby")?.getAnimations().length === 1,
+  );
+  await fresh.evaluate(() =>
+    document.querySelector(".hero-flyby").getAnimations()[0].finish(),
+  );
+  await fresh.getByRole("button", { name: "Switch to day mode" }).click();
+  await fresh.clock.fastForward(20000);
+  assert.equal(
+    await fresh.locator(".hero-flyby").count(),
+    0,
+    "Night characters must pause in Day mode",
+  );
+  assert.equal(
+    await fresh.evaluate(
+      () =>
+        JSON.parse(sessionStorage.getItem("scriptlilla-hero-session-v2")).seen,
+    ),
+    1,
+  );
+  await fresh.getByRole("button", { name: "Switch to night mode" }).click();
+  await fresh.locator('.hero-flyby[data-hero="2"]').waitFor();
+  await fresh.getByRole("button", { name: "Make ScriptLilla dance" }).click();
+  await fresh.getByRole("button", { name: "Stop ScriptLilla dancing" }).click();
+  assert.equal(
+    await fresh.locator(".hero-flyby-layer").getAttribute("data-enabled"),
+    "true",
+  );
+  assert.equal(
+    await fresh.locator(".stage-signals").getAttribute("data-moving"),
+    "true",
+  );
   await fresh.emulateMedia({ reducedMotion: "reduce" });
   await fresh.waitForFunction(() => !document.querySelector(".hero-flyby"));
   await fresh.reload({ waitUntil: "networkidle" });
-  assert.equal(await fresh.locator(".hero-flyby").count(), 0);
+  assert.equal(
+    await fresh.locator('.hero-flyby[data-motion="full"]').count(),
+    0,
+  );
   report.checks.push(
-    "A fresh tab starts automatically; live reduced-motion preference stops the sequence",
+    "A fresh tab starts automatically; Day pauses progression, Night resumes it, dance clicks do not stop ambient effects, live reduced-motion preference stops moving entrances",
   );
   await context.close();
   const quiet = await browser.newContext({ reducedMotion: "reduce" });
   const qp = await quiet.newPage();
   await qp.goto(origin, { waitUntil: "networkidle" });
-  assert.equal(await qp.locator(".hero-flyby").count(), 0);
-  assert.equal(await qp.evaluate(() => sessionStorage.length), 0);
+  await qp.locator('.hero-flyby[data-hero="1"][data-motion="quiet"]').waitFor();
+  await qp.waitForFunction(
+    () => document.querySelector(".hero-flyby")?.getAnimations().length === 1,
+  );
+  assert.equal(
+    await qp.locator(".hero-flyby .fighter-sprite").getAttribute("data-moving"),
+    "false",
+  );
+  assert.equal(
+    await qp.locator(".hero-flyby").evaluate((el) =>
+      el
+        .getAnimations()[0]
+        .effect.getKeyframes()
+        .some((frame) => frame.transform),
+    ),
+    false,
+  );
+  assert.equal(
+    await qp.evaluate(
+      () =>
+        JSON.parse(sessionStorage.getItem("scriptlilla-hero-session-v2")).seen,
+    ),
+    1,
+  );
   await quiet.close();
   const saver = await browser.newContext();
   const sp = await saver.newPage();
@@ -110,11 +174,24 @@ try {
     }),
   );
   await sp.goto(origin, { waitUntil: "networkidle" });
-  assert.equal(await sp.locator(".hero-flyby").count(), 0);
-  assert.equal(await sp.evaluate(() => sessionStorage.length), 0);
+  await sp.locator('.hero-flyby[data-hero="1"][data-motion="quiet"]').waitFor();
+  await sp.waitForFunction(
+    () => document.querySelector(".hero-flyby")?.getAnimations().length === 1,
+  );
+  assert.equal(
+    await sp.locator(".hero-flyby .fighter-sprite").getAttribute("data-moving"),
+    "false",
+  );
+  assert.equal(
+    await sp.evaluate(
+      () =>
+        JSON.parse(sessionStorage.getItem("scriptlilla-hero-session-v2")).seen,
+    ),
+    1,
+  );
   await saver.close();
   report.checks.push(
-    "Reduced motion and data saving suppress automatic fly-bys without writing progress",
+    "Reduced motion and data saving show still characters with opacity-only fades",
   );
   report.passed = !report.errors.length;
 } catch (error) {

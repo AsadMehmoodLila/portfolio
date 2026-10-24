@@ -1,9 +1,9 @@
 {
   "checks": [
-    "1440px full: cool white first, four-second delayed sun, warm impact, sourced star/quote, automatic cleanup, cancelled sequence never reappears",
-    "1440px reduced: cool white first, four-second delayed sun, warm impact, sourced star/quote, automatic cleanup, cancelled sequence never reappears",
-    "390px full: cool white first, four-second delayed sun, warm impact, sourced star/quote, automatic cleanup, cancelled sequence never reappears",
-    "390px reduced: cool white first, four-second delayed sun, warm impact, sourced star/quote, automatic cleanup, cancelled sequence never reappears"
+    "1440px full: cool white first, four-second delayed sun, warm impact, descending sun, spinning quote, portal impact/consumption, automatic cleanup, cancelled sequence never reappears",
+    "1440px reduced: cool white first, four-second delayed sun, warm impact, descending sun, spinning quote, portal impact/consumption, automatic cleanup, cancelled sequence never reappears",
+    "390px full: cool white first, four-second delayed sun, warm impact, descending sun, spinning quote, portal impact/consumption, automatic cleanup, cancelled sequence never reappears",
+    "390px reduced: cool white first, four-second delayed sun, warm impact, descending sun, spinning quote, portal impact/consumption, automatic cleanup, cancelled sequence never reappears"
   ],
   "errors": [],
   "passed": true

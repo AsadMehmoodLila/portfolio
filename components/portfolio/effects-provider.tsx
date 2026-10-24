@@ -4,12 +4,14 @@ import { createContext, useContext, useEffect, useState } from "react";
 const EffectsContext = createContext({
   enabled: false,
   ready: false,
-  setEnabled: (_value: boolean) => {},
+  heroesEnabled: false,
+  quietHeroes: true,
 });
 
 export function EffectsProvider({ children }: { children: React.ReactNode }) {
   const [enabled, update] = useState(false);
   const [ready, setReady] = useState(false);
+  const [quietHeroes, setQuietHeroes] = useState(true);
   useEffect(() => {
     document.documentElement.dataset.effects = enabled ? "on" : "off";
   }, [enabled]);
@@ -21,14 +23,20 @@ export function EffectsProvider({ children }: { children: React.ReactNode }) {
     try {
       sessionStorage.removeItem("scriptlilla-effects-choice");
     } catch {}
-    const changed = () => update(!media.matches && !saver);
+    const changed = () => {
+      const quiet = !!(media.matches || saver);
+      setQuietHeroes(quiet);
+      update(!quiet);
+    };
     changed();
     setReady(true);
     media.addEventListener("change", changed);
     return () => media.removeEventListener("change", changed);
   }, []);
   return (
-    <EffectsContext.Provider value={{ enabled, ready, setEnabled: update }}>
+    <EffectsContext.Provider
+      value={{ enabled, ready, heroesEnabled: ready, quietHeroes }}
+    >
       {children}
     </EffectsContext.Provider>
   );

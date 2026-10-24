@@ -50,7 +50,10 @@ try {
   await page.waitForTimeout(3900);
   assert.equal(await frame(), still);
   assert.equal(await signals.textContent(), snapshot);
-  assert.equal(await page.locator(".hero-flyby").count(), 0);
+  assert.equal(
+    await page.locator('.hero-flyby[data-motion="full"]').count(),
+    0,
+  );
   await page.reload({ waitUntil: "networkidle" });
   assert.equal(await signals.getAttribute("data-moving"), "false");
   report.checks.push(

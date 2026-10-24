@@ -96,7 +96,9 @@ try {
           );
         const storage = await page.evaluate(() => ({
           local: localStorage.length,
-          session: sessionStorage.length,
+          session: Object.keys(sessionStorage).filter(
+            (key) => key !== "scriptlilla-hero-session-v2",
+          ).length,
         }));
         assert.equal(await page.locator("h1").count(), 1, route);
         assert(
