@@ -1,0 +1,9 @@
+{
+  "checks": [
+    "1440px: privacy link + Back, footer Privacy + Back, selected service/budget/timing/step, reload, fresh consent, no auto-send, clear on acknowledgement/manual clear and expired draft removal",
+    "390px: privacy link + Back, footer Privacy + Back, selected service/budget/timing/step, reload, fresh consent, no auto-send, clear on acknowledgement/manual clear and expired draft removal",
+    "Storage-blocked browsers retain the draft during client-side policy navigation using a memory fallback"
+  ],
+  "errors": [],
+  "passed": true
+}

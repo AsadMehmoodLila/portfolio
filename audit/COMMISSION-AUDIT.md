@@ -1,5 +1,11 @@
 # Commission portfolio review, 24 October 2026
 
+## Draft restoration and visible sun cue
+
+The contact draft now survives Privacy Policy navigation, browser Back and refresh. A functional per-tab entry stores the current step, choices, brief and reply email with a 24-hour restore window; consent and delivery state are excluded. Confirmed Formspree acceptance and Clear draft remove it. Invalid or expired entries are removed on form access. A memory fallback supports internal navigation when browser storage is blocked. The privacy/cookie notices and form explain the storage. No enquiry is transmitted before explicit submission.
+
+The earlier Day-mode cue was completely suppressed when reduced motion was requested. Day switches now show a still sun/message for reduced-motion and keyboard use, and the existing animation for ordinary pointer activation. The cue lasts 2.4 seconds, never intercepts clicks and is cancelled on switching back. Desktop/mobile regression tests cover both paths. Draft regression tests cover both privacy links, Back, choices, step, refresh, consent, mocked sending, manual clear, expiry and blocked storage. No live Formspree enquiry was sent during these tests.
+
 Scope: the existing local repository, owner-provided research pack, redesigned Next.js pages, static export, content workflow and local Chromium browser. The owner's latest instruction excludes gameplay systems and video production; the website provides the sections and templates for those additions.
 
 ## Implemented

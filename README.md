@@ -58,6 +58,8 @@ Policies describe the implemented configuration; they do not certify legal compl
 
 ## Motion and sourced components
 
+Enquiry drafts survive policy navigation, Back and refresh using a per-tab 24-hour restore window. Consent is never saved; confirmed sending or Clear draft removes the draft. `npm run test:draft` checks these flows on desktop/mobile, including blocked-storage navigation. Day mode shows a still sun/message for keyboard or reduced-motion users instead of hiding the cue.
+
 `npm run test:theme` checks warm Day mode, the brief sourced sun strike, cleanup, cancellation, keyboard-accessible theme switching and reduced-motion fallback. Night remains the default on every new page load. There are no floating Effects or replay controls.
 
 `npm run test:effects` verifies the actual sprite playback, alternating attacks, role/code rotation, motion preferences, reload persistence and offscreen pause. `npm run test:flybys` checks all seven appearances, spacing, no automatic replay, absence of replay controls, and automatic reduced-motion handling. Source and license records for LuizMelo sprites and React Bits components are in [design/COMBAT-ASSETS.md](design/COMBAT-ASSETS.md).

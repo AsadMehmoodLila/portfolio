@@ -17,6 +17,12 @@ import {
 } from "@phosphor-icons/react";
 import { identity, services } from "@/data/portfolio";
 import { contactDelivery } from "@/data/contact";
+import {
+  clearEnquiryDraft,
+  readEnquiryDraft,
+  saveEnquiryDraft,
+  type EnquiryDraft,
+} from "@/lib/enquiry-draft";
 
 const choices = [
   ...services.map((item) => ({
@@ -57,19 +63,86 @@ export function ContactQuest() {
   const pending = useRef(false);
   const abort = useRef<AbortController | null>(null);
   const mounted = useRef(true);
+  const [draftReady, setDraftReady] = useState(false);
+  const restored = useRef(false);
+  const confirmed = useRef(false);
+  const latestDraft = useRef<EnquiryDraft>({
+    step,
+    service,
+    budget,
+    timing,
+    details,
+    email,
+  });
+  latestDraft.current = { step, service, budget, timing, details, email };
   useEffect(() => {
     mounted.current = true;
+    const saved = readEnquiryDraft();
+    if (saved) {
+      const validService = choices.some((item) => item.id === saved.service);
+      setService(validService ? saved.service : "");
+      setBudget(
+        budgets.includes(saved.budget) ? saved.budget : "Let’s discuss",
+      );
+      setTiming(timings.includes(saved.timing) ? saved.timing : "Flexible");
+      setDetails(saved.details);
+      setEmail(saved.email);
+      setStep(validService ? saved.step : 0);
+      latestDraft.current = {
+        ...saved,
+        service: validService ? saved.service : "",
+        step: validService ? saved.step : 0,
+      };
+      keyboard.current = true;
+    }
     const selected = new URLSearchParams(location.search).get("service");
-    if (choices.some((item) => item.id === selected)) {
+    if (
+      choices.some((item) => item.id === selected) &&
+      selected !== saved?.service
+    ) {
       setService(selected!);
       setStep(1);
     }
+    restored.current = true;
+    setDraftReady(true);
+    const flush = () => {
+      if (restored.current && !confirmed.current)
+        saveEnquiryDraft(latestDraft.current);
+    };
+    window.addEventListener("pagehide", flush);
     return () => {
+      flush();
+      window.removeEventListener("pagehide", flush);
       mounted.current = false;
       abort.current?.abort();
       animation.current?.cancel();
     };
   }, []);
+  useEffect(() => {
+    if (!draftReady) return;
+    if (status === "sent" || confirmed.current) clearEnquiryDraft();
+    else saveEnquiryDraft({ step, service, budget, timing, details, email });
+  }, [draftReady, step, service, budget, timing, details, email, status]);
+  function discardDraft() {
+    clearEnquiryDraft();
+    latestDraft.current = {
+      step: 0,
+      service: "",
+      budget: "Let’s discuss",
+      timing: "Flexible",
+      details: "",
+      email: "",
+    };
+    setService("");
+    setBudget("Let’s discuss");
+    setTiming("Flexible");
+    setDetails("");
+    setEmail("");
+    setConsent(false);
+    setFailure("");
+    setStatus("idle");
+    move(0, true);
+  }
   useEffect(() => {
     const direction = step >= previous.current ? 1 : -1;
     previous.current = step;
@@ -161,6 +234,8 @@ export function ContactQuest() {
           "Your enquiry could not be accepted. Try again, or use Discord or email below.",
         );
       }
+      confirmed.current = true;
+      clearEnquiryDraft();
       if (mounted.current) {
         setStatus("sent");
         setErrors({});
@@ -211,6 +286,18 @@ export function ContactQuest() {
           ),
         )}
       </div>
+      {draftReady && status !== "sent" && (service || details || email) && (
+        <div className="quest-draft-note">
+          <span>Draft kept in this tab · 24-hour restore window</span>
+          <button
+            type="button"
+            onClick={discardDraft}
+            disabled={status === "sending"}
+          >
+            Clear draft
+          </button>
+        </div>
+      )}
       <form
         ref={form}
         className="quest-form"
@@ -428,7 +515,11 @@ export function ContactQuest() {
                     <label htmlFor="quest-consent">
                       Send my enquiry and reply email to Asad through Formspree.
                       I’ve read the{" "}
-                      <Link href="/privacy/" prefetch={false}>
+                      <Link
+                        href="/privacy/"
+                        prefetch={false}
+                        onClick={() => saveEnquiryDraft(latestDraft.current)}
+                      >
                         Privacy Policy
                       </Link>
                       .

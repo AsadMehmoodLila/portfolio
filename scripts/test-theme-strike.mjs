@@ -20,6 +20,10 @@ try {
     await page.getByRole("button", { name: "Switch to day mode" }).click();
     await page.locator(".sun-strike").waitFor();
     assert.equal(
+      await page.locator(".sun-strike").getAttribute("data-motion"),
+      "full",
+    );
+    assert.equal(
       await page.evaluate(
         () => getComputedStyle(document.body).backgroundColor,
       ),
@@ -64,7 +68,28 @@ try {
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.getByRole("button", { name: "Switch to day mode" }).focus();
     await page.keyboard.press("Enter");
-    assert.equal(await page.locator(".sun-strike").count(), 0);
+    await page.locator('.sun-strike[data-motion="reduced"]').waitFor();
+    assert.equal(
+      await page
+        .locator(".sun-strike")
+        .evaluate((el) => getComputedStyle(el).display),
+      "block",
+    );
+    assert.equal(
+      await page
+        .locator(".sun-strike")
+        .evaluate((el) => getComputedStyle(el).animationName),
+      "none",
+    );
+    assert.equal(
+      await page
+        .locator(".sun-strike-message")
+        .evaluate((el) => getComputedStyle(el).opacity),
+      "1",
+    );
+    await page.screenshot({
+      path: `audit/screenshots/sun-reduced-visible-${width}.png`,
+    });
     await page.waitForFunction(
       () => document.documentElement.dataset.theme === "day",
     );
@@ -79,6 +104,16 @@ try {
       ),
       "rgb(238, 226, 201)",
     );
+    await page.getByRole("button", { name: "Switch to night mode" }).click();
+    await page.getByRole("button", { name: "Switch to day mode" }).click();
+    await page.locator('.sun-strike[data-motion="reduced"]').waitFor();
+    assert.equal(
+      await page
+        .locator(".sun-strike")
+        .evaluate((el) => getComputedStyle(el).display),
+      "block",
+    );
+    await page.waitForFunction(() => !document.querySelector(".sun-strike"));
     report.checks.push(
       `${width}px: warm palette, sourced sun/beam/quote, no click interception, cancellation, cleanup, default night and reduced-motion fallback`,
     );

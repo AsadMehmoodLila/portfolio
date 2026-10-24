@@ -2115,7 +2115,7 @@ h2 span {
   pointer-events: none;
   z-index: 80;
   overflow: hidden;
-  animation: sun-strike-out 1.7s linear both;
+  animation: sun-strike-out 2.4s linear both;
 }
 .sun-strike-sun {
   position: absolute;
@@ -2146,7 +2146,7 @@ h2 span {
   width: min(620px, 90vw);
   transform: translate(-50%, 0) rotate(-4deg);
   gap: 16px;
-  animation: solar-caption 1.7s var(--ease) both;
+  animation: solar-caption 2.4s var(--ease) both;
 }
 .sun-strike-message > div {
   padding: 19px 26px;
@@ -2249,7 +2249,50 @@ h2 span {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .sun-strike {
-    display: none;
+  .sun-strike,
+  .sun-strike * {
+    animation: none !important;
+  }
+  .sun-strike,
+  .sun-strike-sun,
+  .sun-strike-beam,
+  .sun-strike-message {
+    opacity: 1;
+  }
+  .sun-strike-message {
+    transform: translate(-50%, 0) rotate(-4deg);
+  }
+}
+.sun-strike[data-motion="reduced"],
+.sun-strike[data-motion="reduced"] * {
+  animation: none !important;
+}
+.sun-strike[data-motion="reduced"] .sun-strike-message {
+  transform: translate(-50%, 0) rotate(-4deg);
+}
+.quest-draft-note {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 24px;
+  border-bottom: 1px solid var(--line-soft);
+  color: var(--muted);
+  font-size: 0.66rem;
+}
+.quest-draft-note button {
+  border: 0;
+  background: none;
+  color: var(--text);
+  padding: 5px 0 5px 8px;
+  font-size: inherit;
+  flex-shrink: 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+@media (max-width: 600px) {
+  .quest-draft-note {
+    padding-inline: 18px;
+    font-size: 0.61rem;
   }
 }
