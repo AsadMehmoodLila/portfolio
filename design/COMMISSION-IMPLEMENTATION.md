@@ -21,4 +21,3 @@ The new character stage reuses the approved local avatar with a more deliberate 
 - A contact brief is prepared locally and shared only by an explicit email/copy action. No hidden submission service, analytics, account system or checkout.
 - A shared player supports self-hosted video and click-to-load YouTube. No upload, channel ownership or completed showcase video is claimed. CONTENT-GUIDE.md explains the publishing workflow.
 - Test desktop/mobile, both themes, navigation, forms, media, internal routes, links, metadata and accessibility against the completed static export.
-

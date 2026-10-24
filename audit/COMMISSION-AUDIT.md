@@ -43,4 +43,3 @@ This is a technical implementation and policy update. It cannot eliminate legal 
 ## Final game-interface performance pass
 
 Unused Tailwind utility output and an extra downloaded monospace/display weight were removed. The static export's initial CSS fell from roughly 61 KB to 51 KB. Current mobile simulations at 390px with 4x CPU throttling, 1.5 Mbps download and 40ms latency recorded FCP/LCP around 2.16-2.20 seconds and CLS 0. The local server does not compress responses; these are controlled local measurements, not field Core Web Vitals, a global speed ranking or a live-domain guarantee. Details and resource timing: audit/performance-results.json. Mobile uses the lightweight preview until explicit activation, avoiding an automatic 1.34 MB model transfer. Desktop defers 3D beyond the initial content. All 56 browser checks passed again after the final CSS/font changes.
-

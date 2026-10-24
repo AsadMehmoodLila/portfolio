@@ -72,4 +72,3 @@ They have `status: "planned"`. They are excluded from the homepage and sitemap a
 Duplicate a complete `Work` object with a unique lowercase hyphenated slug. Keep it planned while preparing its content. The existing route generator, listing, sitemap, player and responsive case layout handle additional entries without new page files.
 
 The hero character is implemented in components/portfolio/character-stage.tsx. Desktop defers its 3D loading; mobile, reduced-motion and data-saving visitors activate it explicitly. Its independent lighting, motion and reset buttons are keyboard accessible. The still is rendered from the local model with scripts/render-character.mjs after a build/preview; no external model service is called.
-
