@@ -2485,6 +2485,9 @@ h2 span {
   border: 2px solid var(--accent);
   border-radius: 50%;
   pointer-events: none;
+  opacity: 0;
+}
+.character-stage[data-entered="true"] .spawn-ripple {
   animation: spawn-ripple 850ms var(--ease) both;
 }
 @keyframes character-spawn {

@@ -14,10 +14,15 @@ export function CharacterStage() {
   const [active, setActive] = useState(false);
   const [failed, setFailed] = useState(false);
   const [playing, setPlaying] = useState(false);
+  const [entered, setEntered] = useState(false);
   const { night } = useTheme();
   const { setEnabled: setAmbientMotion } = useEffects();
   const help = useId();
   const dragged = useRef(false);
+  useEffect(() => {
+    const arrival = setTimeout(() => setEntered(true), 180);
+    return () => clearTimeout(arrival);
+  }, []);
   const triggerDance = () => {
     if (dragged.current) {
       dragged.current = false;
@@ -336,7 +341,7 @@ export function CharacterStage() {
       className="character-stage"
       data-ready={ready}
       data-dancing={playing}
-      data-entered="true"
+      data-entered={entered}
     >
       <div className="stage-header">
         <span>
