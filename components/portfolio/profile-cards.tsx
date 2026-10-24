@@ -7,45 +7,38 @@ import {
   type CSSProperties,
 } from "react";
 import SpotlightCard from "@/components/vendor/react-bits/SpotlightCard";
+import Link from "next/link";
 import { FighterSprite } from "./fighter-sprite";
 import { useEffects } from "./effects-provider";
-import {
-  ArrowLeft,
-  ArrowRight,
-  Brain,
-  Check,
-  CodeBlock,
-  Crosshair,
-  UserCircle,
-} from "@phosphor-icons/react";
+import { ArrowLeft, ArrowRight, Check } from "@phosphor-icons/react";
 
 const cards = [
   {
-    topic: "The player",
-    title: "Asad, a.k.a. ScriptLilla",
-    icon: UserCircle,
-    body: "I script Roblox gameplay and connect UI to the systems behind it. Your idea is the starting point.",
+    topic: "Your idea",
+    title: "The idea is only the start",
+    body: "I’m Asad, a.k.a. ScriptLilla. I script Roblox gameplay and connect the UI to what happens in-game.",
+    next: "Who decides what happens?",
     tags: ["Gameplay scripting", "UI integration"],
   },
   {
-    topic: "The build",
-    title: "Think in game systems",
-    icon: CodeBlock,
-    body: "What can the player do? What should the server check? I break the mechanic into clear actions, states and connections.",
+    topic: "The logic",
+    title: "The server gets the final say",
+    body: "A button press is just the beginning. I break the mechanic into player actions, states and server checks.",
+    next: "What about when it breaks?",
     tags: ["Player actions", "Server checks"],
   },
   {
-    topic: "The background",
-    title: "Logic, learning, debugging",
-    icon: Brain,
-    body: "I study Artificial Intelligence at UMT. That background feeds my interest in logic, debugging and how game systems fit together.",
+    topic: "The person",
+    title: "The interesting part is what breaks",
+    body: "I study Artificial Intelligence at UMT. Tracing bugs and untangling game logic is the part I enjoy.",
+    next: "Where does my game fit?",
     tags: ["AI student at UMT", "Logic & debugging"],
   },
   {
     topic: "Your game",
-    title: "One clear mission",
-    icon: Crosshair,
-    body: "We agree on your game's needs, the scope and the handover. The work stays focused on those deliverables.",
+    title: "Your game starts here",
+    body: "Tell me what the player should do. We agree on the scope and source handover before work starts.",
+    next: "Bring your idea",
     tags: ["Clear scope", "Source handover"],
   },
 ];
@@ -54,10 +47,37 @@ export function ProfileCards() {
   const { enabled } = useEffects();
   const [index, setIndex] = useState(0);
   const [visited, setVisited] = useState([0]);
+  const [visible, setVisible] = useState(false);
+  const [reacting, setReacting] = useState(false);
+  const [reactionId, setReactionId] = useState(0);
+  const reactionTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const panel = useRef<HTMLDivElement>(null);
   const direction = useRef(1);
   const keyboard = useRef(false);
   const first = useRef(true);
+  useEffect(() => {
+    const node = panel.current;
+    const update = () => {
+      const rect = node?.getBoundingClientRect();
+      setVisible(
+        !!rect && !document.hidden && rect.bottom > 0 && rect.top < innerHeight,
+      );
+    };
+    const observer = new IntersectionObserver(update, { threshold: 0.1 });
+    if (node) observer.observe(node);
+    document.addEventListener("visibilitychange", update);
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", update);
+      if (reactionTimer.current) clearTimeout(reactionTimer.current);
+    };
+  }, []);
+  function react() {
+    if (reactionTimer.current) clearTimeout(reactionTimer.current);
+    setReacting(true);
+    setReactionId((value) => value + 1);
+    reactionTimer.current = setTimeout(() => setReacting(false), 850);
+  }
   useEffect(() => {
     if (first.current) {
       first.current = false;
@@ -83,7 +103,9 @@ export function ProfileCards() {
     return () => motion?.cancel();
   }, [index]);
   function choose(next: number, fromKeyboard = false) {
-    if (next === index || next < 0 || next >= cards.length) return;
+    if (next < 0 || next >= cards.length) return;
+    react();
+    if (next === index) return;
     direction.current = next > index ? 1 : -1;
     keyboard.current = fromKeyboard;
     setIndex(next);
@@ -108,7 +130,6 @@ export function ProfileCards() {
     }
   }
   const card = cards[index];
-  const Icon = card.icon;
   return (
     <SpotlightCard
       className="profile-story"
@@ -160,12 +181,6 @@ export function ProfileCards() {
           aria-live="polite"
           aria-atomic="true"
         >
-          <div className="profile-card-heading">
-            <span className="profile-chapter">
-              <Icon size={18} weight="duotone" aria-hidden /> {card.topic}
-            </span>
-            <span>{String(index + 1).padStart(2, "0")} / 04</span>
-          </div>
           <div className="profile-card-content">
             <div>
               <h3>{card.title}</h3>
@@ -176,16 +191,21 @@ export function ProfileCards() {
                 ))}
               </div>
             </div>
-            <div className="profile-card-art" aria-hidden>
-              <span className="profile-art-grid" />
+            <button
+              type="button"
+              className="profile-card-art"
+              aria-label="Play this character’s sword move"
+              onClick={react}
+              data-reaction={reacting}
+            >
               <FighterSprite
+                key={`${index}-${reacting}-${reactionId}`}
                 fighter={[0, 3, 5, 4][index]}
-                action="portrait"
-                size={140}
-                moving={enabled}
+                action={reacting ? "attack1" : "portrait"}
+                size={reacting ? 220 : 96}
+                moving={visible && (enabled || reacting)}
               />
-              <span className="profile-art-number">0{index + 1}</span>
-            </div>
+            </button>
           </div>
         </div>
       </div>
@@ -205,29 +225,22 @@ export function ProfileCards() {
           >
             <ArrowLeft size={18} aria-hidden />
           </button>
-          <button
-            type="button"
-            className="profile-next"
-            disabled={index === cards.length - 1}
-            onClick={(event) => choose(index + 1, event.detail === 0)}
-          >
-            {index === cards.length - 1 ? "All explored" : "Next card"}
-            {index === cards.length - 1 ? (
-              <Check size={16} aria-hidden />
-            ) : (
+          {index === cards.length - 1 ? (
+            <Link href="/contact/" prefetch={false} className="profile-next">
+              {card.next}
               <ArrowRight size={16} aria-hidden />
-            )}
-          </button>
+            </Link>
+          ) : (
+            <button
+              type="button"
+              className="profile-next"
+              onClick={(event) => choose(index + 1, event.detail === 0)}
+            >
+              {card.next}
+              <ArrowRight size={16} aria-hidden />
+            </button>
+          )}
         </div>
-      </div>
-      <div className="profile-progress" aria-hidden>
-        {cards.map((_, position) => (
-          <span
-            key={position}
-            data-visited={visited.includes(position)}
-            data-current={position === index}
-          />
-        ))}
       </div>
       <noscript>
         <div className="profile-nojs">

@@ -127,6 +127,23 @@ try {
     await fresh.locator(".stage-signals").getAttribute("data-moving"),
     "true",
   );
+  await fresh.locator(".profile-story").scrollIntoViewIfNeeded();
+  await fresh.waitForFunction(() => !document.querySelector(".hero-flyby"));
+  await fresh.clock.fastForward(20000);
+  assert.equal(
+    await fresh.locator(".hero-flyby").count(),
+    0,
+    "Fly-bys must not compete with reading the profile",
+  );
+  assert.equal(
+    await fresh.evaluate(
+      () =>
+        JSON.parse(sessionStorage.getItem("scriptlilla-hero-session-v2")).seen,
+    ),
+    2,
+  );
+  await fresh.locator(".hero").scrollIntoViewIfNeeded();
+  await fresh.locator('.hero-flyby[data-hero="3"]').waitFor();
   await fresh.emulateMedia({ reducedMotion: "reduce" });
   await fresh.waitForFunction(() => !document.querySelector(".hero-flyby"));
   await fresh.reload({ waitUntil: "networkidle" });

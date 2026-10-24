@@ -126,7 +126,7 @@ try {
       await intro.scrollIntoViewIfNeeded();
       for (let i = 1; i < 4; i++)
         await intro
-          .getByRole("button", { name: "Next card", exact: true })
+          .locator("button.profile-next")
           .click();
       await intro.getByText("You’ve met the scripter").waitFor();
       await intro
@@ -134,7 +134,7 @@ try {
         .focus();
       await page.keyboard.press("Home");
       await intro
-        .getByRole("heading", { name: "Asad, a.k.a. ScriptLilla" })
+        .getByRole("heading", { name: "The idea is only the start" })
         .waitFor();
       const faq = page.locator(".faq-list details").first();
       await faq.locator("summary").focus();
@@ -224,7 +224,7 @@ try {
   await np.goto(origin);
   assert(
     await np
-      .getByText("Logic, learning, debugging", { exact: true })
+      .getByText("The interesting part is what breaks", { exact: true })
       .isVisible(),
   );
   report.checks.push(

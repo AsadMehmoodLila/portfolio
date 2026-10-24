@@ -3,7 +3,8 @@
     "Automatic playback starts real advancing sprite frames, alternating attacks, rotating roles and code snippets",
     "Reduced motion stops sprites, roles, code and fly-bys, including after refresh",
     "Combat and role timers stop when the character stage leaves the viewport",
-    "Card navigation and layout remain usable at mobile/desktop widths in both themes"
+    "Card navigation and layout remain usable at mobile/desktop widths in both themes",
+    "Copy is larger than the supporting sprite; visible idle frames advance, quiet-mode clicks play one short sourced attack, and the final card leads directly to the enquiry"
   ],
   "errors": [],
   "passed": true

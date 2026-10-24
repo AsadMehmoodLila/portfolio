@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "scans": 16,
+  "checks": [
+    "All four cards at desktop/mobile widths in both themes have no reported WCAG violations or horizontal overflow"
+  ]
+}

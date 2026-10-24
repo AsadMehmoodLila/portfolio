@@ -1,7 +1,13 @@
 "use client";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
-export function SunCinematic({ quiet: initialQuiet }: { quiet: boolean }) {
+export function SunCinematic({
+  quiet: initialQuiet,
+  onWarm,
+}: {
+  quiet: boolean;
+  onWarm: () => void;
+}) {
   const root = useRef<HTMLDivElement>(null);
   const [reduced, setReduced] = useState(false);
   const [phase, setPhase] = useState("arrival");
@@ -12,7 +18,10 @@ export function SunCinematic({ quiet: initialQuiet }: { quiet: boolean }) {
     update();
     media.addEventListener("change", update);
     const cues = [
+      setTimeout(() => setPhase("beams"), 900),
       setTimeout(() => setPhase("impact"), 1400),
+      // The page only warms after the sun has visibly fired across the viewport.
+      setTimeout(onWarm, 2600),
       setTimeout(() => setPhase("consuming"), 3300),
       setTimeout(() => setPhase("closing"), 4400),
     ];
@@ -20,7 +29,7 @@ export function SunCinematic({ quiet: initialQuiet }: { quiet: boolean }) {
       media.removeEventListener("change", update);
       cues.forEach(clearTimeout);
     };
-  }, []);
+  }, [onWarm]);
   useLayoutEffect(() => {
     const place = () => {
       if (!root.current) return;
@@ -76,6 +85,28 @@ export function SunCinematic({ quiet: initialQuiet }: { quiet: boolean }) {
         "--beam-angle": `${angle}deg`,
       }))
         styles.setProperty(key, value);
+      const ends = [
+        [-0.05, 0.9],
+        [0.18, 1.1],
+        [0.48, 1.1],
+        [0.82, 1.1],
+        [1.08, 0.9],
+        [1.08, 0.57],
+        [1.08, 0.24],
+      ];
+      root.current
+        .querySelectorAll<HTMLElement>(".solar-ray")
+        .forEach((ray, index) => {
+          const [rx, ry] = ends[index];
+          const dx = innerWidth * rx - sunX,
+            dy = innerHeight * ry - sunY;
+          ray.style.setProperty(
+            "--ray-angle",
+            `${(Math.atan2(dy, dx) * 180) / Math.PI}deg`,
+          );
+          ray.style.setProperty("--ray-length", `${Math.hypot(dx, dy)}px`);
+          ray.style.setProperty("--ray-delay", `${index * 35}ms`);
+        });
       root.current.dataset.placed = "true";
     };
     place();
@@ -94,6 +125,14 @@ export function SunCinematic({ quiet: initialQuiet }: { quiet: boolean }) {
       data-phase={phase}
       aria-hidden="true"
     >
+      <div className="solar-warmth" />
+      <div className="solar-ray-field">
+        {Array.from({ length: 7 }, (_, index) => (
+          <div key={index} className="solar-ray">
+            <span />
+          </div>
+        ))}
+      </div>
       <div className="solar-beam">
         <div className="solar-beam-core" />
       </div>

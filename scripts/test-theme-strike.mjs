@@ -64,6 +64,25 @@ try {
         "cool",
         "Sun arrives before warm impact",
       );
+      assert.equal(await page.locator(".solar-ray").count(), 7);
+      await page.waitForFunction(() =>
+        [...document.querySelectorAll(".solar-ray > span")].every((el) => {
+          const style = getComputedStyle(el);
+          return (
+            Number(style.opacity) >= 0.6 &&
+            (style.transform === "none" ||
+              new DOMMatrix(style.transform).a >= 0.95)
+          );
+        }),
+      );
+      assert.equal(
+        await page.locator("html").getAttribute("data-day-phase"),
+        "cool",
+        "The sun must fire across the page before warming it",
+      );
+      await page.screenshot({
+        path: `audit/screenshots/sun-beams-before-warm-${width}-${reduced}.png`,
+      });
       await page.waitForFunction(
         () => document.documentElement.dataset.dayPhase === "warm",
       );
@@ -167,7 +186,7 @@ try {
         false,
       );
       report.checks.push(
-        `${width}px ${reduced ? "reduced" : "full"}: cool white first, four-second delayed sun, warm impact, descending sun, spinning quote, torn opening kept clear of avatar, unboxed text absorption, automatic cleanup, cancelled sequence never reappears`,
+        `${width}px ${reduced ? "reduced" : "full"}: cool white first, delayed sun, seven visible rays before warming, torn opening clear of avatar/dock, quote absorption, cleanup and cancellation`,
       );
       await page.close();
     }

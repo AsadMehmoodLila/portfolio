@@ -1,5 +1,11 @@
 "use client";
-import { createContext, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import type { ReactNode } from "react";
 import { Moon, Sun } from "@phosphor-icons/react";
 import { SunCinematic } from "@/components/portfolio/sun-cinematic";
@@ -15,6 +21,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [quietStrike, setQuietStrike] = useState(false);
   const [dayPhase, setDayPhase] = useState<"cool" | "warm">("warm");
   const [sequence, setSequence] = useState(0);
+  const warmPage = useCallback(() => setDayPhase("warm"), []);
   useEffect(() => {
     if (night || !sequence) return;
     // Fetch the artwork during the white interval, before its first visible frame.
@@ -26,11 +33,9 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       asset.src = src;
     }
     const arrival = setTimeout(() => setStrike(sequence), 4000);
-    const impact = setTimeout(() => setDayPhase("warm"), 5400);
     const finish = setTimeout(() => setStrike(0), 9200);
     return () => {
       clearTimeout(arrival);
-      clearTimeout(impact);
       clearTimeout(finish);
     };
   }, [sequence, night]);
@@ -65,7 +70,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     >
       {children}
       {strike > 0 && !night && (
-        <SunCinematic key={strike} quiet={quietStrike} />
+        <SunCinematic key={strike} quiet={quietStrike} onWarm={warmPage} />
       )}
     </ThemeContext.Provider>
   );

@@ -704,36 +704,23 @@ h2 span {
   overflow: hidden;
 }
 .profile-story-panel {
-  padding: 25px 28px 27px;
-  min-height: 272px;
-}
-.profile-card-heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 18px;
-  color: var(--accent);
-}
-.profile-card-heading > span {
-  font-family: var(--font-geist-mono), monospace;
-  font-size: 0.66rem;
-  color: var(--muted);
-}
-.profile-card-heading .profile-chapter {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--accent);
+  padding: 32px;
+  min-height: 240px;
 }
 .profile-card-content {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 130px;
-  align-items: center;
-  gap: 22px;
+  grid-template-columns: minmax(0, 1fr) 96px;
+  align-items: end;
+  gap: 20px;
 }
 .profile-card-art {
   position: relative;
-  height: 150px;
+  height: 100px;
+  width: 96px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
   display: grid;
   place-items: center;
   isolation: isolate;
@@ -743,26 +730,6 @@ h2 span {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-}
-.profile-art-grid {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  opacity: 0.35;
-  background-image:
-    linear-gradient(var(--line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line) 1px, transparent 1px);
-  background-size: 22px 22px;
-  mask-image: radial-gradient(ellipse, #000, transparent 73%);
-}
-.profile-art-number {
-  position: absolute;
-  z-index: -1;
-  top: -14px;
-  right: -2px;
-  font: 700 6rem/1 var(--font-display);
-  color: var(--line);
-  opacity: 0.35;
 }
 .profile-tags {
   display: flex;
@@ -777,30 +744,16 @@ h2 span {
   background: color-mix(in srgb, var(--bg) 65%, transparent);
   padding: 4px 8px;
 }
-.profile-progress {
-  display: flex;
-  gap: 5px;
-  padding: 0 18px 13px;
-}
-.profile-progress > span {
-  height: 3px;
-  flex: 1;
-  background: var(--line);
-}
-.profile-progress > span[data-visited="true"] {
-  background: var(--accent);
-  opacity: 0.45;
-}
-.profile-progress > span[data-current="true"] {
-  opacity: 1;
-}
 .profile-story-panel h3 {
-  font-size: 1.3rem;
-  margin-bottom: 11px;
+  font-size: clamp(1.7rem, 2.4vw, 2.2rem);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  max-width: 24ch;
+  margin-bottom: 18px;
 }
 .profile-story-panel p {
-  font-size: 0.92rem;
-  line-height: 1.8;
+  font-size: 1rem;
+  line-height: 1.7;
   color: var(--muted);
   max-width: 53ch;
 }
@@ -829,17 +782,19 @@ h2 span {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  min-height: 38px;
-  padding: 8px 12px;
-  border: 1px solid var(--line);
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid var(--accent);
   border-radius: 4px;
-  background: var(--bg);
-  color: var(--text);
-  font-size: 0.7rem;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 650;
+  font-size: 0.78rem;
 }
 .profile-next:not(:disabled):hover {
   border-color: var(--accent);
-  color: var(--accent);
+  color: var(--on-accent);
+  filter: brightness(1.06);
 }
 .profile-next:active {
   transform: translateX(2px);
@@ -855,45 +810,67 @@ h2 span {
 @media (max-width: 600px) {
   .profile-topics {
     padding: 10px;
-    gap: 5px;
+    gap: 4px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
   .profile-topic {
     font-size: 0.65rem;
-    padding-inline: 8px;
+    padding-inline: 5px;
+    gap: 4px;
+    min-height: 44px;
   }
   .profile-story-panel {
     padding: 22px;
-    min-height: 260px;
+    min-height: 300px;
   }
   .profile-card-content {
-    grid-template-columns: minmax(0, 1fr) 70px;
+    grid-template-columns: minmax(0, 1fr) 58px;
     gap: 9px;
   }
   .profile-card-art {
-    height: 120px;
-    transform: scale(0.75);
-    transform-origin: center;
+    height: 90px;
+    width: 58px;
+    transform: none;
   }
   .profile-tags {
     gap: 7px;
   }
   .profile-story-panel h3 {
-    font-size: 1.2rem;
+    font-size: 1.8rem;
   }
   .profile-story-panel p {
-    font-size: 0.88rem;
+    font-size: 0.92rem;
   }
   .profile-story-controls {
     padding: 12px 14px 12px 20px;
     gap: 10px;
+    flex-direction: column;
+    align-items: stretch;
   }
   .profile-story-controls > span {
     font-size: 0.62rem;
-    max-width: 13ch;
+    max-width: none;
   }
   .profile-next {
-    font-size: 0.67rem;
+    font-size: 0.75rem;
     gap: 9px;
+  }
+}
+.profile-card-art[data-reaction="true"] .fighter-sprite > img {
+  animation-iteration-count: 1 !important;
+  animation-fill-mode: forwards;
+}
+@media (max-width: 600px) {
+  .profile-card-art .fighter-sprite {
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  .profile-story-controls > div {
+    display: grid;
+    grid-template-columns: 38px minmax(0, 1fr);
+  }
+  .profile-story-controls .profile-next {
+    justify-content: space-between;
   }
 }
 .discord-section {

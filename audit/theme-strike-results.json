@@ -1,9 +1,9 @@
 {
   "checks": [
-    "1440px full: cool white first, four-second delayed sun, warm impact, descending sun, spinning quote, torn opening kept clear of avatar, unboxed text absorption, automatic cleanup, cancelled sequence never reappears",
-    "1440px reduced: cool white first, four-second delayed sun, warm impact, descending sun, spinning quote, torn opening kept clear of avatar, unboxed text absorption, automatic cleanup, cancelled sequence never reappears",
-    "390px full: cool white first, four-second delayed sun, warm impact, descending sun, spinning quote, torn opening kept clear of avatar, unboxed text absorption, automatic cleanup, cancelled sequence never reappears",
-    "390px reduced: cool white first, four-second delayed sun, warm impact, descending sun, spinning quote, torn opening kept clear of avatar, unboxed text absorption, automatic cleanup, cancelled sequence never reappears"
+    "1440px full: cool white first, delayed sun, seven visible rays before warming, torn opening clear of avatar/dock, quote absorption, cleanup and cancellation",
+    "1440px reduced: cool white first, delayed sun, seven visible rays before warming, torn opening clear of avatar/dock, quote absorption, cleanup and cancellation",
+    "390px full: cool white first, delayed sun, seven visible rays before warming, torn opening clear of avatar/dock, quote absorption, cleanup and cancellation",
+    "390px reduced: cool white first, delayed sun, seven visible rays before warming, torn opening clear of avatar/dock, quote absorption, cleanup and cancellation"
   ],
   "errors": [],
   "passed": true

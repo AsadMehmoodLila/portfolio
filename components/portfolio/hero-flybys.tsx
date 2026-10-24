@@ -57,12 +57,19 @@ export function HeroFlybys() {
         sessionStorage.setItem(KEY, JSON.stringify(progress.current));
       } catch {}
     };
-    const eligible = () =>
-      !disposed &&
-      live.current.heroesEnabled &&
-      live.current.night &&
-      !document.hidden &&
-      live.current.path === "/";
+    const eligible = () => {
+      const hero = document.querySelector(".hero")?.getBoundingClientRect();
+      return (
+        !disposed &&
+        live.current.heroesEnabled &&
+        live.current.night &&
+        !document.hidden &&
+        live.current.path === "/" &&
+        !!hero &&
+        hero.bottom > 100 &&
+        hero.top < innerHeight
+      );
+    };
     const end = () => {
       motion?.cancel();
       motion = null;
@@ -167,6 +174,16 @@ export function HeroFlybys() {
       document.removeEventListener("visibilitychange", schedule);
     };
   }, []);
+  useEffect(() => {
+    const hero = document.querySelector(".hero");
+    if (!hero) return;
+    const observer = new IntersectionObserver(
+      () => controls.current?.schedule(),
+      { threshold: [0, 0.05] },
+    );
+    observer.observe(hero);
+    return () => observer.disconnect();
+  }, [path]);
 
   return (
     <div

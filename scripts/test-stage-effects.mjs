@@ -74,7 +74,7 @@ try {
         document.documentElement.dataset.theme = value;
       }, theme);
       await page.locator(".profile-topic").first().click();
-      const next = page.getByRole("button", { name: "Next card" });
+      const next = page.locator("button.profile-next");
       await next.click();
       assert.equal(
         await page.locator(".profile-story-panel").getAttribute("aria-label"),
@@ -93,6 +93,61 @@ try {
   }
   report.checks.push(
     "Card navigation and layout remain usable at mobile/desktop widths in both themes",
+  );
+  await page.waitForTimeout(950);
+  const portrait = page.locator(".profile-card-art .fighter-sprite");
+  await page.waitForFunction(
+    () =>
+      document.querySelector(".profile-card-art .fighter-sprite").dataset
+        .moving === "true",
+  );
+  const spriteFrame = () =>
+    portrait.locator("img").evaluate((el) => getComputedStyle(el).transform);
+  const idleFrame = await spriteFrame();
+  await page.waitForTimeout(210);
+  assert.notEqual(
+    await spriteFrame(),
+    idleFrame,
+    "Visible card idle frames must advance",
+  );
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.waitForFunction(
+    () =>
+      document.querySelector(".profile-card-art .fighter-sprite").dataset
+        .moving === "false",
+  );
+  await page
+    .getByRole("button", { name: "Play this character’s sword move" })
+    .click();
+  assert(
+    (await portrait.locator("img").getAttribute("src")).includes("attack1"),
+  );
+  const attackFrame = await spriteFrame();
+  await page.waitForTimeout(200);
+  assert.notEqual(
+    await spriteFrame(),
+    attackFrame,
+    "Explicit quiet-mode click must play a short attack",
+  );
+  await page.waitForFunction(
+    () =>
+      document.querySelector(".profile-card-art").dataset.reaction === "false",
+  );
+  assert.equal(await portrait.getAttribute("data-moving"), "false");
+  await page.locator(".profile-topic").last().click();
+  assert.equal(
+    await page
+      .getByRole("link", { name: "Bring your idea" })
+      .getAttribute("href"),
+    "/contact/",
+  );
+  assert(
+    await page
+      .locator(".profile-story-panel h3")
+      .evaluate((el) => parseFloat(getComputedStyle(el).fontSize) >= 30),
+  );
+  report.checks.push(
+    "Copy is larger than the supporting sprite; visible idle frames advance, quiet-mode clicks play one short sourced attack, and the final card leads directly to the enquiry",
   );
   await page.close();
   report.passed = report.errors.length === 0;

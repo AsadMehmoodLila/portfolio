@@ -35,6 +35,80 @@
   height: 130px;
   transform: translate(-50%, -50%);
 }
+.solar-ray {
+  position: absolute;
+  left: var(--sun-x);
+  top: var(--sun-y);
+  width: var(--ray-length);
+  height: 34px;
+  transform: rotate(var(--ray-angle)) translateY(-50%);
+  transform-origin: 0 0;
+}
+.solar-ray > span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-origin: left center;
+  clip-path: polygon(0 45%, 100% 0, 100% 100%, 0 55%);
+  background: linear-gradient(
+    0deg,
+    transparent,
+    #ffb94e30 18%,
+    #ffc45eaa 43%,
+    #fff4c9 49%,
+    #fff4c9 51%,
+    #ffc45eaa 57%,
+    #ffb94e30 82%,
+    transparent
+  );
+  animation: solar-fan 5200ms linear var(--ray-delay) both;
+}
+.solar-warmth {
+  position: absolute;
+  inset: 0;
+  background: #f4c674;
+  clip-path: circle(0 at var(--sun-x) var(--sun-y));
+  animation: solar-colour-wave 5200ms linear both;
+}
+@keyframes solar-fan {
+  0%,
+  17% {
+    opacity: 0;
+    transform: scaleX(0.08) scaleY(0.3);
+  }
+  21% {
+    opacity: 1;
+  }
+  32%,
+  46% {
+    opacity: 0.9;
+    transform: scaleX(1) scaleY(1);
+  }
+  61%,
+  100% {
+    opacity: 0;
+    transform: scaleX(1) scaleY(0.3);
+  }
+}
+@keyframes solar-colour-wave {
+  0%,
+  39% {
+    opacity: 0;
+    clip-path: circle(0 at var(--sun-x) var(--sun-y));
+  }
+  43% {
+    opacity: 0.38;
+  }
+  52% {
+    opacity: 0.38;
+    clip-path: circle(150vmax at var(--sun-x) var(--sun-y));
+  }
+  63%,
+  100% {
+    opacity: 0;
+    clip-path: circle(150vmax at var(--sun-x) var(--sun-y));
+  }
+}
 .solar-sun {
   width: 100%;
   height: 100%;
@@ -231,9 +305,22 @@
 .solar-cinematic[data-motion="reduced"] * {
   animation: none !important;
 }
-.solar-cinematic[data-motion="reduced"] .solar-beam,
 .solar-cinematic[data-motion="reduced"] .solar-impact-ring {
   display: none;
+}
+.solar-cinematic[data-motion="reduced"] .solar-warmth {
+  display: none;
+}
+.solar-cinematic[data-motion="reduced"] .solar-ray > span,
+.solar-cinematic[data-motion="reduced"] .solar-beam-core {
+  opacity: 0;
+  transform: none;
+}
+.solar-cinematic[data-motion="reduced"][data-phase="beams"] .solar-ray > span,
+.solar-cinematic[data-motion="reduced"][data-phase="impact"] .solar-ray > span,
+.solar-cinematic[data-motion="reduced"][data-phase="beams"] .solar-beam-core,
+.solar-cinematic[data-motion="reduced"][data-phase="impact"] .solar-beam-core {
+  opacity: 0.7;
 }
 .solar-cinematic[data-motion="reduced"] .solar-sun {
   opacity: 1;
