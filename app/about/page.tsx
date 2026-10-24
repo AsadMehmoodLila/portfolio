@@ -33,12 +33,12 @@ export default function AboutPage() {
         </div>
         <div className="about-page-layout shell">
           <div className="about-identity">
-            <div className="about-monogram" aria-hidden>
+            <div className="about-monogram profile-portrait">
               <img
-                src="/media/character-stage.webp"
-                alt=""
-                width={800}
-                height={900}
+                src="/media/scriptlilla-portrait.webp"
+                alt="ScriptLilla's illustrated avatar with a green plaid cap, pale green hair, blue eyes and a black high-neck jacket"
+                width={720}
+                height={720}
               />
             </div>
             <span>{identity.name}</span>

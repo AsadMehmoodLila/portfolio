@@ -259,12 +259,12 @@ export function PortfolioHome() {
         aria-labelledby="about-title"
       >
         <div className="about-identity">
-          <div className="about-monogram" aria-hidden>
+            <div className="about-monogram profile-portrait">
             <img
-              src="/media/character-stage.webp"
-              alt=""
-              width={800}
-              height={900}
+                src="/media/scriptlilla-portrait.webp"
+                alt="ScriptLilla's illustrated avatar wearing a green plaid cap and black jacket"
+                width={720}
+                height={720}
               loading="lazy"
             />
           </div>

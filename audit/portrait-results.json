@@ -1,0 +1,77 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "width": 1440,
+      "theme": "night",
+      "route": "/about/",
+      "imageLoaded": true,
+      "alt": true,
+      "noOverflow": true,
+      "axeViolations": 0
+    },
+    {
+      "width": 1440,
+      "theme": "night",
+      "route": "/",
+      "imageLoaded": true,
+      "alt": true,
+      "noOverflow": true,
+      "axeViolations": 0
+    },
+    {
+      "width": 1440,
+      "theme": "day",
+      "route": "/about/",
+      "imageLoaded": true,
+      "alt": true,
+      "noOverflow": true,
+      "axeViolations": 0
+    },
+    {
+      "width": 1440,
+      "theme": "day",
+      "route": "/",
+      "imageLoaded": true,
+      "alt": true,
+      "noOverflow": true,
+      "axeViolations": 0
+    },
+    {
+      "width": 390,
+      "theme": "night",
+      "route": "/about/",
+      "imageLoaded": true,
+      "alt": true,
+      "noOverflow": true,
+      "axeViolations": 0
+    },
+    {
+      "width": 390,
+      "theme": "night",
+      "route": "/",
+      "imageLoaded": true,
+      "alt": true,
+      "noOverflow": true,
+      "axeViolations": 0
+    },
+    {
+      "width": 390,
+      "theme": "day",
+      "route": "/about/",
+      "imageLoaded": true,
+      "alt": true,
+      "noOverflow": true,
+      "axeViolations": 0
+    },
+    {
+      "width": 390,
+      "theme": "day",
+      "route": "/",
+      "imageLoaded": true,
+      "alt": true,
+      "noOverflow": true,
+      "axeViolations": 0
+    }
+  ]
+}

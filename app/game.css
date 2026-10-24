@@ -606,6 +606,16 @@ h2 span {
   object-fit: contain;
   transform: scale(1.04);
 }
+.about-monogram.profile-portrait {
+  aspect-ratio: 1;
+  background: radial-gradient(ellipse at 50% 20%, color-mix(in srgb, #72a64c 12%, var(--surface-raised)), var(--surface) 75%);
+}
+.about-monogram.profile-portrait > img {
+  object-fit: contain;
+  object-position: center bottom;
+  transform: none;
+  padding-top: 9px;
+}
 .about-copy > h2 {
   font-size: clamp(2rem, 3.7vw, 3.3rem);
 }
