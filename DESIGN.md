@@ -1,6 +1,6 @@
 # Current portfolio design
 
-Updated 24 October 2026. The owner explicitly rejected the restrained editorial draft and approved the stronger game-interface direction during the visual iteration.
+Updated 25 October 2026. The owner explicitly rejected the restrained editorial draft and approved the stronger game-interface direction during the visual iteration.
 
 ## Direction
 
@@ -49,6 +49,9 @@ The current contact route uses a short choice-based quest with Formspree deliver
 
 Seven sourced pixel-art fighters use LuizMelo's original run/attack/idle frames (CC0), replacing the earlier Kenney stills. Seven entrances run automatically once per tab about fifteen seconds apart, with no floating Effects or replay controls. A repeating sword-combat vignette, rotating roles and illustrative Luau snippets run while their stage is visible. Reduced motion/data saving replace moving entrances with still portraits and stop the looping stage motion. Clicking the character controls only its dance. Profile cards use React Bits SpotlightCard, chapter art and compact tags while preserving keyboard controls. React Bits RotatingText powers roles; both upstream licenses are retained. Source/rights: design/COMBAT-ASSETS.md. No new paid generation was used.
 
-Current owner revision: Day starts with the former cool-white palette, the sourced sun drops in at four seconds, throws the Phosphor star and quote, and the page turns warm at 5.6 seconds. Pending effects cancel on a switch back to Night. Keyboard/reduced-motion users see still effects on the same schedule. The header/footer/tab mark now uses the owner's green-cap portrait, and the commission invitation is a small game-style ticket. First entry has a short spawn/fade; the first of seven once-per-tab character entrances lasts longer. No new model generation or paid credits were used.
+Current owner revision: the brief, stage header, P1/spawn labels, speech bubble and visible instruction bar are removed. The character is the keyboard-accessible dance target. Seven sourced characters remain unboxed; reduced motion uses a gentle still appearance rather than a framed card. Day uses a compact generated solar orb, directed beam and unboxed quote. The torn screen-opening VFX is anchored below the copy and left of the avatar; it must also clear the service dock. Mobile places the cue over the copy above the avatar. Impact warms the palette at 5.4 seconds and cleanup finishes at 9.2 seconds. Asset prompts and production notes: design/cinematic/README.md.
 
 The current sun cinematic has its own leaf component and `app/cinematics.css`. Its 5.1-second animation begins after the four-second white interval: distant sun, beam, quote flight, impact/hold, portal consumption and sun departure. Quiet variants preserve the milestones without large movement. The Night sequence now starts after the real sprite mounts, and its new per-tab counter is saved only after animation starts.
+
+
+25 October revision: the owner rejected the previous ring/card composition. The hero intro, P1/spawn labels, speech bubble, instruction bar and framed sprite cameo are removed. Generated RGBA sun and screen-tear artwork replace the flat ring and emoji. The desktop impact is anchored in the lower-left hero gap and kept clear of the avatar; mobile places it over the copy, above the character. A narrow directed beam and unboxed spinning quote lead into the torn opening. Day impact is now at 5.4 seconds and cleanup at 9.2 seconds. Prompts, asset paths and provenance: design/cinematic/README.md. This supersedes earlier choreography notes.

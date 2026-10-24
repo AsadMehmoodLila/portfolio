@@ -100,6 +100,37 @@ try {
             .evaluate((el) => getComputedStyle(el).opacity),
         ) > 0.8,
       );
+      const hole = await page.locator(".solar-portal").boundingBox();
+      const avatar = await page.locator(".character-world").boundingBox();
+      assert(
+        width <= 700
+          ? hole.y + hole.height < avatar.y
+          : hole.x + hole.width < avatar.x,
+        "Impact hole must not overlap the avatar stage",
+      );
+      const dock = await page.locator(".system-dock").boundingBox();
+      assert(
+        hole.y + hole.height < dock.y,
+        "Impact hole must clear the service dock",
+      );
+      assert.equal(
+        await page.locator(".solar-portal img").getAttribute("src"),
+        "/media/vfx/screen-tear.webp",
+      );
+      assert.equal(
+        await page
+          .locator(".solar-quote")
+          .evaluate((el) => getComputedStyle(el).backgroundColor),
+        "rgba(0, 0, 0, 0)",
+      );
+      assert.equal(
+        await page
+          .locator(
+            ".hero-status,.stage-header,.character-speech,.character-invitation,.hero-entry-caption",
+          )
+          .count(),
+        0,
+      );
       await page.locator('.solar-cinematic[data-phase="consuming"]').waitFor();
       await page.waitForTimeout(250);
       if (reduced) {
@@ -136,7 +167,7 @@ try {
         false,
       );
       report.checks.push(
-        `${width}px ${reduced ? "reduced" : "full"}: cool white first, four-second delayed sun, warm impact, descending sun, spinning quote, portal impact/consumption, automatic cleanup, cancelled sequence never reappears`,
+        `${width}px ${reduced ? "reduced" : "full"}: cool white first, four-second delayed sun, warm impact, descending sun, spinning quote, torn opening kept clear of avatar, unboxed text absorption, automatic cleanup, cancelled sequence never reappears`,
       );
       await page.close();
     }

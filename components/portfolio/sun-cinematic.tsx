@@ -1,71 +1,129 @@
 "use client";
-import { useEffect, useState } from "react";
-import { StarFour } from "@phosphor-icons/react";
-import { FighterSprite } from "./fighter-sprite";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
-// The licensed Twemoji sun and Phosphor star share one cancellable CSS timeline.
 export function SunCinematic({ quiet: initialQuiet }: { quiet: boolean }) {
+  const root = useRef<HTMLDivElement>(null);
   const [reduced, setReduced] = useState(false);
-  const quiet = initialQuiet || reduced;
   const [phase, setPhase] = useState("arrival");
+  const quiet = initialQuiet || reduced;
   useEffect(() => {
     const media = matchMedia("(prefers-reduced-motion: reduce)");
     const update = () => setReduced(media.matches);
     update();
     media.addEventListener("change", update);
-    return () => media.removeEventListener("change", update);
-  }, []);
-  useEffect(() => {
     const cues = [
-      setTimeout(() => setPhase("impact"), 1600),
+      setTimeout(() => setPhase("impact"), 1400),
       setTimeout(() => setPhase("consuming"), 3300),
       setTimeout(() => setPhase("closing"), 4400),
     ];
-    return () => cues.forEach(clearTimeout);
+    return () => {
+      media.removeEventListener("change", update);
+      cues.forEach(clearTimeout);
+    };
+  }, []);
+  useLayoutEffect(() => {
+    const place = () => {
+      if (!root.current) return;
+      const hero = document.querySelector(".hero")?.getBoundingClientRect();
+      const copy = document
+        .querySelector(".hero-copy")
+        ?.getBoundingClientRect();
+      const visual = document
+        .querySelector(".hero-visual")
+        ?.getBoundingClientRect();
+      const dock = document
+        .querySelector(".system-dock")
+        ?.getBoundingClientRect();
+      const mobile = innerWidth <= 700;
+      const diameter = mobile ? 220 : Math.min(280, innerWidth * 0.19);
+      const clamp = (n: number, min: number, max: number) =>
+        Math.min(max, Math.max(min, n));
+      // The impact belongs to the empty lower-left area, never the avatar stage.
+      const x = mobile
+        ? innerWidth * 0.5
+        : hero
+          ? hero.left + hero.width * 0.39
+          : innerWidth * 0.35;
+      const y = clamp(
+        mobile && copy
+          ? copy.top + copy.height * 0.62
+          : hero
+            ? hero.bottom - 105
+            : innerHeight * 0.67,
+        210,
+        Math.min(
+          innerHeight - diameter * 0.56,
+          !mobile && dock ? dock.top - diameter / 2 - 14 : Infinity,
+        ),
+      );
+      const safeX =
+        visual && !mobile ? Math.min(x, visual.left - diameter * 0.55) : x;
+      const sunX = mobile
+        ? 65
+        : hero
+          ? hero.left + hero.width * 0.12
+          : innerWidth * 0.15;
+      const sunY = mobile ? 125 : Math.max(130, hero ? hero.top + 45 : 150);
+      const angle = (Math.atan2(y - sunY, safeX - sunX) * 180) / Math.PI;
+      const styles = root.current.style;
+      for (const [key, value] of Object.entries({
+        "--impact-x": `${safeX}px`,
+        "--impact-y": `${y}px`,
+        "--hole-size": `${diameter}px`,
+        "--sun-x": `${sunX}px`,
+        "--sun-y": `${sunY}px`,
+        "--beam-length": `${Math.hypot(safeX - sunX, y - sunY)}px`,
+        "--beam-angle": `${angle}deg`,
+      }))
+        styles.setProperty(key, value);
+      root.current.dataset.placed = "true";
+    };
+    place();
+    window.addEventListener("resize", place);
+    window.addEventListener("scroll", place, { passive: true });
+    return () => {
+      window.removeEventListener("resize", place);
+      window.removeEventListener("scroll", place);
+    };
   }, []);
   return (
     <div
+      ref={root}
       className="solar-cinematic"
       data-motion={quiet ? "reduced" : "full"}
       data-phase={phase}
       aria-hidden="true"
     >
       <div className="solar-beam">
-        <div />
+        <div className="solar-beam-core" />
       </div>
-      <img
-        className="solar-sun"
-        src="/media/sun.svg"
-        alt=""
-        width={180}
-        height={180}
-      />
+      <div className="solar-sun-position">
+        <img
+          className="solar-sun"
+          src="/media/vfx/solar-orb.webp"
+          alt=""
+          width={320}
+          height={320}
+        />
+      </div>
       <div className="solar-target">
         <div className="solar-impact-ring" />
         <div className="solar-portal">
-          <div className="solar-portal-halo" />
-          <div className="solar-portal-disk" />
-          <div className="solar-portal-core" />
+          <img
+            src="/media/vfx/screen-tear.webp"
+            alt=""
+            width={640}
+            height={640}
+          />
         </div>
         <div className="solar-projectile">
-          <StarFour className="solar-shuriken" size={160} weight="fill" />
           <div className="solar-quote">
-            <span>Sun style · Flashbang breaker</span>
             <strong>
               Destroyed that
               <br />
-              flashbang
+              <span>flashbang</span>
             </strong>
-            <small>Warm mode unlocked</small>
           </div>
-        </div>
-        <div className="solar-witness">
-          <FighterSprite
-            fighter={1}
-            action={quiet ? "portrait" : "attack2"}
-            size={160}
-            moving={!quiet}
-          />
         </div>
       </div>
     </div>

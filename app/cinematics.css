@@ -1,26 +1,20 @@
-/* Short, once-per-tab entrances. WAAPI starts only after the sprite is mounted. */
+/* Source sprites remain unboxed. Quiet appearances never become dashboard cards. */
 .hero-flyby {
   opacity: 0;
 }
 .flyby-still {
-  width: 170px;
-  height: 190px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  box-shadow: 5px 5px 0 var(--accent);
+  width: 125px;
+  height: 125px;
 }
 .flyby-still .hero-flyby-trail {
   display: none;
 }
-.flyby-still .hero-entry-caption {
-  transform: none;
-  left: auto;
-  right: 0;
-  bottom: 0;
+.flyby-still > .fighter-sprite {
+  transform: scale(0.72);
+  transform-origin: center;
 }
 
-/* One 5.1s timeline: descend, beam, impact, readable hold, spiral, close. */
+/* Layout anchors are measured from the live hero, including after scroll/resize. */
 .solar-cinematic {
   position: fixed;
   inset: 0;
@@ -28,364 +22,251 @@
   overflow: hidden;
   pointer-events: none;
   contain: strict;
+  visibility: hidden;
+}
+.solar-cinematic[data-placed="true"] {
+  visibility: visible;
+}
+.solar-sun-position {
+  position: absolute;
+  left: var(--sun-x);
+  top: var(--sun-y);
+  width: 130px;
+  height: 130px;
+  transform: translate(-50%, -50%);
 }
 .solar-sun {
-  position: absolute;
-  left: calc(17% - 90px);
-  top: calc(22% - 90px);
-  width: 180px;
-  height: 180px;
-  filter: drop-shadow(0 0 25px #ffb322a0);
-  animation: sun-descent 5100ms linear both;
+  width: 100%;
+  height: 100%;
+  animation: solar-orb-flight 5200ms linear both;
 }
 .solar-beam {
   position: absolute;
-  left: 17%;
-  top: calc(22% - 20vh);
-  width: 110vw;
-  height: 55vh;
-  transform-origin: left center;
-  transform: rotate(12deg);
+  left: var(--sun-x);
+  top: var(--sun-y);
+  width: var(--beam-length);
+  height: 44px;
+  transform: rotate(var(--beam-angle)) translateY(-50%);
+  transform-origin: 0 0;
 }
-.solar-beam > div {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    #fff5a8e8,
-    #ffc031c9 30%,
-    #edac2544 75%,
-    transparent
-  );
-  clip-path: polygon(0 47%, 100% 0, 100% 100%, 0 53%);
+.solar-beam-core {
+  position: absolute;
+  inset: 0;
   transform-origin: left center;
-  animation: sun-beam 5100ms linear both;
+  clip-path: polygon(0 47%, 100% 10%, 100% 90%, 0 53%);
+  background: linear-gradient(
+    0deg,
+    transparent 12%,
+    #ffa92b80 35%,
+    #fffbd3 49%,
+    #fffbd3 51%,
+    #ffa92b80 65%,
+    transparent 88%
+  );
+  animation: solar-lance 5200ms linear both;
 }
 .solar-target {
   position: absolute;
-  left: 58%;
-  top: 49%;
-  width: min(470px, 80vw);
-  height: 250px;
+  width: var(--hole-size);
+  height: var(--hole-size);
+  left: var(--impact-x);
+  top: var(--impact-y);
   transform: translate(-50%, -50%);
 }
 .solar-portal {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 360px;
-  height: 300px;
-  margin: -150px 0 0 -180px;
-  animation: portal-life 5100ms linear both;
+  inset: 0;
+  animation: tear-open 5200ms linear both;
 }
-.solar-portal-halo {
-  position: absolute;
-  inset: -60px;
-  border-radius: 50%;
-  background: radial-gradient(
-    ellipse,
-    #000b 10%,
-    #070b1880 38%,
-    #a94b1033 55%,
-    transparent 70%
-  );
-}
-.solar-portal-disk {
-  position: absolute;
-  inset: -10px;
-  border-radius: 50%;
-  background: conic-gradient(
-    from 15deg,
-    #ffd57a,
-    #9b390d,
-    #ffac40,
-    #fff0ba,
-    #a54611,
-    #f4a736,
-    #ffd57a
-  );
-  box-shadow:
-    0 0 18px #ffad63,
-    0 0 45px #d7823933;
-  animation: portal-orbit 1500ms linear infinite;
-}
-.solar-portal-core {
-  position: absolute;
-  inset: 6px;
-  background: radial-gradient(ellipse at 45% 40%, #080b16, #010208 70%);
-  border-radius: 50%;
-  box-shadow:
-    inset 0 0 25px #351934,
-    0 0 8px #000;
+.solar-portal img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(3px 9px 13px #0005);
 }
 .solar-impact-ring {
   position: absolute;
-  width: 400px;
-  height: 300px;
-  left: 50%;
-  top: 50%;
-  margin: -150px 0 0 -200px;
-  border: 3px solid #ffe2a2;
+  inset: 16%;
   border-radius: 50%;
-  box-shadow: 0 0 10px #ffa42d;
-  animation: portal-impact 5100ms linear both;
+  border: 1px solid #ae5d20;
+  animation: tear-impact 5200ms linear both;
 }
 .solar-projectile {
   position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  animation: quote-flight 5100ms linear both;
-}
-.solar-shuriken {
-  position: absolute;
-  width: 270px;
-  height: 270px;
-  color: #f4be52;
-  filter: drop-shadow(0 0 12px #f69730);
-  transform: rotate(20deg);
+  left: 50%;
+  top: 14%;
+  width: min(330px, 86vw);
+  margin-left: calc(min(330px, 86vw) / -2);
+  perspective: 500px;
+  animation: strike-type 5200ms linear both;
 }
 .solar-quote {
-  position: relative;
-  padding: 24px 30px;
-  width: 100%;
-  background: #17151f;
-  color: #fff0cf;
-  border: 2px solid #ffb956;
-  border-left-width: 6px;
-  box-shadow:
-    8px 8px 0 #b76623,
-    0 16px 50px #0005;
-}
-.solar-quote span {
-  display: block;
-  color: #ffd080;
-  font: 700 0.66rem/1.4 monospace;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  text-align: center;
+  transform: rotate(-6deg);
 }
 .solar-quote strong {
   display: block;
-  margin: 9px 0 12px;
-  font: 700 clamp(1.8rem, 3.4vw, 3rem) / 0.98 var(--font-display);
-  letter-spacing: -0.035em;
+  color: #26180c;
+  font: italic 700 clamp(1.45rem, 2.2vw, 2rem) / 0.97 var(--font-display);
   text-transform: uppercase;
+  letter-spacing: -0.025em;
+  -webkit-text-stroke: 5px #fff1cf;
+  paint-order: stroke fill;
+  text-shadow:
+    1px 3px 0 #ffad62,
+    2px 8px 12px #0003;
 }
-.solar-quote small {
-  font-size: 0.73rem;
+.solar-quote strong span {
+  font-size: 1.3em;
 }
-.solar-witness {
-  position: absolute;
-  left: -115px;
-  bottom: -60px;
-  animation: sun-witness 5100ms linear both;
-}
-
-@keyframes sun-descent {
+@keyframes solar-orb-flight {
   0% {
-    transform: translateY(-48vh) scale(0.18) rotate(-80deg);
+    transform: translateY(-45vh) scale(0.18) rotate(-35deg);
     opacity: 0;
   }
   3% {
     opacity: 1;
   }
   14% {
-    transform: translateY(7px) scale(1.12) rotate(12deg);
+    transform: translateY(3px) scale(1.08) rotate(8deg);
+    opacity: 1;
   }
   20%,
-  65% {
+  63% {
     transform: translateY(0) scale(1) rotate(0);
-    opacity: 1;
-  }
-  73% {
-    transform: translateY(-20px) scale(0.9) rotate(-10deg);
-    opacity: 1;
-  }
-  88%,
-  100% {
-    transform: translateY(-55vh) scale(0.18) rotate(-100deg);
-    opacity: 0;
-  }
-}
-@keyframes sun-beam {
-  0%,
-  15% {
-    opacity: 0;
-    transform: scaleX(0.1) scaleY(0.35);
-  }
-  22%,
-  59% {
-    opacity: 0.95;
-    transform: scaleX(1) scaleY(1);
-  }
-  70%,
-  100% {
-    opacity: 0;
-    transform: scaleX(1) scaleY(0.15);
-  }
-}
-@keyframes quote-flight {
-  0%,
-  19% {
-    transform: translate(75vw, -70vh) rotate(-700deg) scale(0.45);
-    opacity: 0;
-  }
-  21% {
-    opacity: 1;
-  }
-  31% {
-    transform: translate(0, 0) rotate(8deg) scale(1.1);
-    opacity: 1;
-  }
-  36%,
-  64% {
-    transform: translate(0, 0) rotate(-4deg) scale(1);
-    opacity: 1;
-  }
-  71% {
-    transform: translate(5px, 5px) rotate(45deg) scale(0.85);
     opacity: 1;
   }
   83%,
   100% {
-    transform: translate(0, 0) rotate(500deg) scale(0.035);
+    transform: translateY(-48vh) scale(0.18) rotate(35deg);
     opacity: 0;
   }
 }
-@keyframes portal-life {
+@keyframes solar-lance {
   0%,
-  28% {
+  15% {
+    opacity: 0;
+    transform: scaleX(0.1) scaleY(0.3);
+  }
+  22%,
+  36% {
+    opacity: 1;
+    transform: scaleX(1) scaleY(1);
+  }
+  48%,
+  100% {
+    opacity: 0;
+    transform: scaleX(1) scaleY(0.1);
+  }
+}
+@keyframes tear-open {
+  0%,
+  25% {
     opacity: 0;
     transform: scale(0.65);
   }
-  34%,
+  29% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+  35%,
   79% {
     opacity: 1;
     transform: scale(1);
   }
-  86% {
-    opacity: 1;
-    transform: scale(1.08);
-  }
-  96%,
+  91%,
   100% {
     opacity: 0;
-    transform: scale(0.2);
+    transform: scale(0.45);
   }
 }
-@keyframes portal-orbit {
-  to {
-    transform: rotate(360deg);
-  }
-}
-@keyframes portal-impact {
+@keyframes strike-type {
   0%,
-  30% {
-    transform: scale(0.7);
+  17% {
+    transform: translate(65vw, -70vh) rotate(-610deg) scale(0.5);
     opacity: 0;
   }
-  32% {
-    transform: scale(0.75);
-    opacity: 0.9;
-  }
-  44%,
-  100% {
-    transform: scale(2.3);
-    opacity: 0;
-  }
-}
-@keyframes sun-witness {
-  0%,
-  29% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  35%,
-  64% {
+  19% {
     opacity: 1;
-    transform: translateY(0);
   }
-  80%,
+  27% {
+    transform: translate(0, -24px) rotate(10deg) scale(1.08);
+    opacity: 1;
+  }
+  34%,
+  63% {
+    transform: translate(0, -36px) rotate(0) scale(1);
+    opacity: 1;
+  }
+  69% {
+    transform: translate(0, -15px) rotate(30deg) scale(0.85);
+    opacity: 1;
+  }
+  80% {
+    transform: translate(0, 65px) rotate(300deg) scale(0.08);
+    opacity: 0.6;
+  }
+  84%,
   100% {
+    transform: translate(0, 70px) rotate(370deg) scale(0.035);
     opacity: 0;
-    transform: translateY(12px);
   }
 }
-
-/* Quiet variants retain the story without flight, spinning, zooming or beams. */
-.solar-cinematic[data-motion="reduced"] *,
-.solar-cinematic[data-motion="reduced"] {
+@keyframes tear-impact {
+  0%,
+  26% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  28% {
+    opacity: 0.8;
+    transform: scale(0.9);
+  }
+  40%,
+  100% {
+    opacity: 0;
+    transform: scale(1.8);
+  }
+}
+.solar-cinematic[data-motion="reduced"] * {
   animation: none !important;
 }
-.solar-cinematic[data-motion="reduced"] .solar-sun {
-  transform: none;
-  opacity: 1;
-  width: 90px;
-  height: 90px;
-  left: calc(17% - 45px);
-  top: calc(22% - 45px);
-}
 .solar-cinematic[data-motion="reduced"] .solar-beam,
-.solar-cinematic[data-motion="reduced"] .solar-impact-ring,
-.solar-cinematic[data-motion="reduced"] .solar-shuriken,
-.solar-cinematic[data-motion="reduced"] .solar-witness {
+.solar-cinematic[data-motion="reduced"] .solar-impact-ring {
   display: none;
 }
-.solar-cinematic[data-motion="reduced"] .solar-portal {
-  opacity: 0;
+.solar-cinematic[data-motion="reduced"] .solar-sun {
+  opacity: 1;
+  transform: none;
 }
+.solar-cinematic[data-motion="reduced"] .solar-sun-position {
+  width: 85px;
+  height: 85px;
+}
+.solar-cinematic[data-motion="reduced"] .solar-portal,
 .solar-cinematic[data-motion="reduced"] .solar-projectile {
   opacity: 0;
   transform: none;
 }
+.solar-cinematic[data-motion="reduced"][data-phase="impact"] .solar-portal,
 .solar-cinematic[data-motion="reduced"][data-phase="impact"] .solar-projectile {
   opacity: 1;
 }
-.solar-cinematic[data-motion="reduced"][data-phase="impact"] .solar-portal {
+.solar-cinematic[data-motion="reduced"][data-phase="consuming"] .solar-portal {
   opacity: 1;
 }
 .solar-cinematic[data-motion="reduced"][data-phase="closing"] .solar-sun {
   opacity: 0;
 }
-@media (max-width: 600px) {
-  .solar-sun {
-    width: 140px;
-    height: 140px;
-    left: calc(22% - 70px);
-    top: calc(20% - 70px);
+@media (max-width: 700px) {
+  .solar-sun-position {
+    width: 105px;
+    height: 105px;
   }
-  .solar-beam {
-    left: 22%;
-    top: calc(20% - 20vh);
-    transform: rotate(30deg);
-  }
-  .solar-target {
-    left: 50%;
-    top: 48%;
-    width: 82vw;
-    height: 220px;
-  }
-  .solar-portal {
-    width: 280px;
-    height: 250px;
-    margin: -125px 0 0 -140px;
-  }
-  .solar-quote {
-    padding: 22px 20px;
-  }
-  .solar-quote span {
-    font-size: 0.54rem;
-  }
-  .solar-witness {
-    left: -35px;
-    bottom: -105px;
-  }
-  .solar-impact-ring {
-    width: 290px;
-    height: 240px;
-    margin: -120px 0 0 -145px;
+  .solar-quote strong {
+    font-size: 1.55rem;
   }
   .flyby-still > .fighter-sprite {
-    transform: none;
+    transform: scale(0.62);
   }
 }

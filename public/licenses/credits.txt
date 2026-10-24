@@ -19,3 +19,5 @@ Full pack source links and hashes: repository design/COMBAT-ASSETS.md
 
 Remaining asset credits: repository CREDITS.md
 https://github.com/AsadMehmoodLila/portfolio/blob/main/CREDITS.md
+
+Current sun and torn screen-opening VFX: generated for this portfolio with the built-in image-generation tool. Transparent WebP exports are hosted locally. Production notes and prompts: repository design/cinematic/README.md. The previous Twemoji asset is retired; its credit and license remain for historical attribution.

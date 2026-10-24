@@ -142,6 +142,13 @@ try {
   const qp = await quiet.newPage();
   await qp.goto(origin, { waitUntil: "networkidle" });
   await qp.locator('.hero-flyby[data-hero="1"][data-motion="quiet"]').waitFor();
+  assert.equal(await qp.locator(".hero-entry-caption").count(), 0);
+  assert.equal(
+    await qp
+      .locator(".hero-flyby")
+      .evaluate((el) => getComputedStyle(el).backgroundColor),
+    "rgba(0, 0, 0, 0)",
+  );
   await qp.waitForFunction(
     () => document.querySelector(".hero-flyby")?.getAnimations().length === 1,
   );

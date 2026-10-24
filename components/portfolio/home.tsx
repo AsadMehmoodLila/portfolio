@@ -32,10 +32,6 @@ export function PortfolioHome() {
     <>
       <section className="hero shell" aria-labelledby="hero-title">
         <div className="hero-copy">
-          <div className="hero-status">
-            <GameController size={17} weight="duotone" aria-hidden />
-            <span>One scripter. Many side quests.</span>
-          </div>
           <h1 id="hero-title">
             Your game
             <br />

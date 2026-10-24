@@ -29,4 +29,6 @@ Kenney Blocky Characters 2.0 supplies the seven decorative fly-by source models 
 
 Current combat sprites and seven animated fly-bys: LuizMelo, CC0-1.0, sourced directly from the creator. RotatingText and SpotlightCard: React Bits by David Haz, MIT + Commons Clause, full license retained in components/vendor/react-bits/LICENSE.md. Source links, download hashes and adaptations are recorded in design/COMBAT-ASSETS.md. These replace the earlier Kenney fly-by stills in the public UI.
 
-Sun artwork: Twemoji, copyright Twitter, Inc. and other contributors, CC BY 4.0. Source: https://github.com/jdecked/twemoji/blob/main/assets/svg/2600.svg . The SVG is unmodified; positioning and animation are local CSS. Full graphics terms, attribution and React Bits terms are published under /licenses/ and linked from the site footer.
+Retired sun artwork: Twemoji, copyright Twitter, Inc. and other contributors, CC BY 4.0. Source: https://github.com/jdecked/twemoji/blob/main/assets/svg/2600.svg . The SVG is unmodified; positioning and animation are local CSS. Full graphics terms, attribution and React Bits terms are published under /licenses/ and linked from the site footer.
+
+Current sun and torn screen-opening sprites were generated with the built-in image-generation tool for the owner’s requested revision. The transparent WebP exports, original source paths, exact prompts and production notes are recorded in design/cinematic/README.md. These are decorative generated VFX, not footage from a Roblox project. No Meshy credits were used.

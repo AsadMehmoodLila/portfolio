@@ -148,18 +148,6 @@ h2 span {
   position: relative;
   z-index: 2;
 }
-.hero-status {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--muted);
-  margin-bottom: 24px;
-  font-family: var(--font-geist-mono), monospace;
-  font-size: 0.74rem;
-}
-.hero-status > svg {
-  color: var(--accent);
-}
 .hero h1 {
   font-size: clamp(3.4rem, 6.2vw, 5.7rem);
   line-height: 0.99;
@@ -204,26 +192,6 @@ h2 span {
   position: relative;
   width: 100%;
   min-width: 0;
-}
-.stage-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 15px;
-  color: var(--muted);
-  font-family: var(--font-geist-mono), monospace;
-  font-size: 0.65rem;
-  border-bottom: 1px solid var(--line-soft);
-  padding: 13px 0;
-}
-.stage-header > span {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.stage-header > strong {
-  font-weight: 400;
-  color: var(--accent);
 }
 .character-world {
   position: relative;
@@ -1027,11 +995,6 @@ h2 span {
   .hero h1 {
     font-size: 3.4rem;
   }
-  .hero-status {
-    font-size: 0.63rem;
-    margin-bottom: 20px;
-    gap: 8px;
-  }
   .hero-copy > p {
     font-size: 0.91rem;
     max-width: 33ch;
@@ -1050,9 +1013,6 @@ h2 span {
   }
   .character-world {
     height: 380px;
-  }
-  .stage-header {
-    font-size: 0.55rem;
   }
   .world-id {
     right: 0;
@@ -1154,10 +1114,6 @@ h2 span {
     padding-top: 38px;
     padding-bottom: 20px;
   }
-  .hero-status {
-    font-size: 0.63rem;
-    margin-bottom: 20px;
-  }
   .hero h1 {
     font-size: clamp(2.85rem, 11.3vw, 4.25rem);
     line-height: 1.02;
@@ -1200,10 +1156,6 @@ h2 span {
   .world-ring {
     width: 82%;
     top: 8px;
-  }
-  .stage-header {
-    font-size: 0.6rem;
-    padding-block: 11px;
   }
   .world-id {
     right: 0;
@@ -2232,17 +2184,6 @@ h2 span {
   transform: translateY(-3px) rotate(-1deg);
   border-color: var(--accent);
 }
-.player-number {
-  display: inline-flex;
-  justify-content: center;
-  padding: 3px 7px;
-  color: var(--on-accent);
-  background: var(--accent);
-  border-radius: 2px;
-  transform: rotate(-5deg);
-  font-size: 0.62rem;
-  font-weight: 700;
-}
 .character-canvas {
   padding: 0;
   border: 0;
@@ -2261,59 +2202,6 @@ h2 span {
 }
 .character-stage[data-entered="true"] .character-canvas {
   animation: character-spawn 800ms var(--ease) both;
-}
-.character-invitation {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  padding: 12px 0;
-  border-top: 1px solid var(--line-soft);
-  color: var(--muted);
-  font-size: 0.7rem;
-}
-.character-invitation > svg {
-  color: var(--accent);
-}
-.character-invitation > span:last-child {
-  margin-left: auto;
-  font-size: 1.2rem;
-  color: var(--accent);
-}
-.character-speech {
-  position: absolute;
-  top: 49%;
-  right: -5px;
-  max-width: 150px;
-  display: flex;
-  gap: 8px;
-  align-items: flex-start;
-  padding: 11px 12px;
-  font-size: 0.68rem;
-  color: var(--text);
-  background: var(--surface);
-  border: 1px solid var(--line);
-  box-shadow: 4px 4px 0 var(--line-soft);
-  transform: rotate(4deg);
-  pointer-events: none;
-  z-index: 2;
-}
-.character-speech::after {
-  content: "";
-  position: absolute;
-  left: -8px;
-  bottom: 14px;
-  width: 12px;
-  height: 12px;
-  background: var(--surface);
-  border-left: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  transform: rotate(45deg);
-}
-.character-speech > svg {
-  flex-shrink: 0;
-  color: var(--accent);
-  margin-top: 2px;
 }
 .spawn-ripple {
   position: absolute;
@@ -2378,16 +2266,6 @@ h2 span {
   .commission-ticket strong {
     font-size: 0.77rem;
   }
-  .character-speech {
-    top: 46%;
-    right: 0;
-    width: 120px;
-    padding: 9px;
-    font-size: 0.6rem;
-  }
-  .character-invitation {
-    font-size: 0.65rem;
-  }
 }
 @media (prefers-reduced-motion: reduce) {
   .character-stage[data-entered="true"] .character-canvas {
@@ -2407,17 +2285,4 @@ h2 span {
   to {
     opacity: 1;
   }
-}
-.hero-entry-caption {
-  display: block;
-  position: absolute;
-  left: 0;
-  bottom: -5px;
-  padding: 6px 9px;
-  background: var(--text);
-  color: var(--bg);
-  font: 700 0.6rem/1.2 var(--font-geist-mono);
-  white-space: nowrap;
-  box-shadow: 3px 3px 0 var(--accent);
-  transform: rotate(-4deg);
 }

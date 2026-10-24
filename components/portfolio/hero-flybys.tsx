@@ -11,15 +11,6 @@ const KEY = "scriptlilla-hero-session-v2";
 type Progress = { seen: number; nextAt: number };
 const routes = ["right", "left", "down", "up", "right", "left", "down"];
 const lanes = [24, 56, 72, 28, 40, 25, 18];
-const captions = [
-  "Player one has entered",
-  "Another side quest",
-  "A little spellwork",
-  "Knight shift",
-  "On the hunt",
-  "Fast travel unlocked",
-  "Last hero, signing off",
-];
 
 export function HeroFlybys() {
   const path = usePathname();
@@ -192,7 +183,7 @@ export function HeroFlybys() {
           data-motion={quietHeroes ? "quiet" : "full"}
           style={
             quietHeroes
-              ? { right: "5%", top: "20%" }
+              ? { right: "4%", bottom: "8%" }
               : routes[active] === "right" || routes[active] === "left"
                 ? { top: `${lanes[active]}%` }
                 : { left: `${lanes[active]}%` }
@@ -205,7 +196,6 @@ export function HeroFlybys() {
             moving={!quietHeroes}
             size={170}
           />
-          <span className="hero-entry-caption">{captions[active]}</span>
         </div>
       )}
     </div>

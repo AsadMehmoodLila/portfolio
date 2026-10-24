@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
-import { HandTap, Sparkle } from "@phosphor-icons/react";
 import { useTheme } from "@/components/theme-controls";
 import { StageSignals } from "./stage-signals";
 
@@ -74,8 +73,9 @@ export function CharacterStage() {
     let cleanup = () => {};
     async function initialise() {
       const THREE = await import("three");
-      const { GLTFLoader } =
-        await import("three/examples/jsm/loaders/GLTFLoader.js");
+      const { GLTFLoader } = await import(
+        "three/examples/jsm/loaders/GLTFLoader.js"
+      );
       if (disposed) return;
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(31, 1, 0.1, 30);
@@ -333,12 +333,6 @@ export function CharacterStage() {
       data-dancing={playing}
       data-entered={entered}
     >
-      <div className="stage-header">
-        <span>
-          <span className="player-number">P1</span> SCRIPT LILLA
-        </span>
-        <strong>spawn point</strong>
-      </div>
       <div className="character-world">
         <span className="world-word" aria-hidden>
           PLAY
@@ -371,25 +365,12 @@ export function CharacterStage() {
             />
           )}
         </button>
-        <span className="character-speech" aria-hidden>
-          <Sparkle size={13} />
-          {playing ? "Okay, one more move" : "Click me. I know one dance."}
-        </span>
         <StageSignals />
-      </div>
-      <div className="character-invitation">
-        <HandTap size={18} aria-hidden />
-        <span>
-          {playing
-            ? "Click to stop · drag to turn"
-            : "Your move — tap the character"}
-        </span>
-        <span aria-hidden>↖</span>
       </div>
       <p id={help} className="sr-only">
         Click or press Enter or Space on the character to start or stop its
-        dance. Stopping it also pauses decorative motion. Drag with a mouse, or
-        use Left and Right arrow keys to turn. Home resets the view.
+        dance. Drag with a mouse, or use Left and Right arrow keys to turn. Home
+        resets the view.
         {failed &&
           " Interactive rendering is unavailable; a still preview is shown."}
       </p>

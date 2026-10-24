@@ -17,9 +17,17 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [sequence, setSequence] = useState(0);
   useEffect(() => {
     if (night || !sequence) return;
+    // Fetch the artwork during the white interval, before its first visible frame.
+    for (const src of [
+      "/media/vfx/solar-orb.webp",
+      "/media/vfx/screen-tear.webp",
+    ]) {
+      const asset = new Image();
+      asset.src = src;
+    }
     const arrival = setTimeout(() => setStrike(sequence), 4000);
-    const impact = setTimeout(() => setDayPhase("warm"), 5600);
-    const finish = setTimeout(() => setStrike(0), 9100);
+    const impact = setTimeout(() => setDayPhase("warm"), 5400);
+    const finish = setTimeout(() => setStrike(0), 9200);
     return () => {
       clearTimeout(arrival);
       clearTimeout(impact);
