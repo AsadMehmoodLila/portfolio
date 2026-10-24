@@ -1,31 +1,57 @@
-# Asad Mehmood portfolio
+# ScriptLilla Roblox scripting portfolio
 
-Next.js static portfolio for GitHub Pages. A rigged original Meshy avatar dances in a Three.js scene prepared in Blender. The homepage pairs it with actual Roblox game artwork, concise software projects and supplied certificate evidence. There are no accounts, sales, analytics, embeds, on-site forms or browser storage.
+An individual commission portfolio for Asad Mehmood. Next.js static export, self-hosted assets, day/night mode and an enquiry flow through the owner's Discord server or email. No checkout, accounts, analytics or form backend.
 
-## Local development
+## Run and verify
 
-Node.js 22 or newer: npm ci, then npm run dev.
-Production: npm run check and npm run build. Export is out/.
-For production audit, serve out/ at http://127.0.0.1:4173 and run node scripts/audit-site.mjs. Install the browser once with npx playwright install chromium. Browser/axe results and screenshot evidence are in audit/.
+Node.js 22 or newer:
 
-## Content and policies
+```sh
+npm ci
+npm run dev
+```
 
-Identity/project links: data/site.ts. Policy content: data/policies.ts. Routes: /privacy/, /terms/, /cookies/, /refunds/, /accessibility/. Contact email was supplied by the owner. Policies reflect an individual portfolio with no online sales. Read audit/AUDIT.md for owner checks and jurisdiction/verification limits before publication. No compliance certificate is claimed.
+Production and validation:
 
-## Design sources
+```sh
+npm run check
+npm run build
+npm run preview
+```
 
-Editable avatar scene: design/portfolio-avatar.blend. Approved avatar requests: design/meshy/avatar/job.json (38 credits). Earlier sculpture request remains archived (20 credits), for a total of 58 of the 100-credit cap. No paid retries. The retired sculpture is not shipped on the website.
+The build runs a content check first and exports to `out/`. Preview serves that export at `http://127.0.0.1:4173/`. With the preview running:
 
-Editable desktop/mobile portfolio frames were updated through the existing Figma bridge; design/figma-revision-result.json records confirmed execution. They are design references, not an animation player. Typography, colors and layout are documented in DESIGN.md; asset provenance in CREDITS.md and audit/asset-inventory.json.
+```sh
+npx playwright install chromium
+npm run audit:browser
+npm run test:media
+npm run test:character
+npm audit
+```
 
-## Animation
+Browser/axe results are saved under `audit/`. Media tests use private fixtures and intercepted provider responses, not invented public showcase content. They exercise the actual component; future real uploads need their own playback and permissions check.
 
-components/avatar-stage.tsx loads Three.js and the self-hosted GLB dynamically. Visitors can use the icon controls for motion/reset, drag to rotate, or use Left/Right and Home keys. Reduced-motion visitors start with a still character and can explicitly play. Animation rendering stops while offscreen or in a hidden tab. A locally rendered poster remains available when JavaScript or WebGL is unavailable. This is an original game-style character, not an official Roblox avatar or endorsed asset.
+## Add projects later
 
-The header switches between day and night. The avatar's Lights button separately changes actual key, rim and ambient illumination; the open stage uses a soft complementary glow. Theme and lighting choices remain in memory and add no cookies or browser storage. Internal Next links preserve the theme; reloading starts in day mode. Tool logos are locally served SVGs with upstream license archived. Production labels are intentionally absent from the hero; provenance stays in development records.
+**Read [CONTENT-GUIDE.md](CONTENT-GUIDE.md).** All project content lives in `data/portfolio.ts`. Fill an existing planned case study or add an object; publish it with `status: "published"`. The homepage grid, case routes and sitemap update automatically. Missing required assets, duplicate slugs or malformed YouTube URLs stop the build.
 
-Blender exports embedded WebP textures, reducing the GLB from approximately 8.2 MB to 1.34 MB. This requires a browser supporting WebP textures/WebGL; the poster is the fallback. All runtime assets are served locally, including fonts. Policies describe hosting logs and email processing separately from browser tracking.
+Current published work uses the existing Roblox experience artwork and contribution records. Four system/flagship templates are excluded from listings and search indexing. The owner will supply systems and videos later. Known template URLs are not private.
 
-## Release
+The shared player supports local MP4/WebM with captions or a visitor-activated YouTube privacy-enhanced embed. There is no provider connection before Play. The brief builder stays in memory and provides a copy or email-draft action with explicit acknowledgement. It never claims a message was sent.
 
-.github/workflows/deploy.yml builds a static export and publishes to GitHub Pages on pushes to main. npm ci uses the lockfile. public/CNAME preserves the existing domain. A local build does not publish the site. Never commit API keys, .env files, the private handoff ZIP or private identity documents.
+## Implementation
+
+- Pages: homepage, contact, about, static case studies and five existing policy routes
+- Data: `data/portfolio.ts`, `data/policies.ts`, certificate records in `data/site.ts`
+- UI: `components/portfolio/`, `app/portfolio.css`, `app/game.css`, theme provider and native certificate dialog
+- Design decisions: `design/COMMISSION-IMPLEMENTATION.md`
+- Current review: `audit/COMMISSION-AUDIT.md`; asset sources and licences: `CREDITS.md`
+- Original brand assets: `node scripts/create-brand-assets.mjs` regenerates social PNG and install icons
+
+The original character is now presented in a new game-style stage with lighting, motion and camera controls. Desktop loads its renderer/model separately; mobile, reduced-motion and data-saving visitors use a still until they choose Explore character. Rendering stops offscreen. The earlier avatar component is retained as history. The private research pack, experimental gameplay files and generated local tools remain ignored. No new Meshy credits are used.
+
+## Deployment
+
+`.github/workflows/deploy.yml` builds with `npm ci` and deploys to GitHub Pages on pushes to `main`. `public/CNAME` preserves `asadlilla.me`. Feature branches and local builds do not publish the site. Do not commit keys, private handoffs, client material or identity documents.
+
+Policies describe the implemented configuration; they do not certify legal compliance. Separate paid commissions require agreed scope, payment, ownership, support and cancellation terms. The website takes no payment.

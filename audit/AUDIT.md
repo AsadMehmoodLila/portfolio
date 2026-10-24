@@ -1,3 +1,5 @@
+> Historical review of the 7 October version. The current commission redesign is covered by [COMMISSION-AUDIT.md](COMMISSION-AUDIT.md).
+
 # Portfolio audit — 7 October 2026
 
 Scope: the Next.js source, legacy HTML/JavaScript, public assets, static export and local production browser. Live domain/DNS, email mailbox settings, legal entity records, signed permissions and upstream project internals were not audited. This is a technical audit and policy draft, not legal advice, a compliance certificate or immunity from liability.

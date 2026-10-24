@@ -1,4 +1,9 @@
 node_modules/
+.local-research/
+.local-tools/
+showcase/captures/
+/showcase/
+/scripts/build-showcase.mjs
 .next/
 out/
 test-results/

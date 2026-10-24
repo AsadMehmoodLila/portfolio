@@ -114,7 +114,7 @@ export const emotionSteps = [
 
 export const certificates = [
   {
-    title: "AI App Development — CreateX",
+    title: "AI App Development · CreateX",
     issuer: "Computer Science Society, UMT Sialkot",
     type: "Certificate of Participation",
     image: "/images/certificates/createx-ai-app-development.webp",

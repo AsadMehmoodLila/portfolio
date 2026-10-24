@@ -1,23 +1,15 @@
-import { LegalFooter } from "@/components/legal-footer";
-import { Navigation } from "@/components/navigation";
-import { AboutFooter } from "@/components/sections/about-footer";
-import { Certificates } from "@/components/sections/certificates";
-import { Hero } from "@/components/sections/hero";
-import { SelectedWork } from "@/components/sections/selected-work";
-import { Skills } from "@/components/sections/skills";
+import { SiteHeader } from "@/components/portfolio/site-header";
+import { SiteFooter } from "@/components/portfolio/site-footer";
+import { PortfolioHome } from "@/components/portfolio/home";
 
 export default function HomePage() {
   return (
     <>
-      <Navigation />
+      <SiteHeader />
       <main id="main-content" tabIndex={-1}>
-        <Hero />
-        <SelectedWork />
-        <Certificates />
-        <Skills />
-        <AboutFooter />
+        <PortfolioHome />
       </main>
-      <LegalFooter />
+      <SiteFooter />
     </>
   );
 }

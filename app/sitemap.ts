@@ -1,3 +1,18 @@
 export const dynamic = "force-static";
 import type { MetadataRoute } from "next";
-export default function sitemap(): MetadataRoute.Sitemap {return ["","privacy/","terms/","cookies/","refunds/","accessibility/"].map(p=>({url:`https://asadlilla.me/${p}`,lastModified:"2026-10-07",changeFrequency:"monthly" as const,priority:p?0.3:1}));}
+import { identity, publishedWork } from "@/data/portfolio";
+import { policies } from "@/data/policies";
+export default function sitemap(): MetadataRoute.Sitemap {
+  return [
+    "",
+    "about/",
+    "contact/",
+    ...publishedWork.map((item) => `work/${item.slug}/`),
+    ...Object.keys(policies).map((slug) => `${slug}/`),
+  ].map((path) => ({
+    url: `${identity.domain}/${path}`,
+    lastModified: identity.updated,
+    changeFrequency: "monthly" as const,
+    priority: path ? 0.5 : 1,
+  }));
+}

@@ -1,0 +1,10 @@
+{
+  "checks": [
+    "No iframe or third-party request before activation",
+    "Keyboard Play loads the privacy-enhanced URL, title and referrer policy",
+    "Close unloads the player and restores keyboard focus",
+    "Local video controls, caption track and actual failed-video fallback"
+  ],
+  "errors": [],
+  "passed": true
+}

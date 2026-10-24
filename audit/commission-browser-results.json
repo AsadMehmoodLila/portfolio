@@ -1,0 +1,519 @@
+{
+  "pages": [
+    {
+      "route": "/",
+      "device": "desktop",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/about/",
+      "device": "desktop",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/contact/",
+      "device": "desktop",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/work/escape-tsunami/",
+      "device": "desktop",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/work/combat-system/",
+      "device": "desktop",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/work/inventory-data/",
+      "device": "desktop",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/work/rounds-bosses/",
+      "device": "desktop",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/work/flagship/",
+      "device": "desktop",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/privacy/",
+      "device": "desktop",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/terms/",
+      "device": "desktop",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/cookies/",
+      "device": "desktop",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/refunds/",
+      "device": "desktop",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/accessibility/",
+      "device": "desktop",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "certificate dialog",
+      "device": "desktop",
+      "theme": "night",
+      "violations": []
+    },
+    {
+      "route": "/",
+      "device": "desktop",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/about/",
+      "device": "desktop",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/contact/",
+      "device": "desktop",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/work/escape-tsunami/",
+      "device": "desktop",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/work/combat-system/",
+      "device": "desktop",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/work/inventory-data/",
+      "device": "desktop",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/work/rounds-bosses/",
+      "device": "desktop",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/work/flagship/",
+      "device": "desktop",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/privacy/",
+      "device": "desktop",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/terms/",
+      "device": "desktop",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/cookies/",
+      "device": "desktop",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/refunds/",
+      "device": "desktop",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/accessibility/",
+      "device": "desktop",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "certificate dialog",
+      "device": "desktop",
+      "theme": "day",
+      "violations": []
+    },
+    {
+      "route": "/",
+      "device": "mobile",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/about/",
+      "device": "mobile",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/contact/",
+      "device": "mobile",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/work/escape-tsunami/",
+      "device": "mobile",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/work/combat-system/",
+      "device": "mobile",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/work/inventory-data/",
+      "device": "mobile",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/work/rounds-bosses/",
+      "device": "mobile",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/work/flagship/",
+      "device": "mobile",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/privacy/",
+      "device": "mobile",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/terms/",
+      "device": "mobile",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/cookies/",
+      "device": "mobile",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/refunds/",
+      "device": "mobile",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/accessibility/",
+      "device": "mobile",
+      "theme": "night",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "certificate dialog",
+      "device": "mobile",
+      "theme": "night",
+      "violations": []
+    },
+    {
+      "route": "/",
+      "device": "mobile",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/about/",
+      "device": "mobile",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/contact/",
+      "device": "mobile",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/work/escape-tsunami/",
+      "device": "mobile",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/work/combat-system/",
+      "device": "mobile",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/work/inventory-data/",
+      "device": "mobile",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/work/rounds-bosses/",
+      "device": "mobile",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/work/flagship/",
+      "device": "mobile",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/privacy/",
+      "device": "mobile",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/terms/",
+      "device": "mobile",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/cookies/",
+      "device": "mobile",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/refunds/",
+      "device": "mobile",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "/accessibility/",
+      "device": "mobile",
+      "theme": "day",
+      "overflow": false,
+      "brokenImages": [],
+      "violations": []
+    },
+    {
+      "route": "certificate dialog",
+      "device": "mobile",
+      "theme": "day",
+      "violations": []
+    }
+  ],
+  "interactions": [
+    "desktop night: skip link, FAQ, menu Escape, theme navigation, certificate focus trap and return",
+    "desktop night: service preselection, validation focus, explicit consent, real clipboard readback, email content, unsafe reference rejection, clipboard-denied fallback, reload clears entries",
+    "desktop day: skip link, FAQ, menu Escape, theme navigation, certificate focus trap and return",
+    "desktop day: service preselection, validation focus, explicit consent, real clipboard readback, email content, unsafe reference rejection, clipboard-denied fallback, reload clears entries",
+    "mobile night: skip link, FAQ, menu Escape, theme navigation, certificate focus trap and return",
+    "mobile night: service preselection, validation focus, explicit consent, real clipboard readback, email content, unsafe reference rejection, clipboard-denied fallback, reload clears entries",
+    "mobile day: skip link, FAQ, menu Escape, theme navigation, certificate focus trap and return",
+    "mobile day: service preselection, validation focus, explicit consent, real clipboard readback, email content, unsafe reference rejection, clipboard-denied fallback, reload clears entries",
+    "320px: home/contact/about/case reflow",
+    "768px: home/contact/about/case reflow",
+    "1024px: home/contact/about/case reflow",
+    "No JavaScript: contact routes and certificate source links remain accessible"
+  ],
+  "errors": [],
+  "externalRequests": [],
+  "links": [
+    "http://127.0.0.1:4173/#main-content",
+    "http://127.0.0.1:4173/",
+    "http://127.0.0.1:4173/#work",
+    "http://127.0.0.1:4173/#services",
+    "http://127.0.0.1:4173/#process",
+    "http://127.0.0.1:4173/#about",
+    "http://127.0.0.1:4173/contact/",
+    "http://127.0.0.1:4173/contact/?service=combat",
+    "http://127.0.0.1:4173/contact/?service=data",
+    "http://127.0.0.1:4173/contact/?service=rounds",
+    "http://127.0.0.1:4173/work/escape-tsunami/",
+    "http://127.0.0.1:4173/about/",
+    "http://127.0.0.1:4173/privacy/",
+    "http://127.0.0.1:4173/terms/",
+    "http://127.0.0.1:4173/cookies/",
+    "http://127.0.0.1:4173/refunds/",
+    "http://127.0.0.1:4173/accessibility/",
+    "http://127.0.0.1:4173/about/#main-content",
+    "http://127.0.0.1:4173/contact/#main-content",
+    "http://127.0.0.1:4173/work/escape-tsunami/#main-content",
+    "http://127.0.0.1:4173/work/combat-system/#main-content",
+    "http://127.0.0.1:4173/work/inventory-data/#main-content",
+    "http://127.0.0.1:4173/work/rounds-bosses/#main-content",
+    "http://127.0.0.1:4173/work/flagship/#main-content",
+    "http://127.0.0.1:4173/privacy/#main-content",
+    "http://127.0.0.1:4173/privacy/#section-0",
+    "http://127.0.0.1:4173/privacy/#section-1",
+    "http://127.0.0.1:4173/privacy/#section-2",
+    "http://127.0.0.1:4173/privacy/#section-3",
+    "http://127.0.0.1:4173/privacy/#section-4",
+    "http://127.0.0.1:4173/privacy/#section-5",
+    "http://127.0.0.1:4173/privacy/#section-6",
+    "http://127.0.0.1:4173/privacy/#section-7",
+    "http://127.0.0.1:4173/privacy/#section-8",
+    "http://127.0.0.1:4173/terms/#main-content",
+    "http://127.0.0.1:4173/terms/#section-0",
+    "http://127.0.0.1:4173/terms/#section-1",
+    "http://127.0.0.1:4173/terms/#section-2",
+    "http://127.0.0.1:4173/terms/#section-3",
+    "http://127.0.0.1:4173/terms/#section-4",
+    "http://127.0.0.1:4173/terms/#section-5",
+    "http://127.0.0.1:4173/cookies/#main-content",
+    "http://127.0.0.1:4173/cookies/#section-0",
+    "http://127.0.0.1:4173/cookies/#section-1",
+    "http://127.0.0.1:4173/cookies/#section-2",
+    "http://127.0.0.1:4173/cookies/#section-3",
+    "http://127.0.0.1:4173/refunds/#main-content",
+    "http://127.0.0.1:4173/refunds/#section-0",
+    "http://127.0.0.1:4173/refunds/#section-1",
+    "http://127.0.0.1:4173/refunds/#section-2",
+    "http://127.0.0.1:4173/refunds/#section-3",
+    "http://127.0.0.1:4173/accessibility/#main-content",
+    "http://127.0.0.1:4173/accessibility/#section-0",
+    "http://127.0.0.1:4173/accessibility/#section-1",
+    "http://127.0.0.1:4173/accessibility/#section-2",
+    "http://127.0.0.1:4173/accessibility/#section-3"
+  ],
+  "passed": true
+}

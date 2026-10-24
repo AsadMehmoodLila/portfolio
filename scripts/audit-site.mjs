@@ -1,65 +1,409 @@
-import { chromium } from '@playwright/test';
-import AxeBuilder from '@axe-core/playwright';
-import fs from 'node:fs/promises';
-import assert from 'node:assert/strict';
-import { createHash } from 'node:crypto';
-const origin=process.env.PORTFOLIO_URL||'http://127.0.0.1:4173';
-const report={pages:[],interactions:[],consoleErrors:[],externalRequests:[],dialogContrast:[]};
-const hash=b=>createHash('sha256').update(b).digest('hex');
-const browser=await chromium.launch();
-try{
- for(const [device,width,height,theme] of [['desktop',1440,1000,'day'],['mobile',390,844,'day'],['desktop',1440,1000,'night'],['mobile',390,844,'night']]){
-  const capture=device+(theme==='night'?'-night':'');
-  const context=await browser.newContext({viewport:{width,height},reducedMotion:'no-preference'});const page=await context.newPage();
-  page.on('pageerror',e=>report.consoleErrors.push(String(e)));
-  page.on('console',m=>{if(m.type()==='error')report.consoleErrors.push(m.text())});
-  page.on('request',r=>{if(/^https?:/.test(r.url())&&!r.url().startsWith(origin))report.externalRequests.push(r.url())});
-  for(const route of ['/','/privacy/','/terms/','/cookies/','/refunds/','/accessibility/']){
-   const response=await page.goto(origin+route,{waitUntil:'networkidle'});assert.equal(response.status(),200);
-   if(theme==='night'){await page.getByRole('button',{name:'Switch to night mode'}).click();await page.waitForFunction(()=>document.documentElement.dataset.theme==='night');await page.waitForTimeout(1000);assert.equal(await page.evaluate(()=>getComputedStyle(document.body).backgroundColor),'rgb(17, 20, 20)')}
-   if(route==='/'){
-    await page.locator('[data-animation="ready"]').waitFor({timeout:20000});
-    const pause=page.getByRole('button',{name:'Pause dance'});assert.equal(await pause.getAttribute('aria-pressed'),'true');
-    await page.locator('.avatar-canvas').scrollIntoViewIfNeeded();
-    const moving1=hash(await page.locator('canvas').screenshot());await page.waitForTimeout(350);const moving2=hash(await page.locator('canvas').screenshot());assert.notEqual(moving1,moving2,'Dance must visibly animate');
-    await pause.click();await page.waitForTimeout(350);
-    const still1=hash(await page.locator('canvas').screenshot());await page.waitForTimeout(350);const still2=hash(await page.locator('canvas').screenshot());assert.equal(still1,still2,'Paused dance must remain still');
-    await page.locator('.avatar-canvas').focus();await page.keyboard.press('ArrowRight');await page.waitForTimeout(350);assert.notEqual(hash(await page.locator('canvas').screenshot()),still2,'Keyboard rotates the avatar');await page.keyboard.press('Home');
-    const litBefore=hash(await page.locator('canvas').screenshot());await page.getByRole('button',{name:'Turn avatar lights off'}).click();await page.waitForTimeout(1000);assert.notEqual(hash(await page.locator('canvas').screenshot()),litBefore,'Lighting control must change rendered character illumination');await page.getByRole('button',{name:'Turn avatar lights on'}).click();await page.waitForTimeout(1000);await page.getByRole('button',{name:'Reset avatar view'}).click();
-    assert(!(await page.locator('body').innerText()).match(/Meshy|Blender|paused/i),'No visible production or paused captions');
-    assert((await page.locator('h1,h2,h3').allTextContents()).every(text=>!text.trim().endsWith('.')),'Headings must not have trailing full stops');
-    report.interactions.push(device+' '+theme+': real dance, exact pause, keyboard rotation/reset, actual lighting on/off, clean captions/headings');
-   }
-   for(const img of await page.locator('img').all()){await img.scrollIntoViewIfNeeded();await img.evaluate(el=>el.decode().catch(()=>{}))}
-   await page.evaluate(()=>scrollTo(0,0));
-   const axe=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze();
-   const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1);
-   const brokenImages=await page.locator('img').evaluateAll(imgs=>imgs.filter(i=>!i.complete||!i.naturalWidth).map(i=>i.src));
-   const storage=await page.evaluate(()=>({local:localStorage.length,session:sessionStorage.length}));
-   report.pages.push({route,device,theme,overflow,brokenImages,cookies:(await context.cookies()).length,storage,violations:axe.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>({target:n.target,summary:n.failureSummary}))})),incomplete:axe.incomplete.map(v=>({id:v.id,count:v.nodes.length,targets:v.nodes.map(n=>n.target)}))});
-   if(route==='/'){await page.screenshot({path:`audit/screenshots/${capture}-home.png`,fullPage:true});await page.screenshot({path:`audit/screenshots/${capture}-hero.png`});await page.locator('#skills').screenshot({path:`audit/screenshots/${capture}-tools.png`})}
-   if(route==='/privacy/')await page.screenshot({path:`audit/screenshots/${capture}-privacy.png`,fullPage:true});
+import { chromium } from "@playwright/test";
+import AxeBuilder from "@axe-core/playwright";
+import fs from "node:fs/promises";
+import assert from "node:assert/strict";
+const origin = process.env.PORTFOLIO_URL || "http://127.0.0.1:4173";
+const routes = [
+  "/",
+  "/about/",
+  "/contact/",
+  "/work/escape-tsunami/",
+  "/work/combat-system/",
+  "/work/inventory-data/",
+  "/work/rounds-bosses/",
+  "/work/flagship/",
+  "/privacy/",
+  "/terms/",
+  "/cookies/",
+  "/refunds/",
+  "/accessibility/",
+];
+const drafts = routes.filter(
+  (route) => route.startsWith("/work/") && route !== "/work/escape-tsunami/",
+);
+const report = {
+  pages: [],
+  interactions: [],
+  errors: [],
+  externalRequests: [],
+  links: [],
+};
+await fs.mkdir("audit/screenshots", { recursive: true });
+const browser = await chromium.launch();
+try {
+  const links = new Set();
+  for (const [device, width, height] of [
+    ["desktop", 1440, 1000],
+    ["mobile", 390, 844],
+  ]) {
+    for (const theme of ["night", "day"]) {
+      const context = await browser.newContext({
+        viewport: { width, height },
+        reducedMotion: "reduce",
+        permissions: ["clipboard-read", "clipboard-write"],
+      });
+      const page = await context.newPage();
+      page.on("pageerror", (error) => report.errors.push(String(error)));
+      page.on("request", (request) => {
+        if (/^https?:/.test(request.url()) && !request.url().startsWith(origin))
+          report.externalRequests.push(request.url());
+      });
+      for (const route of routes) {
+        const response = await page.goto(origin + route, {
+          waitUntil: "networkidle",
+        });
+        assert.equal(response.status(), 200, route);
+        if (theme === "day") {
+          await page
+            .getByRole("button", { name: "Switch to day mode" })
+            .click();
+          await page.waitForFunction(
+            () => document.documentElement.dataset.theme === "day",
+          );
+        }
+        for (const image of await page.locator("img").all()) {
+          await image.scrollIntoViewIfNeeded();
+          await image.evaluate((image) => image.decode().catch(() => {}));
+        }
+        await page.evaluate(() => scrollTo(0, 0));
+        const violations = (
+          await new AxeBuilder({ page })
+            .withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"])
+            .analyze()
+        ).violations.map((item) => ({
+          id: item.id,
+          nodes: item.nodes.map((node) => ({
+            target: node.target,
+            summary: node.failureSummary,
+          })),
+        }));
+        const overflow = await page.evaluate(
+          () => document.documentElement.scrollWidth > innerWidth + 1,
+        );
+        const brokenImages = await page
+          .locator("img")
+          .evaluateAll((images) =>
+            images
+              .filter((image) => !image.naturalWidth)
+              .map((image) => image.src),
+          );
+        const storage = await page.evaluate(() => ({
+          local: localStorage.length,
+          session: sessionStorage.length,
+        }));
+        assert.equal(await page.locator("h1").count(), 1, route);
+        assert(
+          (await page.locator("h1,h2,h3").allTextContents()).every(
+            (text) => !text.trim().endsWith("."),
+          ),
+          "Heading punctuation",
+        );
+        assert(
+          (await page.locator('link[rel="canonical"]').getAttribute("href")) ===
+            "https://asadlilla.me" + route,
+          "Canonical " + route,
+        );
+        assert.equal((await context.cookies()).length, 0);
+        assert.equal(storage.local + storage.session, 0);
+        if (drafts.includes(route))
+          assert(
+            (
+              await page.locator('meta[name="robots"]').getAttribute("content")
+            ).includes("noindex"),
+          );
+        for (const href of await page
+          .locator("a[href]")
+          .evaluateAll((anchors) =>
+            anchors.map((anchor) => anchor.getAttribute("href")),
+          )) {
+          if (href.startsWith("/") || href.startsWith("#"))
+            links.add(new URL(href, origin + route).href);
+        }
+        report.pages.push({
+          route,
+          device,
+          theme,
+          overflow,
+          brokenImages,
+          violations,
+        });
+        if (
+          ["/", "/contact/", "/about/", "/work/escape-tsunami/"].includes(route)
+        ) {
+          const name =
+            route === "/" ? "home" : route.split("/").filter(Boolean).at(-1);
+          await page.screenshot({
+            path: `audit/screenshots/${device}-${theme}-${name}.png`,
+            fullPage: true,
+          });
+          if (route === "/")
+            await page.screenshot({
+              path: `audit/screenshots/${device}-${theme}-hero.png`,
+            });
+        }
+      }
+      console.log(`${device} ${theme}: ${routes.length} routes checked`);
+      await page.goto(origin, { waitUntil: "networkidle" });
+      await page.keyboard.press("Tab");
+      assert.equal(
+        await page.locator(":focus").textContent(),
+        "Skip to main content",
+      );
+      await page.keyboard.press("Enter");
+      assert.equal(
+        await page.locator(":focus").getAttribute("id"),
+        "main-content",
+      );
+      for (const draft of drafts)
+        assert.equal(await page.locator(`a[href="${draft}"]`).count(), 0);
+      const faq = page.locator(".faq-list details").first();
+      await faq.locator("summary").focus();
+      await page.keyboard.press("Enter");
+      assert((await faq.getAttribute("open")) !== null);
+      if (device === "mobile") {
+        const menu = page.getByRole("button", { name: "Open navigation menu" });
+        await menu.focus();
+        await page.keyboard.press("Enter");
+        await page
+          .getByRole("navigation", { name: "Mobile navigation" })
+          .waitFor({ state: "visible" });
+        await page.keyboard.press("Escape");
+        assert.equal(await menu.getAttribute("aria-expanded"), "false");
+        assert(await menu.evaluate((el) => el === document.activeElement));
+      }
+      await page.getByRole("button", { name: "Switch to day mode" }).click();
+      await page
+        .getByRole("navigation", { name: "Policies" })
+        .getByRole("link", { name: "Privacy", exact: true })
+        .click();
+      await page
+        .getByRole("heading", { name: "Privacy Policy", exact: true })
+        .waitFor();
+      assert.equal(
+        await page.locator("html").getAttribute("data-theme"),
+        "day",
+        "Theme survives internal navigation",
+      );
+      await page.goto(origin + "/about/", { waitUntil: "networkidle" });
+      if (theme === "day")
+        await page.getByRole("button", { name: "Switch to day mode" }).click();
+      const certificate = page.locator(".certificate-card").first();
+      await certificate.focus();
+      await page.keyboard.press("Enter");
+      const dialog = page.getByRole("dialog");
+      await dialog.waitFor({ state: "visible" });
+      const dialogAudit = await new AxeBuilder({ page })
+        .withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"])
+        .analyze();
+      report.pages.push({
+        route: "certificate dialog",
+        device,
+        theme,
+        violations: dialogAudit.violations.map((item) => ({
+          id: item.id,
+          nodes: item.nodes.map((node) => ({
+            target: node.target,
+            summary: node.failureSummary,
+          })),
+        })),
+      });
+      await page.keyboard.press("Tab");
+      assert(
+        await page.evaluate(
+          () =>
+            document.activeElement === document.body ||
+            !!document.activeElement.closest("dialog"),
+        ),
+      );
+      await page.keyboard.press("Escape");
+      await dialog.waitFor({ state: "hidden" });
+      assert(await certificate.evaluate((el) => el === document.activeElement));
+      report.interactions.push(
+        `${device} ${theme}: skip link, FAQ, menu Escape, theme navigation, certificate focus trap and return`,
+      );
+      await page.goto(origin + "/contact/?service=data", {
+        waitUntil: "networkidle",
+      });
+      assert.equal(
+        await page
+          .getByLabel("Service (required)", { exact: true })
+          .inputValue(),
+        "data",
+      );
+      await page.getByRole("button", { name: "Copy project brief" }).click();
+      await page.waitForFunction(
+        () => document.activeElement?.getAttribute("name") === "project",
+      );
+      await page.getByLabel("Project name (required)").fill("My test game");
+      await page
+        .getByLabel("What needs to work? (required)")
+        .fill(
+          "Players should equip items from inventory, and the server should validate each action.",
+        );
+      await page.getByRole("button", { name: "Prepare email draft" }).click();
+      await page.waitForFunction(
+        () => document.activeElement?.getAttribute("name") === "consent",
+      );
+      assert.equal(await page.locator(".form-status a").count(), 0);
+      await page.locator("#brief-consent").check();
+      await page.getByRole("button", { name: "Copy project brief" }).click();
+      await page
+        .getByRole("status")
+        .filter({ hasText: "Brief copied" })
+        .waitFor();
+      assert(
+        (await page.evaluate(() => navigator.clipboard.readText())).includes(
+          "My test game",
+        ),
+      );
+      const email = await page
+        .getByRole("link", { name: "Open email draft" })
+        .getAttribute("href");
+      assert.equal(new URL(email).pathname, "asadmehmood4804@gmail.com");
+      assert(
+        new URL(email).searchParams
+          .get("body")
+          .includes("Player data & inventory"),
+      );
+      await page.getByRole("button", { name: "Prepare email draft" }).click();
+      await page
+        .getByRole("status")
+        .filter({ hasText: "Your brief is ready" })
+        .waitFor();
+      await page
+        .getByLabel("Game or reference link")
+        .fill("javascript:alert(1)");
+      await page.getByRole("button", { name: "Copy project brief" }).click();
+      await page.waitForFunction(
+        () => document.activeElement?.getAttribute("name") === "link",
+      );
+      await page
+        .getByLabel("Game or reference link")
+        .fill("https://www.roblox.com/games/123/example");
+      await page.evaluate(() => {
+        Object.defineProperty(navigator, "clipboard", {
+          configurable: true,
+          value: { writeText: () => Promise.reject(new Error("denied")) },
+        });
+      });
+      await page.getByRole("button", { name: "Copy project brief" }).click();
+      await page
+        .getByRole("status")
+        .filter({ hasText: "could not copy" })
+        .waitFor();
+      assert(await page.getByLabel("Prepared project brief").isVisible());
+      await page.waitForFunction(
+        () => document.activeElement?.id === "brief-output",
+      );
+      await page.reload({ waitUntil: "networkidle" });
+      assert.equal(
+        await page.getByLabel("Project name (required)").inputValue(),
+        "",
+      );
+      assert(!(await page.locator("#brief-consent").isChecked()));
+      report.interactions.push(
+        `${device} ${theme}: service preselection, validation focus, explicit consent, real clipboard readback, email content, unsafe reference rejection, clipboard-denied fallback, reload clears entries`,
+      );
+      await context.close();
+    }
   }
-  await page.goto(origin,{waitUntil:'networkidle'});
-  await page.keyboard.press('Tab');assert.equal(await page.locator(':focus').textContent(),'Skip to main content');await page.keyboard.press('Enter');assert.equal(await page.locator(':focus').getAttribute('id'),'main-content');
-  if(theme==='night'){await page.getByRole('button',{name:'Switch to night mode'}).click();await page.waitForFunction(()=>document.documentElement.dataset.theme==='night')}
-  const certificate=page.getByRole('button',{name:'View AI App Development — CreateX certificate'});await certificate.focus();await page.keyboard.press('Enter');await page.getByRole('dialog').waitFor({state:'visible'});await page.getByRole('dialog').locator('img').evaluate(el=>el.decode());
-  const dialogAxe=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze();
-  for(const el of await page.getByRole('dialog').locator('h2,p').all()){
-   await el.scrollIntoViewIfNeeded();const r=await el.evaluate(e=>{function lum(rgb){return rgb.match(/[\d.]+/g).slice(0,3).map(Number).map(v=>{v/=255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4}).reduce((a,v,i)=>a+v*[.2126,.7152,.0722][i],0)}const d=e.closest('dialog'),s=getComputedStyle(e),bg=getComputedStyle(d).backgroundColor,r=e.getBoundingClientRect(),f=lum(s.color),b=lum(bg),top=document.elementFromPoint(r.x+r.width/2,r.y+r.height/2);return {text:e.textContent,color:s.color,background:bg,ratio:(Math.max(f,b)+.05)/(Math.min(f,b)+.05),unobscured:top===e||e.contains(top)}});assert(r.ratio>=4.5&&r.unobscured);report.dialogContrast.push({device,theme,...r});
+  for (const url of links) {
+    const response = await fetch(url);
+    assert.equal(response.status, 200, url);
+    const target = new URL(url);
+    if (target.hash) {
+      const html = await response.text();
+      assert(
+        html.includes(`id="${decodeURIComponent(target.hash.slice(1))}"`),
+        url,
+      );
+    }
   }
-  report.pages.push({route:'certificate dialog',device,theme,violations:dialogAxe.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>({target:n.target,summary:n.failureSummary}))})),incomplete:dialogAxe.incomplete.map(v=>({id:v.id,count:v.nodes.length,targets:v.nodes.map(n=>n.target)}))});
-  await page.getByRole('dialog').evaluate(el=>el.scrollTop=0);await page.screenshot({path:`audit/screenshots/${capture}-certificate-dialog.png`});
-  for(let i=0;i<3;i++){await page.keyboard.press('Tab');assert(await page.evaluate(()=>document.activeElement===document.body||!!document.activeElement.closest('dialog')))}
-  await page.keyboard.press('Escape');await page.getByRole('dialog').waitFor({state:'hidden'});await page.locator('dialog h2').waitFor({state:'detached'});assert(await certificate.evaluate(el=>el===document.activeElement));report.interactions.push(device+': skip link, native certificate focus/escape/return');
-  if(device==='mobile'){await page.getByRole('button',{name:'Open navigation menu'}).focus();await page.keyboard.press('Enter');await page.getByRole('navigation',{name:'Mobile navigation'}).waitFor({state:'visible'});await page.screenshot({path:`audit/screenshots/${capture}-menu.png`});await page.keyboard.press('Escape');await page.getByRole('navigation',{name:'Mobile navigation'}).waitFor({state:'hidden'});report.interactions.push('mobile '+theme+': menu opens by keyboard and Escape closes')}
-  await page.getByRole('button',{name:theme==='night'?'Switch to day mode':'Switch to night mode'}).click();await page.getByRole('navigation',{name:'Policies'}).getByRole('link',{name:'Privacy',exact:true}).click();await page.getByRole('heading',{name:'Privacy Policy',exact:true}).waitFor();assert.equal(await page.locator('html').getAttribute('data-theme'),theme==='night'?'day':'night','Theme survives internal policy navigation without browser storage');report.interactions.push(device+' '+theme+': theme toggles and survives internal navigation');
-  await context.close();
- }
- const reduced=await browser.newContext({reducedMotion:'reduce',viewport:{width:390,height:844}});const rp=await reduced.newPage();await rp.goto(origin,{waitUntil:'networkidle'});await rp.locator('[data-animation="ready"]').waitFor();assert(await rp.getByRole('button',{name:'Play dance'}).isVisible());await rp.locator('.avatar-canvas').scrollIntoViewIfNeeded();const ra=hash(await rp.locator('canvas').screenshot());await rp.waitForTimeout(350);assert.equal(hash(await rp.locator('canvas').screenshot()),ra);report.interactions.push('Reduced motion: avatar remains still until visitor explicitly chooses Play dance');await reduced.close();
- const small=await browser.newPage({viewport:{width:320,height:800},reducedMotion:'reduce'});await small.goto(origin,{waitUntil:'networkidle'});assert(!await small.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1));await small.getByRole('button',{name:'Switch to night mode'}).click();assert(!await small.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1));report.interactions.push('320px: no horizontal overflow in day/night');
- const nojs=await browser.newPage({javaScriptEnabled:false});await nojs.goto(origin);assert(await nojs.getByRole('heading',{level:1}).isVisible());assert(await nojs.locator('.avatar-poster').isVisible());report.interactions.push('No JavaScript: copy, static avatar preview, project links and certificate links remain available');
- report.unresolvedIncomplete=report.pages.flatMap(p=>(p.incomplete||[]).flatMap(i=>i.targets.filter(t=>!(p.route==='certificate dialog'&&i.id==='color-contrast'&&report.dialogContrast.filter(d=>d.device===p.device&&d.theme===p.theme).length===3&&['#certificate-dialog-title','dialog > p:nth-child(4)','p:nth-child(5)'].includes(t[0]))).map(target=>({route:p.route,device:p.device,theme:p.theme,id:i.id,target}))));
- report.passed=report.pages.every(p=>!p.overflow&&!p.violations.length&&(!p.brokenImages||!p.brokenImages.length))&&!report.consoleErrors.length&&!report.externalRequests.length&&!report.unresolvedIncomplete.length;
-}finally{await fs.writeFile('audit/browser-results.json',JSON.stringify(report,null,2));await browser.close()}
-console.log(JSON.stringify(report,null,2));if(!report.passed)process.exitCode=1;
+  report.links = [...links];
+  const sitemap = await (await fetch(origin + "/sitemap.xml")).text();
+  for (const route of drafts)
+    assert(!sitemap.includes(route), "Draft excluded from sitemap");
+  for (const width of [320, 768, 1024]) {
+    const page = await browser.newPage({
+      viewport: { width, height: 900 },
+      reducedMotion: "reduce",
+    });
+    for (const route of [
+      "/",
+      "/contact/",
+      "/about/",
+      "/work/escape-tsunami/",
+    ]) {
+      await page.goto(origin + route, { waitUntil: "networkidle" });
+      assert(
+        !(await page.evaluate(
+          () => document.documentElement.scrollWidth > innerWidth + 1,
+        )),
+        `${width}px overflow: ${route}`,
+      );
+    }
+    await page.close();
+    report.interactions.push(`${width}px: home/contact/about/case reflow`);
+  }
+  const nojs = await browser.newPage({
+    javaScriptEnabled: false,
+    viewport: { width: 390, height: 844 },
+  });
+  await nojs.goto(origin + "/contact/");
+  assert(
+    await nojs
+      .getByRole("link", { name: "Join the server", exact: true })
+      .isVisible(),
+  );
+  assert(!(await nojs.locator(".brief-builder").isVisible()));
+  await nojs.goto(origin + "/about/");
+  assert(await nojs.locator("noscript a").first().isVisible());
+  report.interactions.push(
+    "No JavaScript: contact routes and certificate source links remain accessible",
+  );
+  const missing = await browser.newPage();
+  assert.equal(
+    (await missing.goto(origin + "/this-page-does-not-exist/")).status(),
+    404,
+  );
+  assert(
+    await missing
+      .getByRole("heading", { name: "This page isn’t here" })
+      .isVisible(),
+  );
+  report.passed =
+    report.pages.every(
+      (item) =>
+        !item.overflow && !item.brokenImages?.length && !item.violations.length,
+    ) &&
+    !report.errors.length &&
+    !report.externalRequests.length;
+} catch (error) {
+  report.errors.push(String(error));
+  report.passed = false;
+} finally {
+  await fs.writeFile(
+    "audit/commission-browser-results.json",
+    JSON.stringify(report, null, 2),
+  );
+  await browser.close();
+}
+console.log(
+  JSON.stringify(
+    {
+      passed: report.passed,
+      pages: report.pages.length,
+      links: report.links.length,
+      interactionGroups: report.interactions.length,
+      errors: report.errors,
+      externalRequests: report.externalRequests,
+      violations: report.pages.filter(
+        (item) =>
+          item.violations.length || item.overflow || item.brokenImages?.length,
+      ),
+    },
+    null,
+    2,
+  ),
+);
+if (!report.passed) process.exitCode = 1;

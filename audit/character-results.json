@@ -1,0 +1,12 @@
+{
+  "checks": [
+    "Immediate heading and deferred model request, real animated GLB",
+    "Exact motion stop, keyboard rotation and Home reset",
+    "Actual stage lighting and theme-dependent illumination",
+    "Offscreen draw calls stop and resume; live reduced-motion changes stop the animation",
+    "Reduced motion uses the still preview without model traffic until explicit activation",
+    "Data-saving preference suppresses automatic 3D loading"
+  ],
+  "errors": [],
+  "passed": true
+}
