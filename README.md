@@ -58,6 +58,8 @@ Policies describe the implemented configuration; they do not certify legal compl
 
 ## Motion and sourced components
 
+Current homepage: the green-cap portrait is the header, footer and tab mark. The commission invitation is an illustrated game-style ticket. The avatar has no toolbar or activation overlay: click/tap or Enter/Space starts/stops its dance; mouse dragging and arrow keys rotate it. Mobile stills do not load the GLB until interaction. Day starts cool white; the sun arrives four seconds later, a licensed icon supplies the spinning star, and the palette turns warm at five seconds. Switching back cancels every pending timer. Reduced-motion/keyboard activation uses still effects at the same milestones.
+
 Enquiry drafts survive policy navigation, Back and refresh using a per-tab 24-hour restore window. Consent is never saved; confirmed sending or Clear draft removes the draft. `npm run test:draft` checks these flows on desktop/mobile, including blocked-storage navigation. Day mode shows a still sun/message for keyboard or reduced-motion users instead of hiding the cue.
 
 `npm run test:theme` checks warm Day mode, the brief sourced sun strike, cleanup, cancellation, keyboard-accessible theme switching and reduced-motion fallback. Night remains the default on every new page load. There are no floating Effects or replay controls.

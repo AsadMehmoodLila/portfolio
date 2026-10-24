@@ -6,6 +6,7 @@ import {
   GithubLogo,
 } from "@phosphor-icons/react/dist/ssr";
 import { identity } from "@/data/portfolio";
+import { BrandMark } from "./brand-mark";
 export function SiteFooter({ compact = false }: { compact?: boolean }) {
   return (
     <footer className={`site-footer${compact ? " compact-footer" : ""}`}>
@@ -30,9 +31,7 @@ export function SiteFooter({ compact = false }: { compact?: boolean }) {
       )}
       <div className="footer-main shell">
         <Link className="wordmark" href="/" prefetch={false}>
-          <span className="brand-symbol" aria-hidden="true">
-            sl<span>/</span>
-          </span>
+          <BrandMark />
           {identity.brand}
         </Link>
         <span>Roblox scripting by {identity.name}</span>

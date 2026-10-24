@@ -27,6 +27,19 @@
   --line-soft: #c7b496;
   --control-line: #7b6953;
 }
+:root[data-theme="day"][data-day-phase="cool"] {
+  --bg: #eef2f8;
+  --surface: #e3eaf4;
+  --surface-raised: #d4dfef;
+  --text: #152139;
+  --muted: #465977;
+  --quiet: #4f5d73;
+  --accent: #a84809;
+  --on-accent: #fff9f3;
+  --line: #7c8fae;
+  --line-soft: #bbcbe1;
+  --control-line: #637897;
+}
 body {
   background-image: radial-gradient(
     ellipse 65% 760px at 80% 150px,
@@ -2295,4 +2308,319 @@ h2 span {
     padding-inline: 18px;
     font-size: 0.61rem;
   }
+}
+/* ScriptLilla identity: use the owner's cap-and-character artwork across the site. */
+.brand-mascot {
+  display: block;
+  position: relative;
+  width: 44px;
+  height: 44px;
+  overflow: hidden;
+  border-radius: 13px 13px 6px 6px;
+  border: 1px solid var(--line);
+  background: #17251e;
+  flex-shrink: 0;
+  transform: rotate(-5deg);
+  box-shadow: 3px 3px 0 var(--line-soft);
+}
+.brand-mascot > img {
+  position: absolute;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+  left: 0;
+  top: 0;
+}
+.brand-mascot-corner {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 9px;
+  height: 9px;
+  background: var(--accent);
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}
+.wordmark:hover .brand-mascot {
+  transform: rotate(3deg);
+}
+.commission-ticket {
+  display: inline-flex;
+  gap: 14px;
+  align-items: center;
+  margin-top: 26px;
+  padding: 12px 16px 12px 12px;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 3px 12px 12px 3px;
+  position: relative;
+  box-shadow: 4px 4px 0 var(--line-soft);
+  transition:
+    transform 160ms var(--ease),
+    border-color 160ms ease;
+}
+.commission-ticket::before {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: 9px;
+  bottom: 9px;
+  border-left: 3px solid var(--accent);
+}
+.ticket-glyph {
+  color: var(--accent);
+  padding: 9px;
+  background: var(--bg);
+  border: 1px dashed var(--line);
+  transform: rotate(-6deg);
+}
+.commission-ticket small {
+  display: block;
+  color: var(--muted);
+  font: 0.62rem/1.5 var(--font-geist-mono);
+  margin-bottom: 3px;
+}
+.commission-ticket strong {
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+.commission-ticket > svg {
+  margin-left: 8px;
+  color: var(--accent);
+}
+.commission-ticket:hover {
+  transform: translateY(-3px) rotate(-1deg);
+  border-color: var(--accent);
+}
+.player-number {
+  display: inline-flex;
+  justify-content: center;
+  padding: 3px 7px;
+  color: var(--on-accent);
+  background: var(--accent);
+  border-radius: 2px;
+  transform: rotate(-5deg);
+  font-size: 0.62rem;
+  font-weight: 700;
+}
+.character-canvas {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  appearance: none;
+  touch-action: pan-y;
+}
+.character-canvas:focus-visible {
+  outline-offset: -9px;
+  border-radius: 32%;
+}
+.character-stage .character-canvas > img {
+  pointer-events: none;
+}
+.character-stage[data-entered="true"] .character-canvas {
+  animation: character-spawn 800ms var(--ease) both;
+}
+.character-invitation {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 0;
+  border-top: 1px solid var(--line-soft);
+  color: var(--muted);
+  font-size: 0.7rem;
+}
+.character-invitation > svg {
+  color: var(--accent);
+}
+.character-invitation > span:last-child {
+  margin-left: auto;
+  font-size: 1.2rem;
+  color: var(--accent);
+}
+.character-speech {
+  position: absolute;
+  top: 49%;
+  right: -5px;
+  max-width: 150px;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  padding: 11px 12px;
+  font-size: 0.68rem;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: 4px 4px 0 var(--line-soft);
+  transform: rotate(4deg);
+  pointer-events: none;
+  z-index: 2;
+}
+.character-speech::after {
+  content: "";
+  position: absolute;
+  left: -8px;
+  bottom: 14px;
+  width: 12px;
+  height: 12px;
+  background: var(--surface);
+  border-left: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  transform: rotate(45deg);
+}
+.character-speech > svg {
+  flex-shrink: 0;
+  color: var(--accent);
+  margin-top: 2px;
+}
+.spawn-ripple {
+  position: absolute;
+  bottom: 12%;
+  left: 25%;
+  width: 50%;
+  height: 28%;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: spawn-ripple 850ms var(--ease) both;
+}
+@keyframes character-spawn {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes spawn-ripple {
+  from {
+    opacity: 0.9;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.65);
+  }
+}
+.character-stage[data-dancing="true"]
+  .character-canvas[data-state="preview"]
+  > img,
+.character-stage[data-dancing="true"]
+  .character-canvas[data-state="fallback"]
+  > img {
+  animation: character-loading-groove 650ms ease-in-out infinite;
+}
+@keyframes character-loading-groove {
+  0%,
+  100% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(2deg) translateY(-4px);
+  }
+}
+.sun-strike {
+  animation-duration: 2.8s;
+}
+.sun-strike-message {
+  animation-duration: 2.8s;
+}
+.sun-strike-sun {
+  animation-name: solar-drop;
+  animation-duration: 650ms;
+}
+.sun-strike-star {
+  position: absolute;
+  top: 30%;
+  left: 10%;
+  color: #473a25;
+  filter: drop-shadow(0 3px 0 #ffc247);
+  animation: ninja-star-strike 900ms var(--ease) both;
+}
+@keyframes solar-drop {
+  from {
+    transform: translateY(-65vh) rotate(-100deg);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) rotate(18deg);
+    opacity: 1;
+  }
+}
+@keyframes ninja-star-strike {
+  0%,
+  40% {
+    transform: translate(0, -10vh) rotate(0);
+    opacity: 0;
+  }
+  48% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(65vw, 10vh) rotate(580deg);
+    opacity: 0;
+  }
+}
+@media (max-width: 600px) {
+  .brand-mascot {
+    width: 40px;
+    height: 40px;
+  }
+  .commission-ticket {
+    gap: 10px;
+    margin-top: 24px;
+  }
+  .commission-ticket strong {
+    font-size: 0.77rem;
+  }
+  .character-speech {
+    top: 46%;
+    right: 0;
+    width: 120px;
+    padding: 9px;
+    font-size: 0.6rem;
+  }
+  .character-invitation {
+    font-size: 0.65rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .character-stage[data-entered="true"] .character-canvas {
+    animation: character-spawn-fade 650ms linear both !important;
+  }
+  .spawn-ripple {
+    display: none;
+  }
+  .character-canvas > img {
+    animation: none !important;
+  }
+  .sun-strike-star {
+    display: none;
+  }
+}
+@keyframes character-spawn-fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.hero-entry-caption {
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  padding: 6px 9px;
+  background: var(--text);
+  color: var(--bg);
+  font: 700 0.6rem/1.2 var(--font-geist-mono);
+  white-space: nowrap;
+  box-shadow: 3px 3px 0 var(--accent);
+  transform: rotate(-4deg);
 }

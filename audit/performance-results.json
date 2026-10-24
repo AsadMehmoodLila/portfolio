@@ -2,237 +2,247 @@
   {
     "device": "390px, 4x CPU throttle, 1.5Mbps/40ms, local static server without compression",
     "reducedMotion": false,
-    "lcpMs": 2760,
-    "fcpMs": 2760,
+    "lcpMs": 2976,
+    "fcpMs": 2976,
     "cls": 0,
-    "bytes": 840615,
+    "bytes": 848310,
     "modelRequested": false,
     "resources": [
       {
         "url": "/_next/static/media/4e437607573e1075-s.p.2fz20jxmyia8o.woff2",
         "bytes": 10168,
-        "start": 104
+        "start": 94
       },
       {
         "url": "/_next/static/media/605ce01b664af129-s.p.0wgildi0cnwt9.woff2",
         "bytes": 29588,
-        "start": 106
+        "start": 96
+      },
+      {
+        "url": "/favicon.png",
+        "bytes": 8664,
+        "start": 97
       },
       {
         "url": "/media/character-stage.webp",
         "bytes": 18538,
-        "start": 107
+        "start": 98
       },
       {
         "url": "/media/fighters/martial-hero-attack1.webp",
         "bytes": 2082,
-        "start": 108
+        "start": 99
       },
       {
         "url": "/media/fighters/hero-knight-idle.webp",
         "bytes": 1824,
-        "start": 108
+        "start": 100
       },
       {
         "url": "/media/fighters/martial-hero-portrait.webp",
         "bytes": 1880,
-        "start": 109
+        "start": 101
       },
       {
-        "url": "/_next/static/chunks/3b61-69n1kqnd.css",
-        "bytes": 67496,
-        "start": 110
+        "url": "/_next/static/chunks/3dz4-w722y7uu.css",
+        "bytes": 75115,
+        "start": 102
       },
       {
         "url": "/_next/static/chunks/1fgrluaiqk_hz.css",
         "bytes": 1175,
-        "start": 110
+        "start": 103
       },
       {
         "url": "/_next/static/chunks/1x6obpmlu1_c2.js",
         "bytes": 5661,
-        "start": 111
+        "start": 104
       },
       {
         "url": "/_next/static/chunks/1-nqmp1rl8kqt.js",
         "bytes": 34343,
-        "start": 112
+        "start": 104
       },
       {
         "url": "/_next/static/chunks/1bqsgd5zftvt6.js",
         "bytes": 230120,
-        "start": 112
+        "start": 106
       },
       {
         "url": "/_next/static/chunks/3zo13q3j-3u5e.js",
         "bytes": 163887,
-        "start": 113
+        "start": 106
       },
       {
         "url": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
         "bytes": 10330,
-        "start": 113
+        "start": 107
       },
       {
-        "url": "/_next/static/chunks/2u_l-bf0j9n3s.js",
-        "bytes": 34356,
-        "start": 114
+        "url": "/_next/static/chunks/28qfxencvkk3y.js",
+        "bytes": 30960,
+        "start": 107
       },
       {
-        "url": "/_next/static/chunks/23-ye59hlcr15.js",
-        "bytes": 28295,
-        "start": 114
+        "url": "/_next/static/chunks/3a2jvnkemoad-.js",
+        "bytes": 26251,
+        "start": 108
       },
       {
-        "url": "/_next/static/chunks/44m84yoslonrr.js",
-        "bytes": 55027,
-        "start": 114
+        "url": "/_next/static/chunks/08rj5_e99zx2q.js",
+        "bytes": 51879,
+        "start": 108
       },
       {
         "url": "/icons/tools/robloxstudio.svg",
         "bytes": 607,
-        "start": 2253
+        "start": 2432
       },
       {
         "url": "/icons/tools/lua.svg",
         "bytes": 4409,
-        "start": 2254
+        "start": 2433
       },
       {
         "url": "/icons/tools/git.svg",
         "bytes": 726,
-        "start": 2255
+        "start": 2434
       },
       {
         "url": "/icons/tools/github.svg",
         "bytes": 1122,
-        "start": 2255
+        "start": 2435
       },
       {
         "url": "/_next/static/chunks/350jee8np2l-c.css",
         "bytes": 924,
-        "start": 4719
+        "start": 4787
       },
       {
         "url": "/_next/static/chunks/00qimxqg4bc40.js",
         "bytes": 136149,
-        "start": 4721
+        "start": 4789
       },
       {
         "url": "/media/fighters/martial-hero-run.webp",
         "bytes": 1908,
-        "start": 4777
+        "start": 4834
       }
     ]
   },
   {
     "device": "390px, 4x CPU throttle, 1.5Mbps/40ms, local static server without compression",
     "reducedMotion": true,
-    "lcpMs": 2736,
-    "fcpMs": 2736,
+    "lcpMs": 2880,
+    "fcpMs": 2880,
     "cls": 0,
-    "bytes": 701634,
+    "bytes": 709329,
     "modelRequested": false,
     "resources": [
       {
         "url": "/_next/static/media/4e437607573e1075-s.p.2fz20jxmyia8o.woff2",
         "bytes": 10168,
-        "start": 88
+        "start": 96
       },
       {
         "url": "/_next/static/media/605ce01b664af129-s.p.0wgildi0cnwt9.woff2",
         "bytes": 29588,
-        "start": 89
+        "start": 99
+      },
+      {
+        "url": "/favicon.png",
+        "bytes": 8664,
+        "start": 99
       },
       {
         "url": "/media/character-stage.webp",
         "bytes": 18538,
-        "start": 90
+        "start": 99
       },
       {
         "url": "/media/fighters/martial-hero-attack1.webp",
         "bytes": 2082,
-        "start": 91
+        "start": 99
       },
       {
         "url": "/media/fighters/hero-knight-idle.webp",
         "bytes": 1824,
-        "start": 92
+        "start": 99
       },
       {
         "url": "/media/fighters/martial-hero-portrait.webp",
         "bytes": 1880,
-        "start": 93
+        "start": 99
       },
       {
-        "url": "/_next/static/chunks/3b61-69n1kqnd.css",
-        "bytes": 67496,
-        "start": 93
+        "url": "/_next/static/chunks/3dz4-w722y7uu.css",
+        "bytes": 75115,
+        "start": 99
       },
       {
         "url": "/_next/static/chunks/1fgrluaiqk_hz.css",
         "bytes": 1175,
-        "start": 94
+        "start": 99
       },
       {
         "url": "/_next/static/chunks/1x6obpmlu1_c2.js",
         "bytes": 5661,
-        "start": 95
+        "start": 99
       },
       {
         "url": "/_next/static/chunks/1-nqmp1rl8kqt.js",
         "bytes": 34343,
-        "start": 95
+        "start": 100
       },
       {
         "url": "/_next/static/chunks/1bqsgd5zftvt6.js",
         "bytes": 230120,
-        "start": 96
-      },
-      {
-        "url": "/_next/static/chunks/3zo13q3j-3u5e.js",
-        "bytes": 163887,
-        "start": 96
+        "start": 100
       },
       {
         "url": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
         "bytes": 10330,
-        "start": 96
+        "start": 100
       },
       {
-        "url": "/_next/static/chunks/2u_l-bf0j9n3s.js",
-        "bytes": 34356,
-        "start": 97
+        "url": "/_next/static/chunks/3zo13q3j-3u5e.js",
+        "bytes": 163887,
+        "start": 100
       },
       {
-        "url": "/_next/static/chunks/23-ye59hlcr15.js",
-        "bytes": 28295,
-        "start": 97
+        "url": "/_next/static/chunks/28qfxencvkk3y.js",
+        "bytes": 30960,
+        "start": 101
       },
       {
-        "url": "/_next/static/chunks/44m84yoslonrr.js",
-        "bytes": 55027,
-        "start": 97
+        "url": "/_next/static/chunks/3a2jvnkemoad-.js",
+        "bytes": 26251,
+        "start": 102
+      },
+      {
+        "url": "/_next/static/chunks/08rj5_e99zx2q.js",
+        "bytes": 51879,
+        "start": 103
       },
       {
         "url": "/icons/tools/robloxstudio.svg",
         "bytes": 607,
-        "start": 2234
+        "start": 2486
       },
       {
         "url": "/icons/tools/lua.svg",
         "bytes": 4409,
-        "start": 2235
+        "start": 2488
       },
       {
         "url": "/icons/tools/git.svg",
         "bytes": 726,
-        "start": 2236
+        "start": 2490
       },
       {
         "url": "/icons/tools/github.svg",
         "bytes": 1122,
-        "start": 2237
+        "start": 2492
       }
     ]
   }

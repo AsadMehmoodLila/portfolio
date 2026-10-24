@@ -1,30 +1,41 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
-import {
-  ArrowCounterClockwise,
-  ArrowsHorizontal,
-  Cube,
-  Lightbulb,
-  Pause,
-  Play,
-} from "@phosphor-icons/react";
+import { HandTap, Sparkle } from "@phosphor-icons/react";
 import { useTheme } from "@/components/theme-controls";
 import { StageSignals } from "./stage-signals";
 import { useEffects } from "./effects-provider";
 
 export function CharacterStage() {
-  const host = useRef<HTMLDivElement>(null);
+  const host = useRef<HTMLButtonElement>(null);
   const engine = useRef<{ draw: () => void; start: () => void } | null>(null);
   const state = useRef({ playing: false, lit: true, yaw: -0.24, night: true });
   const [ready, setReady] = useState(false);
   const [active, setActive] = useState(false);
   const [failed, setFailed] = useState(false);
   const [playing, setPlaying] = useState(false);
-  const [lit, setLit] = useState(true);
   const { night } = useTheme();
-  const { setEnabled: setEffectsEnabled } = useEffects();
+  const { setEnabled: setAmbientMotion } = useEffects();
   const help = useId();
+  const dragged = useRef(false);
+  const triggerDance = () => {
+    if (dragged.current) {
+      dragged.current = false;
+      return;
+    }
+    state.current.playing = !state.current.playing;
+    setPlaying(state.current.playing);
+    const saver = (
+      navigator as Navigator & { connection?: { saveData?: boolean } }
+    ).connection?.saveData;
+    setAmbientMotion(
+      state.current.playing &&
+        !matchMedia("(prefers-reduced-motion: reduce)").matches &&
+        !saver,
+    );
+    setActive(true);
+    engine.current?.draw();
+  };
 
   useEffect(() => {
     state.current.night = night;
@@ -36,12 +47,12 @@ export function CharacterStage() {
       navigator as Navigator & { connection?: { saveData?: boolean } }
     ).connection;
     const update = () => {
-      state.current.playing = !preference.matches && !connection?.saveData;
-      setPlaying(state.current.playing);
-      if (state.current.playing) engine.current?.start();
-      else engine.current?.draw();
+      if (preference.matches) {
+        state.current.playing = false;
+        setPlaying(false);
+        engine.current?.draw();
+      }
     };
-    update();
     preference.addEventListener("change", update);
     const timeout = window.setTimeout(() => {
       if (
@@ -50,7 +61,7 @@ export function CharacterStage() {
         window.matchMedia("(min-width:700px)").matches
       )
         setActive(true);
-    }, 1400);
+    }, 900);
     return () => {
       clearTimeout(timeout);
       preference.removeEventListener("change", update);
@@ -228,13 +239,15 @@ export function CharacterStage() {
         startYaw = 0,
         dragging = false;
       const down = (event: PointerEvent) => {
+        dragged.current = false;
+        if (event.pointerType !== "mouse") return;
         dragging = true;
         startX = event.clientX;
         startYaw = state.current.yaw;
-        element!.setPointerCapture(event.pointerId);
       };
       const move = (event: PointerEvent) => {
-        if (dragging) {
+        if (dragging && Math.abs(event.clientX - startX) > 5) {
+          dragged.current = true;
           state.current.yaw = startYaw + (event.clientX - startX) * 0.012;
           draw();
         }
@@ -256,6 +269,7 @@ export function CharacterStage() {
       element!.addEventListener("pointermove", move);
       element!.addEventListener("pointerup", up);
       element!.addEventListener("pointercancel", up);
+      element!.addEventListener("pointerleave", up);
       element!.addEventListener("keydown", keys);
       engine.current = { draw, start: schedule };
       cleanup = () => {
@@ -267,6 +281,7 @@ export function CharacterStage() {
         element!.removeEventListener("pointermove", move);
         element!.removeEventListener("pointerup", up);
         element!.removeEventListener("pointercancel", up);
+        element!.removeEventListener("pointerleave", up);
         element!.removeEventListener("keydown", keys);
         mixer?.stopAllAction();
         disposeTree(scene);
@@ -317,13 +332,17 @@ export function CharacterStage() {
   }, [active]);
 
   return (
-    <div className="character-stage" data-ready={ready} data-lit={lit}>
+    <div
+      className="character-stage"
+      data-ready={ready}
+      data-dancing={playing}
+      data-entered="true"
+    >
       <div className="stage-header">
         <span>
-          <Cube size={15} aria-hidden />
-          Player profile
+          <span className="player-number">P1</span> SCRIPT LILLA
         </span>
-        <strong>@scriptlilla</strong>
+        <strong>spawn point</strong>
       </div>
       <div className="character-world">
         <span className="world-word" aria-hidden>
@@ -334,12 +353,16 @@ export function CharacterStage() {
         <div className="world-spark spark-a" aria-hidden />
         <div className="world-spark spark-b" aria-hidden />
         <div className="world-spark spark-c" aria-hidden />
-        <div
+        <span className="spawn-ripple" aria-hidden />
+        <button
+          type="button"
           ref={host}
           className="character-canvas"
-          tabIndex={ready ? 0 : -1}
-          role="img"
-          aria-label="Interactive game-style character on a lit platform"
+          onClick={triggerDance}
+          aria-label={
+            playing ? "Stop ScriptLilla dancing" : "Make ScriptLilla dance"
+          }
+          aria-pressed={playing}
           aria-describedby={help}
           data-state={failed ? "fallback" : ready ? "ready" : "preview"}
         >
@@ -352,80 +375,26 @@ export function CharacterStage() {
               fetchPriority="high"
             />
           )}
-        </div>
-        {!active && (
-          <button
-            type="button"
-            className="character-activate"
-            onClick={() => setActive(true)}
-          >
-            Explore character <Play weight="fill" size={14} aria-hidden />
-          </button>
-        )}
+        </button>
+        <span className="character-speech" aria-hidden>
+          <Sparkle size={13} />
+          {playing ? "Okay, one more move" : "Click me. I know one dance."}
+        </span>
         <StageSignals />
       </div>
-      <div className="character-toolbar">
-        <span className="character-hint">
-          <ArrowsHorizontal size={15} aria-hidden />
-          Drag to rotate
+      <div className="character-invitation">
+        <HandTap size={18} aria-hidden />
+        <span>
+          {playing
+            ? "Click to stop · drag to turn"
+            : "Your move — tap the character"}
         </span>
-        <div className="character-controls">
-          <button
-            type="button"
-            onClick={() => {
-              state.current.lit = !lit;
-              setLit(!lit);
-              engine.current?.draw();
-            }}
-            disabled={!ready}
-            aria-pressed={lit}
-            aria-label={
-              lit ? "Turn avatar lights off" : "Turn avatar lights on"
-            }
-            title="Stage lights"
-          >
-            <Lightbulb
-              size={19}
-              weight={lit ? "fill" : "regular"}
-              aria-hidden
-            />
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              state.current.playing = !playing;
-              setPlaying(!playing);
-              setEffectsEnabled(!playing);
-              engine.current?.draw();
-            }}
-            aria-pressed={playing}
-            aria-label={playing ? "Pause animations" : "Play animations"}
-            title={playing ? "Pause animations" : "Play animations"}
-          >
-            {playing ? (
-              <Pause size={18} weight="fill" aria-hidden />
-            ) : (
-              <Play size={18} weight="fill" aria-hidden />
-            )}
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              state.current.yaw = -0.24;
-              engine.current?.draw();
-            }}
-            disabled={!ready}
-            aria-label="Reset avatar view"
-            title="Reset view"
-          >
-            <ArrowCounterClockwise size={19} aria-hidden />
-          </button>
-        </div>
+        <span aria-hidden>↖</span>
       </div>
       <p id={help} className="sr-only">
-        Drag to rotate, or focus the character and use Left and Right arrow
-        keys. Home resets the view. Lights and motion can be changed
-        independently.
+        Click or press Enter or Space on the character to start or stop its
+        dance. Stopping it also pauses decorative motion. Drag with a mouse, or
+        use Left and Right arrow keys to turn. Home resets the view.
         {failed &&
           " Interactive rendering is unavailable; a still preview is shown."}
       </p>

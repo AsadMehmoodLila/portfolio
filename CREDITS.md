@@ -1,5 +1,7 @@
 # Credits and licenses
 
+The current header/footer mascot and browser icons reuse the owner's generated green-cap portrait, framed in code and rendered at icon sizes. No new generated artwork or paid model request was used for this branding revision. The sun sequence adds the existing Phosphor StarFour icon under its retained MIT license.
+
 Next.js, React, Tailwind CSS, Three.js and other retained dependencies keep their upstream open-source licenses. Geist and Geist Mono fonts are served locally through next/font; SIL Open Font Licenses are archived under assets/licenses/.
 
 The portfolio character, reused in the new game-style stage, is an original prompt-based character created with Meshy: one geometry request, one PBR texture refine, one automatic rig and one Hip Hop Dance preset (action 591). The owner approved 38 additional credits; all four stages succeeded and consumed 38. The previous sculpture consumed 20, for 58 total of the 100-credit cap. Blender prepared the scene, optimized the GLB textures locally and rendered the static fallback. Attribution: Original avatar — Meshy + Blender. Approved prompts, task identifiers and billed costs are in design/meshy/avatar/job.json; no stock/reference image was used. The character is not an official Roblox character and does not imply Roblox endorsement.

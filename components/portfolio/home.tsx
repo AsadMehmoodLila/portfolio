@@ -34,7 +34,7 @@ export function PortfolioHome() {
         <div className="hero-copy">
           <div className="hero-status">
             <GameController size={17} weight="duotone" aria-hidden />
-            <span>ScriptLilla / Roblox scripter</span>
+            <span>One scripter. Many side quests.</span>
           </div>
           <h1 id="hero-title">
             Your game
@@ -53,10 +53,16 @@ export function PortfolioHome() {
               Explore the work <ArrowRight size={18} aria-hidden />
             </a>
           </div>
-          <div className="hero-availability">
-            <span aria-hidden />
-            {identity.availability}
-          </div>
+          <Link href="/contact/" prefetch={false} className="commission-ticket">
+            <span className="ticket-glyph" aria-hidden>
+              <GameController size={26} weight="duotone" />
+            </span>
+            <span>
+              <small>Accepting commissions</small>
+              <strong>Got a side quest for me?</strong>
+            </span>
+            <ArrowUpRight size={18} aria-hidden />
+          </Link>
         </div>
         <div className="hero-visual">
           <CharacterStage />

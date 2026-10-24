@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, List, X } from "@phosphor-icons/react";
 import { ThemeToggle } from "@/components/theme-controls";
 import { identity } from "@/data/portfolio";
+import { BrandMark } from "./brand-mark";
 
 const items = [
   { href: "/#work", label: "Work" },
@@ -38,9 +39,7 @@ export function SiteHeader() {
           prefetch={false}
           aria-label={`${identity.brand} home`}
         >
-          <span className="brand-symbol" aria-hidden="true">
-            sl<span>/</span>
-          </span>
+          <BrandMark />
           {identity.brand}
         </Link>
         <nav className="desktop-nav" aria-label="Primary navigation">

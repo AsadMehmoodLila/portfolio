@@ -1,5 +1,9 @@
 # Commission portfolio review, 24 October 2026
 
+## Homepage choreography and owner branding
+
+Latest owner revision: Day begins cool white, then at four seconds the sun enters and throws a sourced Phosphor star; the quote precedes a warm impact at five seconds, and the overlay clears at 6.8 seconds. Cancelled theme sequences cannot fire later. Keyboard/reduced-motion use keeps the same visible stages with still effects. The character is the dance button: direct click/tap and Enter/Space start/stop the real GLB clip. The toolbar, light/reset controls and Explore overlay are removed. Rotation stays available through mouse drag/arrows/Home. Desktop defers loading its idle model; mobile and reduced-motion previews load it only on interaction. Render work stops when offscreen. First entry includes a spawn/fade and a longer first fly-by, with existing seven-once-per-tab behavior retained. Header/footer/tab icons now reuse the green-cap owner artwork; the commission invitation is a game-style ticket without invented availability metrics. Existing draft restoration remains unchanged.
+
 ## Draft restoration and visible sun cue
 
 The contact draft now survives Privacy Policy navigation, browser Back and refresh. A functional per-tab entry stores the current step, choices, brief and reply email with a 24-hour restore window; consent and delivery state are excluded. Confirmed Formspree acceptance and Clear draft remove it. Invalid or expired entries are removed on form access. A memory fallback supports internal navigation when browser storage is blocked. The privacy/cookie notices and form explain the storage. No enquiry is transmitted before explicit submission.

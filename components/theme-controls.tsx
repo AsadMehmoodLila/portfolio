@@ -1,7 +1,7 @@
 "use client";
 import { createContext, useContext, useEffect, useState } from "react";
 import type { ReactNode } from "react";
-import { Moon, Sun } from "@phosphor-icons/react";
+import { Moon, Sun, StarFour } from "@phosphor-icons/react";
 import { FighterSprite } from "@/components/portfolio/fighter-sprite";
 
 const ThemeContext = createContext({
@@ -13,17 +13,29 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [night, setNight] = useState(true);
   const [strike, setStrike] = useState(0);
   const [quietStrike, setQuietStrike] = useState(false);
+  const [dayPhase, setDayPhase] = useState<"cool" | "warm">("warm");
+  const [sequence, setSequence] = useState(0);
   useEffect(() => {
-    if (!strike) return;
-    const timer = setTimeout(() => setStrike(0), 2400);
-    return () => clearTimeout(timer);
-  }, [strike]);
+    if (night || !sequence) return;
+    const arrival = setTimeout(() => setStrike(sequence), 4000);
+    const impact = setTimeout(() => setDayPhase("warm"), 5000);
+    const finish = setTimeout(() => setStrike(0), 6800);
+    return () => {
+      clearTimeout(arrival);
+      clearTimeout(impact);
+      clearTimeout(finish);
+    };
+  }, [sequence, night]);
   useEffect(() => {
     document.documentElement.dataset.theme = night ? "night" : "day";
+    document.documentElement.dataset.dayPhase = night ? "warm" : dayPhase;
     document
       .querySelector('meta[name="theme-color"]')
-      ?.setAttribute("content", night ? "#0c1018" : "#eee2c9");
-  }, [night]);
+      ?.setAttribute(
+        "content",
+        night ? "#0c1018" : dayPhase === "cool" ? "#eef2f8" : "#eee2c9",
+      );
+  }, [night, dayPhase]);
   // Kept in memory: this preference adds no cookies or browser storage.
   return (
     <ThemeContext.Provider
@@ -35,7 +47,9 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
               !animate ||
                 matchMedia("(prefers-reduced-motion: reduce)").matches,
             );
-            setStrike((value) => value + 1);
+            setDayPhase("cool");
+            setStrike(0);
+            setSequence((value) => value + 1);
           } else setStrike(0);
           setNight((value) => !value);
         },
@@ -50,6 +64,9 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
           aria-hidden="true"
         >
           <div className="sun-strike-beam" />
+          <div className="sun-strike-star">
+            <StarFour size={64} weight="fill" />
+          </div>
           <img
             className="sun-strike-sun"
             src="/media/sun.svg"
@@ -65,7 +82,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
               moving={!quietStrike}
             />
             <div>
-              <span>Solar strike</span>
+              <span>Sun style · Warmth jutsu</span>
               <strong>
                 Destroyed that
                 <br />

@@ -119,7 +119,10 @@ export function HeroFlybys() {
             { transform: to, opacity: 1, offset: 0.94 },
             { transform: to, opacity: 0 },
           ],
-          { duration: horizontal ? 1550 : 1450, easing: "linear" },
+          {
+            duration: index === 0 ? 2900 : horizontal ? 2100 : 1900,
+            easing: "linear",
+          },
         );
         motion.onfinish = () => {
           motion = null;
@@ -169,6 +172,9 @@ export function HeroFlybys() {
           >
             <div className="hero-flyby-trail" />
             <FighterSprite fighter={active} size={170} />
+            {active === 0 && (
+              <span className="hero-entry-caption">Player one has entered</span>
+            )}
           </div>
         )}
       </div>

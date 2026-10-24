@@ -65,7 +65,9 @@ export const metadata: Metadata = {
     images: ["/images/portfolio-social.png"],
   },
   icons: {
-    icon: "/favicon.svg",
+    icon: [
+      { url: "/favicon.png?v=green-cap", type: "image/png", sizes: "64x64" },
+    ],
     apple: "/apple-touch-icon.png",
   },
   manifest: "/site.webmanifest",
@@ -96,7 +98,7 @@ export default function RootLayout({
         <noscript>
           <style>
             {
-              ".theme-toggle,.mobile-menu-toggle,.brief-builder,.contact-quest,.character-controls,.character-activate,.character-hint,.profile-topics,.profile-story-controls{display:none}"
+              ".theme-toggle,.mobile-menu-toggle,.brief-builder,.contact-quest,.character-controls,.character-activate,.character-hint,.character-speech,.character-invitation,.profile-topics,.profile-story-controls{display:none}.character-canvas{pointer-events:none}"
             }
           </style>
         </noscript>
