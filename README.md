@@ -1,6 +1,6 @@
 # ScriptLilla Roblox scripting portfolio
 
-An individual commission portfolio for Asad Mehmood. Next.js static export, self-hosted assets, day/night mode and an enquiry flow through the owner's Discord server or email. No checkout, accounts, analytics or form backend.
+An individual commission portfolio for Asad Mehmood. Next.js static export, self-hosted assets, day/night mode, a three-step enquiry delivered through Formspree and direct Discord/email contact. No checkout, visitor accounts or analytics.
 
 ## Run and verify
 
@@ -37,7 +37,7 @@ Browser/axe results are saved under `audit/`. Media tests use private fixtures a
 
 Current published work uses the existing Roblox experience artwork and contribution records. Four system/flagship templates are excluded from listings and search indexing. The owner will supply systems and videos later. Known template URLs are not private.
 
-The shared player supports local MP4/WebM with captions or a visitor-activated YouTube privacy-enhanced embed. There is no provider connection before Play. The brief builder stays in memory and provides a copy or email-draft action with explicit acknowledgement. It never claims a message was sent.
+The shared player supports local MP4/WebM with captions or a visitor-activated YouTube privacy-enhanced embed. There is no video-provider connection before Play. The contact flow sends a short brief and reply email through Formspree only after an explicit acknowledgement and Send enquiry. Success requires the provider's accepted response; inbox placement is not asserted. No private API key or Discord webhook is exposed.
 
 ## Implementation
 

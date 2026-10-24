@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Chakra_Petch, Geist } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-controls";
+import { HeroFlybys } from "@/components/portfolio/hero-flybys";
 
 import "./portfolio.css";
 import "./game.css";
@@ -89,12 +90,12 @@ export default function RootLayout({
         <meta name="referrer" content="strict-origin-when-cross-origin" />
         <meta
           httpEquiv="Content-Security-Policy"
-          content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob:; font-src 'self'; connect-src 'self' blob:; frame-src https://www.youtube-nocookie.com; object-src 'none'; base-uri 'self'; form-action 'none'"
+          content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob:; font-src 'self'; connect-src 'self' blob: https://formspree.io; frame-src https://www.youtube-nocookie.com; object-src 'none'; base-uri 'self'; form-action 'none'"
         />
         <noscript>
           <style>
             {
-              ".theme-toggle,.mobile-menu-toggle,.brief-builder,.character-controls,.character-activate,.character-hint{display:none}"
+              ".theme-toggle,.mobile-menu-toggle,.brief-builder,.contact-quest,.character-controls,.character-activate,.character-hint,.profile-topics,.profile-story-controls{display:none}"
             }
           </style>
         </noscript>
@@ -105,6 +106,7 @@ export default function RootLayout({
             Skip to main content
           </a>
           {children}
+          <HeroFlybys />
         </ThemeProvider>
       </body>
     </html>

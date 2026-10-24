@@ -4,7 +4,7 @@ export const identity = {
   brand: "ScriptLilla",
   handle: "scriptlilla",
   email: "asadmehmood4804@gmail.com",
-  discord: "https://discord.gg/8qbxvC3zuS",
+  discord: "https://discord.gg/sKfzTnPVn2",
   github: "https://github.com/AsadMehmoodLila",
   domain: "https://asadlilla.me",
   location: "Sialkot, Pakistan",
@@ -271,7 +271,7 @@ export const questions = [
   {
     question: "What is the best way to contact you?",
     answer:
-      "Join the linked Discord server and ask for ScriptLilla about a commission, or use email for a longer brief. The brief builder prepares text locally so you can choose where to share it.",
+      "Join the linked Discord server and ask for ScriptLilla about a commission, or use email for a longer brief. The short contact flow can send an enquiry to my inbox through Formspree. You can also join the Discord server or email me directly.",
   },
 ];
 

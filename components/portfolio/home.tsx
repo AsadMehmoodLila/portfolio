@@ -6,7 +6,6 @@ import {
   Code,
   GameController,
   DiscordLogo,
-  Plus,
   Stack,
   Sword,
   TreeStructure,
@@ -20,6 +19,8 @@ import {
   services,
 } from "@/data/portfolio";
 import { CharacterStage } from "@/components/portfolio/character-stage";
+import { AnimatedFaq } from "@/components/portfolio/animated-faq";
+import { ProfileCards } from "@/components/portfolio/profile-cards";
 
 const icons = { sword: Sword, stack: Stack, flow: TreeStructure };
 
@@ -259,12 +260,12 @@ export function PortfolioHome() {
         aria-labelledby="about-title"
       >
         <div className="about-identity">
-            <div className="about-monogram profile-portrait">
+          <div className="about-monogram profile-portrait">
             <img
-                src="/media/scriptlilla-portrait.webp"
-                alt="ScriptLilla's illustrated avatar wearing a green plaid cap and black jacket"
-                width={720}
-                height={720}
+              src="/media/scriptlilla-portrait.webp"
+              alt="ScriptLilla's illustrated avatar wearing a green plaid cap and black jacket"
+              width={720}
+              height={720}
               loading="lazy"
             />
           </div>
@@ -285,16 +286,7 @@ export function PortfolioHome() {
             <br />
             behind the systems
           </h2>
-          <p>
-            I’m Asad, known as ScriptLilla. I work on Roblox gameplay systems
-            and UI integration, with a focus on how features fit together in a
-            playable game.
-          </p>
-          <p>
-            My background in Artificial Intelligence at UMT supports the way I
-            approach logic, debugging and systems. For commissions, the focus
-            stays on your game and the agreed deliverables.
-          </p>
+          <ProfileCards />
           <div className="tools-strip" aria-label="Working tools">
             {[
               ["robloxstudio", "Roblox Studio"],
@@ -332,13 +324,11 @@ export function PortfolioHome() {
         </div>
         <div className="faq-list">
           {questions.map((item) => (
-            <details key={item.question}>
-              <summary>
-                {item.question}
-                <Plus className="faq-symbol" size={18} aria-hidden />
-              </summary>
-              <p>{item.answer}</p>
-            </details>
+            <AnimatedFaq
+              key={item.question}
+              question={item.question}
+              answer={item.answer}
+            />
           ))}
         </div>
       </section>

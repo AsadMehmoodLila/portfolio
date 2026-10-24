@@ -1,0 +1,131 @@
+import { chromium } from "@playwright/test";
+import assert from "node:assert/strict";
+import fs from "node:fs/promises";
+const origin = "http://127.0.0.1:4173";
+const browser = await chromium.launch();
+const report = { checks: [], errors: [] };
+try {
+  const context = await browser.newContext({
+    viewport: { width: 1100, height: 850 },
+    reducedMotion: "no-preference",
+  });
+  const page = await context.newPage();
+  page.on("pageerror", (error) => report.errors.push(String(error)));
+  await page.addInitScript(() => {
+    window.__flybys = [];
+    new MutationObserver(() => {
+      const sprite = document.querySelector(".hero-flyby[data-hero]");
+      if (sprite && !window.__flybys.includes(Number(sprite.dataset.hero)))
+        window.__flybys.push(Number(sprite.dataset.hero));
+    }).observe(document, { childList: true, subtree: true });
+  });
+  await page.clock.install();
+  await page.goto(origin, { waitUntil: "networkidle" });
+  await page.locator('.hero-flyby[data-hero="1"]').waitFor();
+  assert.equal(
+    await page
+      .locator(".hero-flyby-layer")
+      .evaluate((el) => getComputedStyle(el).pointerEvents),
+    "none",
+  );
+  assert.equal(
+    (
+      await page.evaluate(() =>
+        JSON.parse(sessionStorage.getItem("scriptlilla-hero-session-v1")),
+      )
+    ).seen,
+    1,
+  );
+  await page.evaluate(() =>
+    document
+      .querySelector(".hero-flyby")
+      .getAnimations()
+      .forEach((animation) => animation.finish()),
+  );
+  await page.waitForFunction(() => !document.querySelector(".hero-flyby"));
+  await page.clock.fastForward(14000);
+  assert.equal(await page.locator(".hero-flyby").count(), 0);
+  for (let index = 2; index <= 7; index++) {
+    await page.clock.fastForward(index === 2 ? 1100 : 15100);
+    await page.locator(`.hero-flyby[data-hero="${index}"]`).waitFor();
+    await page.evaluate(() =>
+      document
+        .querySelector(".hero-flyby")
+        .getAnimations()
+        .forEach((animation) => animation.finish()),
+    );
+    await page.waitForFunction(() => !document.querySelector(".hero-flyby"));
+  }
+  assert.deepEqual(
+    await page.evaluate(() => window.__flybys),
+    [1, 2, 3, 4, 5, 6, 7],
+  );
+  await page.clock.fastForward(60000);
+  assert.equal(await page.locator(".hero-flyby").count(), 0);
+  assert.equal(
+    (
+      await page.evaluate(() =>
+        JSON.parse(sessionStorage.getItem("scriptlilla-hero-session-v1")),
+      )
+    ).seen,
+    7,
+  );
+  await page.reload({ waitUntil: "networkidle" });
+  await page.clock.fastForward(30000);
+  assert.equal(await page.locator(".hero-flyby").count(), 0);
+  report.checks.push(
+    "Seven distinct sprites, fifteen-second spacing, no click interception, no loop, no replay after refresh",
+  );
+  const fresh = await context.newPage();
+  await fresh.goto(origin, { waitUntil: "networkidle" });
+  await fresh.locator('.hero-flyby[data-hero="1"]').waitFor();
+  await fresh
+    .getByRole("button", { name: "Turn hero fly-by effects off" })
+    .click();
+  await fresh.waitForFunction(() => !document.querySelector(".hero-flyby"));
+  assert(
+    (
+      await fresh.evaluate(() =>
+        JSON.parse(sessionStorage.getItem("scriptlilla-hero-session-v1")),
+      )
+    ).off,
+  );
+  await fresh.reload({ waitUntil: "networkidle" });
+  assert.equal(await fresh.locator(".hero-flyby").count(), 0);
+  report.checks.push(
+    "A fresh tab gets a fresh sequence; the off switch cancels motion and persists within its tab",
+  );
+  await context.close();
+  const quiet = await browser.newContext({ reducedMotion: "reduce" });
+  const qp = await quiet.newPage();
+  await qp.goto(origin, { waitUntil: "networkidle" });
+  assert.equal(await qp.locator(".hero-flyby").count(), 0);
+  assert.equal(await qp.evaluate(() => sessionStorage.length), 0);
+  await quiet.close();
+  const saver = await browser.newContext();
+  const sp = await saver.newPage();
+  await sp.addInitScript(() =>
+    Object.defineProperty(navigator, "connection", {
+      value: { saveData: true },
+    }),
+  );
+  await sp.goto(origin, { waitUntil: "networkidle" });
+  assert.equal(await sp.locator(".hero-flyby").count(), 0);
+  assert.equal(await sp.evaluate(() => sessionStorage.length), 0);
+  await saver.close();
+  report.checks.push(
+    "Reduced motion and data saving suppress automatic fly-bys without writing progress",
+  );
+  report.passed = !report.errors.length;
+} catch (error) {
+  report.errors.push(error.stack);
+  report.passed = false;
+} finally {
+  await browser.close();
+  await fs.writeFile(
+    "audit/flyby-results.json",
+    JSON.stringify(report, null, 2),
+  );
+}
+console.log(JSON.stringify(report, null, 2));
+if (!report.passed) process.exitCode = 1;

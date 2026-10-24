@@ -1,0 +1,9 @@
+{
+  "checks": [
+    "Seven distinct sprites, fifteen-second spacing, no click interception, no loop, no replay after refresh",
+    "A fresh tab gets a fresh sequence; the off switch cancels motion and persists within its tab",
+    "Reduced motion and data saving suppress automatic fly-bys without writing progress"
+  ],
+  "errors": [],
+  "passed": true
+}

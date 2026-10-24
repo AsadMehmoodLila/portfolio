@@ -45,7 +45,14 @@ try {
       const page = await context.newPage();
       page.on("pageerror", (error) => report.errors.push(String(error)));
       page.on("request", (request) => {
-        if (/^https?:/.test(request.url()) && !request.url().startsWith(origin))
+        if (
+          /^https?:/.test(request.url()) &&
+          !request.url().startsWith(origin) &&
+          !(
+            request.url() === "https://formspree.io/f/xgvkvoav" &&
+            request.method() === "POST"
+          )
+        )
           report.externalRequests.push(request.url());
       });
       for (const route of routes) {
@@ -221,88 +228,50 @@ try {
       report.interactions.push(
         `${device} ${theme}: skip link, FAQ, menu Escape, theme navigation, certificate focus trap and return`,
       );
+      await page.route("https://formspree.io/f/xgvkvoav", (route) =>
+        route.fulfill({
+          status: 200,
+          contentType: "application/json",
+          body: '{"ok":true}',
+        }),
+      );
       await page.goto(origin + "/contact/?service=data", {
         waitUntil: "networkidle",
       });
-      assert.equal(
-        await page
-          .getByLabel("Service (required)", { exact: true })
-          .inputValue(),
-        "data",
-      );
-      await page.getByRole("button", { name: "Copy project brief" }).click();
-      await page.waitForFunction(
-        () => document.activeElement?.getAttribute("name") === "project",
-      );
-      await page.getByLabel("Project name (required)").fill("My test game");
       await page
-        .getByLabel("What needs to work? (required)")
+        .getByRole("heading", { name: "Give it a direction" })
+        .waitFor();
+      await page.getByRole("button", { name: "Add the details" }).click();
+      await page.getByRole("button", { name: "Send enquiry" }).click();
+      await page.waitForFunction(
+        () => document.activeElement?.id === "quest-details",
+      );
+      await page
+        .getByLabel("Your idea (required)")
         .fill(
-          "Players should equip items from inventory, and the server should validate each action.",
+          "Players equip inventory items and the server validates each action.",
         );
-      await page.getByRole("button", { name: "Prepare email draft" }).click();
+      await page
+        .getByLabel("Where should I reply? (required)")
+        .fill("test@example.com");
+      await page.getByRole("button", { name: "Send enquiry" }).click();
       await page.waitForFunction(
-        () => document.activeElement?.getAttribute("name") === "consent",
+        () => document.activeElement?.id === "quest-consent",
       );
-      assert.equal(await page.locator(".form-status a").count(), 0);
-      await page.locator("#brief-consent").check();
-      await page.getByRole("button", { name: "Copy project brief" }).click();
+      await page.locator("#quest-consent").check();
+      await page.getByRole("button", { name: "Send enquiry" }).click();
       await page
-        .getByRole("status")
-        .filter({ hasText: "Brief copied" })
+        .getByRole("heading", { name: "Your brief is on its way" })
         .waitFor();
-      assert(
-        (await page.evaluate(() => navigator.clipboard.readText())).includes(
-          "My test game",
-        ),
-      );
-      const email = await page
-        .getByRole("link", { name: "Open email draft" })
-        .getAttribute("href");
-      assert.equal(new URL(email).pathname, "asadmehmood4804@gmail.com");
-      assert(
-        new URL(email).searchParams
-          .get("body")
-          .includes("Player data & inventory"),
-      );
-      await page.getByRole("button", { name: "Prepare email draft" }).click();
-      await page
-        .getByRole("status")
-        .filter({ hasText: "Your brief is ready" })
-        .waitFor();
-      await page
-        .getByLabel("Game or reference link")
-        .fill("javascript:alert(1)");
-      await page.getByRole("button", { name: "Copy project brief" }).click();
-      await page.waitForFunction(
-        () => document.activeElement?.getAttribute("name") === "link",
-      );
-      await page
-        .getByLabel("Game or reference link")
-        .fill("https://www.roblox.com/games/123/example");
-      await page.evaluate(() => {
-        Object.defineProperty(navigator, "clipboard", {
-          configurable: true,
-          value: { writeText: () => Promise.reject(new Error("denied")) },
-        });
-      });
-      await page.getByRole("button", { name: "Copy project brief" }).click();
-      await page
-        .getByRole("status")
-        .filter({ hasText: "could not copy" })
-        .waitFor();
-      assert(await page.getByLabel("Prepared project brief").isVisible());
-      await page.waitForFunction(
-        () => document.activeElement?.id === "brief-output",
-      );
       await page.reload({ waitUntil: "networkidle" });
+      await page.getByRole("button", { name: "Add the details" }).click();
       assert.equal(
-        await page.getByLabel("Project name (required)").inputValue(),
+        await page.getByLabel("Your idea (required)").inputValue(),
         "",
       );
-      assert(!(await page.locator("#brief-consent").isChecked()));
+      assert(!(await page.locator("#quest-consent").isChecked()));
       report.interactions.push(
-        `${device} ${theme}: service preselection, validation focus, explicit consent, real clipboard readback, email content, unsafe reference rejection, clipboard-denied fallback, reload clears entries`,
+        `${device} ${theme}: preselection, three-step enquiry, required fields, consent, mocked Formspree acknowledgement, reload clears entries`,
       );
       await context.close();
     }
@@ -355,7 +324,7 @@ try {
       .getByRole("link", { name: "Join the server", exact: true })
       .isVisible(),
   );
-  assert(!(await nojs.locator(".brief-builder").isVisible()));
+  assert(!(await nojs.locator(".contact-quest").isVisible()));
   await nojs.goto(origin + "/about/");
   assert(await nojs.locator("noscript a").first().isVisible());
   report.interactions.push(

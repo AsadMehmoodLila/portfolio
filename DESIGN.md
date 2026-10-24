@@ -42,3 +42,9 @@ Headings, copy and contact links render on the server. No scroll hijacking, forc
 Published work uses real existing game artwork. Four planned records are absent from public listings/sitemap and have noindex previews. Case pages support real video, screenshots, contribution, evidence, credits and source links when the owner supplies them. No new game systems or videos were produced for this final scope.
 
 Historical Figma exports describe earlier work, not this iteration. Existing character provenance remains in CREDITS.md; no new Meshy credits were consumed.
+
+## Interaction and delivery update
+
+The current contact route uses a short choice-based quest with Formspree delivery, not the former copy-only brief builder. The endpoint is public configuration in data/contact.ts. Submission requires a reply email, a short description and an explicit privacy acknowledgement. The homepage uses a four-card profile reader and a measured reversible FAQ accordion. Both preserve keyboard and reduced-motion paths.
+
+Seven small caped game-character fly-bys are rendered from Kenney CC0 models, once per tab and roughly fifteen seconds apart. They use transforms and opacity only, intercept no clicks, stop when hidden, support an off control and are suppressed for reduced motion/data saving. Their progress is disclosed per-tab functional sessionStorage, not analytics. Source/rights: design/FLYBY-ASSETS.md. No new paid generation was used.

@@ -8,12 +8,12 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import { SiteHeader } from "@/components/portfolio/site-header";
 import { SiteFooter } from "@/components/portfolio/site-footer";
-import { BriefBuilder } from "@/components/portfolio/brief-builder";
+import { ContactQuest } from "@/components/portfolio/contact-quest";
 import { identity } from "@/data/portfolio";
 export const metadata: Metadata = {
   title: "Start a Roblox project",
   description:
-    "Discuss a Roblox scripting commission with ScriptLilla. Share the mechanic, scope and requirements through Discord or email.",
+    "Choose your Roblox system, set a rough scope and send ScriptLilla a short commission enquiry. Direct Discord and email are also available.",
   alternates: { canonical: "/contact/" },
 };
 export default function ContactPage() {
@@ -21,62 +21,65 @@ export default function ContactPage() {
     <>
       <SiteHeader />
       <main id="main-content" tabIndex={-1}>
-        <div className="page-intro shell">
+        <div className="page-intro contact-intro shell">
           <Link className="back-link" href="/" prefetch={false}>
             <ArrowLeft size={16} aria-hidden />
             Back to portfolio
           </Link>
           <h1>
-            What does your
+            Let’s build
             <br />
-            game need?
+            <span>your next system</span>
           </h1>
-          <p>
-            A new mechanic, a system that needs connecting or a focused fix.
-            Tell me the goal and we’ll work out the scope.
-          </p>
+          <p>Three quick steps. No long form.</p>
         </div>
-        <div className="contact-layout shell">
-          <aside className="contact-options" aria-label="Contact options">
-            <section className="contact-card">
-              <DiscordLogo size={32} weight="duotone" aria-hidden />
-              <h2>Start on Discord</h2>
-              <p>
-                Join the server and ask for <strong>@{identity.handle}</strong>{" "}
-                about a commission. Server enquiries are the best way to reach
-                me on Discord.
-              </p>
+        <div className="contact-quest-layout shell">
+          <aside className="quest-profile">
+            <div className="quest-profile-image">
+              <img
+                src="/media/scriptlilla-portrait.webp"
+                alt="ScriptLilla’s green-cap illustrated avatar"
+                width={720}
+                height={720}
+              />
+            </div>
+            <div>
+              <h2>Asad / ScriptLilla</h2>
+              <p>Roblox scripting & UI integration</p>
               <a
                 href={identity.discord}
+                className="link-action"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="link-action"
               >
-                Join the server <ArrowUpRight size={17} aria-hidden />
+                <DiscordLogo size={20} aria-hidden />
+                Chat on Discord <ArrowUpRight size={15} aria-hidden />
               </a>
-            </section>
-            <section className="contact-card">
-              <EnvelopeSimple size={30} weight="duotone" aria-hidden />
-              <h2>Prefer email?</h2>
-              <p>
-                Send your brief directly. You can attach a reference clip or
-                relevant screenshots from your own email app.
-              </p>
-              <a href={`mailto:${identity.email}`} className="link-action">
-                {identity.email}
-              </a>
-            </section>
-            <p className="contact-small">
-              Individual developer: {identity.name}
-              <br />
+            </div>
+            <p className="quest-business">
               {identity.location}
               <br />
-              No payment is collected on this website. Scope, delivery and
-              payment terms are agreed before work begins.
+              Scope and payment terms agreed before work starts
             </p>
           </aside>
-          <BriefBuilder />
+          <ContactQuest />
         </div>
+        <noscript>
+          <div className="quest-nojs shell">
+            <h2>Let’s talk directly</h2>
+            <p>
+              Contact me through Discord or email with the system you need and a
+              short description.
+            </p>
+            <a className="button" href={identity.discord}>
+              Join the server <ArrowUpRight size={17} aria-hidden />
+            </a>
+            <a className="link-action" href={`mailto:${identity.email}`}>
+              <EnvelopeSimple size={18} aria-hidden />
+              {identity.email}
+            </a>
+          </div>
+        </noscript>
       </main>
       <SiteFooter compact />
     </>

@@ -4,7 +4,7 @@ All portfolio work is defined in **`data/portfolio.ts`**. You do not need to edi
 
 ## Ready-made sections
 
-Homepage: hero, services, published work, delivery process, about, tool logos, FAQ, Discord contact and footer. `/contact/` has direct contact options and a local brief builder. `/about/` contains your background and certificate previews. Existing policy URLs remain available.
+Homepage: hero, services, published work, delivery process, interactive profile cards, tool logos, animated FAQ, Discord contact and footer. `/contact/` has a three-step enquiry connected to Formspree, with direct Discord/email alternatives. `/about/` contains your background and certificate previews. Existing policy URLs remain available.
 
 The four reserved case studies are:
 
@@ -62,7 +62,7 @@ They have `status: "planned"`. They are excluded from the homepage and sitemap a
 - Certificates/background legacy records: `data/site.ts`; previews: `components/sections/certificates.tsx`
 - Policies: `data/policies.ts`; keep them aligned with the actual services and data flows
 - Tokens, layout, responsive rules and reduced motion: `app/portfolio.css` and `app/game.css`
-- A copied brief goes only to the visitor's clipboard. Email opens their own app. There is no form backend, spam inbox, checkout or automatic message sending
+- The enquiry is sent to Formspree only after the visitor validates the brief, checks the privacy acknowledgement and chooses Send enquiry. Direct email opens their own app. There is no checkout or automatic marketing
 - Day/night is held in memory during internal navigation. Reloading starts in night mode; no preference cookie or local storage is used
 - YouTube is blocked until the visitor chooses Play, using `youtube-nocookie.com`. Close unloads it. This is a deliberate per-player choice, not a claim that YouTube collects no information
 - Current browser checks cover templates with no video and the shared player with private test fixtures. Your future YouTube video's visibility, captions, licensing and actual remote playback need checking when you add it
@@ -72,3 +72,11 @@ They have `status: "planned"`. They are excluded from the homepage and sitemap a
 Duplicate a complete `Work` object with a unique lowercase hyphenated slug. Keep it planned while preparing its content. The existing route generator, listing, sitemap, player and responsive case layout handle additional entries without new page files.
 
 The hero character is implemented in components/portfolio/character-stage.tsx. Desktop defers its 3D loading; mobile, reduced-motion and data-saving visitors activate it explicitly. Its independent lighting, motion and reset buttons are keyboard accessible. The still is rendered from the local model with scripts/render-character.mjs after a build/preview; no external model service is called.
+
+## Current contact and homepage interactions
+
+The contact page is a three-step choice flow connected to the owner-supplied Formspree endpoint in data/contact.ts. It sends only after a valid brief, reply email and explicit privacy acknowledgement. Formspree acceptance controls the success message; failures preserve fields. Discord opens the supplied server invite. To change the public form ID, edit data/contact.ts and reassess provider/retention wording. Never put mailbox passwords or private Discord webhooks in client code.
+
+The homepage intro uses four short profile cards (profile-cards.tsx). FAQs use a cancellable measured accordion (animated-faq.tsx). Seven small caped sprites pass once per tab, fifteen seconds apart (hero-flybys.tsx). Effects can be stopped; reduced motion/data saving suppress them. One disclosed sessionStorage object prevents replay within the tab. Sprite provenance: design/FLYBY-ASSETS.md.
+
+Checks: npm run test:interactions and npm run test:flybys. Delivery tests use mocked responses. A single labelled real test was accepted by Formspree. Routine tests must not send additional live enquiries automatically.

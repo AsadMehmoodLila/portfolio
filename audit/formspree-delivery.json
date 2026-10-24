@@ -1,0 +1,1 @@
+{"date":"2026-10-24","provider":"Formspree","endpoint":"https://formspree.io/f/xgvkvoav","test":"One labelled owner-authorised setup message; not a client enquiry","httpStatus":200,"response":{"ok":true,"next":"/thanks"},"confirmed":"Provider accepted the submission","limit":"Recipient inbox placement was not independently inspected"}

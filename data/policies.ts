@@ -23,10 +23,11 @@ export const policies: Record<string, Policy> = {
         ],
       },
       {
-        title: "Project brief builder",
+        title: "Project enquiries",
         paragraphs: [
-          "The optional brief builder prepares text in the current browser tab. Project name, service and description are required; budget, timing, devices and a reference link are optional. It does not require your name, email, address or payment details, submit entries to a server, or save them in browser storage. Refreshing clears its application state.",
-          "An unchecked acknowledgement is required before preparing or copying a brief. Copy writes to your device clipboard, replacing its previous contents; a clipboard manager may retain it. Open email draft passes the message to your configured email app. You review and send it there; this site does not confirm delivery. Exclude credentials, player data, identity documents and confidential third-party material.",
+          "The contact page asks you to choose a service, add a short description and provide an email address for a reply. Rough budget and timing choices can be left as flexible or to discuss. It does not request your home address, documents, passwords or payment details. Entries stay in the current tab's memory until you choose Send enquiry; refreshing clears the entries.",
+          "After you tick the initially unchecked privacy acknowledgement and choose Send enquiry, the site sends your email, service, description, budget and timing choices to Formspree, which processes the enquiry and forwards a notification to the owner. Formspree may also process IP address, browser, referring-site and security information under its own policy: https://formspree.io/legal/privacy-policy/. Information may be processed in the United States and other countries where its providers operate. No Formspree request occurs merely from opening the contact page. Do not include sensitive personal data or confidential third-party material.",
+          "A success message means Formspree accepted the enquiry, not that an email has been independently confirmed in the recipient's inbox. If no confirmation arrives, avoid repeated submissions and use the direct contact routes. The current free Formspree plan retains dashboard submission history for up to 30 days; mailbox records and provider security logs have separate retention rules. Requests about your enquiry can be sent to the contact email above.",
         ],
       },
       {
@@ -46,13 +47,13 @@ export const policies: Record<string, Policy> = {
       {
         title: "Providers and international processing",
         paragraphs: [
-          "Hosting, email, Discord and an activated YouTube player may process information outside your country, under their own policies and applicable safeguards. Information is shared only as needed for the enquiry or agreed work, with permission, or where law requires it. External links lead to independent services. No automated decisions about visitors are made by this portfolio.",
+          "Hosting, Formspree, email, Discord and an activated YouTube player may process information outside your country, under their own policies and applicable safeguards. Information is shared only as needed for the enquiry or agreed work, with permission, or where law requires it. External links lead to independent services. No automated decisions about visitors are made by this portfolio.",
         ],
       },
       {
         title: "Retention and security",
         paragraphs: [
-          "Correspondence is retained for handling enquiries, agreed projects and related recordkeeping needs. A fixed schedule has not been established. Contact the address above to discuss a message or request deletion, subject to applicable legal and contractual retention requirements. Provider logs, backups and clipboard history follow their provider or device settings.",
+          "Correspondence is retained for handling enquiries, agreed projects and related recordkeeping needs. A fixed mailbox retention schedule has not been established. Contact the address above to discuss a message or request deletion, subject to applicable legal and contractual retention requirements. Formspree dashboard history follows the plan limit described above; other provider logs and backups follow their own rules.",
           "Absolute security cannot be promised. Avoid sending passwords, financial-account details and unnecessary personal information. Report suspected misuse privately by email.",
         ],
       },
@@ -125,7 +126,7 @@ export const policies: Record<string, Policy> = {
       {
         title: "The portfolio itself",
         paragraphs: [
-          "The application does not set first-party cookies or use localStorage, sessionStorage, analytics, advertising or fingerprinting. The theme and brief exist in application memory. Ordinary caching helps deliver local assets. Copying a brief uses the device clipboard only on request.",
+          "The application does not set first-party cookies or use localStorage, analytics, advertising or fingerprinting. The theme and enquiry entries exist in application memory. One sessionStorage entry, scriptlilla-hero-session-v1, records which of seven decorative fly-bys have appeared, when the next one is due and whether you turned them off. It contains no personal details or visitor identifier and is not sent to a server. It prevents replay in the same tab, including on refresh, and is cleared when that browser tab's session ends. Browser session-restoration behaviour can preserve a restored tab's session. If storage is blocked, page memory is used instead. Ordinary caching helps deliver local assets.",
         ],
       },
       {
@@ -138,7 +139,7 @@ export const policies: Record<string, Policy> = {
       {
         title: "Why there is no site-wide banner",
         paragraphs: [
-          "The default application has no optional tracking technology to accept or reject, so no site-wide cookie banner is shown. External video loading is controlled at each player. This describes the present technical configuration, not a blanket exemption from local law. Hosting and external providers have their own security and delivery practices.",
+          "The site does not run analytics or advertising cookies, so it does not show a site-wide tracking-consent banner. Per-tab motion state is described above, and the Effects control stops the fly-bys. Reduced-motion and data-saving preferences suppress them automatically. External video loading is controlled at each player. Formspree connects only after an explicit enquiry submission. This describes the configuration, not a blanket exemption from local requirements for storage or processing; hosting and providers have their own practices.",
         ],
       },
       {
@@ -201,7 +202,8 @@ export const policies: Record<string, Policy> = {
       {
         title: "Briefs and videos",
         paragraphs: [
-          "The brief builder has visible labels, required-field instructions, associated errors and an explicit unchecked acknowledgement. Nothing is sent automatically. If clipboard access fails, prepared text remains selectable. Direct email and Discord contact links work without JavaScript.",
+          "The three-step enquiry has visible labels, radio-button choices, required-field instructions, associated errors and an explicit unchecked acknowledgement. Sending requires your action. Loading, accepted, failed and rate-limit states are explained, with direct Discord and email alternatives. Direct contact links also work without JavaScript. Short profile cards support previous/next controls and arrow keys; their information remains available without JavaScript. FAQ answers open and close with a short measured animation, or instantly for keyboard and reduced-motion use.",
+          "Seven brief decorative character fly-bys can appear once per tab. They do not accept pointer input or block controls. The Effects button turns them off. Reduced-motion and data-saving preferences suppress them, and hidden tabs do not play them. Their per-tab state prevents repeated distractions while navigating or refreshing.",
           "Videos have visitor-controlled playback and surrounding text summaries. Self-hosted videos support caption tracks; captions or transcripts should accompany new showcases where needed. Third-party players and linked services have their own accessibility limitations.",
         ],
       },
