@@ -2,7 +2,8 @@
   "checks": [
     "full: different heroes, actual sprite frames, no input interception, quiet keyboard focus, cleanup and working navigation",
     "reduced: different heroes, actual sprite frames, no input interception, quiet keyboard focus, cleanup and working navigation",
-    "Touch navigation is immediate with no sticky hover hero"
+    "full touch: immediate navigation, drop/dash sprites survive route changes, real animation, automatic cleanup, no overflow, form actions intact and cancelled gesture ignored",
+    "reduced touch: immediate navigation, drop/dash sprites survive route changes, real animation, automatic cleanup, no overflow, form actions intact and cancelled gesture ignored"
   ],
   "errors": [],
   "passed": true

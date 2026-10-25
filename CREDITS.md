@@ -18,7 +18,7 @@ The owner supplied `gemini_generated_video_9decd53d.mp4` and explicitly selected
 
 The approved replacement image-to-3D workflow completed before the owner chose the video. It consumed41credits: textured meshy-7.1model30, auto-rig5, Big Wave Hello28 and Hip Hop Dance591 at3each. Portfolio cumulative spend99/100. The generated reference, task records and unused models are retained under `design/meshy/anime-avatar/`. No further paid requests. Local Blender processing did not add credits. These models are not loaded by the website.
 
-LuizMelo's seven CC0 hero sprite sheets now supply small button-hover reactions, with one attack playback per hover. Exact source URLs and hashes remain in `design/COMBAT-ASSETS.md`. They are decorative sourced art, not work evidence or franchise characters. React Bits/Twemoji/Kenney integrations remain retired.
+LuizMelo's seven CC0 hero sprite sheets now supply small button-hover reactions, with one attack playback per hover. Mobile taps use one short drop or a run cycle, sourced from the same CC0 sheets. Exact source URLs and hashes remain in `design/COMBAT-ASSETS.md`. They are decorative sourced art, not work evidence or franchise characters. React Bits/Twemoji/Kenney integrations remain retired.
 
 ## Work and supporting images
 

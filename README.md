@@ -43,7 +43,7 @@ The current published game uses real game artwork and contribution records. It i
 - Original owner portrait supplies the header, footer and browser mark; the owner-supplied anime video carries the hero identity
 - A native character button pauses/plays a silent local video with click/Enter/Space; playback stops offscreen and in hidden tabs
 - Reduced motion/data saving use a poster until explicit activation; failed video keeps a still; no 3D renderer/model loads
-- Different sourced hero sprites react beside hovered buttons once; touch stays immediate and keyboard/reduced motion use still frames
+- Different sourced hero sprites react beside hovered buttons once; mobile taps alternate a short drop and running dash without delaying actions; keyboard/reduced motion use still frames
 - Night is the default on reload; theme persists in memory across internal navigation
 - Day has one short asset-ready sun cue, with beams before warmth; reduced motion gets a still cue and Night cancels immediately
 - No roaming fighters, artificial code panels, multi-click biography or effects/replay toolbar

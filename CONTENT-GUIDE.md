@@ -72,7 +72,7 @@ They have `status: "planned"`. They are excluded from the homepage and sitemap a
 
 Duplicate a complete `Work` object with a unique lowercase hyphenated slug. Keep it planned while preparing its content. The existing route generator, listing, sitemap, player and responsive case layout handle additional entries without new page files.
 
-The hero is implemented in `components/portfolio/character-stage.tsx`. It uses the owner-supplied local video, not a generated 3D model. Current assets: `scriptlilla-character.mp4`, `scriptlilla-character-mobile.mp4` and `scriptlilla-character-poster.webp` under `public/media/`. Preserve audio-free inline playback, poster dimensions, reduced-motion/data-saving behaviour and native keyboard pause/play when replacing it. Source record: `design/branding/character-video.json`. This is decorative identity art, not work evidence. Button-hover sprite metadata/behaviour is in `components/portfolio/button-heroes.tsx`; provenance is in `design/COMBAT-ASSETS.md`.
+The hero is implemented in `components/portfolio/character-stage.tsx`. It uses the owner-supplied local video, not a generated 3D model. Current assets: `scriptlilla-character.mp4`, `scriptlilla-character-mobile.mp4` and `scriptlilla-character-poster.webp` under `public/media/`. Preserve audio-free inline playback, poster dimensions, reduced-motion/data-saving behaviour and native keyboard pause/play when replacing it. Source record: `design/branding/character-video.json`. This is decorative identity art, not work evidence. Button hover and mobile tap-reaction metadata/behaviour is in `components/portfolio/button-heroes.tsx`; provenance is in `design/COMBAT-ASSETS.md`.
 
 ## Contact and proof integration
 

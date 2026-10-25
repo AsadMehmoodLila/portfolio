@@ -1,6 +1,6 @@
 # Current use —25 October2026
 
-Only the creator-sourced hero sheets below are active, as small lazy-loaded button-hover reactions in button-heroes.tsx. One attack plays per hover; keyboard/reduced motion uses a still. They never intercept input, drift across the page or store session progress. React Bits, old fly-bys and combat/code panels remain retired. The source/download records below are preserved as history.
+Only the creator-sourced hero sheets below are active, as small lazy-loaded button-hover reactions in button-heroes.tsx. One attack plays per hover; mobile taps alternate a bounded drop or left-to-right run using the original source frames. Reactions finish across internal navigation without delaying actions; keyboard/reduced motion uses a still. They never intercept input, drift across the page or store session progress. React Bits, old fly-bys and combat/code panels remain retired. The source/download records below are preserved as history.
 
 # Combat and character asset provenance
 

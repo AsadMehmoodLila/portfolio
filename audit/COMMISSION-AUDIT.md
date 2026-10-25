@@ -1,3 +1,9 @@
+# Mobile tap reactions —25 October2026
+
+A genuine touch/pen activation now triggers one source-animated hero, alternating drop and horizontal run. The route action is immediate; the global decoration may finish across client-side navigation. No timers defer navigation or form actions. The sprite is pointer-inert/aria-hidden and clears within850ms after decoding (550ms still for reduced motion). New taps replace the prior reaction; cancelled/swipe gestures do not activate. The character video button remains excluded. Existing desktop hover behaviour is preserved. Assets are the same retained CC0 sheets; no new paid generation, dependencies, tracking or storage.
+
+Dedicated interaction checks cover mobile navigation, both trajectories and sprite playback, no horizontal overflow, form-step actions, automatic cleanup, cancelled touch, reduced-motion stills and existing desktop hover/keyboard behaviour.
+
 # Character video release —25 October2026
 
 The owner restored the original portrait logo and chose their supplied Gemini MP4 instead of the completed Meshy replacement. Active hero pages now use a10-second audio-free local video, with397KB desktop and189KB phone renditions plus a16KB poster. No 3D library or GLB loads. The full supplied composition is retained and blended with soft edge masks; no watermark is removed. Click/Enter/Space pauses and plays, playback stops offscreen/hidden, manual pause persists, and reduced-motion/data-saving visitors must explicitly activate video. Failed playback preserves a still. Three.js and its types were removed from dependencies.

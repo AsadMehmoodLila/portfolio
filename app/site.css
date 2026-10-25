@@ -2897,7 +2897,7 @@ h2 {
   }
 }
 /* Small sourced heroes react at the control; they never capture input or move its label. */
-.button-hero{position:fixed;width:112px;height:112px;z-index:60;pointer-events:none;opacity:0;transform:translateY(6px);transition:opacity 125ms var(--ease),transform 180ms var(--ease);contain:layout paint;}
+.button-hero{position:fixed;width:112px;height:112px;z-index:60;pointer-events:none;opacity:0;transform:translateY(6px);transition:opacity 125ms var(--ease),transform 180ms var(--ease);contain:layout;}
 .button-hero[data-shown="true"]{opacity:1;transform:translateY(0)}
 .button-hero-window{display:block;width:112px;height:112px;overflow:hidden}
 .button-hero img{display:block;max-width:none;height:112px;image-rendering:pixelated;animation:button-hero-action 720ms steps(var(--hero-frames)) 1;}
@@ -2905,3 +2905,23 @@ h2 {
 .button-hero[data-quiet="true"] img{animation:none}
 @keyframes button-hero-action{to{transform:translateX(var(--hero-end))}}
 @media(prefers-reduced-motion:reduce){.button-hero{transform:none;transition:opacity 125ms var(--ease)}.button-hero img{animation:none}}
+
+/* Tap feedback stays mounted through client navigation and never blocks the real action. */
+.button-hero-flight{display:block;width:112px;height:112px}
+.button-hero[data-mode="drop"][data-quiet="false"] .button-hero-flight{animation:button-hero-drop 800ms var(--ease) both}
+.button-hero[data-mode="dash"][data-quiet="false"] .button-hero-flight{animation:button-hero-dash 800ms linear both}
+.button-hero[data-mode="dash"] img{animation-duration:400ms;animation-iteration-count:2}
+@keyframes button-hero-drop{
+  0%{opacity:0;transform:translateY(-100px) rotate(-16deg)}
+  15%{opacity:1}
+  50%{opacity:1;transform:translateY(0) rotate(5deg)}
+  70%{opacity:1;transform:translateY(-10px) rotate(-3deg)}
+  100%{opacity:0;transform:translateY(35px) rotate(12deg)}
+}
+@keyframes button-hero-dash{
+  0%{opacity:0;transform:translateX(0)}
+  12%{opacity:1}
+  80%{opacity:1}
+  100%{opacity:0;transform:translateX(var(--hero-travel))}
+}
+@media(prefers-reduced-motion:reduce){.button-hero-flight{animation:none!important}}
