@@ -1,3 +1,9 @@
+# Contact structure correction —25 October2026
+
+Restored enquiry-field, consent, validation-message and selected-option CSS that was omitted during stylesheet consolidation. Labels stack above full-width inputs; text area sizing, vertical spacing, existing theme colours and checkbox/text alignment are restored. Input text remains16px to avoid mobile focus zoom. Production change is scoped to contact-form selectors in app/site.css. No component logic, page structure, content, identity, video, effects, pricing, submission endpoint or other finished design was changed.
+
+New geometry checks pass at320/360/390/768/1440px in both themes: stacked labels, full available width, no overlap/overflow, consent alignment, selected choices and validation focus. Existing interaction/axe tests pass across desktop/mobile and both themes, including mocked delivery, rate-limit recovery and no-JavaScript alternatives. No live enquiries are sent.
+
 # Mobile tap reactions —25 October2026
 
 A genuine touch/pen activation now triggers one source-animated hero, alternating drop and horizontal run. The route action is immediate; the global decoration may finish across client-side navigation. No timers defer navigation or form actions. The sprite is pointer-inert/aria-hidden and clears within850ms after decoding (550ms still for reduced motion). New taps replace the prior reaction; cancelled/swipe gestures do not activate. The character video button remains excluded. Existing desktop hover behaviour is preserved. Assets are the same retained CC0 sheets; no new paid generation, dependencies, tracking or storage.

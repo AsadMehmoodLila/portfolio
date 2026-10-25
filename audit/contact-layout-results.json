@@ -1,0 +1,16 @@
+{
+  "checks": [
+    "320px night: labels above full-width fields, no overlap, aligned consent, selected choices visible, validation focus and no horizontal overflow",
+    "320px day: labels above full-width fields, no overlap, aligned consent, selected choices visible, validation focus and no horizontal overflow",
+    "360px night: labels above full-width fields, no overlap, aligned consent, selected choices visible, validation focus and no horizontal overflow",
+    "360px day: labels above full-width fields, no overlap, aligned consent, selected choices visible, validation focus and no horizontal overflow",
+    "390px night: labels above full-width fields, no overlap, aligned consent, selected choices visible, validation focus and no horizontal overflow",
+    "390px day: labels above full-width fields, no overlap, aligned consent, selected choices visible, validation focus and no horizontal overflow",
+    "768px night: labels above full-width fields, no overlap, aligned consent, selected choices visible, validation focus and no horizontal overflow",
+    "768px day: labels above full-width fields, no overlap, aligned consent, selected choices visible, validation focus and no horizontal overflow",
+    "1440px night: labels above full-width fields, no overlap, aligned consent, selected choices visible, validation focus and no horizontal overflow",
+    "1440px day: labels above full-width fields, no overlap, aligned consent, selected choices visible, validation focus and no horizontal overflow"
+  ],
+  "errors": [],
+  "passed": true
+}
