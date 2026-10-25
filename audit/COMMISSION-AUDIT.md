@@ -1,3 +1,15 @@
+# Character video release —25 October2026
+
+The owner restored the original portrait logo and chose their supplied Gemini MP4 instead of the completed Meshy replacement. Active hero pages now use a10-second audio-free local video, with397KB desktop and189KB phone renditions plus a16KB poster. No 3D library or GLB loads. The full supplied composition is retained and blended with soft edge masks; no watermark is removed. Click/Enter/Space pauses and plays, playback stops offscreen/hidden, manual pause persists, and reduced-motion/data-saving visitors must explicitly activate video. Failed playback preserves a still. Three.js and its types were removed from dependencies.
+
+The owner also requested different heroes on button hover. Seven pre-existing creator-sourced CC0 sheets supply lazy-loaded one-shot attacks beside controls. They do not intercept clicks or alter labels. Keyboard/reduced-motion uses still heroes; touch produces no sticky hover. No roaming sequence, replay controls or additional storage.
+
+The approved image/model/rig/animation workflow completed before the video selection, consuming41credits (30+5+6), portfolio total99/100. All stages succeeded; unused files remain under design/meshy/anime-avatar. No further paid requests are made. Source image provenance and video source hash are recorded under design/.
+
+New playback tests pass on1440/390px: real advancing currentTime, manual and keyboard pause/play, offscreen suspension/resume, mobile rendition, no model requests, reduced/data-saving gating, and actual network failure fallback. Hover tests pass for frame progression, different heroes, cleanup/navigation, keyboard stills, reduced motion and touch. The route audit still passes56 page/theme/dialog checks,58 internal URLs and12 interaction groups with no reported axe violations, overflow, broken visible images, script errors or unexpected external requests. Future proof remains deferred.
+
+The earlier whole-site completion report below is retained for its structural changes and historical measurements; references to a3D character there are superseded by this release.
+
 # Portfolio completion audit — 25 October 2026
 
 Scope: the owner requested fixes following the whole-site critique, with new systems, videos and other proof deliberately deferred. This release changes the portfolio presentation, performance, navigation, enquiry flow and content workflow. It does not fabricate proof or certify legal compliance.

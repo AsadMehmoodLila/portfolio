@@ -1,0 +1,39 @@
+{
+  "source": "C:\\Users\\asadm\\Downloads\\gemini_generated_video_9decd53d.mp4",
+  "source_sha256": "cb4b67bc25a8227f6e69928369a539d3ab058eed4005b771a0dc7971dd052b76",
+  "owner_instruction": "Use this video clip instead of the generated model",
+  "date": "2026-10-25",
+  "duration_seconds": 10,
+  "fps": 24,
+  "source_dimensions": [
+    720,
+    1280
+  ],
+  "audio": "Removed from both web exports",
+  "desktop": {
+    "file": "public/media/scriptlilla-character.mp4",
+    "dimensions": [
+      480,
+      854
+    ],
+    "bytes": 397443
+  },
+  "mobile": {
+    "file": "public/media/scriptlilla-character-mobile.mp4",
+    "dimensions": [
+      320,
+      568
+    ],
+    "bytes": 189161
+  },
+  "poster": "public/media/scriptlilla-character-poster.webp",
+  "encoding": "H.264, yuv420p, faststart; full supplied composition retained; no watermark removal",
+  "purpose": "Decorative identity clip, not proof of a completed game system",
+  "unused_meshy_job": {
+    "approved": 41,
+    "consumed": 41,
+    "portfolio_total": 99,
+    "outputs": "design/meshy/anime-avatar",
+    "stop_reason": "Owner chose supplied video after completed generation"
+  }
+}

@@ -1,7 +1,10 @@
 {
   "checks": [
-    "1440px: no toolbar/Explore button, direct click starts real GLB dance and stops it, keyboard Enter/Space/rotation/Home, no offscreen draw calls, model fetched once",
-    "390px: no toolbar/Explore button, direct click starts real GLB dance and stops it, keyboard Enter/Space/rotation/Home, no offscreen draw calls, model fetched once"
+    "1440px: local silent inline video autoplays, native click/Enter/Space pause and play, offscreen suspension/resume, appropriate rendition, no GLB",
+    "390px: local silent inline video autoplays, native click/Enter/Space pause and play, offscreen suspension/resume, appropriate rendition, no GLB",
+    "reduced: poster without video transfer until explicit activation",
+    "save-data: poster without video transfer until explicit activation",
+    "Video failure preserves a still and removes the dead playback action"
   ],
   "errors": [],
   "passed": true

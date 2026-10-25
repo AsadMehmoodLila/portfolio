@@ -16,14 +16,14 @@
     "test:interactions": "node scripts/test-interactions.mjs",
     "test:theme": "node scripts/test-theme-strike.mjs",
     "test:draft": "node scripts/test-enquiry-draft.mjs",
-    "test:portfolio": "node scripts/test-portfolio-readiness.mjs"
+    "test:portfolio": "node scripts/test-portfolio-readiness.mjs",
+    "test:hover": "node scripts/test-button-heroes.mjs"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
     "next": "^16.4.3",
     "react": "19.2.8",
-    "react-dom": "19.2.8",
-    "three": "^0.186.1"
+    "react-dom": "19.2.8"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",
@@ -32,7 +32,6 @@
     "@types/node": "24.10.1",
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
-    "@types/three": "^0.186.0",
     "esbuild": "^0.28.2",
     "tailwindcss": "4.3.3",
     "typescript": "^5.9.2"

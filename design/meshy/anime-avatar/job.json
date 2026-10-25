@@ -1,0 +1,81 @@
+{
+  "approval": "User approved 41 credits on 2026-10-25",
+  "max_credits": 41,
+  "previous_project_credits": 58,
+  "project_cap": 100,
+  "balance_before": {
+    "balance": 730,
+    "monthly_credits": 480,
+    "permanent_credits": 250,
+    "monthly_resets_at": 1793060084000
+  },
+  "reference": "reference.png",
+  "reference_sha256": "bbe604c12e02824d7b953834e8d128aa45f3b1ff11247954eec4c4410c6698ac",
+  "stages": {
+    "generate": {
+      "endpoint": "/openapi/v1/image-to-3d",
+      "settings": {
+        "ai_model": "meshy-7.1",
+        "model_type": "standard",
+        "geometry_resolution": "standard",
+        "should_texture": true,
+        "texture_resolution": "2k",
+        "enable_pbr": true,
+        "should_remesh": true,
+        "topology": "triangle",
+        "target_polycount": 15000,
+        "pose_mode": "a-pose",
+        "image_enhancement": false,
+        "target_formats": [
+          "glb",
+          "fbx"
+        ]
+      },
+      "expected_credits": 30,
+      "status": "SUCCEEDED",
+      "submitted_at": "2026-10-25T05:36:55.892297+00:00",
+      "task_id": "01a1718f-d9f7-775c-8912-91a006bc23f9",
+      "progress": 100,
+      "consumed_credits": 30,
+      "task_error": null
+    },
+    "rig": {
+      "endpoint": "/openapi/v1/rigging",
+      "settings": {
+        "input_task_id": "01a1718f-d9f7-775c-8912-91a006bc23f9",
+        "height_meters": 1.7
+      },
+      "expected_credits": 5,
+      "status": "SUCCEEDED",
+      "submitted_at": "2026-10-25T05:39:31.762063+00:00",
+      "task_id": "01a17192-3a32-7060-a120-daa6fc994f45",
+      "progress": 100,
+      "consumed_credits": 5,
+      "task_error": null
+    },
+    "animate": {
+      "endpoint": "/openapi/v1/animations",
+      "settings": {
+        "rig_task_id": "01a17192-3a32-7060-a120-daa6fc994f45",
+        "action_ids": [
+          28,
+          591
+        ]
+      },
+      "expected_credits": 6,
+      "status": "SUCCEEDED",
+      "submitted_at": "2026-10-25T05:40:40.002172+00:00",
+      "task_id": "01a17193-4530-75ba-bff3-98b970908d7c",
+      "progress": 100,
+      "consumed_credits": 6,
+      "task_error": null
+    }
+  },
+  "balance_after": {
+    "balance": 689,
+    "monthly_credits": 439,
+    "permanent_credits": 250,
+    "monthly_resets_at": 1793060084000
+  },
+  "total_consumed_credits": 41
+}

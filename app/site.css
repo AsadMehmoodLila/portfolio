@@ -2043,24 +2043,15 @@ h2 {
   height: 360px;
   isolation: isolate;
 }
-.character-world::before {
-  content: "";
-  position: absolute;
-  inset: 12%;
-  background: radial-gradient(ellipse, #78ad6730, transparent 70%);
-  z-index: -1;
-}
-.world-ring {
-  position: absolute;
-  inset: 7% 13%;
-  border: 1px solid var(--line-soft);
-  border-radius: 50%;
-  z-index: -1;
-}
 .character-canvas {
   position: absolute;
-  inset: 0;
-  width: 100%;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: block;
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: 480 / 854;
   height: 100%;
   border: 0;
   background: none;
@@ -2069,37 +2060,24 @@ h2 {
   touch-action: pan-y;
   color: inherit;
 }
-.character-canvas canvas,
-.character-canvas > img {
+.character-canvas video,
+.character-canvas > img,
+.character-static {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: contain;
-}
-.character-canvas > img {
   pointer-events: none;
+  mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent), linear-gradient(to bottom, transparent, #000 4%, #000 96%, transparent);
+  mask-composite: intersect;
 }
+.character-static { left: 50%; right: auto; transform: translateX(-50%); width: auto; max-width: 100%; }
 .character-canvas:focus-visible {
-  outline-offset: -6px;
-  border-radius: 18%;
+  outline-offset: -5px;
+  border-radius: 12px;
 }
-.character-stage[data-entered="true"] .character-canvas {
-  animation: avatar-arrival 550ms var(--ease) both;
-}
-.spawn-ripple {
-  display: none;
-}
-@keyframes avatar-arrival {
-  from {
-    opacity: 0.25;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
+.character-canvas:disabled { cursor: default; }
 .work-section {
   padding-top: 26px;
 }
@@ -2720,9 +2698,6 @@ h2 {
   .character-world {
     height: 180px;
   }
-  .world-ring {
-    inset: 12% 0;
-  }
   .work-section {
     padding-top: 22px;
   }
@@ -2921,9 +2896,12 @@ h2 {
     gap: 12px 18px;
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  .character-stage[data-entered="true"] .character-canvas {
-    animation: none;
-  }
-}
-.character-static{width:100%;height:100%;object-fit:contain;position:absolute;inset:0}
+/* Small sourced heroes react at the control; they never capture input or move its label. */
+.button-hero{position:fixed;width:112px;height:112px;z-index:60;pointer-events:none;opacity:0;transform:translateY(6px);transition:opacity 125ms var(--ease),transform 180ms var(--ease);contain:layout paint;}
+.button-hero[data-shown="true"]{opacity:1;transform:translateY(0)}
+.button-hero-window{display:block;width:112px;height:112px;overflow:hidden}
+.button-hero img{display:block;max-width:none;height:112px;image-rendering:pixelated;animation:button-hero-action 720ms steps(var(--hero-frames)) 1;}
+.button-hero[data-quiet="true"]{transform:none}
+.button-hero[data-quiet="true"] img{animation:none}
+@keyframes button-hero-action{to{transform:translateX(var(--hero-end))}}
+@media(prefers-reduced-motion:reduce){.button-hero{transform:none;transition:opacity 125ms var(--ease)}.button-hero img{animation:none}}

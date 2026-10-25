@@ -1,0 +1,16 @@
+{
+  "source": "Meshy image-to-3D from reference.png",
+  "triangles_before": 15476,
+  "triangles_after": 14000,
+  "texture_resolution": 1024,
+  "animations": [
+    "Big_Wave_Hello",
+    "Hip_Hop_Dance"
+  ],
+  "output": "design/meshy/anime-avatar/unused-web-avatar.glb",
+  "bytes": 1375528,
+  "local_blender_processing_credits": 0,
+  "helper_geometry_exported": false,
+  "active_on_website": false,
+  "reason": "Owner selected supplied video after generation completed"
+}

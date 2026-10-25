@@ -1,0 +1,9 @@
+{
+  "checks": [
+    "full: different heroes, actual sprite frames, no input interception, quiet keyboard focus, cleanup and working navigation",
+    "reduced: different heroes, actual sprite frames, no input interception, quiet keyboard focus, cleanup and working navigation",
+    "Touch navigation is immediate with no sticky hover hero"
+  ],
+  "errors": [],
+  "passed": true
+}

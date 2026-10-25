@@ -22,6 +22,7 @@ npm run audit:browser
 npm run test:portfolio
 npm run test:interactions
 npm run test:character
+npm run test:hover
 npm run test:theme
 npm run test:draft
 npm run test:media
@@ -39,9 +40,10 @@ The current published game uses real game artwork and contribution records. It i
 
 - Homepage: short intro, selected work, service rows, commission process, concise biography, FAQ and direct contact
 - Source: `components/portfolio/`, `app/site.css`, `app/cinematics.css`; project/policy data under `data/`
-- Green-cap mark, owner portrait and adapted charcoal-outfit avatar form the identity
-- Native character button loads 3D only on explicit interaction on every device; click/Enter/Space starts or stops dance, drag/arrows turn, Home resets
-- Offscreen and hidden-tab rendering stops; idle frames render on demand
+- Original owner portrait supplies the header, footer and browser mark; the owner-supplied anime video carries the hero identity
+- A native character button pauses/plays a silent local video with click/Enter/Space; playback stops offscreen and in hidden tabs
+- Reduced motion/data saving use a poster until explicit activation; failed video keeps a still; no 3D renderer/model loads
+- Different sourced hero sprites react beside hovered buttons once; touch stays immediate and keyboard/reduced motion use still frames
 - Night is the default on reload; theme persists in memory across internal navigation
 - Day has one short asset-ready sun cue, with beams before warmth; reduced motion gets a still cue and Night cancels immediately
 - No roaming fighters, artificial code panels, multi-click biography or effects/replay toolbar
@@ -49,7 +51,7 @@ The current published game uses real game artwork and contribution records. It i
 - Unsent drafts restore per tab for 24 hours; consent is never restored; accepted sending and Clear draft delete the draft
 - Native certificate previews are under a closed disclosure on About
 
-Original unused UI source is preserved as text under `design/retired-ui/2026-10-25/`; it is not bundled. Framer Motion and Lenis were removed. Avatar preparation is reproducible with `design/prepare-brand-avatar.py` in Blender using the retained original model. Asset provenance: [CREDITS.md](CREDITS.md).
+Original unused UI source is preserved as text under `design/retired-ui/2026-10-25/`; it is not bundled. Framer Motion, Lenis and Three.js were removed from dependencies. The completed Meshy replacement is retained unused under `design/meshy/anime-avatar/`: the owner selected their Gemini clip instead after generation completed. Actual additional cost41credits; portfolio total99/100, no further requests. Video source/encoding record: `design/branding/character-video.json`. Asset provenance: [CREDITS.md](CREDITS.md).
 
 ## Deployment
 

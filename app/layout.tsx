@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Chakra_Petch, Geist } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-controls";
+import { ButtonHeroes } from "@/components/portfolio/button-heroes";
 
 import "./site.css";
 import "./cinematics.css";
@@ -46,7 +47,7 @@ export const metadata: Metadata = {
     siteName: "ScriptLilla",
     images: [
       {
-        url: "/images/scriptlilla-social.png",
+        url: "/images/scriptlilla-social.png?v=character-film-v1",
         width: 1200,
         height: 630,
         alt: "ScriptLilla, Roblox scripting by Asad Mehmood",
@@ -60,11 +61,11 @@ export const metadata: Metadata = {
     title: "ScriptLilla | Roblox Scripter",
     description:
       "Gameplay systems, player data and game loops for Roblox experiences.",
-    images: ["/images/scriptlilla-social.png"],
+    images: ["/images/scriptlilla-social.png?v=character-film-v1"],
   },
   icons: {
     icon: [
-      { url: "/favicon.png?v=green-cap-v2", type: "image/png", sizes: "64x64" },
+      { url: "/favicon.png?v=portrait-v3", type: "image/png", sizes: "64x64" },
     ],
     apple: "/apple-touch-icon.png",
   },
@@ -107,6 +108,7 @@ export default function RootLayout({
             Skip to main content
           </a>
           {children}
+          <ButtonHeroes />
         </ThemeProvider>
       </body>
     </html>

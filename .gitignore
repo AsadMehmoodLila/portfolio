@@ -31,3 +31,5 @@ audit/video/
 audit/*.webm
 
 *.tsbuildinfo
+
+design/**/*.blend1

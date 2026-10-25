@@ -1,3 +1,7 @@
+# Current use —25 October2026
+
+Only the creator-sourced hero sheets below are active, as small lazy-loaded button-hover reactions in button-heroes.tsx. One attack plays per hover; keyboard/reduced motion uses a still. They never intercept input, drift across the page or store session progress. React Bits, old fly-bys and combat/code panels remain retired. The source/download records below are preserved as history.
+
 # Combat and character asset provenance
 
 Retrieved 24 October 2026 directly from LuizMelo, using each pack’s public free download. All seven creator pages explicitly permit commercial use under CC0. No franchise artwork or ripped anime footage is included.

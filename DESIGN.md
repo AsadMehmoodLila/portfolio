@@ -10,7 +10,7 @@ Homepage order: introduction → published work → compact services → process
 
 ## One identity
 
-A green-cap mark, the owner's green-cap portrait and an adapted green-cap/charcoal-outfit avatar share the identity. Orange stays the action accent. The cap mark uses the Phosphor BaseballCap duotone icon under MIT; avatar material and accessory are local derivatives of the existing rig. No additional paid generation was used.
+The original green-cap anime portrait remains the header/footer/browser logo, restored at the owner's request. The hero now uses the owner-supplied anime video. Orange stays the action accent. The separate cap icon and generated 3D replacement are not used on active pages.
 
 Chakra Petch 700 carries angular game lettering; Geist carries readable body copy. Both are self-hosted through next/font. Sentence-case headings and plain labels replace repeated uppercase/two-colour formulas. Icons are Phosphor, tool marks Simple Icons. See CREDITS.md.
 
@@ -26,9 +26,11 @@ Chakra Petch 700 carries angular game lettering; Geist carries readable body cop
 
 ## Motion and performance
 
-The real rig is optional: every visitor receives a local still until clicking or activating the character. Its native button has keyboard labels; click/Enter/Space controls dancing, drag/arrows rotation, Home reset. Three.js and the 1.37 MB adapted GLB load only then. Rendering is capped at 30fps with bounded resolution and stops offscreen/hidden; idle work is demand-driven.
+The character is a local10-second silent H.264 clip with no renderer or GLB request. Desktop uses397KB at480×854; mobile uses189KB at320×568. A16KB WebP poster fills the reserved area before playback. Video plays inline while visible, pauses offscreen/hidden, and manual pause survives scrolling. Reduced-motion/data-saving visitors see a poster until activation. The native button gives click/Enter/Space pause/play without a toolbar. Failed loading keeps a still. Soft edge masks blend the source background into either theme without altering the supplied composition.
 
-Night is the default on reload, with memory-only theme continuity during internal navigation. The optional Day cue starts when both local VFX assets decode. Beams begin at 450ms, impact at 700ms, warmth at 1300ms, absorption at 1650ms, cleanup at 2700ms. The small opening clears the avatar. Keyboard/reduced motion uses still cues. Failure falls through to warm day; Night interrupts everything. No recurring automatic sequence or saved motion settings.
+Seven creator-sourced CC0 heroes appear beside hovered controls, playing one short existing attack animation. Controls and labels do not move. Sprites are pointer-inert and hidden from assistive technology. Keyboard focus/reduced motion use still frames. Touch does not trigger hover art. Lazy image decoding and cleanup prevent late arrivals after leaving a button or navigating.
+
+Night is the default on reload, with memory-only theme continuity during internal navigation. The optional Day cue starts when both local VFX assets decode. Beams begin at 450ms, impact at 700ms, warmth at 1300ms, absorption at 1650ms, cleanup at 2700ms. The small opening clears the avatar. Keyboard/reduced motion uses still cues. Failure falls through to warm day; Night interrupts everything. No recurring roaming sequence or saved motion settings.
 
 ## Interaction and content
 

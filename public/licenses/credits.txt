@@ -1,12 +1,15 @@
 Asset credits — ScriptLilla portfolio, 25 October 2026
 
-Green-cap brand mark and interface icons: Phosphor, MIT
+Original portrait logo: generated from the owner-supplied reference
+Interface icons: Phosphor, MIT
 https://github.com/phosphor-icons/react
 Tool marks: Simple Icons, CC0; trademark rights remain
 https://github.com/simple-icons/simple-icons
 Fonts: Chakra Petch and Geist, SIL Open Font License, served locally
 
-Original avatar: Meshy + Blender. Current green plaid cap and charcoal material are local adaptations of the existing rig/dance. Not an official Roblox character or endorsement. Output licensing depends on the account plan; applicable attribution and usage terms remain in force.
+Current hero: owner-supplied Gemini-generated character clip, served locally without audio. It is brand artwork, not Roblox gameplay proof.
+Unused generated models: Meshy + Blender, retained in production history and not loaded by the website. Not official Roblox characters or endorsements; applicable plan-dependent licensing terms remain in force.
+Button-hover heroes: LuizMelo, CC0. Source URLs/hashes retained in design/COMBAT-ASSETS.md in the repository.
 Green-cap portrait: generated brand artwork from the owner's supplied reference, not a photo.
 Sun and screen-opening VFX: generated decorative assets, not project footage.
 
@@ -14,7 +17,7 @@ Escape Tsunami with Dragons: official game artwork from Roblox's public APIs. Th
 Certificate images: owner-supplied; issuer marks/designs retain their rights and imply no endorsement.
 
 Retired assets, no longer used on active pages:
-LuizMelo fighters (CC0), Kenney Blocky Characters (CC0), React Bits (MIT + Commons Clause), Twemoji graphics (CC BY 4.0).
+The former roaming/combat integration, Kenney Blocky Characters (CC0), React Bits (MIT + Commons Clause), Twemoji graphics (CC BY 4.0).
 Archived React Bits terms: /licenses/react-bits.txt
 Archived Twemoji terms: /licenses/twemoji-graphics.txt
 Source records and full dependency licenses are retained in the repository's CREDITS.md, design/ and assets/licenses/.
