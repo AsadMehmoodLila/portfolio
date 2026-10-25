@@ -14,15 +14,12 @@
     "test:media": "node scripts/test-media.mjs",
     "test:character": "node scripts/test-character.mjs",
     "test:interactions": "node scripts/test-interactions.mjs",
-    "test:flybys": "node scripts/test-flybys.mjs",
-    "test:effects": "node scripts/test-stage-effects.mjs",
     "test:theme": "node scripts/test-theme-strike.mjs",
-    "test:draft": "node scripts/test-enquiry-draft.mjs"
+    "test:draft": "node scripts/test-enquiry-draft.mjs",
+    "test:portfolio": "node scripts/test-portfolio-readiness.mjs"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
-    "framer-motion": "12.42.2",
-    "lenis": "1.3.25",
     "next": "^16.4.3",
     "react": "19.2.8",
     "react-dom": "19.2.8",

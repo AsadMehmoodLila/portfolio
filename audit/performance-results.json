@@ -2,257 +2,192 @@
   {
     "device": "390px, 4x CPU throttle, 1.5Mbps/40ms, local static server without compression",
     "reducedMotion": false,
-    "lcpMs": 3080,
-    "fcpMs": 3080,
+    "lcpMs": 3444,
+    "fcpMs": 1984,
     "cls": 0,
-    "bytes": 856268,
+    "bytes": 734028,
     "modelRequested": false,
     "resources": [
       {
         "url": "/_next/static/media/4e437607573e1075-s.p.2fz20jxmyia8o.woff2",
         "bytes": 10168,
-        "start": 95
+        "start": 108
       },
       {
         "url": "/_next/static/media/605ce01b664af129-s.p.0wgildi0cnwt9.woff2",
         "bytes": 29588,
-        "start": 97
+        "start": 109
       },
       {
         "url": "/favicon.png",
-        "bytes": 8664,
-        "start": 97
+        "bytes": 2298,
+        "start": 110
       },
       {
-        "url": "/media/character-stage.webp",
-        "bytes": 18538,
-        "start": 98
+        "url": "/media/character-scriptlilla.webp",
+        "bytes": 43654,
+        "start": 111
       },
       {
-        "url": "/media/fighters/martial-hero-attack1.webp",
-        "bytes": 2082,
-        "start": 99
+        "url": "/_next/static/chunks/3_6gkd5bdx82k.css",
+        "bytes": 50510,
+        "start": 112
       },
       {
-        "url": "/media/fighters/hero-knight-idle.webp",
-        "bytes": 1824,
-        "start": 99
+        "url": "/_next/static/chunks/2evgu094glu3w.js",
+        "bytes": 24362,
+        "start": 113
       },
       {
-        "url": "/media/fighters/martial-hero-portrait.webp",
-        "bytes": 1880,
-        "start": 100
+        "url": "/_next/static/chunks/0q9n916bbvxy3.js",
+        "bytes": 179092,
+        "start": 114
       },
       {
-        "url": "/_next/static/chunks/0455cea8wdz5c.css",
-        "bytes": 77653,
-        "start": 100
-      },
-      {
-        "url": "/_next/static/chunks/1fgrluaiqk_hz.css",
-        "bytes": 1175,
-        "start": 101
-      },
-      {
-        "url": "/_next/static/chunks/1x6obpmlu1_c2.js",
-        "bytes": 5661,
-        "start": 102
-      },
-      {
-        "url": "/_next/static/chunks/1-nqmp1rl8kqt.js",
-        "bytes": 34343,
-        "start": 102
-      },
-      {
-        "url": "/_next/static/chunks/1bqsgd5zftvt6.js",
+        "url": "/_next/static/chunks/3wbm-994r45kr.js",
         "bytes": 230120,
-        "start": 103
-      },
-      {
-        "url": "/_next/static/chunks/3zo13q3j-3u5e.js",
-        "bytes": 163887,
-        "start": 103
+        "start": 114
       },
       {
         "url": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
         "bytes": 10330,
-        "start": 104
+        "start": 115
       },
       {
-        "url": "/_next/static/chunks/29er8e5_3_sca.js",
-        "bytes": 32487,
-        "start": 104
+        "url": "/_next/static/chunks/2uomo8pdw-wnu.js",
+        "bytes": 26345,
+        "start": 115
       },
       {
-        "url": "/_next/static/chunks/3a2jvnkemoad-.js",
-        "bytes": 26251,
-        "start": 104
+        "url": "/_next/static/chunks/371jlp74c2tpo.js",
+        "bytes": 682,
+        "start": 115
       },
       {
-        "url": "/_next/static/chunks/091lcjdtgb15a.js",
-        "bytes": 51830,
-        "start": 104
+        "url": "/_next/static/chunks/24fd_trtrapzi.js",
+        "bytes": 36179,
+        "start": 116
       },
       {
         "url": "/icons/tools/robloxstudio.svg",
         "bytes": 607,
-        "start": 2549
+        "start": 1703
       },
       {
         "url": "/icons/tools/lua.svg",
         "bytes": 4409,
-        "start": 2550
+        "start": 1704
       },
       {
         "url": "/icons/tools/git.svg",
         "bytes": 726,
-        "start": 2551
+        "start": 1705
       },
       {
         "url": "/icons/tools/github.svg",
         "bytes": 1122,
-        "start": 2552
+        "start": 1705
       },
       {
-        "url": "/_next/static/chunks/350jee8np2l-c.css",
-        "bytes": 924,
-        "start": 4664
-      },
-      {
-        "url": "/_next/static/chunks/00qimxqg4bc40.js",
-        "bytes": 136149,
-        "start": 4666
-      },
-      {
-        "url": "/media/fighters/martial-hero-run.webp",
-        "bytes": 1908,
-        "start": 4711
-      },
-      {
-        "url": "/media/fighters/martial-hero-idle.webp",
-        "bytes": 1584,
-        "start": 6521
-      },
-      {
-        "url": "/media/fighters/hero-knight-attack2.webp",
-        "bytes": 2358,
-        "start": 6521
+        "url": "/media/roblox-game.webp",
+        "bytes": 83836,
+        "start": 1967
       }
     ]
   },
   {
     "device": "390px, 4x CPU throttle, 1.5Mbps/40ms, local static server without compression",
     "reducedMotion": true,
-    "lcpMs": 3044,
-    "fcpMs": 3044,
+    "lcpMs": 3428,
+    "fcpMs": 1956,
     "cls": 0,
-    "bytes": 713345,
+    "bytes": 734028,
     "modelRequested": false,
     "resources": [
       {
         "url": "/_next/static/media/4e437607573e1075-s.p.2fz20jxmyia8o.woff2",
         "bytes": 10168,
-        "start": 88
+        "start": 93
       },
       {
         "url": "/_next/static/media/605ce01b664af129-s.p.0wgildi0cnwt9.woff2",
         "bytes": 29588,
-        "start": 89
+        "start": 94
       },
       {
         "url": "/favicon.png",
-        "bytes": 8664,
-        "start": 90
-      },
-      {
-        "url": "/media/character-stage.webp",
-        "bytes": 18538,
-        "start": 91
-      },
-      {
-        "url": "/media/fighters/martial-hero-attack1.webp",
-        "bytes": 2082,
-        "start": 92
-      },
-      {
-        "url": "/media/fighters/hero-knight-idle.webp",
-        "bytes": 1824,
-        "start": 92
-      },
-      {
-        "url": "/media/fighters/martial-hero-portrait.webp",
-        "bytes": 1880,
-        "start": 93
-      },
-      {
-        "url": "/_next/static/chunks/0455cea8wdz5c.css",
-        "bytes": 77653,
-        "start": 93
-      },
-      {
-        "url": "/_next/static/chunks/1fgrluaiqk_hz.css",
-        "bytes": 1175,
-        "start": 94
-      },
-      {
-        "url": "/_next/static/chunks/1x6obpmlu1_c2.js",
-        "bytes": 5661,
-        "start": 94
-      },
-      {
-        "url": "/_next/static/chunks/1-nqmp1rl8kqt.js",
-        "bytes": 34343,
+        "bytes": 2298,
         "start": 95
       },
       {
-        "url": "/_next/static/chunks/1bqsgd5zftvt6.js",
-        "bytes": 230120,
+        "url": "/media/character-scriptlilla.webp",
+        "bytes": 43654,
         "start": 96
       },
       {
-        "url": "/_next/static/chunks/3zo13q3j-3u5e.js",
-        "bytes": 163887,
+        "url": "/_next/static/chunks/3_6gkd5bdx82k.css",
+        "bytes": 50510,
         "start": 96
+      },
+      {
+        "url": "/_next/static/chunks/2evgu094glu3w.js",
+        "bytes": 24362,
+        "start": 97
+      },
+      {
+        "url": "/_next/static/chunks/0q9n916bbvxy3.js",
+        "bytes": 179092,
+        "start": 98
+      },
+      {
+        "url": "/_next/static/chunks/3wbm-994r45kr.js",
+        "bytes": 230120,
+        "start": 98
       },
       {
         "url": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
         "bytes": 10330,
-        "start": 96
+        "start": 99
       },
       {
-        "url": "/_next/static/chunks/29er8e5_3_sca.js",
-        "bytes": 32487,
-        "start": 97
+        "url": "/_next/static/chunks/2uomo8pdw-wnu.js",
+        "bytes": 26345,
+        "start": 99
       },
       {
-        "url": "/_next/static/chunks/3a2jvnkemoad-.js",
-        "bytes": 26251,
-        "start": 97
+        "url": "/_next/static/chunks/371jlp74c2tpo.js",
+        "bytes": 682,
+        "start": 100
       },
       {
-        "url": "/_next/static/chunks/091lcjdtgb15a.js",
-        "bytes": 51830,
-        "start": 97
+        "url": "/_next/static/chunks/24fd_trtrapzi.js",
+        "bytes": 36179,
+        "start": 100
       },
       {
         "url": "/icons/tools/robloxstudio.svg",
         "bytes": 607,
-        "start": 2521
+        "start": 1685
       },
       {
         "url": "/icons/tools/lua.svg",
         "bytes": 4409,
-        "start": 2522
+        "start": 1686
       },
       {
         "url": "/icons/tools/git.svg",
         "bytes": 726,
-        "start": 2523
+        "start": 1687
       },
       {
         "url": "/icons/tools/github.svg",
         "bytes": 1122,
-        "start": 2524
+        "start": 1689
+      },
+      {
+        "url": "/media/roblox-game.webp",
+        "bytes": 83836,
+        "start": 1943
       }
     ]
   }

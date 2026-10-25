@@ -9,7 +9,7 @@ export default function HomePage() {
       <main id="main-content" tabIndex={-1}>
         <PortfolioHome />
       </main>
-      <SiteFooter />
+      <SiteFooter compact />
     </>
   );
 }

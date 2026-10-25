@@ -1,0 +1,62 @@
+{
+  "checks": [
+    "320px night: work first, readable service scope, prefilled enquiry, direct email, optional certificates with focus return, honest case page and no roaming decorations or automatic 3D",
+    "320px day: work first, readable service scope, prefilled enquiry, direct email, optional certificates with focus return, honest case page and no roaming decorations or automatic 3D",
+    "390px night: work first, readable service scope, prefilled enquiry, direct email, optional certificates with focus return, honest case page and no roaming decorations or automatic 3D",
+    "390px day: work first, readable service scope, prefilled enquiry, direct email, optional certificates with focus return, honest case page and no roaming decorations or automatic 3D",
+    "1440px night: work first, readable service scope, prefilled enquiry, direct email, optional certificates with focus return, honest case page and no roaming decorations or automatic 3D",
+    "1440px day: work first, readable service scope, prefilled enquiry, direct email, optional certificates with focus return, honest case page and no roaming decorations or automatic 3D"
+  ],
+  "errors": [],
+  "layouts": [
+    {
+      "width": 320,
+      "height": 4375,
+      "work": 698,
+      "services": 1292,
+      "overflow": false,
+      "theme": "night"
+    },
+    {
+      "width": 320,
+      "height": 4375,
+      "work": 698,
+      "services": 1292,
+      "overflow": false,
+      "theme": "day"
+    },
+    {
+      "width": 390,
+      "height": 4032,
+      "work": 668,
+      "services": 1277,
+      "overflow": false,
+      "theme": "night"
+    },
+    {
+      "width": 390,
+      "height": 4032,
+      "work": 668,
+      "services": 1277,
+      "overflow": false,
+      "theme": "day"
+    },
+    {
+      "width": 1440,
+      "height": 2958,
+      "work": 647,
+      "services": 1155,
+      "overflow": false,
+      "theme": "night"
+    },
+    {
+      "width": 1440,
+      "height": 2958,
+      "work": 647,
+      "services": 1155,
+      "overflow": false,
+      "theme": "day"
+    }
+  ],
+  "passed": true
+}

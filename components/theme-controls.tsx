@@ -21,7 +21,19 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [quietStrike, setQuietStrike] = useState(false);
   const [dayPhase, setDayPhase] = useState<"cool" | "warm">("warm");
   const [sequence, setSequence] = useState(0);
+  useEffect(() => {
+    // Retire the old decorative-sequence state; enquiry drafts are untouched.
+    try {
+      for (const key of [
+        "scriptlilla-hero-session-v1",
+        "scriptlilla-hero-session-v2",
+        "scriptlilla-effects-choice",
+      ])
+        sessionStorage.removeItem(key);
+    } catch {}
+  }, []);
   const warmPage = useCallback(() => setDayPhase("warm"), []);
+  const finishStrike = useCallback(() => setStrike(0), []);
   useEffect(() => {
     if (night || !sequence) return;
     // Fetch the artwork during the white interval, before its first visible frame.
@@ -32,11 +44,9 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       const asset = new Image();
       asset.src = src;
     }
-    const arrival = setTimeout(() => setStrike(sequence), 4000);
-    const finish = setTimeout(() => setStrike(0), 9200);
+    const arrival = setTimeout(() => setStrike(sequence), 120);
     return () => {
       clearTimeout(arrival);
-      clearTimeout(finish);
     };
   }, [sequence, night]);
   useEffect(() => {
@@ -70,7 +80,12 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     >
       {children}
       {strike > 0 && !night && (
-        <SunCinematic key={strike} quiet={quietStrike} onWarm={warmPage} />
+        <SunCinematic
+          key={strike}
+          quiet={quietStrike}
+          onWarm={warmPage}
+          onComplete={finishStrike}
+        />
       )}
     </ThemeContext.Provider>
   );

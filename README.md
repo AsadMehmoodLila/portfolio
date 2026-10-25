@@ -1,6 +1,6 @@
 # ScriptLilla Roblox scripting portfolio
 
-An individual commission portfolio for Asad Mehmood. Next.js static export, self-hosted assets, day/night mode, a three-step enquiry delivered through Formspree and direct Discord/email contact. No checkout, visitor accounts or analytics.
+Individual commission portfolio for Asad Mehmood. Next.js static export on GitHub Pages, self-hosted assets, night/day mode, Formspree enquiries and direct Discord/email contact. No checkout, visitor accounts or analytics.
 
 ## Run and verify
 
@@ -9,67 +9,50 @@ Node.js 22 or newer:
 ```sh
 npm ci
 npm run dev
-```
-
-Production and validation:
-
-```sh
 npm run check
 npm run build
 npm run preview
 ```
 
-The build runs a content check first and exports to `out/`. Preview serves that export at `http://127.0.0.1:4173/`. With the preview running:
+Build validates project content and exports `out/`. Preview serves it at `http://127.0.0.1:4173/`. With preview running:
 
 ```sh
 npx playwright install chromium
 npm run audit:browser
-npm run test:media
+npm run test:portfolio
+npm run test:interactions
 npm run test:character
-npm audit
+npm run test:theme
+npm run test:draft
+npm run test:media
 ```
 
-Browser/axe results are saved under `audit/`. Media tests use private fixtures and intercepted provider responses, not invented public showcase content. They exercise the actual component; future real uploads need their own playback and permissions check.
+Results are saved under `audit/`. Contact tests mock delivery; do not consume the live form quota. Media fixtures test the reusable player without publishing fictitious work.
 
-## Add projects later
+## Add your proof later
 
-**Read [CONTENT-GUIDE.md](CONTENT-GUIDE.md).** All project content lives in `data/portfolio.ts`. Fill an existing planned case study or add an object; publish it with `status: "published"`. The homepage grid, case routes and sitemap update automatically. Missing required assets, duplicate slugs or malformed YouTube URLs stop the build.
+Read [CONTENT-GUIDE.md](CONTENT-GUIDE.md). Project records live in `data/portfolio.ts`. Add real recordings, posters, contribution details and credits, then set `status: "published"`. Homepage, case pages and sitemap update together. Four planned templates remain excluded from listings and indexing. Their known URLs are public, not confidential storage.
 
-Current published work uses the existing Roblox experience artwork and contribution records. Four system/flagship templates are excluded from listings and search indexing. The owner will supply systems and videos later. Known template URLs are not private.
+The current published game uses real game artwork and contribution records. It is not presented as a filmed demonstration. Future YouTube/local-video records automatically use the shared player on the homepage and case page. No provider connects until Play.
 
-The shared player supports local MP4/WebM with captions or a visitor-activated YouTube privacy-enhanced embed. There is no video-provider connection before Play. The contact flow sends a short brief and reply email through Formspree only after an explicit acknowledgement and Send enquiry. Success requires the provider's accepted response; inbox placement is not asserted. No private API key or Discord webhook is exposed.
+## Current implementation
 
-## Implementation
+- Homepage: short intro, selected work, service rows, commission process, concise biography, FAQ and direct contact
+- Source: `components/portfolio/`, `app/site.css`, `app/cinematics.css`; project/policy data under `data/`
+- Green-cap mark, owner portrait and adapted charcoal-outfit avatar form the identity
+- Native character button loads 3D only on explicit interaction on every device; click/Enter/Space starts or stops dance, drag/arrows turn, Home resets
+- Offscreen and hidden-tab rendering stops; idle frames render on demand
+- Night is the default on reload; theme persists in memory across internal navigation
+- Day has one short asset-ready sun cue, with beams before warmth; reduced motion gets a still cue and Night cancels immediately
+- No roaming fighters, artificial code panels, multi-click biography or effects/replay toolbar
+- Contact sends a short brief and reply email only after validation, privacy acknowledgement and Send enquiry; success requires Formspree acceptance
+- Unsent drafts restore per tab for 24 hours; consent is never restored; accepted sending and Clear draft delete the draft
+- Native certificate previews are under a closed disclosure on About
 
-- Pages: homepage, contact, about, static case studies and five existing policy routes
-- Data: `data/portfolio.ts`, `data/policies.ts`, certificate records in `data/site.ts`
-- UI: `components/portfolio/`, `app/portfolio.css`, `app/game.css`, theme provider and native certificate dialog
-- Design decisions: `design/COMMISSION-IMPLEMENTATION.md`
-- Current review: `audit/COMMISSION-AUDIT.md`; asset sources and licences: `CREDITS.md`
-- Original brand assets: `node scripts/create-brand-assets.mjs` regenerates social PNG and install icons
-
-The original character is now presented in a new game-style stage with automatic lighting and direct click/drag/keyboard interaction. Desktop loads its renderer/model separately; mobile, reduced-motion and data-saving visitors use a still until they tap the character. Rendering stops offscreen. The earlier avatar component is retained as history. The private research pack, experimental gameplay files and generated local tools remain ignored. No new Meshy credits are used.
+Original unused UI source is preserved as text under `design/retired-ui/2026-10-25/`; it is not bundled. Framer Motion and Lenis were removed. Avatar preparation is reproducible with `design/prepare-brand-avatar.py` in Blender using the retained original model. Asset provenance: [CREDITS.md](CREDITS.md).
 
 ## Deployment
 
-`.github/workflows/deploy.yml` builds with `npm ci` and deploys to GitHub Pages on pushes to `main`. `public/CNAME` preserves `asadlilla.me`. Feature branches and local builds do not publish the site. Do not commit keys, private handoffs, client material or identity documents.
+`.github/workflows/deploy.yml` builds and deploys pushes to `main`. `public/CNAME` preserves `asadlilla.me`. Local builds and feature branches do not publish. Never commit credentials, private handoffs or confidential client material.
 
-Policies describe the implemented configuration; they do not certify legal compliance. Separate paid commissions require agreed scope, payment, ownership, support and cancellation terms. The website takes no payment.
-
-## Motion and sourced components
-
-Current homepage: the green-cap portrait is the header, footer and tab mark. The commission invitation is an illustrated game-style ticket. The avatar has no toolbar or activation overlay: click/tap or Enter/Space starts/stops its dance; mouse dragging and arrow keys rotate it. Mobile stills do not load the GLB until interaction. Day starts cool white; the sun arrives four seconds later, a licensed icon supplies the spinning star, and the palette turns warm at 5.6 seconds. Switching back cancels every pending timer. Reduced-motion/keyboard activation uses still effects at the same milestones.
-
-Enquiry drafts survive policy navigation, Back and refresh using a per-tab 24-hour restore window. Consent is never saved; confirmed sending or Clear draft removes the draft. `npm run test:draft` checks these flows on desktop/mobile, including blocked-storage navigation. Day mode shows a still sun/message for keyboard or reduced-motion users instead of hiding the cue.
-
-`npm run test:theme` checks warm Day mode, the brief sourced sun strike, cleanup, cancellation, keyboard-accessible theme switching and reduced-motion fallback. Night remains the default on every new page load. There are no floating Effects or replay controls.
-
-`npm run test:effects` verifies the actual sprite playback, alternating attacks, role/code rotation, motion preferences, reload persistence and offscreen pause. `npm run test:flybys` checks all seven appearances, spacing, no automatic replay, absence of replay controls, and automatic reduced-motion handling. Source and license records for LuizMelo sprites and React Bits components are in [design/COMBAT-ASSETS.md](design/COMBAT-ASSETS.md).
-
-The Night entrance sequence starts after the sprite mounts and records progress in `scriptlilla-hero-session-v2`. Reduced motion/data saving show still characters rather than silently hiding the sequence. Avatar clicks control only the dance. The Day cinematic includes a small-to-large descending sun, beam, spinning quote from the top-right, portal impact, readable hold and spiral exit; it ends at 9.1 seconds. CSS choreography uses only transform and opacity for movement.
-
-
-25 October revision: the owner rejected the previous ring/card composition. The hero intro, P1/spawn labels, speech bubble, instruction bar and framed sprite cameo are removed. Generated RGBA sun and screen-tear artwork replace the flat ring and emoji. The desktop impact is anchored in the lower-left hero gap and kept clear of the avatar; mobile places it over the copy, above the character. A narrow directed beam and unboxed spinning quote lead into the torn opening. Day impact is now at 5.4 seconds and cleanup at 9.2 seconds. Prompts, asset paths and provenance: design/cinematic/README.md. This supersedes earlier choreography notes.
-
-
-25 October beam-and-story update: seven rays fan from the sun across the viewport while the page remains cool. The cinematic itself warms the page 2.6 seconds after mounting (6.6 seconds from Day activation), after the rays have extended. Full motion includes an expanding amber wash; reduced motion retains visible static beams instead of hiding the effect. Card titles and copy lead the layout, with a smaller animated source sprite and question-based next actions. A card selection or sprite click plays one bounded attack, including in quiet mode; normal visible cards play the source portrait/idle frames. Hidden/offscreen cards stop playback. The last card links directly to the enquiry. Fly-bys pause when the main hero leaves the viewport, keeping profile reading clear, and resume when the hero returns. No new assets or paid requests were needed.
+Policies describe implemented data flows; they do not certify legal compliance. Separate commissions need agreed scope, payment, ownership, revisions, support and cancellation terms. The website takes no payment.

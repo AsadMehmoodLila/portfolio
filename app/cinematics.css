@@ -1,19 +1,3 @@
-/* Source sprites remain unboxed. Quiet appearances never become dashboard cards. */
-.hero-flyby {
-  opacity: 0;
-}
-.flyby-still {
-  width: 125px;
-  height: 125px;
-}
-.flyby-still .hero-flyby-trail {
-  display: none;
-}
-.flyby-still > .fighter-sprite {
-  transform: scale(0.72);
-  transform-origin: center;
-}
-
 /* Layout anchors are measured from the live hero, including after scroll/resize. */
 .solar-cinematic {
   position: fixed;
@@ -24,7 +8,7 @@
   contain: strict;
   visibility: hidden;
 }
-.solar-cinematic[data-placed="true"] {
+.solar-cinematic[data-placed="true"][data-started="true"] {
   visibility: visible;
 }
 .solar-sun-position {
@@ -61,14 +45,14 @@
     #ffb94e30 82%,
     transparent
   );
-  animation: solar-fan 5200ms linear var(--ray-delay) both;
+  animation: solar-fan 2600ms linear var(--ray-delay) both;
 }
 .solar-warmth {
   position: absolute;
   inset: 0;
   background: #f4c674;
   clip-path: circle(0 at var(--sun-x) var(--sun-y));
-  animation: solar-colour-wave 5200ms linear both;
+  animation: solar-colour-wave 2600ms linear both;
 }
 @keyframes solar-fan {
   0%,
@@ -112,7 +96,7 @@
 .solar-sun {
   width: 100%;
   height: 100%;
-  animation: solar-orb-flight 5200ms linear both;
+  animation: solar-orb-flight 2600ms linear both;
 }
 .solar-beam {
   position: absolute;
@@ -137,7 +121,7 @@
     #ffa92b80 65%,
     transparent 88%
   );
-  animation: solar-lance 5200ms linear both;
+  animation: solar-lance 2600ms linear both;
 }
 .solar-target {
   position: absolute;
@@ -150,7 +134,7 @@
 .solar-portal {
   position: absolute;
   inset: 0;
-  animation: tear-open 5200ms linear both;
+  animation: tear-open 2600ms linear both;
 }
 .solar-portal img {
   width: 100%;
@@ -163,7 +147,7 @@
   inset: 16%;
   border-radius: 50%;
   border: 1px solid #ae5d20;
-  animation: tear-impact 5200ms linear both;
+  animation: tear-impact 2600ms linear both;
 }
 .solar-projectile {
   position: absolute;
@@ -172,7 +156,7 @@
   width: min(330px, 86vw);
   margin-left: calc(min(330px, 86vw) / -2);
   perspective: 500px;
-  animation: strike-type 5200ms linear both;
+  animation: strike-type 2600ms linear both;
 }
 .solar-quote {
   text-align: center;
@@ -356,4 +340,8 @@
   .flyby-still > .fighter-sprite {
     transform: scale(0.62);
   }
+}
+
+.solar-cinematic[data-started="false"] * {
+  animation-play-state: paused !important;
 }

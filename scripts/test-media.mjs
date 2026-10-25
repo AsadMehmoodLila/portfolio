@@ -21,7 +21,7 @@ const result = await build({
   logLevel: "silent",
 });
 const bundle = result.outputFiles[0].contents;
-const css = (await fs.readFile("app/portfolio.css", "utf8")).replace(
+const css = (await fs.readFile("app/site.css", "utf8")).replace(
   '@import "tailwindcss";',
   "",
 );

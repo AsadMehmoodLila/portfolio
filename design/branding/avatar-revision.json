@@ -1,0 +1,22 @@
+{
+  "source": "Existing owner-approved avatar-dance.glb",
+  "changes": [
+    "Charcoal fabric material",
+    "Green plaid cap accessory weighted to existing Head bone"
+  ],
+  "paidRequests": 0,
+  "output": "public/media/scriptlilla-dance.glb",
+  "size": 1366824,
+  "headBounds": [
+    [
+      -0.21873782575130463,
+      -0.09692969918251038,
+      1.1871321201324463
+    ],
+    [
+      0.21771301329135895,
+      0.3402208387851715,
+      1.6999999284744263
+    ]
+  ]
+}

@@ -68,7 +68,10 @@ try {
             () => document.documentElement.dataset.theme === "day",
           );
         }
+        if (route === "/about/")
+          await page.locator(".credentials-disclosure > summary").click();
         for (const image of await page.locator("img").all()) {
+          if (!(await image.isVisible())) continue;
           await image.scrollIntoViewIfNeeded();
           await image.evaluate((image) => image.decode().catch(() => {}));
         }
@@ -91,14 +94,12 @@ try {
           .locator("img")
           .evaluateAll((images) =>
             images
-              .filter((image) => !image.naturalWidth)
+              .filter((image) => image.getClientRects().length > 0 && !image.naturalWidth)
               .map((image) => image.src),
           );
         const storage = await page.evaluate(() => ({
           local: localStorage.length,
-          session: Object.keys(sessionStorage).filter(
-            (key) => key !== "scriptlilla-hero-session-v2",
-          ).length,
+          session: sessionStorage.length,
         }));
         assert.equal(await page.locator("h1").count(), 1, route);
         assert(
@@ -196,6 +197,7 @@ try {
       await page.goto(origin + "/about/", { waitUntil: "networkidle" });
       if (theme === "day")
         await page.getByRole("button", { name: "Switch to day mode" }).click();
+      await page.locator(".credentials-disclosure > summary").click();
       const certificate = page.locator(".certificate-card").first();
       await certificate.focus();
       await page.keyboard.press("Enter");

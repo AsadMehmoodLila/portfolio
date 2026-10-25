@@ -2,7 +2,6 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import { useTheme } from "@/components/theme-controls";
-import { StageSignals } from "./stage-signals";
 
 export function CharacterStage() {
   const host = useRef<HTMLButtonElement>(null);
@@ -37,9 +36,6 @@ export function CharacterStage() {
   }, [night]);
   useEffect(() => {
     const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const connection = (
-      navigator as Navigator & { connection?: { saveData?: boolean } }
-    ).connection;
     const update = () => {
       if (preference.matches) {
         state.current.playing = false;
@@ -48,16 +44,7 @@ export function CharacterStage() {
       }
     };
     preference.addEventListener("change", update);
-    const timeout = window.setTimeout(() => {
-      if (
-        !preference.matches &&
-        !connection?.saveData &&
-        window.matchMedia("(min-width:700px)").matches
-      )
-        setActive(true);
-    }, 900);
     return () => {
-      clearTimeout(timeout);
       preference.removeEventListener("change", update);
     };
   }, []);
@@ -285,7 +272,9 @@ export function CharacterStage() {
         renderer.domElement.remove();
         engine.current = null;
       };
-      const gltf = await new GLTFLoader().loadAsync("/media/avatar-dance.glb");
+      const gltf = await new GLTFLoader().loadAsync(
+        "/media/scriptlilla-dance.glb",
+      );
       if (disposed) {
         disposeTree(gltf.scene);
         return;
@@ -334,15 +323,11 @@ export function CharacterStage() {
       data-entered={entered}
     >
       <div className="character-world">
-        <span className="world-word" aria-hidden>
-          PLAY
-        </span>
         <div className="world-ring" aria-hidden />
-        <div className="world-orbit" aria-hidden />
-        <div className="world-spark spark-a" aria-hidden />
-        <div className="world-spark spark-b" aria-hidden />
-        <div className="world-spark spark-c" aria-hidden />
         <span className="spawn-ripple" aria-hidden />
+        <noscript>
+          <img className="character-static" src="/media/character-scriptlilla.webp" width={700} height={1050} alt="ScriptLilla's game avatar wearing a green plaid cap and charcoal outfit" />
+        </noscript>
         <button
           type="button"
           ref={host}
@@ -357,7 +342,7 @@ export function CharacterStage() {
         >
           {!ready && (
             <img
-              src="/media/character-stage.webp"
+              src="/media/character-scriptlilla.webp"
               width={800}
               height={900}
               alt=""
@@ -365,7 +350,6 @@ export function CharacterStage() {
             />
           )}
         </button>
-        <StageSignals />
       </div>
       <p id={help} className="sr-only">
         Click or press Enter or Space on the character to start or stop its

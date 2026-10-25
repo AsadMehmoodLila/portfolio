@@ -4,7 +4,7 @@ All portfolio work is defined in **`data/portfolio.ts`**. You do not need to edi
 
 ## Ready-made sections
 
-Homepage: hero, services, published work, delivery process, interactive profile cards, tool logos, animated FAQ, Discord contact and footer. `/contact/` has a three-step enquiry connected to Formspree, with direct Discord/email alternatives. `/about/` contains your background and certificate previews. Existing policy URLs remain available.
+Homepage: introduction, published work, service rows, delivery process, concise biography, tool logos, animated FAQ, direct contact and footer. `/contact/` has a three-step enquiry connected to Formspree, with direct Discord/email alternatives. `/about/` contains your background and certificate previews. Existing policy URLs remain available.
 
 The four reserved case studies are:
 
@@ -29,6 +29,7 @@ They have `status: "planned"`. They are excluded from the homepage and sitemap a
      alt: "Two characters demonstrating a guarded attack in the combat test arena",
      youtube: "PASTE_YOUR_REAL_UNLISTED_YOUTUBE_URL_HERE",
      summary: "Explain the actions demonstrated, the server decisions and the limits of this test",
+     posterCaption: "Combat demonstration recorded in the test arena",
    },
    ```
 
@@ -61,7 +62,7 @@ They have `status: "planned"`. They are excluded from the homepage and sitemap a
 - Identity, Discord invite, email, offers, process and FAQs: `data/portfolio.ts`
 - Certificates/background legacy records: `data/site.ts`; previews: `components/sections/certificates.tsx`
 - Policies: `data/policies.ts`; keep them aligned with the actual services and data flows
-- Tokens, layout, responsive rules and reduced motion: `app/portfolio.css` and `app/game.css`
+- Tokens, layout, responsive rules and reduced motion: `app/site.css` and `app/cinematics.css`
 - The enquiry is sent to Formspree only after the visitor validates the brief, checks the privacy acknowledgement and chooses Send enquiry. Direct email opens their own app. There is no checkout or automatic marketing
 - Day/night is held in memory during internal navigation. Reloading starts in night mode; no preference cookie or local storage is used
 - YouTube is blocked until the visitor chooses Play, using `youtube-nocookie.com`. Close unloads it. This is a deliberate per-player choice, not a claim that YouTube collects no information
@@ -71,12 +72,12 @@ They have `status: "planned"`. They are excluded from the homepage and sitemap a
 
 Duplicate a complete `Work` object with a unique lowercase hyphenated slug. Keep it planned while preparing its content. The existing route generator, listing, sitemap, player and responsive case layout handle additional entries without new page files.
 
-The hero character is implemented in components/portfolio/character-stage.tsx. Desktop defers its 3D loading; mobile, reduced-motion and data-saving visitors activate it explicitly. Its independent lighting, motion and reset buttons are keyboard accessible. The still is rendered from the local model with scripts/render-character.mjs after a build/preview; no external model service is called.
+The character is implemented in `components/portfolio/character-stage.tsx`. Every device loads 3D only after explicit interaction. Click/Enter/Space starts or stops dancing; drag/arrows rotate and Home resets. There is no toolbar. The adapted model and still are `public/media/scriptlilla-dance.glb` and `character-scriptlilla.webp`; provenance is in `design/branding/avatar-revision.json`.
 
-## Current contact and homepage interactions
+## Contact and proof integration
 
-The contact page is a three-step choice flow connected to the owner-supplied Formspree endpoint in data/contact.ts. It sends only after a valid brief, reply email and explicit privacy acknowledgement. Formspree acceptance controls the success message; failures preserve fields. Discord opens the supplied server invite. To change the public form ID, edit data/contact.ts and reassess provider/retention wording. Never put mailbox passwords or private Discord webhooks in client code.
+The endpoint is public configuration in `data/contact.ts`. Never add mailbox passwords or private Discord webhooks to client code. Form acceptance controls success; failures preserve fields. Drafts last up to 24 hours in the current tab, excluding consent; Clear draft and accepted sending delete them. Discord opens the supplied server, where clients can ask for @scriptlilla. Use private email/form messages for sensitive enquiries.
 
-The homepage intro uses four short profile cards (profile-cards.tsx). FAQs use a cancellable measured accordion (animated-faq.tsx). Seven small caped sprites pass once per tab, fifteen seconds apart (hero-flybys.tsx). Effects can be stopped; reduced motion/data saving suppress them. One disclosed sessionStorage object prevents replay within the tab. Sprite provenance: design/FLYBY-ASSETS.md.
+When you add a real `youtube` or `video` field, the homepage and case page automatically render the shared player. Poster-only entries show an honest artwork link. `posterCaption` is optional text identifying the still; keep meaningful actions/test limits in `summary`. Future YouTube visibility, captions, rights and remote playback need checking when supplied.
 
-Checks: npm run test:interactions and npm run test:flybys. Delivery tests use mocked responses. A single labelled real test was accepted by Formspree. Routine tests must not send additional live enquiries automatically.
+Run `npm run test:portfolio`, `npm run test:interactions`, `npm run test:draft` and `npm run test:media`. Delivery is mocked in routine tests; do not send repeated real enquiries against the monthly quota.

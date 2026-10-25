@@ -1,11 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Chakra_Petch, Geist } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-controls";
-import { HeroFlybys } from "@/components/portfolio/hero-flybys";
-import { EffectsProvider } from "@/components/portfolio/effects-provider";
 
-import "./portfolio.css";
-import "./game.css";
+import "./site.css";
 import "./cinematics.css";
 
 const display = Chakra_Petch({
@@ -49,7 +46,7 @@ export const metadata: Metadata = {
     siteName: "ScriptLilla",
     images: [
       {
-        url: "/images/portfolio-social.png",
+        url: "/images/scriptlilla-social.png",
         width: 1200,
         height: 630,
         alt: "ScriptLilla, Roblox scripting by Asad Mehmood",
@@ -63,11 +60,11 @@ export const metadata: Metadata = {
     title: "ScriptLilla | Roblox Scripter",
     description:
       "Gameplay systems, player data and game loops for Roblox experiences.",
-    images: ["/images/portfolio-social.png"],
+    images: ["/images/scriptlilla-social.png"],
   },
   icons: {
     icon: [
-      { url: "/favicon.png?v=green-cap", type: "image/png", sizes: "64x64" },
+      { url: "/favicon.png?v=green-cap-v2", type: "image/png", sizes: "64x64" },
     ],
     apple: "/apple-touch-icon.png",
   },
@@ -99,20 +96,17 @@ export default function RootLayout({
         <noscript>
           <style>
             {
-              ".theme-toggle,.mobile-menu-toggle,.brief-builder,.contact-quest,.character-controls,.character-activate,.character-hint,.character-speech,.character-invitation,.profile-topics,.profile-story-controls{display:none}.character-canvas{pointer-events:none}"
+              ".theme-toggle,.mobile-menu-toggle,.contact-quest-layout,.character-canvas{display:none}"
             }
           </style>
         </noscript>
       </head>
       <body>
         <ThemeProvider>
-          <EffectsProvider>
-            <a href="#main-content" className="skip-link">
-              Skip to main content
-            </a>
-            {children}
-            <HeroFlybys />
-          </EffectsProvider>
+          <a href="#main-content" className="skip-link">
+            Skip to main content
+          </a>
+          {children}
         </ThemeProvider>
       </body>
     </html>

@@ -4,39 +4,66 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 export function SunCinematic({
   quiet: initialQuiet,
   onWarm,
+  onComplete,
 }: {
   quiet: boolean;
   onWarm: () => void;
+  onComplete: () => void;
 }) {
   const root = useRef<HTMLDivElement>(null);
   const [reduced, setReduced] = useState(false);
   const [phase, setPhase] = useState("arrival");
+  const [started, setStarted] = useState(false);
   const quiet = initialQuiet || reduced;
   useEffect(() => {
     const media = matchMedia("(prefers-reduced-motion: reduce)");
     const update = () => setReduced(media.matches);
     update();
     media.addEventListener("change", update);
-    const cues = [
-      setTimeout(() => setPhase("beams"), 900),
-      setTimeout(() => setPhase("impact"), 1400),
-      // The page only warms after the sun has visibly fired across the viewport.
-      setTimeout(onWarm, 2600),
-      setTimeout(() => setPhase("consuming"), 3300),
-      setTimeout(() => setPhase("closing"), 4400),
-    ];
     return () => {
       media.removeEventListener("change", update);
-      cues.forEach(clearTimeout);
     };
-  }, [onWarm]);
+  }, []);
+  useEffect(() => {
+    let alive = true;
+    Promise.all(
+      ["/media/vfx/solar-orb.webp", "/media/vfx/screen-tear.webp"].map(
+        (src) => {
+          const image = new Image();
+          image.src = src;
+          return image.decode();
+        },
+      ),
+    )
+      .then(() => {
+        if (alive) setStarted(true);
+      })
+      .catch(() => {
+        if (alive) {
+          onWarm();
+          onComplete();
+        }
+      });
+    return () => {
+      alive = false;
+    };
+  }, [onWarm, onComplete]);
+  useEffect(() => {
+    if (!started) return;
+    const cues = [
+      setTimeout(() => setPhase("beams"), 450),
+      setTimeout(() => setPhase("impact"), 700),
+      setTimeout(onWarm, 1300),
+      setTimeout(() => setPhase("consuming"), 1650),
+      setTimeout(() => setPhase("closing"), 2200),
+      setTimeout(onComplete, 2700),
+    ];
+    return () => cues.forEach(clearTimeout);
+  }, [started, onWarm, onComplete]);
   useLayoutEffect(() => {
     const place = () => {
       if (!root.current) return;
       const hero = document.querySelector(".hero")?.getBoundingClientRect();
-      const copy = document
-        .querySelector(".hero-copy")
-        ?.getBoundingClientRect();
       const visual = document
         .querySelector(".hero-visual")
         ?.getBoundingClientRect();
@@ -44,18 +71,18 @@ export function SunCinematic({
         .querySelector(".system-dock")
         ?.getBoundingClientRect();
       const mobile = innerWidth <= 700;
-      const diameter = mobile ? 220 : Math.min(280, innerWidth * 0.19);
+      const diameter = mobile ? 150 : Math.min(200, innerWidth * 0.15);
       const clamp = (n: number, min: number, max: number) =>
         Math.min(max, Math.max(min, n));
       // The impact belongs to the empty lower-left area, never the avatar stage.
       const x = mobile
-        ? innerWidth * 0.5
+        ? 85
         : hero
-          ? hero.left + hero.width * 0.39
+          ? hero.left + hero.width * 0.49
           : innerWidth * 0.35;
       const y = clamp(
-        mobile && copy
-          ? copy.top + copy.height * 0.62
+        mobile
+          ? innerHeight - 95
           : hero
             ? hero.bottom - 105
             : innerHeight * 0.67,
@@ -105,7 +132,7 @@ export function SunCinematic({
             `${(Math.atan2(dy, dx) * 180) / Math.PI}deg`,
           );
           ray.style.setProperty("--ray-length", `${Math.hypot(dx, dy)}px`);
-          ray.style.setProperty("--ray-delay", `${index * 35}ms`);
+          ray.style.setProperty("--ray-delay", `${index * 15}ms`);
         });
       root.current.dataset.placed = "true";
     };
@@ -123,6 +150,7 @@ export function SunCinematic({
       className="solar-cinematic"
       data-motion={quiet ? "reduced" : "full"}
       data-phase={phase}
+      data-started={started}
       aria-hidden="true"
     >
       <div className="solar-warmth" />

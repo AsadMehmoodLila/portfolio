@@ -62,7 +62,7 @@ export function VideoPlayer({ media, title }: { media: Media; title: string }) {
           alt={media.alt}
           className="work-poster"
         />
-        {media.summary && <figcaption>{media.summary}</figcaption>}
+        {media.posterCaption && <figcaption>{media.posterCaption}</figcaption>}
       </figure>
     ) : null;
   return (

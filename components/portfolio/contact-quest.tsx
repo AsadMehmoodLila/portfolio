@@ -288,7 +288,7 @@ export function ContactQuest() {
       </div>
       {draftReady && status !== "sent" && (service || details || email) && (
         <div className="quest-draft-note">
-          <span>Draft kept in this tab · 24-hour restore window</span>
+          <span>Draft saved in this tab</span>
           <button
             type="button"
             onClick={discardDraft}

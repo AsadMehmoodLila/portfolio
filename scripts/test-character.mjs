@@ -24,7 +24,7 @@ try {
     });
     const models = [];
     page.on("request", (r) => {
-      if (r.url().endsWith("avatar-dance.glb")) models.push(r.url());
+      if (r.url().endsWith("scriptlilla-dance.glb")) models.push(r.url());
     });
     await page.goto(origin + "/?render-character", {
       waitUntil: "networkidle",
@@ -37,11 +37,8 @@ try {
       0,
     );
     assert.equal(await character.getAttribute("aria-pressed"), "false");
-    if (width === 390)
-      assert.equal(models.length, 0, "Mobile still must load before any GLB");
-    await character.click({
-      position: { x: width === 390 ? 175 : 300, y: 210 },
-    });
+    assert.equal(models.length, 0, "Every device must show the still without loading a GLB before interaction");
+    await character.click();
     await page
       .locator('.character-stage[data-ready="true"]')
       .waitFor({ timeout: 30000 });

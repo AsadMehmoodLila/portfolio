@@ -13,15 +13,11 @@ export function SiteFooter({ compact = false }: { compact?: boolean }) {
       {!compact && (
         <div className="footer-invitation shell">
           <h2>
-            Have a mechanic
-            <br />
-            in mind?
+            Let’s talk about your game
           </h2>
           <div>
             <p>
-              Tell me what your game needs.
-              <br />
-              Let’s work out a clear scope.
+              Start with the mechanic you need. We’ll work out the scope together.
             </p>
             <Link href="/contact/" prefetch={false} className="button">
               Start a project <ArrowUpRight size={19} aria-hidden />

@@ -61,25 +61,70 @@ export default async function WorkPage({
     <>
       <SiteHeader />
       <main id="main-content" tabIndex={-1}>
-        <div className="page-intro shell">
-          <div className="case-topline">
-            <Link href="/#work" prefetch={false} className="back-link">
-              <ArrowLeft size={16} aria-hidden />
-              Back to work
-            </Link>
-          </div>
-          <span className="work-type">
-            {published ? project.type : "Upcoming showcase"}
-          </span>
+        <div className="page-intro case-intro shell">
+          <Link href="/#work" prefetch={false} className="back-link">
+            <ArrowLeft size={16} aria-hidden />
+            Back to work
+          </Link>
           <h1>{project.title}</h1>
           <p>{project.summary}</p>
         </div>
         {published ? (
-          <div className="case-layout shell">
-            <div className="case-main">
+          <>
+            <div className="case-layout shell">
               <VideoPlayer media={project.media} title={project.title} />
+              <aside className="case-sidebar" aria-label="Project details">
+                <div>
+                  <h2>My contribution</h2>
+                  <ul>
+                    {project.role.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h2>Built with</h2>
+                  <ul className="case-tools">
+                    {project.tools.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  {project.live && (
+                    <a
+                      href={project.live}
+                      className="button"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Open experience <ArrowUpRight size={17} aria-hidden />
+                    </a>
+                  )}
+                  {project.source && (
+                    <a
+                      href={project.source}
+                      className="link-action"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      View source <ArrowUpRight size={17} aria-hidden />
+                    </a>
+                  )}
+                  <Link
+                    href="/contact/"
+                    className="link-action"
+                    prefetch={false}
+                  >
+                    Discuss a similar system{" "}
+                    <ArrowUpRight size={17} aria-hidden />
+                  </Link>
+                </div>
+              </aside>
+            </div>
+            <div className="case-body shell">
               <section>
-                <h2>The project</h2>
+                <h2>Project overview</h2>
                 <p>{project.description}</p>
               </section>
               {!!project.approach.length && (
@@ -116,84 +161,36 @@ export default async function WorkPage({
                   </div>
                 </section>
               )}
-              {!!project.evidence.length && (
-                <section>
-                  <h2>What you can verify</h2>
-                  <ul>
-                    {project.evidence.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </section>
-              )}
-              {!!project.credits.length && (
-                <section>
-                  <h2>Credits & ownership</h2>
-                  <ul>
-                    {project.credits.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </section>
-              )}
-              {project.notes && (
-                <section>
-                  <h2 className="sr-only">Project notes</h2>
-                  <p className="case-notes">{project.notes}</p>
-                </section>
+              {(project.evidence.length > 0 ||
+                project.credits.length > 0 ||
+                project.notes) && (
+                <details className="case-references">
+                  <summary>Project references and asset credits</summary>
+                  {!!project.evidence.length && (
+                    <ul>
+                      {project.evidence.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  )}
+                  {!!project.credits.length && (
+                    <ul>
+                      {project.credits.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  )}
+                  {project.notes && <p>{project.notes}</p>}
+                </details>
               )}
             </div>
-            <aside className="case-sidebar" aria-label="Project details">
-              <div>
-                <h2>My contribution</h2>
-                <ul>
-                  {project.role.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <h2>Built with</h2>
-                <ul>
-                  {project.tools.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                {project.live && (
-                  <a
-                    href={project.live}
-                    className="button"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Open experience <ArrowUpRight size={17} aria-hidden />
-                  </a>
-                )}
-                {project.source && (
-                  <a
-                    href={project.source}
-                    className="link-action"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    View source <ArrowUpRight size={17} aria-hidden />
-                  </a>
-                )}
-                <Link href="/contact/" className="link-action" prefetch={false}>
-                  Discuss a similar system{" "}
-                  <ArrowUpRight size={17} aria-hidden />
-                </Link>
-              </div>
-            </aside>
-          </div>
+          </>
         ) : (
           <section
             className="draft-showcase shell"
             aria-labelledby="upcoming-title"
           >
-            <FilmSlate size={50} weight="duotone" aria-hidden />
+            <FilmSlate size={40} aria-hidden />
             <div>
               <h2 id="upcoming-title">A closer look is on the way</h2>
               <p>{project.description}</p>

@@ -1,9 +1,10 @@
 {
   "checks": [
-    "1440px full: cool white first, delayed sun, seven visible rays before warming, torn opening clear of avatar/dock, quote absorption, cleanup and cancellation",
-    "1440px reduced: cool white first, delayed sun, seven visible rays before warming, torn opening clear of avatar/dock, quote absorption, cleanup and cancellation",
-    "390px full: cool white first, delayed sun, seven visible rays before warming, torn opening clear of avatar/dock, quote absorption, cleanup and cancellation",
-    "390px reduced: cool white first, delayed sun, seven visible rays before warming, torn opening clear of avatar/dock, quote absorption, cleanup and cancellation"
+    "1440px full: immediate cue, decoded assets before playback, visible beams before warmth, automatic cleanup and rapid cancellation",
+    "1440px quiet: immediate cue, decoded assets before playback, visible beams before warmth, automatic cleanup and rapid cancellation",
+    "390px full: immediate cue, decoded assets before playback, visible beams before warmth, automatic cleanup and rapid cancellation",
+    "390px quiet: immediate cue, decoded assets before playback, visible beams before warmth, automatic cleanup and rapid cancellation",
+    "Missing artwork cannot trap the theme in cool mode or leave a broken overlay"
   ],
   "errors": [],
   "passed": true

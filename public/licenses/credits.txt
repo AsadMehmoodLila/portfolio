@@ -1,23 +1,20 @@
-Asset credits — ScriptLilla portfolio
+Asset credits — ScriptLilla portfolio, 25 October 2026
 
-Sun graphic: Twemoji, copyright Twitter, Inc. and other contributors
-Source: https://github.com/jdecked/twemoji/blob/main/assets/svg/2600.svg
-License: Creative Commons Attribution 4.0 International
-https://creativecommons.org/licenses/by/4.0/
-Full terms: /licenses/twemoji-graphics.txt
-The SVG artwork is unmodified; the site positions, rotates and animates it.
+Green-cap brand mark and interface icons: Phosphor, MIT
+https://github.com/phosphor-icons/react
+Tool marks: Simple Icons, CC0; trademark rights remain
+https://github.com/simple-icons/simple-icons
+Fonts: Chakra Petch and Geist, SIL Open Font License, served locally
 
-RotatingText and SpotlightCard: React Bits, copyright 2026 David Haz
-Source: https://github.com/DavidHDev/react-bits
-License: MIT + Commons Clause, full text at /licenses/react-bits.txt
-Adapted for this website's palette, motion preferences and existing dependencies.
+Original avatar: Meshy + Blender. Current green plaid cap and charcoal material are local adaptations of the existing rig/dance. Not an official Roblox character or endorsement. Output licensing depends on the account plan; applicable attribution and usage terms remain in force.
+Green-cap portrait: generated brand artwork from the owner's supplied reference, not a photo.
+Sun and screen-opening VFX: generated decorative assets, not project footage.
 
-Animated pixel fighters: LuizMelo, CC0-1.0
-https://luizmelo.itch.io/
-Run, idle and attack frames normalized into locally hosted WebP sheets.
-Full pack source links and hashes: repository design/COMBAT-ASSETS.md
+Escape Tsunami with Dragons: official game artwork from Roblox's public APIs. The number in the image is game artwork, not a revenue claim. Game/platform marks retain their owners' rights.
+Certificate images: owner-supplied; issuer marks/designs retain their rights and imply no endorsement.
 
-Remaining asset credits: repository CREDITS.md
-https://github.com/AsadMehmoodLila/portfolio/blob/main/CREDITS.md
-
-Current sun and torn screen-opening VFX: generated for this portfolio with the built-in image-generation tool. Transparent WebP exports are hosted locally. Production notes and prompts: repository design/cinematic/README.md. The previous Twemoji asset is retired; its credit and license remain for historical attribution.
+Retired assets, no longer used on active pages:
+LuizMelo fighters (CC0), Kenney Blocky Characters (CC0), React Bits (MIT + Commons Clause), Twemoji graphics (CC BY 4.0).
+Archived React Bits terms: /licenses/react-bits.txt
+Archived Twemoji terms: /licenses/twemoji-graphics.txt
+Source records and full dependency licenses are retained in the repository's CREDITS.md, design/ and assets/licenses/.

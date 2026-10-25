@@ -122,20 +122,16 @@ try {
         "https://discord.gg/sKfzTnPVn2",
       );
       await page.goto(origin + "/", { waitUntil: "networkidle" });
-      const intro = page.locator(".profile-story");
-      await intro.scrollIntoViewIfNeeded();
-      for (let i = 1; i < 4; i++)
-        await intro
-          .locator("button.profile-next")
-          .click();
-      await intro.getByText("You’ve met the scripter").waitFor();
-      await intro
-        .getByRole("button", { name: "Previous introduction card" })
-        .focus();
-      await page.keyboard.press("Home");
-      await intro
-        .getByRole("heading", { name: "The idea is only the start" })
-        .waitFor();
+      await page.locator("#about").scrollIntoViewIfNeeded();
+      assert(
+        await page
+          .getByRole("heading", { name: "Asad, a.k.a. ScriptLilla" })
+          .isVisible(),
+      );
+      assert.equal(
+        await page.locator(".profile-story,.hero-flyby,.stage-signals").count(),
+        0,
+      );
       const faq = page.locator(".faq-list details").first();
       await faq.locator("summary").focus();
       await page.keyboard.press("Enter");
@@ -162,7 +158,7 @@ try {
         "night",
       );
       report.checks.push(
-        `${width}px ${theme}: three accessible stages, consent, payload, accepted delivery, rate limit recovery, direct Discord, profile controls, reduced-motion FAQ, default night`,
+        `${width}px ${theme}: three accessible stages, consent, payload, accepted delivery, rate limit recovery, direct Discord, visible biography, reduced-motion FAQ, default night`,
       );
       await context.close();
     }
@@ -224,11 +220,11 @@ try {
   await np.goto(origin);
   assert(
     await np
-      .getByText("The interesting part is what breaks", { exact: true })
+      .getByRole("heading", { name: "Asad, a.k.a. ScriptLilla", exact: true })
       .isVisible(),
   );
   report.checks.push(
-    "No-JavaScript contact and all profile-card content remain available",
+    "No-JavaScript contact and biography remain available",
   );
   await nojs.close();
   report.passed = !report.errors.length;

@@ -42,7 +42,7 @@ export default async function PolicyPage({
         <h1>{content.title}</h1>
         <p className="policy-summary">{content.summary}</p>
         <p className="policy-date">
-          Last updated: <time dateTime="2026-10-24">24 October 2026</time>
+          Last updated: <time dateTime="2026-10-25">25 October 2026</time>
         </p>
         <nav className="policy-toc" aria-label="On this page">
           {content.sections.map((s, i) => (

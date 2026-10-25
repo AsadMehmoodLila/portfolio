@@ -18,7 +18,7 @@ export const services = [
     title: "Combat & abilities",
     icon: "sword",
     description:
-      "Give your game a combat loop with clear feedback and server-owned decisions.",
+      "Combos, skills and cooldowns, connected to your inputs, animations and UI.",
     scope: [
       "Combos, skills and cooldowns",
       "Hit validation and action states",
@@ -33,7 +33,7 @@ export const services = [
     title: "Player data & inventory",
     icon: "stack",
     description:
-      "Connect player progress, equipment and item actions to a consistent data model.",
+      "Inventory, equipment and progress, with player-data integration and checks on item actions.",
     scope: [
       "Inventory and equipment logic",
       "Player-data integration",
@@ -48,7 +48,7 @@ export const services = [
     title: "Rounds & NPC systems",
     icon: "flow",
     description:
-      "Turn separate mechanics into a game loop players can join, finish and play again.",
+      "Lobbies, encounters, rewards and resets, connected into a playable round.",
     scope: [
       "Lobbies, rounds and results",
       "NPC behaviours and encounters",
@@ -64,6 +64,8 @@ export type Media = {
   /** Put local images in public/media/work/. Keep this null until you have a real image. */
   poster: string | null;
   alt: string;
+  /** Optional factual caption for a still-only cover, separate from a video synopsis. */
+  posterCaption?: string;
   /** Paste an unlisted YouTube URL or its 11-character ID. Only loaded after the visitor chooses Play. */
   youtube?: string | null;
   /** Optional self-hosted MP4 or WebM, relative to public/. Use either youtube or video, not both. */
@@ -104,6 +106,7 @@ export const work: Work[] = [
     media: {
       poster: "/media/roblox-game.webp",
       alt: "Escape Tsunami with Dragons game artwork, with a dragon, a blocky character and a blue wave",
+      posterCaption: "Official game artwork",
       summary:
         "Players move through a survival course, collect rewards and use dragons while escaping the wave. Open the Roblox experience to explore the published game.",
     },
@@ -225,20 +228,20 @@ export const publishedWork = work.filter(
 
 export const process = [
   {
-    title: "Tell me what needs to work",
-    body: "Share your game, the mechanic, target devices, budget and timing. Existing code or a short reference clip helps.",
+    title: "Share the brief",
+    body: "Tell me the mechanic, your existing game and any budget or timing constraints.",
   },
   {
-    title: "Agree on a clear scope",
-    body: "We confirm deliverables, acceptance criteria, milestones, payment terms and who supplies the visual assets.",
+    title: "Agree the scope",
+    body: "Confirm deliverables, acceptance criteria, milestones, payment and supplied assets before work starts.",
   },
   {
-    title: "Build with visible progress",
-    body: "Playable updates and focused demonstrations keep the work tied to the scope. New features are agreed separately.",
+    title: "Review the build",
+    body: "Check playable updates against the scope. Agree any added features separately.",
   },
   {
     title: "Test and hand over",
-    body: "The agreed source, configuration and integration notes arrive together. The quote defines revisions and support.",
+    body: "Receive the agreed source, configuration and setup notes, with revisions and support defined in the quote.",
   },
 ];
 

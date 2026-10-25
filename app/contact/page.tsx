@@ -26,12 +26,26 @@ export default function ContactPage() {
             <ArrowLeft size={16} aria-hidden />
             Back to portfolio
           </Link>
-          <h1>
-            Let’s build
-            <br />
-            <span>your next system</span>
-          </h1>
-          <p>Three quick steps. No long form.</p>
+          <h1>Tell me what your game needs</h1>
+          <p>
+            Choose a system and send a short brief. I’ll use your email to
+            continue the conversation.
+          </p>
+          <div className="contact-shortcuts">
+            <a className="link-action" href={`mailto:${identity.email}`}>
+              <EnvelopeSimple size={19} aria-hidden />
+              Email directly <ArrowUpRight size={15} aria-hidden />
+            </a>
+            <a
+              href={identity.discord}
+              className="link-action"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <DiscordLogo size={19} aria-hidden />
+              Discord server <ArrowUpRight size={15} aria-hidden />
+            </a>
+          </div>
         </div>
         <div className="contact-quest-layout shell">
           <aside className="quest-profile">
@@ -41,6 +55,7 @@ export default function ContactPage() {
                 alt="ScriptLilla’s green-cap illustrated avatar"
                 width={720}
                 height={720}
+                loading="lazy"
               />
             </div>
             <div>
@@ -53,13 +68,18 @@ export default function ContactPage() {
                 rel="noopener noreferrer"
               >
                 <DiscordLogo size={20} aria-hidden />
-                Chat on Discord <ArrowUpRight size={15} aria-hidden />
+                Join the server <ArrowUpRight size={15} aria-hidden />
               </a>
             </div>
             <p className="quest-business">
               {identity.location}
               <br />
               Scope and payment terms agreed before work starts
+            </p>
+            <p className="quest-channel-note">
+              On Discord, join the server and ask for{" "}
+              <strong>@scriptlilla</strong> about a commission. Prefer a private
+              enquiry? Use this form or email.
             </p>
           </aside>
           <ContactQuest />

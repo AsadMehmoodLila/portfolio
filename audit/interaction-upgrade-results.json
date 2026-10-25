@@ -1,11 +1,11 @@
 {
   "checks": [
-    "1440px night: three accessible stages, consent, payload, accepted delivery, rate limit recovery, direct Discord, profile controls, reduced-motion FAQ, default night",
-    "1440px day: three accessible stages, consent, payload, accepted delivery, rate limit recovery, direct Discord, profile controls, reduced-motion FAQ, default night",
-    "390px night: three accessible stages, consent, payload, accepted delivery, rate limit recovery, direct Discord, profile controls, reduced-motion FAQ, default night",
-    "390px day: three accessible stages, consent, payload, accepted delivery, rate limit recovery, direct Discord, profile controls, reduced-motion FAQ, default night",
+    "1440px night: three accessible stages, consent, payload, accepted delivery, rate limit recovery, direct Discord, visible biography, reduced-motion FAQ, default night",
+    "1440px day: three accessible stages, consent, payload, accepted delivery, rate limit recovery, direct Discord, visible biography, reduced-motion FAQ, default night",
+    "390px night: three accessible stages, consent, payload, accepted delivery, rate limit recovery, direct Discord, visible biography, reduced-motion FAQ, default night",
+    "390px day: three accessible stages, consent, payload, accepted delivery, rate limit recovery, direct Discord, visible biography, reduced-motion FAQ, default night",
     "Mouse FAQ opening, closing and rapid reversal animate correctly",
-    "No-JavaScript contact and all profile-card content remain available"
+    "No-JavaScript contact and biography remain available"
   ],
   "errors": [],
   "passed": true
