@@ -7,7 +7,7 @@ const routes = [
   "/",
   "/about/",
   "/contact/",
-  "/work/escape-tsunami/",
+  "/work/stream-a-cheese-pull/",
   "/work/combat-system/",
   "/work/inventory-data/",
   "/work/rounds-bosses/",
@@ -19,7 +19,7 @@ const routes = [
   "/accessibility/",
 ];
 const drafts = routes.filter(
-  (route) => route.startsWith("/work/") && route !== "/work/escape-tsunami/",
+  (route) => route.startsWith("/work/") && route !== "/work/stream-a-cheese-pull/",
 );
 const report = {
   pages: [],
@@ -138,7 +138,7 @@ try {
           violations,
         });
         if (
-          ["/", "/contact/", "/about/", "/work/escape-tsunami/"].includes(route)
+          ["/", "/contact/", "/about/", "/work/stream-a-cheese-pull/"].includes(route)
         ) {
           const name =
             route === "/" ? "home" : route.split("/").filter(Boolean).at(-1);
@@ -305,7 +305,7 @@ try {
       "/",
       "/contact/",
       "/about/",
-      "/work/escape-tsunami/",
+      "/work/stream-a-cheese-pull/",
     ]) {
       await page.goto(origin + route, { waitUntil: "networkidle" });
       assert(

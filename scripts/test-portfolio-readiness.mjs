@@ -102,7 +102,7 @@ try {
           .first()
           .evaluate((el) => el === document.activeElement),
       );
-      await page.goto(origin + "/work/escape-tsunami/", {
+      await page.goto(origin + "/work/stream-a-cheese-pull/", {
         waitUntil: "networkidle",
       });
       assert.equal(
@@ -118,7 +118,7 @@ try {
       await page.locator(".case-references > summary").click();
       assert(
         await page
-          .getByText("The cover is the published game's artwork.", {
+          .getByText("My contribution: food system.", {
             exact: false,
           })
           .isVisible(),

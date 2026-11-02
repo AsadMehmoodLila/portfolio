@@ -1,0 +1,22 @@
+{
+  "data": [
+    {
+      "universeId": 10628907188,
+      "error": null,
+      "thumbnails": [
+        {
+          "targetId": 75590238537890,
+          "state": "Completed",
+          "imageUrl": "https://tr.rbxcdn.com/180DAY-1a5167b68567786ca9574faca3352c23/768/432/Image/Png/noFilter",
+          "version": "TN3"
+        },
+        {
+          "targetId": 127730139763630,
+          "state": "Completed",
+          "imageUrl": "https://tr.rbxcdn.com/180DAY-12e1e4ae46b45290900834dfc0b91df9/768/432/Image/Png/noFilter",
+          "version": "TN3"
+        }
+      ]
+    }
+  ]
+}

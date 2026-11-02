@@ -3011,3 +3011,29 @@ h2 {
   100%{opacity:0;transform:translateX(var(--hero-travel))}
 }
 @media(prefers-reduced-motion:reduce){.button-hero-flight{animation:none!important}}
+
+/* Sourced project reach, within the existing work and case layouts. */
+.work-reach{margin-top:20px;margin-bottom:20px}
+.work-facts{display:flex;flex-wrap:wrap;gap:16px 34px;margin:0;padding:15px 0;border-block:1px solid var(--line-soft)}
+.work-facts>div{display:flex;flex-direction:column-reverse;gap:3px}
+.work-facts dt{font-size:.75rem;color:var(--muted)}
+.work-facts dd{margin:0;font-family:var(--font-display),sans-serif;font-weight:700;font-size:2rem;line-height:1.2;color:var(--accent)}
+.work-facts dd a:hover{text-decoration:underline}
+.work-verified{margin-top:8px!important;font-size:.68rem!important;color:var(--muted)}
+.case-intro .work-reach{max-width:640px;margin-bottom:0}
+.case-sidebar .link-action{margin-top:12px;font-size:.78rem}
+.case-profile-links{display:flex;flex-wrap:wrap;gap:0 18px}
+@media(max-width:600px){.work-facts{gap:16px 24px}.work-facts dd{font-size:1.8rem}}
+.case-feature-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0;
+  list-style: none;
+}
+.case-feature-tags li {
+  padding: 8px 12px;
+  border: 1px solid var(--line-soft);
+  border-radius: 4px;
+  font-size: 0.85rem;
+}

@@ -25,7 +25,7 @@ const css = (await fs.readFile("app/site.css", "utf8")).replace(
   '@import "tailwindcss";',
   "",
 );
-const poster = await fs.readFile("public/media/roblox-game.webp");
+const poster = await fs.readFile("public/media/work/stream-a-cheese-pull/official-art-2.webp");
 const server = http.createServer((req, res) => {
   if (req.url === "/fixture.js") {
     res.setHeader("Content-Type", "text/javascript");

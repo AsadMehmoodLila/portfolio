@@ -1,0 +1,49 @@
+  {
+    slug: "escape-tsunami",
+    title: "Escape Tsunami with Dragons",
+    category: "Gameplay",
+    status: "published",
+    type: "Published Roblox experience",
+    summary:
+      "A survival loop built around movement, collectible dragons and an approaching wave.",
+    media: {
+      poster: "/media/roblox-game.webp",
+      alt: "Escape Tsunami with Dragons game artwork, with a dragon, a blocky character and a blue wave",
+      posterCaption: "Official game artwork",
+      summary:
+        "Players move through a survival course, collect rewards and use dragons while escaping the wave. Open the Roblox experience to explore the published game.",
+    },
+    role: [
+      "Gameplay systems and progression",
+      "Reward and collectible integration",
+      "Performance and server-validation work",
+    ],
+    tools: ["Roblox Studio", "Luau", "Gameplay systems"],
+    live: "https://www.roblox.com/games/79706056547341/Escape-Tsunami-with-Dragons",
+    description:
+      "Keep moving, collect rewards and escape the wave. This project brings a repeatable survival loop, player progression and collectible dragons together in a published Roblox experience.",
+    approach: [
+      {
+        title: "A repeatable loop",
+        body: "Movement and a travelling hazard give each run a clear objective, while rewards and collectibles give players a reason to return.",
+      },
+      {
+        title: "Connected systems",
+        body: "Player-facing progression connects the experience's rewards, dragons and tools rather than leaving each feature isolated.",
+      },
+      {
+        title: "Work beyond the first playable",
+        body: "The scripting work also covered movement updates, server validation and the practical iteration involved in publishing a game.",
+      },
+    ],
+    evidence: [
+      "Published experience available through the linked Roblox game page",
+    ],
+    credits: [
+      "Game artwork is the published experience's official thumbnail",
+      "Roblox and third-party assets retain their respective owners' rights",
+    ],
+    notes:
+      "The cover is the published game's artwork. Any currency pictured belongs to that artwork.",
+    screenshots: [],
+  },

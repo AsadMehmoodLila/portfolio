@@ -11,49 +11,49 @@
   "layouts": [
     {
       "width": 320,
-      "height": 4375,
+      "height": 4488,
       "work": 698,
-      "services": 1292,
+      "services": 1405,
       "overflow": false,
       "theme": "night"
     },
     {
       "width": 320,
-      "height": 4375,
+      "height": 4488,
       "work": 698,
-      "services": 1292,
+      "services": 1405,
       "overflow": false,
       "theme": "day"
     },
     {
       "width": 390,
-      "height": 4032,
+      "height": 4110,
       "work": 668,
-      "services": 1277,
+      "services": 1355,
       "overflow": false,
       "theme": "night"
     },
     {
       "width": 390,
-      "height": 4032,
+      "height": 4110,
       "work": 668,
-      "services": 1277,
+      "services": 1355,
       "overflow": false,
       "theme": "day"
     },
     {
       "width": 1440,
-      "height": 2958,
-      "work": 647,
-      "services": 1155,
+      "height": 2965,
+      "work": 651,
+      "services": 1162,
       "overflow": false,
       "theme": "night"
     },
     {
       "width": 1440,
-      "height": 2958,
-      "work": 647,
-      "services": 1155,
+      "height": 2965,
+      "work": 651,
+      "services": 1162,
       "overflow": false,
       "theme": "day"
     }

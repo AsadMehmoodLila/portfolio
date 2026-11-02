@@ -1,0 +1,47 @@
+{
+  "captured_date": "2026-11-02",
+  "artwork": [
+    {
+      "source_url": "https://tr.rbxcdn.com/180DAY-1a5167b68567786ca9574faca3352c23/768/432/Image/Png/noFilter",
+      "asset_id": 75590238537890,
+      "output": "public\\media\\work\\stream-a-cheese-pull\\official-art-1.webp",
+      "sha256": "b40377802a3b2f023cb2c71eea90e30ac90b5aab556e19ceafe33128ad457b73",
+      "dimensions": [
+        768,
+        429
+      ]
+    },
+    {
+      "source_url": "https://tr.rbxcdn.com/180DAY-12e1e4ae46b45290900834dfc0b91df9/768/432/Image/Png/noFilter",
+      "asset_id": 127730139763630,
+      "output": "public\\media\\work\\stream-a-cheese-pull\\official-art-2.webp",
+      "sha256": "f0d7fc38702cb89b478c4ea14ad1030b2175a40396d14e51a1a4e2a88e494123",
+      "dimensions": [
+        768,
+        432
+      ]
+    }
+  ],
+  "icon_source": "https://tr.rbxcdn.com/180DAY-3129fe84f4a41d67b72405032b892296/420/420/Image/Png/noFilter",
+  "artwork_description": "Official Roblox experience artwork, not screenshots or individual contribution evidence",
+  "role_capture": {
+    "source_url": "https://www.roblox.com/communities/1013100488/Cheesy-Situation",
+    "account": "AsadMehmoodLilla",
+    "role": "Developer",
+    "output": "public/media/work/stream-a-cheese-pull/developer-role.webp",
+    "output_sha256": "95cad255af3116459fdeb6c70e2055ade2407de82cabb8718001e6a93e54202e",
+    "crop": {
+      "left": 683,
+      "top": 290,
+      "width": 540,
+      "height": 320
+    },
+    "processing": "Cropped actual community member list only; no changed text, cursor or tool arrow in published crop.",
+    "original_sha256": "7dbd5ce7cd5f1a239afe48b761cade8bab7395694ee86b85daba56796a88dc17"
+  },
+  "contribution": {
+    "source": "Portfolio owner confirmation, 2 November 2026",
+    "scope": "Food system",
+    "wider_game_features": "Owner supplied feature labels; not attributed as individual contributions."
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "data": [
+    {
+      "id": 10628907188,
+      "rootPlaceId": 124293095895786,
+      "name": "[SINGULARITY] Stream A Cheese Pull!",
+      "description": "\ud83d\udcf8 Stream \ud83e\uddc0 Cheese Pull! \u2692\ufe0f Expand\n\n\ud83d\udcf8 Stream cheese pulls\n\ud83d\udcc8 Expand your business\n\ud83c\udfa8 Decorate your setup\n\u2b50\ufe0f Become famous!\n\n\ud83e\udd2b Use code \"FirstCodeEver\" in the Store for a free Blue Cheese Crate \ud83d\udce6\n\n\ud83d\udc4d Like the game & join our group for in-game rewards\n\ud83d\udd14 Turn on notifications for future updates!",
+      "sourceName": null,
+      "sourceDescription": null,
+      "creator": {
+        "id": 1013100488,
+        "name": "Cheesy Situation",
+        "type": "Group",
+        "isRNVAccount": false,
+        "hasVerifiedBadge": true
+      },
+      "price": null,
+      "allowedGearGenres": [
+        "All"
+      ],
+      "allowedGearCategories": [],
+      "isGenreEnforced": false,
+      "copyingAllowed": false,
+      "playing": 230,
+      "visits": 39505935,
+      "maxPlayers": 6,
+      "created": "2026-08-04T09:27:25.773Z",
+      "updated": "2026-10-25T22:02:34.531Z",
+      "studioAccessToApisAllowed": false,
+      "createVipServersAllowed": false,
+      "universeAvatarType": "MorphToR15",
+      "genre": "All",
+      "genre_l1": "Simulation",
+      "genre_l2": "Tycoon",
+      "untranslated_genre_l1": "simulation",
+      "isAllGenre": true,
+      "isFavoritedByUser": false,
+      "favoritedCount": 876435,
+      "canonicalUrlPath": "/games/124293095895786/Stream-A-Cheese-Pull",
+      "isContentRestricted": false,
+      "isOfficiallyLicensed": false,
+      "isCommunityLicensed": false
+    }
+  ]
+}

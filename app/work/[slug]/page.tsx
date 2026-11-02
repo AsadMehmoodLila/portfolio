@@ -10,6 +10,7 @@ import { SiteHeader } from "@/components/portfolio/site-header";
 import { SiteFooter } from "@/components/portfolio/site-footer";
 import { VideoPlayer } from "@/components/portfolio/video-player";
 import { work } from "@/data/portfolio";
+import { WorkFacts } from "@/components/portfolio/work-facts";
 export const dynamicParams = false;
 export function generateStaticParams() {
   return work.map((project) => ({ slug: project.slug }));
@@ -68,6 +69,7 @@ export default async function WorkPage({
           </Link>
           <h1>{project.title}</h1>
           <p>{project.summary}</p>
+          <WorkFacts project={project} />
         </div>
         {published ? (
           <>
@@ -81,6 +83,18 @@ export default async function WorkPage({
                       <li key={item}>{item}</li>
                     ))}
                   </ul>
+                  <div className="case-profile-links">
+                    {project.community && (
+                      <a className="link-action" href={project.community} target="_blank" rel="noopener noreferrer">
+                        View community <ArrowUpRight size={16} aria-hidden />
+                      </a>
+                    )}
+                    {project.profile && (
+                      <a className="link-action" href={project.profile} target="_blank" rel="noopener noreferrer">
+                        My Roblox profile <ArrowUpRight size={16} aria-hidden />
+                      </a>
+                    )}
+                  </div>
                 </div>
                 <div>
                   <h2>Built with</h2>
@@ -116,7 +130,7 @@ export default async function WorkPage({
                     className="link-action"
                     prefetch={false}
                   >
-                    Discuss a similar system{" "}
+                    Discuss a system for your game{" "}
                     <ArrowUpRight size={17} aria-hidden />
                   </Link>
                 </div>
@@ -127,6 +141,14 @@ export default async function WorkPage({
                 <h2>Project overview</h2>
                 <p>{project.description}</p>
               </section>
+              {!!project.gameFeatures?.length && (
+                <section aria-labelledby="experience-features">
+                  <h2 id="experience-features">In the game</h2>
+                  <ul className="case-feature-tags">
+                    {project.gameFeatures.map((feature) => <li key={feature}>{feature}</li>)}
+                  </ul>
+                </section>
+              )}
               {!!project.approach.length && (
                 <section>
                   <h2>How the systems connect</h2>

@@ -9,7 +9,7 @@ export const identity = {
   domain: "https://asadlilla.me",
   location: "Sialkot, Pakistan",
   availability: "Available for commissions",
-  updated: "2026-10-24",
+  updated: "2026-11-02",
 };
 
 export const services = [
@@ -85,7 +85,12 @@ export type Work = {
   role: string[];
   tools: string[];
   live?: string;
+  community?: string;
+  profile?: string;
+  verifiedOn?: string;
+  facts?: { value: string; label: string; source: string }[];
   source?: string;
+  gameFeatures?: string[];
   description: string;
   approach: { title: string; body: string }[];
   evidence: string[];
@@ -96,53 +101,49 @@ export type Work = {
 
 export const work: Work[] = [
   {
-    slug: "escape-tsunami",
-    title: "Escape Tsunami with Dragons",
-    category: "Gameplay",
+    slug: "stream-a-cheese-pull",
+    title: "Stream A Cheese Pull!",
+    category: "Simulation",
     status: "published",
-    type: "Published Roblox experience",
+    type: "Cheesy Situation · Developer",
     summary:
-      "A survival loop built around movement, collectible dragons and an approaching wave.",
+      "Cheese-pull streams, business progression and a setup players can make their own.",
     media: {
-      poster: "/media/roblox-game.webp",
-      alt: "Escape Tsunami with Dragons game artwork, with a dragon, a blocky character and a blue wave",
-      posterCaption: "Official game artwork",
-      summary:
-        "Players move through a survival course, collect rewards and use dragons while escaping the wave. Open the Roblox experience to explore the published game.",
+      poster: "/media/work/stream-a-cheese-pull/official-art-2.webp",
+      alt: "Official Stream A Cheese Pull! artwork showing a streaming character stretching cheese at a decorated setup",
+      posterCaption: "Official experience artwork",
+      summary: "Stream cheese pulls, expand a business and decorate a streaming setup in Cheesy Situation’s Roblox simulator.",
     },
-    role: [
-      "Gameplay systems and progression",
-      "Reward and collectible integration",
-      "Performance and server-validation work",
+    role: ["Developer — Cheesy Situation", "Food system"],
+    tools: ["Roblox"],
+    live: "https://www.roblox.com/games/124293095895786/Stream-A-Cheese-Pull",
+    community: "https://www.roblox.com/communities/1013100488/Cheesy-Situation",
+    profile: "https://www.roblox.com/users/5316217798/profile",
+    verifiedOn: "2026-11-02",
+    facts: [
+      { value: "39.5M+", label: "Experience visits", source: "https://www.roblox.com/games/124293095895786/Stream-A-Cheese-Pull" },
+      { value: "853K+", label: "Community members", source: "https://www.roblox.com/communities/1013100488/Cheesy-Situation" },
     ],
-    tools: ["Roblox Studio", "Luau", "Gameplay systems"],
-    live: "https://www.roblox.com/games/79706056547341/Escape-Tsunami-with-Dragons",
+    gameFeatures: ["Streaming", "Crates & setups", "Economy", "Workers", "Rebirths", "Plot customisation", "Collections"],
     description:
-      "Keep moving, collect rewards and escape the wave. This project brings a repeatable survival loop, player progression and collectible dragons together in a published Roblox experience.",
-    approach: [
-      {
-        title: "A repeatable loop",
-        body: "Movement and a travelling hazard give each run a clear objective, while rewards and collectibles give players a reason to return.",
-      },
-      {
-        title: "Connected systems",
-        body: "Player-facing progression connects the experience's rewards, dragons and tools rather than leaving each feature isolated.",
-      },
-      {
-        title: "Work beyond the first playable",
-        body: "The scripting work also covered movement updates, server validation and the practical iteration involved in publishing a game.",
-      },
-    ],
+      "I’m a Developer in Cheesy Situation as AsadMehmoodLilla, with my work focused on the food system in Stream A Cheese Pull! The experience combines cheese-pull streaming, business progression and a streaming space players can customise.",
+    approach: [],
     evidence: [
-      "Published experience available through the linked Roblox game page",
+      "Roblox publicly lists AsadMehmoodLilla as Developer in Cheesy Situation",
+      "The experience’s creator is the Cheesy Situation community",
+      "39,505,935 experience visits and 853,448 community members recorded on 2 November 2026",
     ],
     credits: [
-      "Game artwork is the published experience's official thumbnail",
-      "Roblox and third-party assets retain their respective owners' rights",
+      "Experience and official artwork: Cheesy Situation and the respective rights holders",
+      "Developer-role capture: the actual Roblox community member list, cropped without altering its contents",
+      "Experience visits and community membership describe their public reach; they are not individual performance results",
     ],
     notes:
-      "The cover is the published game's artwork. Any currency pictured belongs to that artwork.",
-    screenshots: [],
+      "Developer role and public reach checked on 2 November 2026. My contribution: food system. Game features describe the wider experience.",
+    screenshots: [
+      { src: "/media/work/stream-a-cheese-pull/developer-role.webp", alt: "Roblox’s Developer member list showing AsadMehmoodLilla", caption: "My Roblox account in Cheesy Situation’s Developer role" },
+      { src: "/media/work/stream-a-cheese-pull/official-art-1.webp", alt: "Official experience artwork showing a character performing a cheese pull", caption: "Official Stream A Cheese Pull! experience artwork" },
+    ],
   },
   {
     slug: "combat-system",
@@ -221,7 +222,7 @@ export const work: Work[] = [
 ];
 
 /** Change to a published work slug when a stronger demonstration is ready. */
-export const featuredSlug = "escape-tsunami";
+export const featuredSlug = "stream-a-cheese-pull";
 export const publishedWork = work.filter(
   (project) => project.status === "published",
 );

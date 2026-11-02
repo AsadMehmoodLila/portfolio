@@ -57,9 +57,11 @@ export default function AboutPage() {
               the checks behind them and the way systems fit into a game.
             </p>
             <p>
-              Escape Tsunami with Dragons is my published Roblox project. Its
-              project page describes my contribution and links to the
-              experience.
+              On Roblox, I’m AsadMehmoodLilla. I’m a Developer in Cheesy
+              Situation, the community behind Stream A Cheese Pull!{" "}
+              <Link href="/work/stream-a-cheese-pull/" prefetch={false}>
+                View the showcase and role verification
+              </Link>.
             </p>
             <p>
               I study BS Artificial Intelligence at the University of Management

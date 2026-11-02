@@ -1,0 +1,49 @@
+{
+  "id": 1013100488,
+  "name": "Cheesy Situation",
+  "description": "Join this group to stay notified!",
+  "owner": {
+    "hasVerifiedBadge": true,
+    "userId": 553445137,
+    "username": "Dauntified",
+    "displayName": "Dauntified"
+  },
+  "shout": null,
+  "memberCount": 853448,
+  "isBuildersClubOnly": false,
+  "publicEntryAllowed": true,
+  "hasVerifiedBadge": true,
+  "hasSocialModules": true,
+  "communityTier": {
+    "groupId": 1013100488,
+    "currentTier": 3,
+    "previousTier": 2,
+    "tierUpdatedTime": "2026-08-26T13:48:01.3Z",
+    "lastEvaluatedTime": "2026-08-26T13:48:01.3Z",
+    "requirements": [
+      {
+        "key": 1,
+        "satisfied": true
+      },
+      {
+        "key": 2,
+        "satisfied": true
+      },
+      {
+        "key": 3,
+        "satisfied": true
+      },
+      {
+        "key": 4,
+        "satisfied": true
+      },
+      {
+        "key": 5,
+        "satisfied": true
+      }
+    ],
+    "capabilities": {
+      "isEligibleForUnrestrictedMessages": false
+    }
+  }
+}

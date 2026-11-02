@@ -1,4 +1,4 @@
-Asset credits — ScriptLilla portfolio, 25 October 2026
+Asset credits — ScriptLilla portfolio, 2 November 2026
 
 Original portrait logo: generated from the owner-supplied reference
 Interface icons: Phosphor, MIT
@@ -13,7 +13,7 @@ Button-hover heroes: LuizMelo, CC0. Source URLs/hashes retained in design/COMBAT
 Green-cap portrait: generated brand artwork from the owner's supplied reference, not a photo.
 Sun and screen-opening VFX: generated decorative assets, not project footage.
 
-Escape Tsunami with Dragons: official game artwork from Roblox's public APIs. The number in the image is game artwork, not a revenue claim. Game/platform marks retain their owners' rights.
+Stream A Cheese Pull!: official experience artwork by Cheesy Situation and respective rights holders, sourced through Roblox public APIs. Developer-role image: actual community listing, cropped without changing contents. Food system contribution supplied by the portfolio owner. Visit/member figures captured 2 November 2026 describe the experience/community. Artwork currency is not a revenue claim.
 Certificate images: owner-supplied; issuer marks/designs retain their rights and imply no endorsement.
 
 Retired assets, no longer used on active pages:

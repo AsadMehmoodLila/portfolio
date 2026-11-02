@@ -1,6 +1,6 @@
 # Credits and provenance
 
-Current release: 25 October 2026. Older source/license records remain in `design/` and `assets/licenses/`; retired code is preserved as text. No additional paid model request was made in this polish.
+Current showcase update: 2 November 2026. Older source/license records remain in `design/` and `assets/licenses/`; retired code is preserved as text. No additional paid model request was made in this polish.
 
 ## Current identity and character
 
@@ -22,7 +22,7 @@ LuizMelo's seven CC0 hero sprite sheets now supply small button-hover reactions,
 
 ## Work and supporting images
 
-Escape Tsunami with Dragons uses actual public game artwork retrieved through Roblox's official APIs. Source metadata: `design/roblox-source.json`. The creator matches the linked owner account. The illustrated currency number is game artwork, not a revenue claim. Game imagery/platform marks retain their owners' rights; source matching is not an independent rights clearance for every depicted element.
+Stream A Cheese Pull! is by Cheesy Situation. Official artwork was obtained through Roblox’s public thumbnail API; source URLs, dates and hashes are in `design/showcase/cheesy-situation/asset-sources.json`. The Developer-role image is a crop of the actual Roblox community member list, with no cursor or tool arrow in the published crop. The account is AsadMehmoodLilla. The owner identifies the food system as their contribution; the short feature tags describe the wider game, not individual authorship. Public reach is dated 2 November 2026: 39,505,935 visits and 853,448 community members. In-game currency printed in official artwork is not a revenue claim. Experience artwork and platform marks retain their respective owners’ rights. The previous project has been removed from public pages and media; its historical records remain in `design/`.
 
 Certificate scans were supplied with the original repository. Issuer designs and marks retain their owners' rights and imply no endorsement. Authenticity/reproduction permissions have not been independently verified. The Soft Skills preview redacts its personal identity number. Do not publish unredacted identity documents.
 

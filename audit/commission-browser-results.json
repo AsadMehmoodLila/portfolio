@@ -25,7 +25,7 @@
       "violations": []
     },
     {
-      "route": "/work/escape-tsunami/",
+      "route": "/work/stream-a-cheese-pull/",
       "device": "desktop",
       "theme": "night",
       "overflow": false,
@@ -135,7 +135,7 @@
       "violations": []
     },
     {
-      "route": "/work/escape-tsunami/",
+      "route": "/work/stream-a-cheese-pull/",
       "device": "desktop",
       "theme": "day",
       "overflow": false,
@@ -245,7 +245,7 @@
       "violations": []
     },
     {
-      "route": "/work/escape-tsunami/",
+      "route": "/work/stream-a-cheese-pull/",
       "device": "mobile",
       "theme": "night",
       "overflow": false,
@@ -355,7 +355,7 @@
       "violations": []
     },
     {
-      "route": "/work/escape-tsunami/",
+      "route": "/work/stream-a-cheese-pull/",
       "device": "mobile",
       "theme": "day",
       "overflow": false,
@@ -465,7 +465,7 @@
     "http://127.0.0.1:4173/#process",
     "http://127.0.0.1:4173/#about",
     "http://127.0.0.1:4173/contact/",
-    "http://127.0.0.1:4173/work/escape-tsunami/",
+    "http://127.0.0.1:4173/work/stream-a-cheese-pull/",
     "http://127.0.0.1:4173/contact/?service=combat",
     "http://127.0.0.1:4173/contact/?service=data",
     "http://127.0.0.1:4173/contact/?service=rounds",
@@ -479,7 +479,7 @@
     "http://127.0.0.1:4173/accessibility/",
     "http://127.0.0.1:4173/about/#main-content",
     "http://127.0.0.1:4173/contact/#main-content",
-    "http://127.0.0.1:4173/work/escape-tsunami/#main-content",
+    "http://127.0.0.1:4173/work/stream-a-cheese-pull/#main-content",
     "http://127.0.0.1:4173/work/combat-system/#main-content",
     "http://127.0.0.1:4173/work/inventory-data/#main-content",
     "http://127.0.0.1:4173/work/rounds-bosses/#main-content",

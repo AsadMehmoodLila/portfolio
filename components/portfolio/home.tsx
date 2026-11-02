@@ -21,6 +21,7 @@ import { CharacterStage } from "./character-stage";
 import { AnimatedFaq } from "./animated-faq";
 import { VideoPlayer } from "./video-player";
 import { WorkingTools } from "./working-tools";
+import { WorkFacts } from "./work-facts";
 
 const icons = { sword: Sword, stack: Stack, flow: TreeStructure };
 
@@ -111,6 +112,7 @@ export function PortfolioHome() {
                   </Link>
                 </h3>
                 <p>{project.summary}</p>
+                <WorkFacts project={project} />
                 <div className="project-role">
                   <strong>My role</strong>
                   <ul>

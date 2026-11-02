@@ -1,0 +1,9 @@
+{
+  "checks": [
+    "320px: published showcase, food contribution, sourced dated reach, feature tags, linked role, loaded assets, no overflow; previous route removed",
+    "390px: published showcase, food contribution, sourced dated reach, feature tags, linked role, loaded assets, no overflow; previous route removed",
+    "1440px: published showcase, food contribution, sourced dated reach, feature tags, linked role, loaded assets, no overflow; previous route removed"
+  ],
+  "errors": [],
+  "passed": true
+}

@@ -2,6 +2,8 @@
 
 All portfolio work is defined in **`data/portfolio.ts`**. You do not need to edit page layouts to add a project. The website remains a Next.js static export for your existing GitHub Pages domain.
 
+The current featured showcase is **Stream A Cheese Pull!** by Cheesy Situation. Your role is Developer and your stated contribution is the food system. Keep wider `gameFeatures` separate from `role`. Public visit/member facts link to Roblox and carry their verification date; update the underlying source records when refreshing those figures.
+
 ## Ready-made sections
 
 Homepage: introduction, published work, service rows, delivery process, concise biography, tool logos, animated FAQ, direct contact and footer. `/contact/` has a three-step enquiry connected to Formspree, with direct Discord/email alternatives. `/about/` contains your background and certificate previews. Existing policy URLs remain available.

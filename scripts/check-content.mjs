@@ -77,7 +77,7 @@ for (const project of work) {
     asset(image.src);
     assert(image.alt, `Add screenshot alt text: ${project.slug}`);
   }
-  for (const url of [project.live, project.source].filter(Boolean)) link(url);
+  for (const url of [project.live, project.source, project.community, project.profile, ...(project.facts ?? []).map((fact) => fact.source)].filter(Boolean)) link(url);
 }
 assert(
   publishedWork.some((item) => item.slug === featuredSlug),

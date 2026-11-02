@@ -14,7 +14,7 @@ export const site = {
 
 export const links = {
   robloxGame:
-    "https://www.roblox.com/games/79706056547341/Escape-Tsunami-with-Dragons",
+    "https://www.roblox.com/games/124293095895786/Stream-A-Cheese-Pull",
   emotionRepo:
     "https://github.com/AsadMehmoodLila/EmotionDetUsFacialExp",
   studyBuddyRepo:
@@ -22,29 +22,6 @@ export const links = {
   nutritionDemo:
     "https://www.linkedin.com/posts/asadmehmoodlilla_what-if-i-told-you-that-chatgpt-had-never-ugcPost-7419450622812246016-1arQ/",
 } as const;
-
-export const robloxTimeline = [
-  {
-    label: "Prototype",
-    body: "Built the core survival loop around a moving tsunami, map traversal, and repeatable rounds.",
-  },
-  {
-    label: "Systems",
-    body: "Added lucky-block rewards, collectible dragons, tools, music, and player-facing progression.",
-  },
-  {
-    label: "Performance",
-    body: "Reworked movement and update frequency so the large hazard could feel smooth without wasting server time.",
-  },
-  {
-    label: "Protection",
-    body: "Added server-side validation, anti-exploit checks, and controlled admin announcements.",
-  },
-  {
-    label: "Publish & iterate",
-    body: "Shipped the experience, watched player behaviour, and kept improving the loop after release.",
-  },
-] as const;
 
 export const studyBuddySteps = [
   {

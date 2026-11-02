@@ -1,0 +1,22 @@
+{
+  "previousPageCursor": "eyJrZXkiOiIxMDYyODkwNzE4OCIsInNvcnRPcmRlciI6IkFzYyIsInBhZ2luZ0RpcmVjdGlvbiI6IkJhY2t3YXJkIiwicGFnZU51bWJlciI6MSwiZGlzY3JpbWluYXRvciI6Imdyb3VwSWQ6MTAxMzEwMDQ4OGFjY2Vzc0ZpbHRlcjpQdWJsaWMiLCJjb3VudCI6NTB9CjM1YzUxZDA5MzFmNzdkNTRmYzdjYjU0ZTNiMzZhY2FiZGFlYWNlNjhhODBlYjQ0OTZmYTg1ZDUxNzU1ZTNkN2Q=",
+  "nextPageCursor": null,
+  "data": [
+    {
+      "id": 10628907188,
+      "name": "[SINGULARITY] Stream A Cheese Pull!",
+      "description": "\ud83d\udcf8 Stream \ud83e\uddc0 Cheese Pull! \u2692\ufe0f Expand\n\n\ud83d\udcf8 Stream cheese pulls\n\ud83d\udcc8 Expand your business\n\ud83c\udfa8 Decorate your setup\n\u2b50\ufe0f Become famous!\n\n\ud83e\udd2b Use code \"FirstCodeEver\" in the Store for a free Blue Cheese Crate \ud83d\udce6\n\n\ud83d\udc4d Like the game & join our group for in-game rewards\n\ud83d\udd14 Turn on notifications for future updates!",
+      "creator": {
+        "id": 1013100488,
+        "type": "Group"
+      },
+      "rootPlace": {
+        "id": 124293095895786,
+        "type": "Place"
+      },
+      "created": "2026-08-04T09:27:25.977Z",
+      "updated": "2026-10-24T14:35:09.13Z",
+      "placeVisits": 39505918
+    }
+  ]
+}
