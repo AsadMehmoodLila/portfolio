@@ -16,11 +16,6 @@ export function WorkFacts({ project }: { project: Work }) {
           </div>
         ))}
       </dl>
-      {project.verifiedOn && (
-        <p className="work-verified">
-          Roblox figures · <time dateTime={project.verifiedOn}>2 November 2026</time>
-        </p>
-      )}
     </div>
   );
 }

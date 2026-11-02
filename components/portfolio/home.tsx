@@ -54,9 +54,6 @@ export function PortfolioHome() {
               See the work <ArrowRight size={18} aria-hidden />
             </a>
           </div>
-          <p className="hero-note">
-            Open for scripting commissions · Scope agreed before work starts
-          </p>
         </div>
         <div className="hero-visual">
           <CharacterStage />

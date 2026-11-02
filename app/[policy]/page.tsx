@@ -41,9 +41,6 @@ export default async function PolicyPage({
         </Link>
         <h1>{content.title}</h1>
         <p className="policy-summary">{content.summary}</p>
-        <p className="policy-date">
-          Last updated: <time dateTime="2026-10-25">25 October 2026</time>
-        </p>
         <nav className="policy-toc" aria-label="On this page">
           {content.sections.map((s, i) => (
             <a href={`#section-${i}`} key={s.title}>
@@ -57,8 +54,20 @@ export default async function PolicyPage({
             {s.paragraphs.map((p) => (
               <p key={p}>{p}</p>
             ))}
+            {s.links && (
+              <div className="policy-provider-links">
+                {s.links.map((link) => (
+                  <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer">
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            )}
           </section>
         ))}
+        <p className="policy-date">
+          Updated <time dateTime="2026-11-03">3 November 2026</time>
+        </p>
         <nav className="policy-related" aria-label="Other policies">
           {Object.entries(policies)
             .filter(([slug]) => slug !== policy)

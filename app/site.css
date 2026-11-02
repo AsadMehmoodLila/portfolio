@@ -955,9 +955,10 @@ main:focus {
 }
 .policy-toc {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 0 24px;
   align-items: flex-start;
-  margin: 32px 0 48px;
+  margin: 24px 0 32px;
   padding-block: 16px;
   border-block: 1px solid var(--line-soft);
 }
@@ -1001,6 +1002,18 @@ main:focus {
   align-items: center;
   text-decoration: underline;
   font-size: 0.8rem;
+}
+.policy-provider-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 20px;
+}
+.policy-provider-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  text-decoration: underline;
+  font-size: 0.85rem;
 }
 @media (max-width: 1100px) {
   :root {
