@@ -24,6 +24,9 @@ export function VideoPlayer({ media, title }: { media: Media; title: string }) {
           <video
             controls
             playsInline
+            {...({ loading: "lazy" } as Record<string, string>)}
+            width={1280}
+            height={720}
             preload="none"
             poster={media.poster ?? undefined}
             onError={() => setFailed(true)}
@@ -92,6 +95,7 @@ export function VideoPlayer({ media, title }: { media: Media; title: string }) {
                 width={1280}
                 height={720}
                 alt={media.alt}
+                loading="lazy"
               />
             )}
             <span className="play-button">

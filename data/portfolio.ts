@@ -9,10 +9,26 @@ export const identity = {
   domain: "https://asadlilla.me",
   location: "Sialkot, Pakistan",
   availability: "Available for commissions",
-  updated: "2026-11-02",
+  updated: "2026-11-22",
 };
 
-export const services = [
+export type ServiceShowcase = {
+  title: string;
+  label?: string;
+  media: Media;
+};
+
+export type ServiceItem = {
+  id: string;
+  title: string;
+  icon: "sword" | "stack" | "flow";
+  description: string;
+  scope: readonly string[];
+  deliverable: string;
+  showcase?: ServiceShowcase;
+};
+
+export const services: readonly ServiceItem[] = [
   {
     id: "combat",
     title: "Combat & abilities",
@@ -27,6 +43,17 @@ export const services = [
     ],
     deliverable:
       "A scoped gameplay module, configuration and integration notes",
+    showcase: {
+      title: "Combat System by ScriptLilla",
+      label: "System showcase · R15 melee arena",
+      media: {
+        poster: "/media/work/combat-system/poster.webp",
+        alt: "Combat System by ScriptLilla — R15 Roblox melee arena duel between the Obsidian Duelist and Crimson Warden Boss",
+        youtube: "https://youtu.be/JI4wTiM6JVA",
+        summary:
+          "Server-authoritative R15 combat showcase: 3-hit combos, aerial spin-dashes, timed perfect parries, multi-phase boss AI, and persistent rewards.",
+      },
+    },
   },
   {
     id: "data",

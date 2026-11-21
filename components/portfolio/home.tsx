@@ -171,6 +171,20 @@ export function PortfolioHome() {
                 >
                   Discuss this <ArrowUpRight size={18} aria-hidden />
                 </Link>
+                {service.showcase && (
+                  <div className="service-showcase">
+                    {service.showcase.label && (
+                      <div className="service-showcase-head">
+                        <span className="service-showcase-dot" aria-hidden />
+                        <span>{service.showcase.label}</span>
+                      </div>
+                    )}
+                    <VideoPlayer
+                      media={service.showcase.media}
+                      title={service.showcase.title}
+                    />
+                  </div>
+                )}
               </article>
             );
           })}
