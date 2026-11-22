@@ -2,9 +2,13 @@ import Link from "next/link";
 import {
   ArrowRight,
   ArrowUpRight,
+  ChatCircleDots,
   Code,
   DiscordLogo,
   EnvelopeSimple,
+  GameController,
+  Handshake,
+  RocketLaunch,
   Stack,
   Sword,
   TreeStructure,
@@ -16,6 +20,7 @@ import {
   publishedWork,
   questions,
   services,
+  systemShowcases,
 } from "@/data/portfolio";
 import { CharacterStage } from "./character-stage";
 import { AnimatedFaq } from "./animated-faq";
@@ -24,6 +29,12 @@ import { WorkingTools } from "./working-tools";
 import { WorkFacts } from "./work-facts";
 
 const icons = { sword: Sword, stack: Stack, flow: TreeStructure };
+const processIcons = {
+  chat: ChatCircleDots,
+  scope: Handshake,
+  play: GameController,
+  ship: RocketLaunch,
+};
 
 export function PortfolioHome() {
   const featured =
@@ -136,70 +147,62 @@ export function PortfolioHome() {
         className="services-section section shell"
         aria-labelledby="services-title"
       >
-        <div className="section-heading">
+        <div className="section-heading section-heading-centered">
           <h2 id="services-title">What do you need built?</h2>
-          <p>
-            A new mechanic, an existing system to connect, or a focused fix.
-          </p>
         </div>
-        <div className="service-list">
+
+        <div className="showcase-grid-wrap">
+          <div className="showcase-grid">
+            {systemShowcases.map((item) => (
+              <article className="showcase-card" key={item.id}>
+                <VideoPlayer
+                  media={item.media}
+                  title={item.title}
+                  duration={item.duration}
+                  compact
+                />
+                <div className="showcase-card-bar">
+                  <h3>{item.title}</h3>
+                  <Link
+                    href={`/contact/?service=${item.serviceId}`}
+                    prefetch={false}
+                    className="link-action"
+                    aria-label={`Commission ${item.title}`}
+                  >
+                    Build similar <ArrowUpRight size={16} aria-hidden />
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div className="service-pills" aria-label="Systems I build">
           {services.map((service) => {
             const Icon = icons[service.icon];
             return (
-              <article className="service" key={service.id}>
-                <div className="service-title">
-                  <Icon size={26} aria-hidden />
-                  <h3>{service.title}</h3>
-                </div>
-                <div className="service-description">
-                  <p>{service.description}</p>
-                  <details className="service-scope">
-                    <summary>Typical scope</summary>
-                    <ul>
-                      {service.scope.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                    <p>{service.deliverable}</p>
-                  </details>
-                </div>
-                <Link
-                  href={`/contact/?service=${service.id}`}
-                  prefetch={false}
-                  className="link-action"
-                  aria-label={`Discuss ${service.title}`}
-                >
-                  Discuss this <ArrowUpRight size={18} aria-hidden />
-                </Link>
-                {service.showcase && (
-                  <div className="service-showcase">
-                    {service.showcase.label && (
-                      <div className="service-showcase-head">
-                        <span className="service-showcase-dot" aria-hidden />
-                        <span>{service.showcase.label}</span>
-                      </div>
-                    )}
-                    <VideoPlayer
-                      media={service.showcase.media}
-                      title={service.showcase.title}
-                    />
-                  </div>
-                )}
-              </article>
+              <Link
+                key={service.id}
+                href={`/contact/?service=${service.id}`}
+                prefetch={false}
+                className="service-pill"
+              >
+                <Icon size={18} aria-hidden />
+                <span>{service.title}</span>
+                <ArrowUpRight size={14} aria-hidden />
+              </Link>
             );
           })}
+          <Link
+            href="/contact/?service=other"
+            prefetch={false}
+            className="service-pill service-pill-muted"
+          >
+            <Code size={18} aria-hidden />
+            <span>Fixes &amp; integrations</span>
+            <ArrowUpRight size={14} aria-hidden />
+          </Link>
         </div>
-        <Link
-          href="/contact/?service=other"
-          prefetch={false}
-          className="integration-note"
-        >
-          <Code size={23} aria-hidden />
-          <span>
-            Already have a game? Tell me what needs fixing or connecting.
-          </span>
-          <ArrowUpRight size={18} aria-hidden />
-        </Link>
       </section>
 
       <section
@@ -207,22 +210,35 @@ export function PortfolioHome() {
         className="process-section section shell"
         aria-labelledby="process-title"
       >
-        <div className="section-heading">
+        <div className="section-heading section-heading-centered">
           <h2 id="process-title">How a commission works</h2>
         </div>
-        <ol className="process-list">
-          {process.map((step, index) => (
-            <li key={step.title}>
-              <span className="process-number" aria-hidden>
-                {index + 1}
-              </span>
-              <div>
-                <h3>{step.title}</h3>
-                <p>{step.body}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
+        <div className="process-flow-wrap">
+          <ol className="process-flow">
+            {process.map((step, index) => {
+              const StepIcon = processIcons[step.icon];
+              return (
+                <li className="process-card" key={step.title}>
+                  <div className="process-card-top">
+                    <span className="process-icon-badge" aria-hidden>
+                      <StepIcon size={24} weight="duotone" />
+                    </span>
+                    <span className="process-step-chip" aria-hidden>
+                      0{index + 1}
+                    </span>
+                  </div>
+                  <h3>{step.title}</h3>
+                  <span className="process-tag">{step.tag}</span>
+                  {index < process.length - 1 && (
+                    <span className="process-connector" aria-hidden>
+                      <ArrowRight size={16} weight="bold" />
+                    </span>
+                  )}
+                </li>
+              );
+            })}
+          </ol>
+        </div>
       </section>
 
       <section

@@ -4,7 +4,17 @@ import { ArrowUpRight, Play, X } from "@phosphor-icons/react";
 import Link from "next/link";
 import { youtubeId, type Media } from "@/data/portfolio";
 
-export function VideoPlayer({ media, title }: { media: Media; title: string }) {
+export function VideoPlayer({
+  media,
+  title,
+  compact = false,
+  duration,
+}: {
+  media: Media;
+  title: string;
+  compact?: boolean;
+  duration?: string;
+}) {
   const [loaded, setLoaded] = useState(false);
   const [failed, setFailed] = useState(false);
   const playButton = useRef<HTMLButtonElement>(null);
@@ -101,37 +111,67 @@ export function VideoPlayer({ media, title }: { media: Media; title: string }) {
             <span className="play-button">
               <Play weight="fill" size={27} aria-hidden />
             </span>
+            {duration && <span className="video-duration">{duration}</span>}
           </button>
         )}
       </div>
-      <div className="video-actions">
-        <p id={noticeId}>
-          {loaded
-            ? "YouTube video loaded"
-            : "Play connects to YouTube and shares connection information with Google"}{" "}
-          <Link href="/privacy/" prefetch={false}>
-            Privacy
-          </Link>
-        </p>
-        {loaded && (
-          <button
-            type="button"
-            onClick={() => setLoaded(false)}
-            className="text-button"
-          >
-            <X size={15} aria-hidden />
-            Close video
-          </button>
-        )}
-        <a
-          href={`https://www.youtube.com/watch?v=${id}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Open on YouTube <ArrowUpRight size={14} aria-hidden />
-        </a>
-      </div>
-      {media.summary && <figcaption>{media.summary}</figcaption>}
+      {compact ? (
+        loaded && (
+          <div className="video-actions video-actions-compact">
+            <button
+              type="button"
+              onClick={() => setLoaded(false)}
+              className="text-button"
+            >
+              <X size={15} aria-hidden />
+              Close video
+            </button>
+            <a
+              href={`https://www.youtube.com/watch?v=${id}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              YouTube <ArrowUpRight size={14} aria-hidden />
+            </a>
+          </div>
+        )
+      ) : (
+        <>
+          <div className="video-actions">
+            <p id={noticeId}>
+              {loaded
+                ? "YouTube video loaded"
+                : "Play connects to YouTube and shares connection information with Google"}{" "}
+              <Link href="/privacy/" prefetch={false}>
+                Privacy
+              </Link>
+            </p>
+            {loaded && (
+              <button
+                type="button"
+                onClick={() => setLoaded(false)}
+                className="text-button"
+              >
+                <X size={15} aria-hidden />
+                Close video
+              </button>
+            )}
+            <a
+              href={`https://www.youtube.com/watch?v=${id}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open on YouTube <ArrowUpRight size={14} aria-hidden />
+            </a>
+          </div>
+          {media.summary && <figcaption>{media.summary}</figcaption>}
+        </>
+      )}
+      {compact && (
+        <span id={noticeId} className="sr-only">
+          Play connects to YouTube and shares connection information with Google.
+        </span>
+      )}
       <noscript>
         <p>
           <a href={`https://www.youtube.com/watch?v=${id}`}>

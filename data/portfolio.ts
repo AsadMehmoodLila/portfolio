@@ -9,8 +9,43 @@ export const identity = {
   domain: "https://asadlilla.me",
   location: "Sialkot, Pakistan",
   availability: "Available for commissions",
-  updated: "2026-11-22",
+  updated: "2026-11-23",
 };
+
+export type SystemShowcase = {
+  id: string;
+  title: string;
+  duration: string;
+  serviceId: string;
+  media: Media;
+};
+
+export const systemShowcases: readonly SystemShowcase[] = [
+  {
+    id: "combat-system",
+    title: "Combat System",
+    duration: "3:01",
+    serviceId: "combat",
+    media: {
+      poster: "/media/work/combat-system/poster.webp",
+      alt: "Combat System by ScriptLilla — R15 Roblox melee arena duel, Storm Nova, Shadow Clones and Crimson Warden Boss",
+      youtube: "https://youtu.be/-KMTPB3FNyk",
+      summary: "R15 melee combos, parries, shadow clones, and multi-phase boss AI.",
+    },
+  },
+  {
+    id: "painting-system",
+    title: "Painting System",
+    duration: "0:47",
+    serviceId: "data",
+    media: {
+      poster: "/media/work/painting-system/poster.webp",
+      alt: "Painting System by ScriptLilla — multiplayer 2D pixel canvas and drawing tools in Roblox",
+      youtube: "https://youtu.be/x10NhMGnTME",
+      summary: "Multiplayer 2D pixel canvas with live replication, custom UI, and save/load.",
+    },
+  },
+] as const;
 
 export type ServiceShowcase = {
   title: string;
@@ -49,9 +84,9 @@ export const services: readonly ServiceItem[] = [
       media: {
         poster: "/media/work/combat-system/poster.webp",
         alt: "Combat System by ScriptLilla — R15 Roblox melee arena duel between the Obsidian Duelist and Crimson Warden Boss",
-        youtube: "https://youtu.be/JI4wTiM6JVA",
+        youtube: "https://youtu.be/-KMTPB3FNyk",
         summary:
-          "Server-authoritative R15 combat showcase: 3-hit combos, aerial spin-dashes, timed perfect parries, multi-phase boss AI, and persistent rewards.",
+          "Server-authoritative R15 combat showcase: 3-hit combos, aerial spin-dashes, timed perfect parries, shadow clones, multi-phase boss AI, and persistent rewards.",
       },
     },
   },
@@ -256,22 +291,26 @@ export const publishedWork = work.filter(
 
 export const process = [
   {
-    title: "Share the brief",
-    body: "Tell me the mechanic, your existing game and any budget or timing constraints.",
+    icon: "chat" as const,
+    title: "Send your idea",
+    tag: "Discord or email",
   },
   {
-    title: "Agree the scope",
-    body: "Confirm deliverables, acceptance criteria, milestones, payment and supplied assets before work starts.",
+    icon: "scope" as const,
+    title: "Lock scope & quote",
+    tag: "Clear milestones first",
   },
   {
-    title: "Review the build",
-    body: "Check playable updates against the scope. Agree any added features separately.",
+    icon: "play" as const,
+    title: "Playtest live",
+    tag: "Try builds in Studio",
   },
   {
-    title: "Test and hand over",
-    body: "Receive the agreed source, configuration and setup notes, with revisions and support defined in the quote.",
+    icon: "ship" as const,
+    title: "Ready to ship",
+    tag: "Clean source + setup",
   },
-];
+] as const;
 
 export const questions = [
   {
