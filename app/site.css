@@ -3113,10 +3113,16 @@ h2 {
 }
 .showcase-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
 }
-@container (max-width: 720px) {
+@container (max-width: 960px) {
+  .showcase-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+@container (max-width: 680px) {
   .showcase-grid {
     grid-template-columns: 1fr;
     gap: 20px;

@@ -9,7 +9,7 @@ export const identity = {
   domain: "https://asadlilla.me",
   location: "Sialkot, Pakistan",
   availability: "Available for commissions",
-  updated: "2026-11-23",
+  updated: "2026-11-24",
 };
 
 export type SystemShowcase = {
@@ -31,6 +31,18 @@ export const systemShowcases: readonly SystemShowcase[] = [
       alt: "Combat System by ScriptLilla — R15 Roblox melee arena duel, Storm Nova, Shadow Clones and Crimson Warden Boss",
       youtube: "https://youtu.be/-KMTPB3FNyk",
       summary: "R15 melee combos, parries, shadow clones, and multi-phase boss AI.",
+    },
+  },
+  {
+    id: "football-system",
+    title: "Football System",
+    duration: "2:28",
+    serviceId: "rounds",
+    media: {
+      poster: "/media/work/football-system/poster.webp",
+      alt: "Pro Football System by ScriptLilla — Roblox soccer ball physics, skill moves, diving goalkeepers and 5v5 Blue vs Red match",
+      youtube: "https://youtu.be/AA5BxV-6s6g",
+      summary: "Server-driven ball physics, skill moves, diving goalkeepers, synced stadium scoreboards, and 5v5 match flow.",
     },
   },
   {
